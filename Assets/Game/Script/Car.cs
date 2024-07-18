@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Car : MonoBehaviour {
-    public int type; //车型 1-2m小车   2-3m大车
+public class Car : MonoBehaviour
+{
+    public CarType type; //车型 1-2m小车   2-3m大车
     public Vector2Int pos; //车头位置
 
     public Vector2Int dir; //方向 1上 2右  3下  4左
@@ -12,17 +13,19 @@ public class Car : MonoBehaviour {
     public List<Vector2Int> posArr = new();
 
 
-    public bool dead = false;
+    public bool dead = false;//是否死亡
 
 
     public Tweener moveAction = null;
 
-    public void Init(CarInfo info) {
+    public void Init(CarInfo info)
+    {
         dead = false;
         posArr.Clear();
 
         type = info.type;
-        switch (info.dir) {
+        switch (info.dir)
+        {
             case 1:
                 dir = Vector2Int.up;
                 break;
@@ -42,8 +45,9 @@ public class Car : MonoBehaviour {
         turn = info.turn;
         transform.localPosition = GameManager.Instance.ConvertPos(new Vector3(pos.x, 0, pos.y));
 
-        if (type == 1)
-            switch (info.dir) {
+        if (type == CarType.Small)
+            switch (info.dir)
+            {
                 case 1:
                     posArr.Add(new Vector2Int(pos.x, pos.y - 1));
                     break;
@@ -58,7 +62,8 @@ public class Car : MonoBehaviour {
                     break;
             }
         else
-            switch (info.dir) {
+            switch (info.dir)
+            {
                 case 1:
                     posArr.Add(new Vector2Int(pos.x, pos.y - 1));
                     posArr.Add(new Vector2Int(pos.x, pos.y - 2));
@@ -77,7 +82,8 @@ public class Car : MonoBehaviour {
                     break;
             }
 
-        switch (info.dir) {
+        switch (info.dir)
+        {
             case 1:
                 transform.localEulerAngles = new Vector3(0, 0, 0);
                 break;

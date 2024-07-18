@@ -517,4 +517,3 @@ MonoBehaviour:
   turn: 0
   posArr: []
   dead: 0
-  speed: 15
