@@ -11,8 +11,7 @@ public class TrafficLight : MonoBehaviour
     private float redTime;//红灯三秒
     //绿灯时间 
     private float greenTime;//绿灯五秒
-    //信号灯图片
-    public SpriteRenderer m_Sprite;
+    public Light m_Light;
     //倒计时文字
     public TextMesh m_Text;
     private bool isTrigger = false;
@@ -25,7 +24,7 @@ public class TrafficLight : MonoBehaviour
     void Start()
     {
         //默认红灯
-        m_Sprite.color = Color.red;
+        m_Light.color = Color.red;
         m_Text.text = redTime.ToString();
     }
 
@@ -43,7 +42,7 @@ public class TrafficLight : MonoBehaviour
                 state = 1;
                 redTime = 0;
                 greenTime = 5;
-                m_Sprite.color = Color.green;
+                m_Light.color = Color.green;
             }
         }
         //绿灯倒计时
@@ -57,7 +56,7 @@ public class TrafficLight : MonoBehaviour
                 state = 0;
                 greenTime = 0;
                 redTime = 3;
-                m_Sprite.color = Color.red;
+                m_Light.color = Color.red;
             }
         }
         if (isTrigger)
@@ -78,19 +77,19 @@ public class TrafficLight : MonoBehaviour
         {
             case 1:
                 transform.localEulerAngles = new Vector3(0, 0, 0);
-                m_Text.transform.localEulerAngles = new Vector3(0, 0, 0);
+                m_Text.transform.localEulerAngles = new Vector3(90, 0, 0);
                 break;
             case 2:
                 transform.localEulerAngles = new Vector3(0, 90, 0);
-                m_Text.transform.localEulerAngles = new Vector3(0, 0, 90);
+                m_Text.transform.localEulerAngles = new Vector3(90, 0, 90);
                 break;
             case 3:
                 transform.localEulerAngles = new Vector3(0, 180, 0);
-                m_Text.transform.localEulerAngles = new Vector3(0, 0, 180);
+                m_Text.transform.localEulerAngles = new Vector3(90, 0, 180);
                 break;
             case 4:
                 transform.localEulerAngles = new Vector3(0, -90, 0);
-                m_Text.transform.localEulerAngles = new Vector3(0, 0, -90);
+                m_Text.transform.localEulerAngles = new Vector3(90, 0, -90);
                 break;
         }
     }

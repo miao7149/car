@@ -12,52 +12,71 @@ public class GameManager : MonoBehaviour
     public int actionCount = 5;
     //暂定游戏尺寸 11*21 m
     private readonly int[][] roadDataArr = {
-        //      00  01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16  17  18  19  20
-        new[] { 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //0
-        new[] { 00, 00, 21, 15, 20, 00, 01, 00, 07, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //1
-        new[] { 00, 00, 12, 08, 10, 00, 01, 00, 01, 00, 31, 27, 30, 00, 00, 12, 10, 00, 00, 00, 00 }, //2
-        new[] { 02, 02, 03, 03, 03, 02, 03, 02, 03, 02, 03, 03, 03, 02, 02, 03, 03, 02, 02, 02, 02 }, //3
-        new[] { 00, 00, 12, 08, 10, 00, 01, 00, 01, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //4
-        new[] { 00, 00, 25, 17, 24, 00, 01, 00, 05, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //5
-        new[] { 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //6
-        new[] { 00, 00, 00, 00, 18, 13, 03, 13, 13, 13, 03, 03, 03, 28, 13, 03, 03, 13, 13, 13, 13 }, //7
-        new[] { 00, 00, 00, 00, 14, 09, 03, 09, 09, 09, 03, 03, 03, 29, 11, 03, 03, 11, 11, 11, 11 }, //8
-        new[] { 00, 00, 00, 00, 19, 11, 03, 11, 11, 11, 03, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 }, //9
-        new[] { 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 12, 08, 10, 00, 00, 12, 10, 00, 00, 00, 00 } //10
+        //      00  01  02  03  04  05  06  07  08  09  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //0
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //1
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //2
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //3
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //4
+        new[] { 02, 02, 02, 02, 02, 02, 02, 02, 02, 02, 03, 02, 02, 03, 02, 02, 37, 02, 02, 03, 02, 02, 02, 02, 02, 02, 02, 02 }, //5
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //6
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //7
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //8
+        new[] { 02, 02, 02, 02, 02, 02, 02, 33, 02, 02, 03, 02, 02, 03, 02, 02, 35, 02, 02, 03, 02, 02, 02, 02, 02, 02, 02, 02 }, //9
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //10
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 32, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //11
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //12
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //13
+        new[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 00 }, //14
     };
 
     //目前车有2m 和 3m 茅点为车头
     private CarInfo[] carDataArr = {
-        new(CarType.Small, 8, 7, 1, 1), //x，y，方向，转弯方向
-        new(CarType.Small, 7, 6, 1, 4),
-        new(CarType.Small, 3, 16, 2, 1),
-        new(CarType.Small, 2, 16, 2, 1),
-        new(CarType.Bulldozer, 5, 12, 2, 2),
+        new(CarType.Bulldozer, 8, 19, 2, 1), //x，y，方向，转弯方向
+        new(CarType.Small, 5, 20, 3, 2),
+        new(CarType.Small, 9, 20, 3, 5),
+        new(CarType.Small, 5, 18, 1, 3),
+        new(CarType.Small, 9, 18, 1, 3),
+        new(CarType.Small, 4, 19, 2, 2),
+        new(CarType.Small, 4, 16, 2, 2),
+        new(CarType.Small, 3, 13, 4, 1),
+        new(CarType.Small, 4, 10, 2, 4),
+        new(CarType.Small, 10, 16, 4, 3),
+        new(CarType.Small, 10, 13, 4, 4),
+        new(CarType.Big, 8, 10, 2, 4),
+        new(CarType.Big, 8, 13, 2, 3),
+        new(CarType.Small, 5, 9, 1, 3),
+        new(CarType.Small, 9, 14, 3, 5),
+        new(CarType.Small, 9, 11, 3, 1),
+        new(CarType.Small, 9, 9, 1, 3),
+        new(CarType.Small, 5, 15, 1, 2),
+        new(CarType.Small, 5, 12, 1, 5),
+        //new(CarType.Bulldozer, 5, 12, 2, 2),
     };
 
 
     //人数据
     private PeoInfoItem[] peopleDataArr = {
-        new PeoInfoItem(new IntPos(9, 13), new IntPos(6, 13)),
-        new PeoInfoItem(new IntPos(2, 9), new IntPos(2, 13))
+        new PeoInfoItem(new IntPos(8,7), new IntPos(10, 7)),
+        new PeoInfoItem(new IntPos(11, 9), new IntPos(11, 11))
     };
     //信号灯数据
     private TrafficLightInfo[] trafficLightDataArr = {
-        new(new IntPos(4, 9), 4),
+        new(new IntPos(10, 9), 1),
     };
     //路障数据
     private BlockInfo[] blockDataArr = {
-        new BlockInfo(new IntPos(7, 17)),
+        new BlockInfo(new IntPos(9, 19)),
     };
-    public GameObject[] prefabRoadArr;
+    public GameObject[] prefabRoadArr;//道路预制体
 
     public GameObject m_PrefabSmallCar;//小车预制体
     public GameObject m_PrefabBigCar; //大车预制体
     public GameObject m_PrefabBulldozer;//推土机预制体
 
-    public GameObject prefabPeople;
-    public GameObject prefabTrafficLight;
-    public GameObject prefabBlock;
+    public GameObject prefabPeople;//行人预制体
+    public GameObject prefabTrafficLight;//信号灯预制体
+    public GameObject prefabBlock;//路障预制体
 
 
     private List<RoadItem> roadArr = new();
@@ -67,6 +86,10 @@ public class GameManager : MonoBehaviour
 
     private List<People> peopleArr = new();
     private List<People> peoplePool = new();
+
+    private List<Block> blocksArr = new();
+
+    private List<TrafficLight> trafficLightArr = new();
 
     public GameStatu gameStatu;//游戏状态
     public FailReason failReason;//失败原因
@@ -110,17 +133,7 @@ public class GameManager : MonoBehaviour
         {
             var p = BornPeople();
             peopleArr.Add(p);
-            p.gameObject.SetActive(true);
-            p.transform.SetParent(transform, false);
-            var p1 = ConvertPos(new Vector3(item.pos1.x, 0, item.pos1.y));
-            var p2 = ConvertPos(new Vector3(item.pos2.x, 0, item.pos2.y));
-            p.transform.localPosition = p1;
-            p.action = DOTween.Sequence();
-            p.action.Append(p.transform.DOLocalMove(p2, 4));
-            p.action.Append(p.transform.DOLocalMove(p1, 4));
-            p.action.SetLoops(-1, LoopType.Restart);
-            p.action.Play();
-            p.Init();
+            p.Init(item);
         }
         //初始化信号灯
         foreach (var item in trafficLightDataArr)
@@ -129,20 +142,35 @@ public class GameManager : MonoBehaviour
             light.transform.SetParent(transform, false);
             light.transform.localPosition = ConvertPos(new Vector3(item.pos.x, 0, item.pos.y));
             light.Init(item);
+            trafficLightArr.Add(light);
         }
         //初始化路障
         foreach (var item in blockDataArr)
         {
-            var block = Instantiate(prefabBlock).GetComponent<Block>();
-            block.transform.SetParent(transform, false);
-            block.transform.localPosition = ConvertPos(new Vector3(item.pos.x, 0, item.pos.y));
+            var block = Instantiate(prefabBlock).transform.GetChild(0).GetChild(0).GetComponent<Block>();
+            block.Init(item);
+            blocksArr.Add(block);
         }
         //初始化行动次数
-        actionCount = 5;
+        actionCount = 20;
         m_UI.ChangeActionCount(actionCount);
         StartCoroutine(PlayStartAni());
     }
-
+    IEnumerator PlayStartAni()
+    {
+        foreach (var car in carArr)
+        {
+            car.transform.localScale = Vector3.zero;
+            car.transform.DOScale(Vector3.one, 2f).SetEase(Ease.OutBack).Play();
+        }
+        AudioManager.Instance.PlayGameStart();
+        yield return new WaitForSeconds(2f);
+        SetGameStatu(GameStatu.playing);
+        foreach (var car in carArr)
+        {
+            car.StartCarScaleAnimation();
+        }
+    }
     private void OnDestroy()
     {
         //GlobalManager.Instance.SaveGameData();
@@ -152,22 +180,21 @@ public class GameManager : MonoBehaviour
         if (gameStatu == GameStatu.playing && Input.touchCount > 0 && actionCount > 0)
         {
             var touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began && !Helper.IsPointerOverUIElement())
             {
                 // 将触摸点转换为世界坐标
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
-
                 // 射线投射
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("car")))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("car")))
                 {
                     // 检查射线是否击中物体
                     if (hit.collider != null)
                     {
-                        TriggerVibration();
+                        VibrationManager.Vibrate(30, 180);
                         if (IsUseItem) //使用道具
-                            StartCoroutine(HelicopterFlyAnimation(hit.collider.transform.parent.parent.GetComponent<Car>().transform));
+                                       //UseItem(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
+                            LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
                         else
                             OnTouchCar(hit.collider.transform.parent.parent.GetComponent<Car>());
                     }
@@ -175,7 +202,348 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    IEnumerator HelicopterFlyAnimation(Transform car)
+    //获取推土机路径上的石头
+    public Block GetBulldozerPathBlock(Car car)
+    {
+        Vector2Int dirction = Vector2Int.zero;
+        Vector2Int nextStep = Vector2Int.zero;
+        bool outmap = false;
+        int turnCount = 0;
+        switch (car.turn)
+        {
+            case 1: //直线
+                dirction = car.dir;
+                nextStep = car.pos + dirction;
+                do
+                {
+                    outmap = PosOutMap(nextStep);
+                    if (outmap == false)
+                    {
+                        foreach (var item in blocksArr)
+                        {
+                            if (item.pos == nextStep)
+                            {
+                                return item;
+                            }
+                        }
+                    }
+                    nextStep = nextStep + dirction;
+                } while (outmap == false);
+
+                break;
+            case 2: //左转
+                turnCount = 1;
+                dirction = car.dir;
+                nextStep = car.pos + dirction;
+                do
+                {
+                    outmap = PosOutMap(nextStep);
+                    if (outmap == false)
+                    {
+                        foreach (var item in blocksArr)
+                        {
+                            if (item.pos == nextStep)
+                            {
+                                return item;
+                            }
+                        }
+                    }
+
+                    if (turnCount == 0)
+                    {
+                        nextStep = nextStep + dirction;
+                    }
+                    else
+                    {
+                        switch (roadDataArr[nextStep.x][nextStep.y])
+                        {
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                                dirction = new Vector2Int(-dirction.y, dirction.x);
+                                nextStep = nextStep + dirction;
+                                turnCount--;
+                                break;
+                            default:
+                                nextStep = nextStep + dirction;
+                                break;
+                        }
+                    }
+                } while (outmap == false);
+
+                break;
+            case 3: //右转
+                turnCount = 1;
+                dirction = car.dir;
+                nextStep = car.pos + dirction;
+                do
+                {
+                    outmap = PosOutMap(nextStep);
+                    if (outmap == false)
+                    {
+                        foreach (var item in blocksArr)
+                        {
+                            if (item.pos == nextStep)
+                            {
+                                return item;
+                            }
+                        }
+                    }
+
+                    if (turnCount == 0)
+                    {
+                        nextStep = nextStep + dirction;
+                    }
+                    else
+                    {
+                        switch (roadDataArr[nextStep.x][nextStep.y])
+                        { //十字路口可以转
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                                dirction = new Vector2Int(dirction.y, -dirction.x);
+                                nextStep = nextStep + dirction;
+                                turnCount--;
+                                break;
+                            default:
+                                nextStep = nextStep + dirction;
+                                break;
+                        }
+                    }
+                } while (outmap == false);
+
+                break;
+            case 4: //左掉头
+                turnCount = 2;
+                dirction = car.dir;
+                nextStep = car.pos + dirction;
+                int tempStep = 0; //转弯后走的距离,防止原地掉头
+                do
+                {
+                    outmap = PosOutMap(nextStep);
+                    if (outmap == false)
+                    {
+                        foreach (var item in blocksArr)
+                        {
+                            if (item.pos == nextStep)
+                            {
+                                return item;
+                            }
+                        }
+                    }
+                    if (turnCount == 0)
+                    {
+                        nextStep = nextStep + dirction;
+                    }
+                    else
+                    {
+                        switch (roadDataArr[nextStep.x][nextStep.y])
+                        {
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                                if (tempStep > 0)
+                                {
+                                    tempStep--;
+                                    nextStep = nextStep + dirction;
+                                }
+                                else
+                                {
+                                    dirction = new Vector2Int(-dirction.y, dirction.x);
+                                    nextStep = nextStep + dirction;
+                                    turnCount--;
+                                    tempStep = 1;
+                                }
+
+                                break;
+                            default:
+                                if (tempStep > 0)
+                                {
+                                    tempStep--;
+                                }
+
+                                nextStep = nextStep + dirction;
+                                break;
+                        }
+                    }
+                } while (outmap == false);
+
+                break;
+            case 5: //右掉头
+                turnCount = 2;
+                dirction = car.dir;
+                nextStep = car.pos + dirction;
+                int tempStepp = 0; //转弯后走的距离,防止原地掉头
+                do
+                {
+                    outmap = PosOutMap(nextStep);//是否出界
+                    if (outmap == false)
+                    {
+                        foreach (var item in blocksArr)
+                        {
+                            if (item.pos == nextStep)
+                            {
+                                return item;
+                            }
+                        }
+                    }
+
+                    if (turnCount == 0)
+                    {
+                        nextStep = nextStep + dirction;
+                    }
+                    else
+                    {
+                        switch (roadDataArr[nextStep.x][nextStep.y])
+                        {
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                                if (tempStepp > 0)
+                                {
+                                    tempStepp--;
+                                    nextStep = nextStep + dirction;
+                                }
+                                else
+                                {
+                                    dirction = new Vector2Int(dirction.y, -dirction.x);
+                                    nextStep = nextStep + dirction;
+                                    turnCount--;
+                                    tempStepp = 1;
+                                }
+
+                                break;
+                            default:
+                                if (tempStepp > 0)
+                                {
+                                    tempStepp--;
+                                }
+
+                                nextStep = nextStep + dirction;
+                                break;
+                        }
+                    }
+                } while (outmap == false);
+
+                break;
+        }
+        return null;
+    }
+    //使用气球道具
+    void LiftCarWithBalloon(Transform car)
+    {
+        AudioManager.Instance.PlayBalloonFly();
+        m_UI.ChangeItemCount(--GlobalManager.Instance.ItemCount);//更新道具数量UI
+        Action carAction = () =>
+      {
+          GlobalManager.Instance.SaveGameData();//保存数据
+          DeleteCar(car.GetComponent<Car>());//删除车
+          IsUseItem = false;
+      };
+        car.GetComponent<Car>().ShowBalloon();//显示气球
+        StartCoroutine(LiftCarCoroutine(car, carAction));
+        if (car.GetComponent<Car>().type == CarType.Bulldozer)
+        {
+            var block = GetBulldozerPathBlock(car.GetComponent<Car>());
+            Action blockAction = () =>
+       {
+           //删除路障
+           blocksArr.Remove(block);
+           Destroy(block.transform.parent.parent.gameObject);
+       };
+            if (block != null)
+            {
+                block.ShowBalloon();
+                StartCoroutine(LiftCarCoroutine(block.transform.parent.parent, blockAction));
+            }
+        }
+        // 启动协程处理汽车被气球拽起的逻辑
+        //StartCoroutine(LiftCarCoroutine(car));
+    }
+
+    IEnumerator LiftCarCoroutine(Transform objTransform, Action callback)
+    {
+        // 获取汽车的初始位置
+        Vector3 initialPosition = objTransform.position;
+
+        // 将汽车的世界坐标转换为屏幕坐标
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(initialPosition);
+        // 判断汽车在屏幕的哪一侧
+        bool isOnRightSide = screenPosition.x > Screen.width / 2;
+
+        // 设置目标位置
+        Vector3 targetPosition = isOnRightSide ? new Vector3(-20, 20, initialPosition.z) : new Vector3(20, 20, initialPosition.z);
+
+        // 设置拽起的时间
+        float liftDuration = 3f;
+
+        // 设置左右晃动的幅度和频率
+        float swayAmplitude = 1f;//左右晃动的幅度
+        float swayFrequency = 2.0f;//左右晃动的频率
+
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < liftDuration)
+        {
+            // 计算当前时间的比例
+            float t = elapsedTime / liftDuration;
+
+            // 计算汽车的当前位置
+            Vector3 currentPosition = Vector3.Lerp(initialPosition, targetPosition, t);
+
+            // 添加左右晃动效果
+            currentPosition.x += Mathf.Sin(elapsedTime * swayFrequency) * swayAmplitude;
+
+            // 更新汽车的位置
+            objTransform.position = currentPosition;
+
+            // 更新经过的时间
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // 确保汽车到达目标位置
+        objTransform.position = targetPosition;
+        callback?.Invoke();
+    }
+
+    //触发道具动画
+    public void UseItem(Transform car)
+    {
+        m_UI.ChangeItemCount(--GlobalManager.Instance.ItemCount);//更新道具数量UI
+        Action carAction = () =>
+        {
+            GlobalManager.Instance.SaveGameData();//保存数据
+            DeleteCar(car.GetComponent<Car>());//删除车
+            IsUseItem = false;
+        };
+        StartCoroutine(HelicopterFlyAnimation(car, carAction));
+        if (car.GetComponent<Car>().type == CarType.Bulldozer)
+        {
+            var block = GetBulldozerPathBlock(car.GetComponent<Car>());
+            Action blockAction = () =>
+       {
+           //删除路障
+           blocksArr.Remove(block);
+           Destroy(block.transform.parent.parent.gameObject);
+       };
+            if (block != null)
+            {
+                StartCoroutine(HelicopterFlyAnimation(block.transform.parent.parent, blockAction));
+            }
+        }
+    }
+    //直升飞机动画
+    IEnumerator HelicopterFlyAnimation(Transform car, Action callback = null)
     {
         Vector3 startPosition = car.position; // 起始位置
         Vector3 endPosition = Camera.main.transform.position + Camera.main.transform.forward * 2 + Vector3.right * 4f; // 结束位置
@@ -199,22 +567,17 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
-
         car.position = endPosition; // 确保动画结束时，直升飞机正好在结束位置
-        IsUseItem = false;
-        GlobalManager.Instance.ItemCount--;//道具数量减一
-        GlobalManager.Instance.SaveGameData();//保存数据
-        m_UI.ChangeItemCount(GlobalManager.Instance.ItemCount);//更新道具数量UI
-        DeleteCar(car.GetComponent<Car>());//删除车
+        callback?.Invoke();
     }
-    List<Vector2Int> posArr = new List<Vector2Int>();
-    int PosArrIndex = 0;
-    Car CurrentCar;
+
     public void OnTouchCar(Car car)
     {
         Debug.Log("touchCar");
         if (car.dead) return;
-        CurrentCar = car;
+        List<Vector2Int> posArr = new List<Vector2Int>();
+        int PosArrIndex = 0;
+        Car CurrentCar = car;
         posArr.Clear();
         posArr.Add(car.pos);
         Vector2Int dirction = Vector2Int.zero;
@@ -284,6 +647,10 @@ public class GameManager : MonoBehaviour
                             case 5:
                             case 6:
                             case 7:
+                            case 34:
+                            case 35:
+                            case 36:
+                            case 37:
                                 posArr.Add(nextStep);
                                 dirction = new Vector2Int(-dirction.y, dirction.x);
                                 nextStep = nextStep + dirction;
@@ -331,6 +698,10 @@ public class GameManager : MonoBehaviour
                             case 5:
                             case 6:
                             case 7:
+                            case 34:
+                            case 35:
+                            case 36:
+                            case 37:
                                 posArr.Add(nextStep);
                                 dirction = new Vector2Int(dirction.y, -dirction.x);
                                 nextStep = nextStep + dirction;
@@ -379,6 +750,10 @@ public class GameManager : MonoBehaviour
                             case 5:
                             case 6:
                             case 7:
+                            case 34:
+                            case 35:
+                            case 36:
+                            case 37:
                                 if (tempStep > 0)
                                 {
                                     tempStep--;
@@ -442,6 +817,10 @@ public class GameManager : MonoBehaviour
                             case 5:
                             case 6:
                             case 7:
+                            case 34:
+                            case 35:
+                            case 36:
+                            case 37:
                                 if (tempStepp > 0)
                                 {
                                     tempStepp--;
@@ -471,28 +850,37 @@ public class GameManager : MonoBehaviour
 
                 break;
         }
-
+        float speed = car.type == CarType.Small ? speedCarSmall : speedCarBig;//速度
+        Debug.Log("speed" + speed);
         if (outmap)
         {
+            if (car.type == CarType.Small) //播放音效
+            {
+                AudioManager.Instance.PlayCarSmallMove();
+            }
+            else
+            {
+                AudioManager.Instance.PlayCarBigMove();
+            }
             //carArr.Remove(car);
             car.dead = true;
             car.posArr.Clear();
             int index = 1;
-            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speedCarSmall, posArr[index - 1], posArr[index])).OnComplete(() =>
+            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speed, posArr[index - 1], posArr[index])).SetEase(Ease.Linear).OnComplete(() =>
             {
                 index++;
                 if (index < posArr.Count)
                 {
                     car.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[index].x, 0, posArr[index].y) - new Vector3(posArr[index - 1].x, 0, posArr[index - 1].y)), speedCarRotate).Play();
                     //car.transform.LookAt(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)));
-                    car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speedCarSmall, posArr[index - 1], posArr[index])).OnComplete(() =>
+                    car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speed, posArr[index - 1], posArr[index])).SetEase(Ease.Linear).OnComplete(() =>
                     {
                         index++;
                         if (index < posArr.Count)
                         {
                             car.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[index].x, 0, posArr[index].y) - new Vector3(posArr[index - 1].x, 0, posArr[index - 1].y)), speedCarRotate).Play();
                             //car.transform.LookAt(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)));
-                            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speedCarSmall, posArr[index - 1], posArr[index])).OnComplete(() =>
+                            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)), getDuring(speed, posArr[index - 1], posArr[index])).SetEase(Ease.Linear).OnComplete(() =>
                             {
                                 DeleteCar(car);
                             }).Play();
@@ -513,21 +901,22 @@ public class GameManager : MonoBehaviour
         {
             SetGameStatu(GameStatu.waiting);
             PosArrIndex = 1;
-            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speedCarSmall, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
+            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speed, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
             {
                 PosArrIndex++;
                 if (PosArrIndex < posArr.Count)
                 {
-                    car.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).Play();
+                    if (new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y) != Vector3.zero)
+                        car.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).Play();
                     // car.transform.LookAt(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)));
-                    car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speedCarSmall, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
+                    car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speed, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
                     {
                         PosArrIndex++;
                         if (PosArrIndex < posArr.Count)
                         {
                             car.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).Play();
                             //         car.transform.LookAt(ConvertPos(new Vector3(posArr[index].x, 0, posArr[index].y)));
-                            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speedCarSmall, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
+                            car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speed, posArr[PosArrIndex - 1], posArr[PosArrIndex])).OnComplete(() =>
                             {
                                 PosArrIndex++;
                                 if (hitcar)
@@ -558,66 +947,66 @@ public class GameManager : MonoBehaviour
             }).Play();
 
         }
-    }
-
-    public float speedBackCar = 30f;
-    //public float speedBackRotate = 0.3f;
-
-    public float speedCarSmall = 15f;
-    public float speedCarBig = 10f;
-
-    public float speedCarRotate = 0.05f;
-
-    void backCar()
-    {
-        PosArrIndex -= 2;//回退两步
-
-        var durning = getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1]);//回退时间
-        if (PosArrIndex > 0)
+        ChangeActionCount(-1);//行动次数减一
+        void backCar()
         {
-            CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), durning).Play();
-        }
+            PosArrIndex -= 2;//回退两步
 
-        CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), durning).OnComplete(() =>
-        {
-            if (PosArrIndex == 0)
+            var durning = getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1]);//回退时间
+            if (PosArrIndex > 0)
             {
-                if (actionCount > 0)
-                    SetGameStatu(GameStatu.playing);
+                CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), durning).Play();
             }
-            else
+
+            CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), durning).OnComplete(() =>
             {
-                PosArrIndex--;
-
-                durning = getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1]);
-                if (PosArrIndex > 0)
+                if (PosArrIndex == 0)
                 {
-                    CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), durning).Play();
+                    if (actionCount > 0)
+                        SetGameStatu(GameStatu.playing);
                 }
-
-                CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), durning).OnComplete(() =>
+                else
                 {
-                    if (PosArrIndex == 0)
+                    PosArrIndex--;
+
+                    durning = getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1]);
+                    if (PosArrIndex > 0)
                     {
-                        if (actionCount > 0)
-                            SetGameStatu(GameStatu.playing);
+                        CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), durning).Play();
                     }
-                    else
+
+                    CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), durning).OnComplete(() =>
                     {
-                        PosArrIndex--;
-                        CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1])).OnComplete(() =>
+                        if (PosArrIndex == 0)
                         {
                             if (actionCount > 0)
                                 SetGameStatu(GameStatu.playing);
-                        }).Play();
-                    }
-                }).Play();
-            }
-        }).Play();
-        ChangeActionCount(-1);//行动次数减一
+                        }
+                        else
+                        {
+                            PosArrIndex--;
+                            CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), getDuring(speedBackCar, posArr[PosArrIndex], posArr[PosArrIndex + 1])).OnComplete(() =>
+                            {
+                                if (actionCount > 0)
+                                    SetGameStatu(GameStatu.playing);
+                            }).Play();
+                        }
+                    }).Play();
+                }
+            }).Play();
+        }
     }
+    public float speedBackCar = 15f;
+    //public float speedBackRotate = 0.3f;
+
+    float speedCarSmall = 15;
+    float speedCarBig = 10;
+
+    float speedCarRotate = 0.05f;
+
     public void HitCar(Car car, Vector2Int dir)
     {
+        AudioManager.Instance.PlayCarCrash();
         var pos = car.transform.localPosition;
         car.transform.DOLocalMove(new Vector3(dir.x * 0.5f, 0, dir.y * 0.5f) + pos, 0.2f).OnComplete(() =>
         {
@@ -631,7 +1020,6 @@ public class GameManager : MonoBehaviour
         car.transform.SetParent(null, false);
         car.gameObject.SetActive(false);
         carPool.Add(car);
-        ChangeActionCount(-1);//行动次数减一
         if (carArr.Count == 0)
         {
             SetGameStatu(GameStatu.finish);
@@ -668,12 +1056,14 @@ public class GameManager : MonoBehaviour
     }
     public bool HasBlockOnPos(Vector2Int pos, Car car)//判断是否有路障
     {
-        foreach (var block in blockDataArr)
+        foreach (var block in blocksArr)
         {
             if (block.pos.x == pos.x && block.pos.y == pos.y)
             {
                 if (car.type == CarType.Bulldozer)
                 {
+                    //删除路障
+                    blocksArr.Remove(block);
                     return false;
                 }
                 else
@@ -715,6 +1105,19 @@ public class GameManager : MonoBehaviour
         }
 
         peopleArr.Clear();
+        foreach (var block in blocksArr)
+        {
+            block.transform.SetParent(null, false);
+            Destroy(block.gameObject);
+        }
+        blocksArr.Clear();
+        foreach (var light in trafficLightArr)
+        {
+            light.transform.SetParent(null, false);
+            Destroy(light.gameObject);
+        }
+        trafficLightArr.Clear();
+
     }
 
     public void SetGameStatu(GameStatu statu)
@@ -722,37 +1125,37 @@ public class GameManager : MonoBehaviour
         gameStatu = statu;
         if (statu == GameStatu.faled)
         {
-            if (failReason == FailReason.PeopleCrash)
-            {
-                m_UI.ShowCarHitPeopleRoot(true);
-            }
-            else if (failReason == FailReason.ActionNotEnough)
-            {
-                m_UI.ShowActionOverRoot(true);
-            }
+            //延迟显示失败界面
+            // 启动协程延迟显示失败界面
+            StartCoroutine(ShowFailUIWithDelay());
         }
         else if (statu == GameStatu.finish)
         {
             m_UI.ShowFinishRoot(true);
+            AudioManager.Instance.PlayVictory();
         }
     }
-
-    IEnumerator PlayStartAni()
+    private IEnumerator ShowFailUIWithDelay()
     {
-        foreach (var car in carArr)
+        // 设置延迟时间
+        float delay = 1.0f;
+        yield return new WaitForSeconds(delay);
+        AudioManager.Instance.PlayFail();
+        // 根据失败原因显示相应的失败界面
+        if (failReason == FailReason.PeopleCrash)
         {
-            car.transform.localScale = Vector3.zero;
-            car.transform.DOScale(Vector3.one, 2f).SetEase(Ease.OutBack).Play();
+            m_UI.ShowCarHitPeopleRoot(true);
         }
-
-        yield return new WaitForSeconds(2f);
-        SetGameStatu(GameStatu.playing);
+        else if (failReason == FailReason.ActionNotEnough)
+        {
+            m_UI.ShowActionOverRoot(true);
+        }
     }
 
     //左下角坐标 转 中心坐标
     public Vector3 ConvertPos(Vector3 p)
     {
-        return new Vector3(p.x - 5, 0, p.z - 10);
+        return new Vector3(p.x - 7, 0, p.z - 13.5f);
     }
 
     public Car BornCar(CarType type)
@@ -812,10 +1215,9 @@ public class GameManager : MonoBehaviour
     }
     public People BornPeople()
     {
-        People result = null;
         if (peoplePool.Count > 0)
         {
-            result = peoplePool[0];
+            People result = peoplePool[0];
             peoplePool.RemoveAt(0);
             return result;
         }
@@ -829,8 +1231,10 @@ public class GameManager : MonoBehaviour
     {
         actionCount += count;
         m_UI.ChangeActionCount(actionCount);
-        if (actionCount <= 0 && carArr.Count > 1)
+        if (actionCount <= 0 && carArr.Count >= 1)
         {
+            if (carArr.Count == 1 && carArr[0].moveAction.IsPlaying())
+                return;
             failReason = FailReason.ActionNotEnough;
             SetGameStatu(GameStatu.faled);
             Debug.Log("游戏失败" + gameStatu);
@@ -867,10 +1271,5 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
-    //震动
-    private void TriggerVibration()
-    {
-        Handheld.Vibrate();
     }
 }

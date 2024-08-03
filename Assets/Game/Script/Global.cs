@@ -76,8 +76,16 @@ public enum CarType
 //语言
 public enum Language
 {
-    Chinese = 1,
-    English = 2,
+    English = 1,//英语
+    Chinese = 2,//中文
+    Japanese = 3,//日语
+    Portuguese = 4,//葡萄牙语
+    Spanish = 5,//西班牙语
+    German = 6,//德语
+    French = 7,//法语
+    Korean = 8,//韩语
+    Arabic = 9,//阿拉伯语
+    Russian = 10,//俄语
 }
 //失败原因
 public enum FailReason

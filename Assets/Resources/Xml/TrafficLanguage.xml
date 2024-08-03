@@ -1,0 +1,186 @@
+<Workbook>
+  <Worksheet Name="Language">
+    <Row>
+      <Cell Column="Id:key">language_name</Cell>
+      <Cell Column="English">English</Cell>
+      <Cell Column="Chinese">中文</Cell>
+      <Cell Column="Japanese">日本語</Cell>
+      <Cell Column="Portuguese">Português</Cell>
+      <Cell Column="Spanish">Español</Cell>
+      <Cell Column="German">Deutsch</Cell>
+      <Cell Column="French">Français</Cell>
+      <Cell Column="Korean">한국인</Cell>
+      <Cell Column="Arabic">العربية</Cell>
+      <Cell Column="Russian">Русский</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Audio</Cell>
+      <Cell Column="English">Audio</Cell>
+      <Cell Column="Chinese">声音</Cell>
+      <Cell Column="Japanese">オーディオ</Cell>
+      <Cell Column="Portuguese">Áudio</Cell>
+      <Cell Column="Spanish">Audio</Cell>
+      <Cell Column="German">Audio</Cell>
+      <Cell Column="French">Audio</Cell>
+      <Cell Column="Korean">오디오</Cell>
+      <Cell Column="Arabic">الصوت</Cell>
+      <Cell Column="Russian">Аудио</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Vibrate</Cell>
+      <Cell Column="English">Vibrate</Cell>
+      <Cell Column="Chinese">震动</Cell>
+      <Cell Column="Japanese">バイブレーション</Cell>
+      <Cell Column="Portuguese">Vibrar</Cell>
+      <Cell Column="Spanish">Vibrar</Cell>
+      <Cell Column="German">Vibrieren</Cell>
+      <Cell Column="French">Vibrer</Cell>
+      <Cell Column="Korean">진동</Cell>
+      <Cell Column="Arabic">اهتزاز</Cell>
+      <Cell Column="Russian">Вибрация</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Start</Cell>
+      <Cell Column="English">Start</Cell>
+      <Cell Column="Chinese">开始</Cell>
+      <Cell Column="Japanese">開始</Cell>
+      <Cell Column="Portuguese">Iniciar</Cell>
+      <Cell Column="Spanish">Iniciar</Cell>
+      <Cell Column="German">Start</Cell>
+      <Cell Column="French">Démarrer</Cell>
+      <Cell Column="Korean">시작</Cell>
+      <Cell Column="Arabic">ابدأ</Cell>
+      <Cell Column="Russian">Начать</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Continue</Cell>
+      <Cell Column="English">Continue</Cell>
+      <Cell Column="Chinese">继续</Cell>
+      <Cell Column="Japanese">続行</Cell>
+      <Cell Column="Portuguese">Continuar</Cell>
+      <Cell Column="Spanish">Continuar</Cell>
+      <Cell Column="German">Fortfahren</Cell>
+      <Cell Column="French">Continuer</Cell>
+      <Cell Column="Korean">계속</Cell>
+      <Cell Column="Arabic">استمر</Cell>
+      <Cell Column="Russian">Продолжить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">ConsumeCoins</Cell>
+      <Cell Column="English">Consume xxx Conis</Cell>
+      <Cell Column="Chinese">消耗xxx金币</Cell>
+      <Cell Column="Japanese">xxx Conis を消費</Cell>
+      <Cell Column="Portuguese">Consumir xxx Conis</Cell>
+      <Cell Column="Spanish">Consumir xxx Conis</Cell>
+      <Cell Column="German">xxx Conis konsumieren</Cell>
+      <Cell Column="French">Consommer xxx Conis</Cell>
+      <Cell Column="Korean">xxx Conis 소비</Cell>
+      <Cell Column="Arabic">استهلك xxx Conis</Cell>
+      <Cell Column="Russian">Потреблять xxx Conis</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">GameOver</Cell>
+      <Cell Column="English">Game Over</Cell>
+      <Cell Column="Chinese">游戏结束</Cell>
+      <Cell Column="Japanese">ゲームオーバー</Cell>
+      <Cell Column="Portuguese">Fim de jogo</Cell>
+      <Cell Column="Spanish">Fin del juego</Cell>
+      <Cell Column="German">Game Over</Cell>
+      <Cell Column="French">Jeu terminé</Cell>
+      <Cell Column="Korean">게임 종료</Cell>
+      <Cell Column="Arabic">انتهت اللعبة</Cell>
+      <Cell Column="Russian">Игра окончена</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">TryAgain</Cell>
+      <Cell Column="English">Retry</Cell>
+      <Cell Column="Chinese">再来一次</Cell>
+      <Cell Column="Japanese">再試行</Cell>
+      <Cell Column="Portuguese">Repetir</Cell>
+      <Cell Column="Spanish">Reintentar</Cell>
+      <Cell Column="German">Wiederholen</Cell>
+      <Cell Column="French">Réessayer</Cell>
+      <Cell Column="Korean">재시도</Cell>
+      <Cell Column="Arabic">أعد المحاولة</Cell>
+      <Cell Column="Russian">Повторить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">OutOfSteps</Cell>
+      <Cell Column="English">Out of Steps</Cell>
+      <Cell Column="Chinese">步数用尽</Cell>
+      <Cell Column="Japanese">ステップ不足</Cell>
+      <Cell Column="Portuguese">Fora de etapas</Cell>
+      <Cell Column="Spanish">Pasos fuera de juego</Cell>
+      <Cell Column="German">Keine Schritte mehr</Cell>
+      <Cell Column="French">Pas terminé</Cell>
+      <Cell Column="Korean">단계 없음</Cell>
+      <Cell Column="Arabic">خارج الخطوات</Cell>
+      <Cell Column="Russian">Вышел из Шагов</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Step</Cell>
+      <Cell Column="English">Step</Cell>
+      <Cell Column="Chinese">步</Cell>
+      <Cell Column="Japanese">ステップ</Cell>
+      <Cell Column="Portuguese">Etapa</Cell>
+      <Cell Column="Spanish">Paso</Cell>
+      <Cell Column="German">Schritt</Cell>
+      <Cell Column="French">Étape</Cell>
+      <Cell Column="Korean">단계</Cell>
+      <Cell Column="Arabic">الخطوة</Cell>
+      <Cell Column="Russian">Шаг</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">StepNumber</Cell>
+      <Cell Column="English">Steps</Cell>
+      <Cell Column="Chinese">步数</Cell>
+      <Cell Column="Japanese">ステップ</Cell>
+      <Cell Column="Portuguese">Etapas</Cell>
+      <Cell Column="Spanish">Pasos</Cell>
+      <Cell Column="German">Schritte</Cell>
+      <Cell Column="French">Étapes</Cell>
+      <Cell Column="Korean">단계</Cell>
+      <Cell Column="Arabic">الخطوات</Cell>
+      <Cell Column="Russian">Шаги</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Settings</Cell>
+      <Cell Column="English">Settings</Cell>
+      <Cell Column="Chinese">设置</Cell>
+      <Cell Column="Japanese">設定</Cell>
+      <Cell Column="Portuguese">Configurações</Cell>
+      <Cell Column="Spanish">Configuración</Cell>
+      <Cell Column="German">Einstellungen</Cell>
+      <Cell Column="French">Paramètres</Cell>
+      <Cell Column="Korean">설정</Cell>
+      <Cell Column="Arabic">الإعدادات</Cell>
+      <Cell Column="Russian">Настройки</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">UserAgreement</Cell>
+      <Cell Column="English">User Agreement</Cell>
+      <Cell Column="Chinese">用户协议</Cell>
+      <Cell Column="Japanese">利用規約</Cell>
+      <Cell Column="Portuguese">Contrato do usuário</Cell>
+      <Cell Column="Spanish">Acuerdo de usuario</Cell>
+      <Cell Column="German">Benutzervereinbarung</Cell>
+      <Cell Column="French">Contrat d'utilisation</Cell>
+      <Cell Column="Korean">사용자 계약</Cell>
+      <Cell Column="Arabic">اتفاقية المستخدم</Cell>
+      <Cell Column="Russian">Пользовательское соглашение</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">PrivacyPolicy</Cell>
+      <Cell Column="English">Privacy Policy</Cell>
+      <Cell Column="Chinese">隐私政策</Cell>
+      <Cell Column="Japanese">プライバシー ポリシー</Cell>
+      <Cell Column="Portuguese">Política de privacidade</Cell>
+      <Cell Column="Spanish">Política de privacidad</Cell>
+      <Cell Column="German">Datenschutzrichtlinie</Cell>
+      <Cell Column="French">Politique de confidentialité</Cell>
+      <Cell Column="Korean">개인정보 보호정책</Cell>
+      <Cell Column="Arabic">سياسة الخصوصية</Cell>
+      <Cell Column="Russian">Политика конфиденциальности</Cell>
+    </Row>
+  </Worksheet>
+</Workbook>

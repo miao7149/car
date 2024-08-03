@@ -5,6 +5,8 @@ using DG.Tweening;
 public class Block : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Vector2Int pos;
+    public GameObject m_Balloon;
     void Start()
     {
 
@@ -15,7 +17,13 @@ public class Block : MonoBehaviour
     {
 
     }
-
+    public void Init(BlockInfo info)
+    {
+        this.pos.x = info.pos.x;
+        this.pos.y = info.pos.y;
+        transform.parent.parent.SetParent(transform, false);
+        transform.parent.parent.localPosition = GameManager.Instance.ConvertPos(new Vector3(info.pos.x, 0, info.pos.y));
+    }
     //碰撞检测
     private void OnTriggerEnter(Collider other)
     {
@@ -32,5 +40,10 @@ public class Block : MonoBehaviour
             //GameManager.Instance.SetGameStatu(GameStatu.faled);
         }
 
+    }
+    //显示气球
+    public void ShowBalloon()
+    {
+        m_Balloon.SetActive(true);
     }
 }

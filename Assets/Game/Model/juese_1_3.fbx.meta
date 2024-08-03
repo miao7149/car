@@ -3,7 +3,12 @@ guid: fbbb07197fa409b4b9e1abcd8ce56584
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_npc
+    second: {fileID: 2100000, guid: f080795ffc73746bc9afadc5dba83146, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rig|walk (1)
+      name: rig|walk
       takeName: rig|walk
       internalID: 8925579132220358923
       firstFrame: 0
@@ -44,8 +49,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -62,10 +67,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|walk
-      takeName: rig|walk
+      name: rig|normal
+      takeName: rig|normal
       internalID: 2982955500637902885
-      firstFrame: 1
+      firstFrame: 0
       lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
