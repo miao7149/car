@@ -85,6 +85,10 @@ public class People : MonoBehaviour
         GameManager.Instance.hitPeopleCar = car;
         car.moveAction.Kill();
         AudioManager.Instance.PlayPedestrianHit();
+        DOVirtual.DelayedCall(2f, () =>
+       {
+           GameManager.Instance.DeleteCar(car);
+       });
         //Hit(car.transform.localRotation * Vector3.forward);
     }
 }

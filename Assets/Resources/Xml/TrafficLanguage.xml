@@ -182,5 +182,18 @@
       <Cell Column="Arabic">سياسة الخصوصية</Cell>
       <Cell Column="Russian">Политика конфиденциальности</Cell>
     </Row>
+    <Row>
+      <Cell Column="Id:key">Complete</Cell>
+      <Cell Column="English">Complete</Cell>
+      <Cell Column="Chinese">完成</Cell>
+      <Cell Column="Japanese">完了</Cell>
+      <Cell Column="Portuguese">Completo</Cell>
+      <Cell Column="Spanish">Completo</Cell>
+      <Cell Column="German">Vollständig</Cell>
+      <Cell Column="French">Complet</Cell>
+      <Cell Column="Korean">완벽한</Cell>
+      <Cell Column="Arabic">مكتمل</Cell>
+      <Cell Column="Russian">Полный</Cell>
+    </Row>
   </Worksheet>
 </Workbook>

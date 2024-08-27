@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Xml;
 using System;
+using System.Text.RegularExpressions;
 public class GlobalManager : MonoBehaviour
 {
     // 单例实例
@@ -52,6 +53,35 @@ public class GlobalManager : MonoBehaviour
     //是否第一次游戏
     [HideInInspector]
     public bool IsFirstGame = true;
+    //行人游戏介绍是否显示过
+    [HideInInspector]
+    public bool IsPeoIntroduce = true;
+    //信号灯游戏介绍是否显示过
+    [HideInInspector]
+    public bool IsLightIntroduce = true;
+    //推土机游戏介绍是否显示过
+    [HideInInspector]
+    public bool IsBulldozerIntroduce = true;
+    //游戏类型
+    [HideInInspector]
+    public GameType GameType = GameType.Main;
+
+    public Dictionary<string, LevelstepsTemplate> lstLevelstepsTemplate = new();
+    public const int StartBossLevel = 20;//开始boss关卡
+    public const int BossLevelInterval = 10;//boss关卡间隔
+    public const int StartGiftLevel = 14;//开始礼物关卡
+    public const int GiftLevelInterval = 10;//礼物关卡间隔
+    //是否是奖励关
+    public bool IsRewardLevel(int level)
+    {
+        if (level >= StartGiftLevel && (level - StartGiftLevel) % GiftLevelInterval == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    //是否弹出奖励
+    public bool IsReward = false;
     private void Awake()
     {
         // 确保单例模式
@@ -66,6 +96,7 @@ public class GlobalManager : MonoBehaviour
         }
         LoadGameData();
         LoadXmlFile("Xml/TrafficLanguage");
+        LoadLevelStepsTemplat();
         CurrentLanguage = GetSystemLanguage();
     }
 
@@ -73,7 +104,6 @@ public class GlobalManager : MonoBehaviour
     {
         SaveGameData();
     }
-    // 可以添加更多的全局管理方法和逻辑
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +125,9 @@ public class GlobalManager : MonoBehaviour
         PlayerPrefs.SetInt("IsVibrate", IsVibrate ? 1 : 0);
         PlayerPrefs.SetInt("IsSound", IsSound ? 1 : 0);
         PlayerPrefs.SetInt("IsFirstGame", IsFirstGame ? 1 : 0);
+        PlayerPrefs.SetInt("IsPeoIntroduce", IsPeoIntroduce ? 1 : 0);
+        PlayerPrefs.SetInt("IsLightIntroduce", IsLightIntroduce ? 1 : 0);
+        PlayerPrefs.SetInt("IsBulldozerIntroduce", IsBulldozerIntroduce ? 1 : 0);
         PlayerPrefs.Save();
     }
     // 加载游戏数据
@@ -102,10 +135,13 @@ public class GlobalManager : MonoBehaviour
     {
         PlayerCoin = PlayerPrefs.GetInt("PlayerCoin", 10000);
         ItemCount = PlayerPrefs.GetInt("ItemCount", 100);
-        CurrentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+        CurrentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
         IsVibrate = PlayerPrefs.GetInt("IsVibrate", 1) == 1;
         IsSound = PlayerPrefs.GetInt("IsSound", 1) == 1;
         IsFirstGame = PlayerPrefs.GetInt("IsFirstGame", 1) == 1;
+        IsPeoIntroduce = PlayerPrefs.GetInt("IsPeoIntroduce", 1) == 1;
+        IsLightIntroduce = PlayerPrefs.GetInt("IsLightIntroduce", 1) == 1;
+        IsBulldozerIntroduce = PlayerPrefs.GetInt("IsBulldozerIntroduce", 1) == 1;
     }
     //获取系统语言
     public Language GetSystemLanguage()
@@ -192,6 +228,23 @@ public class GlobalManager : MonoBehaviour
                     //Debug.Log("Column: " + column + ", Value: " + value);
                 }
             }
+        }
+    }
+    public void LoadLevelStepsTemplat()
+    {
+        var obj = Resources.Load<TextAsset>("Template/LevelstepsTemplate");
+        string v108 = obj.text;
+        Dictionary<int, int> stepsData = new Dictionary<int, int>();
+        string[] lines = obj.text.Split('\n');
+        // 从第三行开始解析数据
+        for (int i = 3; i < lines.Length; i++)
+        {
+            string line = lines[i].Trim();
+            if (string.IsNullOrEmpty(line)) continue;
+            LevelstepsTemplate levelstepsTemplate = new LevelstepsTemplate();
+            levelstepsTemplate.ReadData(line);
+            var id = levelstepsTemplate.id;
+            this.lstLevelstepsTemplate.Add(id.ToString(), levelstepsTemplate);
         }
     }
     public string GetLanguageValue(string key)

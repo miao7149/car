@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 public class MenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,6 +16,15 @@ public class MenuManager : MonoBehaviour
     public Camera m_Camera;
     //转盘界面
     public GameObject m_WheelPanel;
+    //开关按钮切换图片
+    public List<Sprite> switchSprites;
+    //路牌图标图片
+    public List<Sprite> roadSignSprites;
+    //音乐开关按钮
+    public Image m_SoundSwitch;
+    //震动开关按钮
+    public Image m_VibrateSwitch;
+    public UIReward m_UIReward;
     //////////////////////////////////////////////////多语言设置，文本物体
     //设置标题
     public Text m_SettingTitle;
@@ -23,15 +33,19 @@ public class MenuManager : MonoBehaviour
     //震动文字
     public Text m_VibrateText;
     //隐私政策
-    public Text m_PrivacyText;
+    public TMP_Text m_PrivacyText;
+    //用户协议
+    public TMP_Text m_UserAgreementText;
     //开始按钮文字
-    public Text m_StartText;
+    public TMP_Text m_StartText;
 
     void Start()
     {
         SetLevelList();
         MoveCarEnterAnima();
         SetLanguage();
+        m_SoundSwitch.sprite = GlobalManager.Instance.IsSound ? switchSprites[0] : switchSprites[1];
+        m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
     }
     //设置多语言
     public void SetLanguage()
@@ -39,8 +53,9 @@ public class MenuManager : MonoBehaviour
         m_SettingTitle.text = GlobalManager.Instance.GetLanguageValue("Settings");
         m_SoundText.text = GlobalManager.Instance.GetLanguageValue("Audio");
         m_VibrateText.text = GlobalManager.Instance.GetLanguageValue("Vibrate");
-        m_StartText.text = GlobalManager.Instance.GetLanguageValue("Start") + "Lv" + GlobalManager.Instance.CurrentLevel;
-        // m_PrivacyText.text = GlobalManager.Instance.mLanguageDict["PrivacyText"][GlobalManager.Instance.CurrentLanguage];
+        m_StartText.text = GlobalManager.Instance.GetLanguageValue("Start");
+        m_PrivacyText.text = GlobalManager.Instance.mLanguageDict["PrivacyPolicy"][GlobalManager.Instance.CurrentLanguage];
+        m_UserAgreementText.text = GlobalManager.Instance.mLanguageDict["UserAgreement"][GlobalManager.Instance.CurrentLanguage];
     }
     // Update is called once per frame
     void Update()
@@ -49,8 +64,7 @@ public class MenuManager : MonoBehaviour
     }
     void OnDestroy()
     {
-        if (m_Car != null)
-            m_Car.transform.DOKill();
+        DOTween.KillAll();
     }
     public void OnClickStart()
     {
@@ -61,6 +75,10 @@ public class MenuManager : MonoBehaviour
     //汽车出场动画
     public void MoveCarAppearanceAnima()
     {
+        if (m_Camera == null || m_Camera.transform == null || m_Car == null || m_Car.transform == null)
+        {
+            return;
+        }
         AudioManager.Instance.PlayCarSmallMove();
         m_Car.transform.DOMoveZ(m_Car.transform.position.z + 1f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
@@ -74,12 +92,20 @@ public class MenuManager : MonoBehaviour
     {
         if (GlobalManager.Instance.IsFirstGame)//如果第一次游戏
         {
+            if (m_Car == null && m_Car.transform == null)
+            {
+                return;
+            }
             //设置汽车位置
             m_Car.transform.position = new Vector3(m_Car.transform.position.x, m_Car.transform.position.y, m_Car.transform.position.z - 1f);
             AudioManager.Instance.PlayCarSmallMove();
             m_Car.transform.DOMoveZ(m_Car.transform.position.z + 1f, 0.5f).SetEase(Ease.OutQuad).onComplete = () =>
             {
                 StartCarScaleAnimation();
+                if (GlobalManager.Instance.IsReward)
+                {
+                    m_UIReward.ShowReward();
+                }
             };
         }
         else
@@ -101,7 +127,29 @@ public class MenuManager : MonoBehaviour
     {
         for (int i = 0; i < m_LevelList.Count; i++)
         {
-            m_LevelList[i].transform.GetChild(1).GetComponent<TextMesh>().text = (GlobalManager.Instance.CurrentLevel + i).ToString();
+            if (GlobalManager.Instance.CurrentLevel + i + 1 >= 14 && (GlobalManager.Instance.CurrentLevel + i + 1 - 14) % 10 == 0)
+            {
+                //奖励关卡
+                m_LevelList[i].transform.GetChild(0).gameObject.SetActive(false);
+                m_LevelList[i].transform.GetChild(2).gameObject.SetActive(true);
+                m_LevelList[i].transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = roadSignSprites[0];
+            }
+            else if (GlobalManager.Instance.CurrentLevel + i + 1 >= 20 && (GlobalManager.Instance.CurrentLevel + i + 1 - 20) % 10 == 0)
+            {
+                //boss关卡
+                m_LevelList[i].transform.GetChild(0).gameObject.SetActive(false);
+                m_LevelList[i].transform.GetChild(2).gameObject.SetActive(true);
+                m_LevelList[i].transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = roadSignSprites[1];
+            }
+            else
+            {
+                //普通关卡
+                m_LevelList[i].transform.GetChild(0).GetComponent<TextMesh>().text = (GlobalManager.Instance.CurrentLevel + i + 1).ToString();
+                m_LevelList[i].transform.GetChild(0).gameObject.SetActive(true);
+                m_LevelList[i].transform.GetChild(2).gameObject.SetActive(false);
+            }
+
+
         }
     }
     //设置按钮
@@ -120,6 +168,14 @@ public class MenuManager : MonoBehaviour
     public void OnClickVibrate()
     {
         GlobalManager.Instance.IsVibrate = !GlobalManager.Instance.IsVibrate;
+        if (GlobalManager.Instance.IsVibrate)
+        {
+            m_VibrateSwitch.sprite = switchSprites[0];
+        }
+        else
+        {
+            m_VibrateSwitch.sprite = switchSprites[1];
+        }
     }
     //音效开启关闭按钮
     public void OnClickSound()
@@ -128,10 +184,12 @@ public class MenuManager : MonoBehaviour
         if (GlobalManager.Instance.IsSound)
         {
             AudioManager.Instance.ResumeBackgroundMusic();
+            m_SoundSwitch.sprite = switchSprites[0];
         }
         else
         {
             AudioManager.Instance.StopBackgroundMusic();
+            m_SoundSwitch.sprite = switchSprites[1];
         }
     }
     //转盘按钮
@@ -139,5 +197,10 @@ public class MenuManager : MonoBehaviour
     {
         m_WheelPanel.SetActive(true);
         AudioManager.Instance.PlayButtonClick();
+    }
+    //隐私政策按钮
+    public void OnClickPrivacy()
+    {
+        Application.OpenURL("https://www.baidu.com");
     }
 }

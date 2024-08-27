@@ -75,21 +75,21 @@ public class TrafficLight : MonoBehaviour
         greenTime = lightInfo.greenTime;
         switch (lightInfo.dir)
         {
-            case 1:
+            case 0:
                 transform.localEulerAngles = new Vector3(0, 0, 0);
                 m_Text.transform.localEulerAngles = new Vector3(90, 0, 0);
                 break;
-            case 2:
-                transform.localEulerAngles = new Vector3(0, 90, 0);
-                m_Text.transform.localEulerAngles = new Vector3(90, 0, 90);
-                break;
-            case 3:
+            case 1:
                 transform.localEulerAngles = new Vector3(0, 180, 0);
                 m_Text.transform.localEulerAngles = new Vector3(90, 0, 180);
                 break;
-            case 4:
+            case 2:
                 transform.localEulerAngles = new Vector3(0, -90, 0);
                 m_Text.transform.localEulerAngles = new Vector3(90, 0, -90);
+                break;
+            case 3:
+                transform.localEulerAngles = new Vector3(0, 90, 0);
+                m_Text.transform.localEulerAngles = new Vector3(90, 0, 90);
                 break;
         }
     }
@@ -103,7 +103,7 @@ public class TrafficLight : MonoBehaviour
             var car = other.transform.parent.parent.GetComponent<Car>();
             if (car.dead)
             {
-                GameManager.Instance.ChangeActionCount(-2);//减少行动力
+                GameManager.Instance.StepCount -= 2;//减少行动力
             }
         }
     }
