@@ -21,7 +21,7 @@ public class VibrationManager : MonoBehaviour
         }
 
 #elif UNITY_IOS && !UNITY_EDITOR
-        VibrateiOS(milliseconds);
+         Vibration.VibratePeek();
 #endif
     }
 }

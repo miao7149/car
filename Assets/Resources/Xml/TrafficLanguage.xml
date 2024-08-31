@@ -195,5 +195,343 @@
       <Cell Column="Arabic">مكتمل</Cell>
       <Cell Column="Russian">Полный</Cell>
     </Row>
+    <Row>
+      <Cell Column="Id:key">Open</Cell>
+      <Cell Column="English">Open！</Cell>
+      <Cell Column="Chinese">开启！</Cell>
+      <Cell Column="Japanese">オープン！</Cell>
+      <Cell Column="Portuguese">Aberto！</Cell>
+      <Cell Column="Spanish">¡Abrir!</Cell>
+      <Cell Column="German">Öffnen！</Cell>
+      <Cell Column="French">Ouvert !</Cell>
+      <Cell Column="Korean">열기!</Cell>
+      <Cell Column="Arabic">افتح!</Cell>
+      <Cell Column="Russian">Открыть！</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">GiftBoxReward</Cell>
+      <Cell Column="English">Gift Rewards</Cell>
+      <Cell Column="Chinese">礼盒奖励</Cell>
+      <Cell Column="Japanese">ギフト報酬</Cell>
+      <Cell Column="Portuguese">Recompensas de presente</Cell>
+      <Cell Column="Spanish">Recompensas de regalo</Cell>
+      <Cell Column="German">Geschenkbelohnungen</Cell>
+      <Cell Column="French">Récompenses cadeaux</Cell>
+      <Cell Column="Korean">선물 보상</Cell>
+      <Cell Column="Arabic">مكافآت الهدايا</Cell>
+      <Cell Column="Russian">Подарочные награды</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">MoreRewards</Cell>
+      <Cell Column="English">More Rewards</Cell>
+      <Cell Column="Chinese">更多奖励</Cell>
+      <Cell Column="Japanese">その他の報酬</Cell>
+      <Cell Column="Portuguese">Mais recompensas</Cell>
+      <Cell Column="Spanish">Más recompensas</Cell>
+      <Cell Column="German">Weitere Belohnungen</Cell>
+      <Cell Column="French">Plus de récompenses</Cell>
+      <Cell Column="Korean">더 많은 보상</Cell>
+      <Cell Column="Arabic">المزيد من المكافآت</Cell>
+      <Cell Column="Russian">Больше наград</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">GiveUp</Cell>
+      <Cell Column="English">Give Up</Cell>
+      <Cell Column="Chinese">放弃</Cell>
+      <Cell Column="Japanese">諦める</Cell>
+      <Cell Column="Portuguese">Desistir</Cell>
+      <Cell Column="Spanish">Renunciar</Cell>
+      <Cell Column="German">Aufgeben</Cell>
+      <Cell Column="French">Abandonner</Cell>
+      <Cell Column="Korean">포기</Cell>
+      <Cell Column="Arabic">استسلم</Cell>
+      <Cell Column="Russian">Сдаться</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Drone</Cell>
+      <Cell Column="English">Drone</Cell>
+      <Cell Column="Chinese">无人机</Cell>
+      <Cell Column="Japanese">ドローン</Cell>
+      <Cell Column="Portuguese">Drone</Cell>
+      <Cell Column="Spanish">Dron</Cell>
+      <Cell Column="German">Drohne</Cell>
+      <Cell Column="French">Drone</Cell>
+      <Cell Column="Korean">드론</Cell>
+      <Cell Column="Arabic">طائرة بدون طيار</Cell>
+      <Cell Column="Russian">Дрон</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">DroneDes</Cell>
+      <Cell Column="English">Click on any car to use the drone.</Cell>
+      <Cell Column="Chinese">点击任意车辆来使用无人机</Cell>
+      <Cell Column="Japanese">ドローンを使用するには、任意の車をクリックします。</Cell>
+      <Cell Column="Portuguese">Clique em qualquer carro para usar o drone.</Cell>
+      <Cell Column="Spanish">Haz clic en cualquier coche para usar el dron.</Cell>
+      <Cell Column="German">Klicken Sie auf ein beliebiges Auto, um die Drohne zu verwenden.</Cell>
+      <Cell Column="French">Cliquez sur n'importe quelle voiture pour utiliser le drone.</Cell>
+      <Cell Column="Korean">드론을 사용하려면 차량을 클릭하세요.</Cell>
+      <Cell Column="Arabic">انقر فوق أي سيارة لاستخدام الطائرة بدون طيار.</Cell>
+      <Cell Column="Russian">Нажмите на любую машину, чтобы использовать дрон.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">GuidanceTips1</Cell>
+      <Cell Column="English">Click to move a car.</Cell>
+      <Cell Column="Chinese">点击来移动小车</Cell>
+      <Cell Column="Japanese">車を動かすにはクリックします。</Cell>
+      <Cell Column="Portuguese">Clique para mover um carro.</Cell>
+      <Cell Column="Spanish">Haz clic para mover un coche.</Cell>
+      <Cell Column="German">Klicken Sie, um ein Auto zu bewegen.</Cell>
+      <Cell Column="French">Cliquez pour déplacer une voiture.</Cell>
+      <Cell Column="Korean">클릭하여 차량을 이동하세요.</Cell>
+      <Cell Column="Arabic">انقر لتحريك سيارة.</Cell>
+      <Cell Column="Russian">Нажмите, чтобы переместить машину.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">GuidanceTips2</Cell>
+      <Cell Column="English">The car will turn at the first intersection.</Cell>
+      <Cell Column="Chinese">小车会在第一个路口转弯</Cell>
+      <Cell Column="Japanese">車は最初の交差点で曲がります。</Cell>
+      <Cell Column="Portuguese">O carro fará a curva no primeiro cruzamento.</Cell>
+      <Cell Column="Spanish">El coche girará en la primera intersección.</Cell>
+      <Cell Column="German">Das Auto wird an der ersten Kreuzung abbiegen.</Cell>
+      <Cell Column="French">La voiture tournera à la première intersection.</Cell>
+      <Cell Column="Korean">첫 번째 교차로에서 차량이 회전합니다.</Cell>
+      <Cell Column="Arabic">ستدور السيارة عند أول تقاطع.</Cell>
+      <Cell Column="Russian">Машина повернет на первом перекрестке.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">WatchAd</Cell>
+      <Cell Column="English">Watch AD</Cell>
+      <Cell Column="Chinese">观看广告</Cell>
+      <Cell Column="Japanese">広告を見る</Cell>
+      <Cell Column="Portuguese">Assistir AD</Cell>
+      <Cell Column="Spanish">Ver anuncio</Cell>
+      <Cell Column="German">Anzeige ansehen</Cell>
+      <Cell Column="French">Regarder la publicité</Cell>
+      <Cell Column="Korean">광고 보기</Cell>
+      <Cell Column="Arabic">شاهد الإعلان</Cell>
+      <Cell Column="Russian">Смотрите рекламу</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">NewGameplay</Cell>
+      <Cell Column="English">New Gameplay</Cell>
+      <Cell Column="Chinese">新玩法</Cell>
+      <Cell Column="Japanese">新しいゲームプレイ</Cell>
+      <Cell Column="Portuguese">Nova jogabilidade</Cell>
+      <Cell Column="Spanish">Nueva jugabilidad</Cell>
+      <Cell Column="German">Neues Gameplay</Cell>
+      <Cell Column="French">Nouveau gameplay</Cell>
+      <Cell Column="Korean">새로운 게임 플레이</Cell>
+      <Cell Column="Arabic">طريقة لعب جديدة</Cell>
+      <Cell Column="Russian">Новый игровой процесс</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">OK</Cell>
+      <Cell Column="English">OK</Cell>
+      <Cell Column="Chinese">好的</Cell>
+      <Cell Column="Japanese">OK</Cell>
+      <Cell Column="Portuguese">OK</Cell>
+      <Cell Column="Spanish">Aceptar</Cell>
+      <Cell Column="German">OK</Cell>
+      <Cell Column="French">OK</Cell>
+      <Cell Column="Korean">확인</Cell>
+      <Cell Column="Arabic">حسنًا</Cell>
+      <Cell Column="Russian">ОК</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Pedestrian</Cell>
+      <Cell Column="English">Pedestrian</Cell>
+      <Cell Column="Chinese">行人</Cell>
+      <Cell Column="Japanese">歩行者</Cell>
+      <Cell Column="Portuguese">Pedestre</Cell>
+      <Cell Column="Spanish">Peatón</Cell>
+      <Cell Column="German">Fußgänger</Cell>
+      <Cell Column="French">Piéton</Cell>
+      <Cell Column="Korean">보행자</Cell>
+      <Cell Column="Arabic">مشاة</Cell>
+      <Cell Column="Russian">Пешеход</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">PedestrianDes</Cell>
+      <Cell Column="English">Game fails when hitting  a pedestrian.</Cell>
+      <Cell Column="Chinese">游戏在撞击行人时失败</Cell>
+      <Cell Column="Japanese">歩行者にぶつかるとゲームに失敗します。</Cell>
+      <Cell Column="Portuguese">O jogo falha ao atingir um pedestre.</Cell>
+      <Cell Column="Spanish">El juego falla al atropellar a un peatón.</Cell>
+      <Cell Column="German">Das Spiel schlägt fehl, wenn ein Fußgänger angefahren wird.</Cell>
+      <Cell Column="French">Le jeu échoue lorsqu'il heurte un piéton.</Cell>
+      <Cell Column="Korean">보행자를 치면 게임이 실패합니다.</Cell>
+      <Cell Column="Arabic">تفشل اللعبة عند الاصطدام بمشاة.</Cell>
+      <Cell Column="Russian">Игра терпит неудачу при сбитии пешехода.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">TrafficLight</Cell>
+      <Cell Column="English">Traffic Light</Cell>
+      <Cell Column="Chinese">信号灯</Cell>
+      <Cell Column="Japanese">信号機</Cell>
+      <Cell Column="Portuguese">Semáforo</Cell>
+      <Cell Column="Spanish">Semáforo</Cell>
+      <Cell Column="German">Ampel</Cell>
+      <Cell Column="French">Feu de circulation</Cell>
+      <Cell Column="Korean">신호등</Cell>
+      <Cell Column="Arabic">إشارة المرور</Cell>
+      <Cell Column="Russian">Светофор</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">TrafficLightDes</Cell>
+      <Cell Column="English">If you run a red light, you will lose 2 opportunities to move.</Cell>
+      <Cell Column="Chinese">如果你闯红灯，你将失去两次移动机会</Cell>
+      <Cell Column="Japanese">赤信号を無視すると、移動する機会が 2 回失われます。</Cell>
+      <Cell Column="Portuguese">Se você passar no sinal vermelho, perderá 2 oportunidades de se mover.</Cell>
+      <Cell Column="Spanish">Si te saltas un semáforo en rojo, perderás 2 oportunidades de moverte.</Cell>
+      <Cell Column="German">Wenn Sie eine rote Ampel überfahren, verlieren Sie 2 Möglichkeiten, sich zu bewegen.</Cell>
+      <Cell Column="French">Si vous grillez un feu rouge, vous perdrez 2 occasions de vous déplacer.</Cell>
+      <Cell Column="Korean">적신호를 무시하면 이동할 수 있는 기회가 2번 사라집니다.</Cell>
+      <Cell Column="Arabic">إذا تجاوزت إشارة المرور الحمراء، فستخسر فرصتين للتحرك.</Cell>
+      <Cell Column="Russian">Если вы проедете на красный свет, вы потеряете 2 возможности для движения.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Bulldozer</Cell>
+      <Cell Column="English">Bulldozer</Cell>
+      <Cell Column="Chinese">推土机</Cell>
+      <Cell Column="Japanese">ブルドーザー</Cell>
+      <Cell Column="Portuguese">Trator</Cell>
+      <Cell Column="Spanish">Bulldozer</Cell>
+      <Cell Column="German">Bulldozer</Cell>
+      <Cell Column="French">Bulldozer</Cell>
+      <Cell Column="Korean">불도저</Cell>
+      <Cell Column="Arabic">جرافة</Cell>
+      <Cell Column="Russian">Бульдозер</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">BulldozerDes</Cell>
+      <Cell Column="English">Use a bulldozer to clear rocks from the road.</Cell>
+      <Cell Column="Chinese">用推土机来清理路面上的石头</Cell>
+      <Cell Column="Japanese">ブルドーザーを使用して、道路から岩を取り除きます。</Cell>
+      <Cell Column="Portuguese">Use um trator para remover pedras da estrada.</Cell>
+      <Cell Column="Spanish">Usa un bulldozer para despejar las rocas de la carretera.</Cell>
+      <Cell Column="German">Verwenden Sie einen Bulldozer, um Steine ​​von der Straße zu räumen.</Cell>
+      <Cell Column="French">Utilisez un bulldozer pour dégager les rochers de la route.</Cell>
+      <Cell Column="Korean">불도저를 사용하여 도로에서 돌을 치우세요.</Cell>
+      <Cell Column="Arabic">استخدم جرافة لإزالة الصخور من الطريق.</Cell>
+      <Cell Column="Russian">Используйте бульдозер, чтобы расчистить дорогу от камней.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">DailyRewards</Cell>
+      <Cell Column="English">Daily rewards</Cell>
+      <Cell Column="Chinese">每日奖励</Cell>
+      <Cell Column="Japanese">毎日の報酬</Cell>
+      <Cell Column="Portuguese">Recompensas diárias</Cell>
+      <Cell Column="Spanish">Recompensas diarias</Cell>
+      <Cell Column="German">Tägliche Belohnungen</Cell>
+      <Cell Column="French">Récompenses quotidiennes</Cell>
+      <Cell Column="Korean">일일 보상</Cell>
+      <Cell Column="Arabic">المكافآت اليومية</Cell>
+      <Cell Column="Russian">Ежедневные награды</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">First day</Cell>
+      <Cell Column="English">First day</Cell>
+      <Cell Column="Chinese">第一天</Cell>
+      <Cell Column="Japanese">1 日目</Cell>
+      <Cell Column="Portuguese">Primeiro dia</Cell>
+      <Cell Column="Spanish">Primer día</Cell>
+      <Cell Column="German">Erster Tag</Cell>
+      <Cell Column="French">Premier jour</Cell>
+      <Cell Column="Korean">첫째 날</Cell>
+      <Cell Column="Arabic">اليوم الأول</Cell>
+      <Cell Column="Russian">Первый день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Second day</Cell>
+      <Cell Column="English">Second day</Cell>
+      <Cell Column="Chinese">第二天</Cell>
+      <Cell Column="Japanese">2 日目</Cell>
+      <Cell Column="Portuguese">Segundo dia</Cell>
+      <Cell Column="Spanish">Segundo día</Cell>
+      <Cell Column="German">Zweiter Tag</Cell>
+      <Cell Column="French">Deuxième jour</Cell>
+      <Cell Column="Korean">둘째 날</Cell>
+      <Cell Column="Arabic">اليوم الثاني</Cell>
+      <Cell Column="Russian">Второй день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Third day</Cell>
+      <Cell Column="English">Third day</Cell>
+      <Cell Column="Chinese">第三天</Cell>
+      <Cell Column="Japanese">3 日目</Cell>
+      <Cell Column="Portuguese">Terceiro dia</Cell>
+      <Cell Column="Spanish">Tercer día</Cell>
+      <Cell Column="German">Dritter Tag</Cell>
+      <Cell Column="French">Troisième jour</Cell>
+      <Cell Column="Korean">셋째 날</Cell>
+      <Cell Column="Arabic">اليوم الثالث</Cell>
+      <Cell Column="Russian">Третий день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Fourth day</Cell>
+      <Cell Column="English">Fourth day</Cell>
+      <Cell Column="Chinese">第四天</Cell>
+      <Cell Column="Japanese">4 日目</Cell>
+      <Cell Column="Portuguese">Quarto dia</Cell>
+      <Cell Column="Spanish">Cuarto día</Cell>
+      <Cell Column="German">Vierter Tag</Cell>
+      <Cell Column="French">Quatrième jour</Cell>
+      <Cell Column="Korean">넷째 날</Cell>
+      <Cell Column="Arabic">اليوم الرابع</Cell>
+      <Cell Column="Russian">Четвертый день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Fifth day</Cell>
+      <Cell Column="English">Fifth day</Cell>
+      <Cell Column="Chinese">第五天</Cell>
+      <Cell Column="Japanese">5 日目</Cell>
+      <Cell Column="Portuguese">Quinto dia</Cell>
+      <Cell Column="Spanish">Quinto día</Cell>
+      <Cell Column="German">Fünfter Tag</Cell>
+      <Cell Column="French">Cinquième jour</Cell>
+      <Cell Column="Korean">다섯째 날</Cell>
+      <Cell Column="Arabic">اليوم الخامس</Cell>
+      <Cell Column="Russian">Пятый день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Sixth day</Cell>
+      <Cell Column="English">Sixth day</Cell>
+      <Cell Column="Chinese">第六天</Cell>
+      <Cell Column="Japanese">6 日目</Cell>
+      <Cell Column="Portuguese">Sexto dia</Cell>
+      <Cell Column="Spanish">Sexto día</Cell>
+      <Cell Column="German">Sechster Tag</Cell>
+      <Cell Column="French">Sixième jour</Cell>
+      <Cell Column="Korean">여섯째 날</Cell>
+      <Cell Column="Arabic">اليوم السادس</Cell>
+      <Cell Column="Russian">Шестой день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Seventh day</Cell>
+      <Cell Column="English">Seventh day</Cell>
+      <Cell Column="Chinese">第七天</Cell>
+      <Cell Column="Japanese">7 日目</Cell>
+      <Cell Column="Portuguese">Sétimo dia</Cell>
+      <Cell Column="Spanish">Séptimo día</Cell>
+      <Cell Column="German">Siebter Tag</Cell>
+      <Cell Column="French">Septième jour</Cell>
+      <Cell Column="Korean">일곱째 날</Cell>
+      <Cell Column="Arabic">اليوم السابع</Cell>
+      <Cell Column="Russian">Седьмой день</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Claim</Cell>
+      <Cell Column="English">Claim</Cell>
+      <Cell Column="Chinese">领取</Cell>
+      <Cell Column="Japanese">受け取る</Cell>
+      <Cell Column="Portuguese">Reivindicar</Cell>
+      <Cell Column="Spanish">Reclamar</Cell>
+      <Cell Column="German">Anspruch</Cell>
+      <Cell Column="French">Réclamation</Cell>
+      <Cell Column="Korean">청구</Cell>
+      <Cell Column="Arabic">اطالب</Cell>
+      <Cell Column="Russian">Заявка</Cell>
+    </Row>
   </Worksheet>
 </Workbook>

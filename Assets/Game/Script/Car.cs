@@ -22,6 +22,10 @@ public class Car : MonoBehaviour
     public SpriteRenderer sprite;
     // 无人机目标位置（车顶）
     public Transform droneTargetPosition;
+    //是否播放完金币动画
+    public bool isPlayCoinAnimation = false;
+    public delegate void CarOutOfBoundsHandler(Vector3 pos, Vector3 dir);
+    public event CarOutOfBoundsHandler CarOutOfBounds;
 
     public void Init(CarInfo info)
     {
@@ -124,6 +128,26 @@ public class Car : MonoBehaviour
             case 3:
                 transform.localEulerAngles = new Vector3(0, 90, 0);
                 break;
+        }
+    }
+    void Update()
+    {
+        if (moveAction != null && moveAction.IsActive() && isPlayCoinAnimation == false)
+        {
+            if (moveAction.IsPlaying())
+            {
+                //判断汽车是否出屏幕
+                Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+                bool isOutOfScreen = screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height;
+
+                if (isOutOfScreen)
+                {
+                    CarOutOfBounds?.Invoke(transform.position, transform.forward);
+                    isPlayCoinAnimation = true;
+                    AudioManager.Instance.PlayGetCoin();
+                }
+
+            }
         }
     }
     void OnDestroy()

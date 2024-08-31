@@ -43,8 +43,6 @@ public class UI : MonoBehaviour
     public Button m_ItemBtn;
     //右上角金币
     public GameObject m_TargetUI;
-    // 存储十张金币图片的数组
-    public Sprite[] m_CoinSprites;
     // 金币图片的预制体
     public GameObject m_CoinPrefab;
     public GameObject m_CoinContainer; // 存放金币图片的容器
@@ -53,6 +51,10 @@ public class UI : MonoBehaviour
     public TMP_Text m_FinishCoinText;
     //光环
     public GameObject m_Halo;
+    //汽车出界动画根节点
+    public GameObject m_CarOutOfBoundsRoot;
+    //顶部UI根节点
+    public GameObject m_TopUIRoot;
     /////////////////////////////////////////////多语言设置，文本物体
     //步数
     public TMP_Text m_StepText;
@@ -62,8 +64,6 @@ public class UI : MonoBehaviour
     public TMP_Text m_PlayAgainText;
     //花费金币
     public TMP_Text m_CostCoinText;
-    //观看广告
-    public TMP_Text m_WatchAdText;
     //完成
     public TMP_Text m_FinishText;
     //继续
@@ -80,6 +80,29 @@ public class UI : MonoBehaviour
     public TMP_Text m_ExitText;
     //继续文字
     public TMP_Text m_ContinueSettingText;
+    //无人机文字
+    public TMP_Text m_DroneText;
+    //无人机介绍
+    public TMP_Text m_DroneIntroduceText;
+    //观看广告
+    public TMP_Text m_WatchAdText;
+    //新游戏文字
+    public TMP_Text m_NewGameText;
+    //OK按钮文字
+    public TMP_Text m_OkText;
+    //行人文字
+    public TMP_Text m_PeopleText;
+    //行人介绍
+    public TMP_Text m_PeopleIntroduceText;
+    //信号灯文字
+    public TMP_Text m_TrafficLightText;
+    //信号灯介绍
+    public TMP_Text m_TrafficLightIntroduceText;
+    //推土机文字
+    public TMP_Text m_BulldozerText;
+    //推土机介绍
+    public TMP_Text m_BulldozerIntroduceText;
+
 
     void Start()
     {
@@ -89,6 +112,7 @@ public class UI : MonoBehaviour
         m_SoundSwitch.sprite = GlobalManager.Instance.IsSound ? switchSprites[0] : switchSprites[1];
         m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
         SetLanguage();
+        CheckTopSafeArea();
     }
     public void SetLanguage()
     {
@@ -101,6 +125,17 @@ public class UI : MonoBehaviour
         m_VibrateText.text = GlobalManager.Instance.GetLanguageValue("Vibrate");
         m_ExitText.text = GlobalManager.Instance.GetLanguageValue("Exit");
         m_ContinueSettingText.text = GlobalManager.Instance.GetLanguageValue("Continue");
+        m_DroneText.text = GlobalManager.Instance.GetLanguageValue("Drone");
+        m_DroneIntroduceText.text = GlobalManager.Instance.GetLanguageValue("DroneDes");
+        m_WatchAdText.text = GlobalManager.Instance.GetLanguageValue("WatchAd");
+        m_NewGameText.text = GlobalManager.Instance.GetLanguageValue("NewGameplay");
+        m_OkText.text = GlobalManager.Instance.GetLanguageValue("Ok");
+        m_PeopleText.text = GlobalManager.Instance.GetLanguageValue("Pedestrian");
+        m_PeopleIntroduceText.text = GlobalManager.Instance.GetLanguageValue("PedestrianDes");
+        m_TrafficLightText.text = GlobalManager.Instance.GetLanguageValue("TrafficLight");
+        m_TrafficLightIntroduceText.text = GlobalManager.Instance.GetLanguageValue("TrafficLightDes");
+        m_BulldozerText.text = GlobalManager.Instance.GetLanguageValue("Bulldozer");
+        m_BulldozerIntroduceText.text = GlobalManager.Instance.GetLanguageValue("BulldozerDes");
     }
     void OnDestroy()
     {
@@ -228,6 +263,7 @@ public class UI : MonoBehaviour
     }
     private void CreateAndAnimateCoins(int goldAmount)
     {
+        AudioManager.Instance.PlayCoinSettle();
         int coinCount = Mathf.Min(goldAmount, 30);
         for (int i = 0; i < coinCount; i++)
         {
@@ -256,7 +292,7 @@ public class UI : MonoBehaviour
                 });
             });
             // 序列帧动画
-            foreach (var sprite in m_CoinSprites)
+            foreach (var sprite in GlobalManager.Instance.m_CoinSprites)
             {
                 sequence.AppendCallback(() => coin.GetComponent<Image>().sprite = sprite);
                 sequence.AppendInterval(frameDuration);
@@ -370,21 +406,21 @@ public class UI : MonoBehaviour
         ItemIntroduceRoot.SetActive(false);
     }
     //显示引导手指
-    Sequence sequence;
+    Sequence GuideSequence;
     public void ShowGuideFinger(Vector3 pos)
     {
         m_GuideFinger.transform.position = pos;
         m_GuideFinger.gameObject.SetActive(true);
-        if (sequence == null)
+        if (GuideSequence == null)
         {
-            sequence = DOTween.Sequence();
+            GuideSequence = DOTween.Sequence();
             // 序列帧动画
             foreach (var sprite in m_GuideFingerSprites)
             {
-                sequence.AppendCallback(() => m_GuideFinger.sprite = sprite);
-                sequence.AppendInterval(0.2f);
+                GuideSequence.AppendCallback(() => m_GuideFinger.sprite = sprite);
+                GuideSequence.AppendInterval(0.2f);
             }
-            sequence.SetLoops(-1, LoopType.Restart);
+            GuideSequence.SetLoops(-1, LoopType.Restart);
         }
     }
     //隐藏引导手指
@@ -398,13 +434,44 @@ public class UI : MonoBehaviour
     {
         m_GuideTip.SetActive(true);
         if (level == 0)
-            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = "tip1";
+            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips1");
         else
-            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = "tip2";
+            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips2");
     }
     //隐藏引导提示
     public void HideGuideTip()
     {
         m_GuideTip.SetActive(false);
+    }
+    public void CreateCarOutOfBoundsAnim(Vector3 pos, Vector3 dir)
+    {
+        Sequence sequence = DOTween.Sequence();
+        GameObject coin = Instantiate(m_CoinPrefab, m_CarOutOfBoundsRoot.transform);
+        coin.transform.position = Camera.main.WorldToScreenPoint(pos);
+        foreach (var sprite in GlobalManager.Instance.m_CoinSprites)
+        {
+            sequence.AppendCallback(() => coin.GetComponent<Image>().sprite = sprite);
+            sequence.AppendInterval(frameDuration);
+        }
+        sequence.SetLoops(-1, LoopType.Restart);
+        //让金币以dir反方向飞出
+        coin.transform.DOMove(Camera.main.WorldToScreenPoint(pos - dir * 5), 3f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            coin.SetActive(false);
+            sequence.Kill();
+        });
+        //渐隐
+        coin.GetComponent<Image>().DOFade(0, 2f).SetEase(Ease.OutQuad);
+    }
+    //检测顶部安全区域
+    public void CheckTopSafeArea()
+    {
+        Rect safeArea = Screen.safeArea;
+        float height = Screen.height - safeArea.height;
+        if (height > 0)
+        {
+            m_TopUIRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, m_TopUIRoot.GetComponent<RectTransform>().anchoredPosition.y - safeArea.y);
+            m_TargetUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(m_TargetUI.GetComponent<RectTransform>().anchoredPosition.x, m_TargetUI.GetComponent<RectTransform>().anchoredPosition.y - safeArea.y);
+        }
     }
 }

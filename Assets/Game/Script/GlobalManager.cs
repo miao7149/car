@@ -71,6 +71,7 @@ public class GlobalManager : MonoBehaviour
     public const int BossLevelInterval = 10;//boss关卡间隔
     public const int StartGiftLevel = 14;//开始礼物关卡
     public const int GiftLevelInterval = 10;//礼物关卡间隔
+    public Sprite[] m_CoinSprites;//金币序列帧图片
     //是否是奖励关
     public bool IsRewardLevel(int level)
     {
@@ -81,6 +82,7 @@ public class GlobalManager : MonoBehaviour
         return false;
     }
     //是否弹出奖励
+    [HideInInspector]
     public bool IsReward = false;
     private void Awake()
     {
@@ -133,8 +135,8 @@ public class GlobalManager : MonoBehaviour
     // 加载游戏数据
     public void LoadGameData()
     {
-        PlayerCoin = PlayerPrefs.GetInt("PlayerCoin", 10000);
-        ItemCount = PlayerPrefs.GetInt("ItemCount", 100);
+        PlayerCoin = PlayerPrefs.GetInt("PlayerCoin", 0);
+        ItemCount = PlayerPrefs.GetInt("ItemCount", 4);
         CurrentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
         IsVibrate = PlayerPrefs.GetInt("IsVibrate", 1) == 1;
         IsSound = PlayerPrefs.GetInt("IsSound", 1) == 1;
@@ -157,22 +159,22 @@ public class GlobalManager : MonoBehaviour
                 return Language.Chinese;
             case SystemLanguage.English: //英文
                 return Language.English;
-            case SystemLanguage.Japanese: //日文
-                return Language.Japanese;
-            case SystemLanguage.Portuguese: //葡萄牙语
-                return Language.Portuguese;
-            case SystemLanguage.Spanish: //西班牙语
-                return Language.Spanish;
-            case SystemLanguage.German: //德语
-                return Language.German;
-            case SystemLanguage.French: //法语
-                return Language.French;
-            case SystemLanguage.Korean: //韩语
-                return Language.Korean;
-            case SystemLanguage.Arabic: //阿拉伯语
-                return Language.Arabic;
-            case SystemLanguage.Russian: //俄语
-                return Language.Russian;
+            // case SystemLanguage.Japanese: //日文
+            //     return Language.Japanese;
+            // case SystemLanguage.Portuguese: //葡萄牙语
+            //     return Language.Portuguese;
+            // case SystemLanguage.Spanish: //西班牙语
+            //     return Language.Spanish;
+            // case SystemLanguage.German: //德语
+            //     return Language.German;
+            // case SystemLanguage.French: //法语
+            //     return Language.French;
+            // case SystemLanguage.Korean: //韩语
+            //     return Language.Korean;
+            // case SystemLanguage.Arabic: //阿拉伯语
+            //     return Language.Arabic;
+            // case SystemLanguage.Russian: //俄语
+            //     return Language.Russian;
             default:
                 return Language.English;
         }

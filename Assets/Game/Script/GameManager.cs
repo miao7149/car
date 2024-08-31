@@ -168,7 +168,9 @@ public class GameManager : MonoBehaviour
         levelData = JsonConvert.DeserializeObject<LevelDataConfig>(json.text);
         var BlockDatas = levelData.BlockDatas;
         roadDataArr = new int[levelData.boardSize.x, levelData.boardSize.y];//初始化棋盘
-        Camera.main.transform.position = new Vector3(0, levelData.boardSize.magnitude, 0);
+        Camera.main.transform.position = new Vector3(0, levelData.boardSize.magnitude, -4.6f);
+        ResetCamera(levelData.boardSize);
+
         boardX = levelData.boardSize.x;
         boardY = levelData.boardSize.y;
         //生成十字路口
@@ -537,7 +539,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            for (int j = 1; j <= 4; j++)
+            for (int j = 1; j <= 10; j++)
             {
                 if (firstX == 0 || firstY == 0)
                 {
@@ -574,8 +576,18 @@ public class GameManager : MonoBehaviour
         //设置车辆位置
         var carDatas = levelData.carDatas;
         var StoneForkliftDatas = levelData.StoneForkliftDatas;
+        CarType type = CarType.None;
+        for (int i = 0; i < carDatas.Count; i++)
+        {
+            for (int j = 0; j < StoneForkliftDatas.Count; j++)
+            {
+                if (StoneForkliftDatas[j].StoneLocation[0] == carDatas[i].Location[0] && StoneForkliftDatas[j].StoneLocation[1] == carDatas[i].Location[1])
+                {
+                    carDatas.RemoveAt(i);
+                }
+            }
+        }
         carDataArr = new CarInfo[carDatas.Count];
-        CarType type = CarType.Small;
         for (int i = 0; i < carDatas.Count; i++)
         {
             if (carDatas[i].Length == 2)
@@ -592,8 +604,13 @@ public class GameManager : MonoBehaviour
                 {
                     type = CarType.Bulldozer;
                 }
+                if (StoneForkliftDatas[j].StoneLocation[0] == carDatas[i].Location[0] && StoneForkliftDatas[j].StoneLocation[1] == carDatas[i].Location[1])
+                {
+                    type = CarType.None;
+                }
             }
-            carDataArr[i] = new CarInfo(type, carDatas[i].Location[0], carDatas[i].Location[1], carDatas[i].SelfForward, carDatas[i].MoveType);
+            if (type != CarType.None)
+                carDataArr[i] = new CarInfo(type, carDatas[i].Location[0], carDatas[i].Location[1], carDatas[i].SelfForward, carDatas[i].MoveType);
         }
         //设置石头位置
         blockDataArr = new BlockInfo[StoneForkliftDatas.Count];
@@ -637,6 +654,53 @@ public class GameManager : MonoBehaviour
         }
         GlobalManager.Instance.SaveGameData();
     }
+    private void ResetCamera(BoardSize boardSize)
+    {
+        int m_Y = boardSize.y;
+        int m_X = boardSize.x;
+        int v7 = 1080;
+        int v8 = 2160;
+        float width = Screen.width;
+        float height = Screen.height;
+        float v11 = m_Y;
+        float val2 = Math.Max((v7 * height) / (width * v8), (width * v8) / (v7 * height));//1.125
+        float v12 = Math.Max(width / v7, height / v8);//1
+        int v13 = 7;
+        float v14 = 14;
+        float v15 = v11 / v14;
+        if (GlobalManager.Instance.CurrentLevel >= 3)
+        {
+            float v16 = (float)m_X / (float)v13;
+            float v17 = Math.Min(Math.Abs(v8 / v7 - height / width), 0.1f);
+            float v18 = v17 + 1.35f;
+            float v19 = Math.Max(v16, v15);
+            float v21 = Math.Max(v12, val2);
+            v15 = 1.0f;
+            float v22 = Math.Min(v21, 1.2f);
+            float v23 = v19 * v22;
+            if (v18 < 1.0f)
+            {
+                throw new Exception("System.Math::ThrowMinMaxException");
+            }
+            if (v23 >= 1.0f)
+            {
+                if (v23 <= v18)
+                {
+                    v15 = v19 * v22;
+                }
+                else
+                {
+                    v15 = v18;
+                }
+            }
+        }
+        Vector3 position = Camera.main.transform.position;
+        float y = position.y;
+        float z = position.z;
+        Vector3 v34 = new Vector3(position.x, v15 * 20, v15 * z);
+        Camera.main.transform.position = v34;
+    }
+
     //引导检测
     public void CheckGuide()
     {
@@ -724,6 +788,7 @@ public class GameManager : MonoBehaviour
             car.transform.SetParent(transform, false);
             car.gameObject.SetActive(true);
             car.transform.localPosition = ConvertPos(new Vector3(carInfo.posX, 0, carInfo.posY));
+            car.CarOutOfBounds += m_UI.CreateCarOutOfBoundsAnim;
             carArr.Add(car);
         }
         //初始化人
@@ -1733,6 +1798,8 @@ public class GameManager : MonoBehaviour
         {
             car.transform.SetParent(null, false);
             car.gameObject.SetActive(false);
+            car.CarOutOfBounds -= m_UI.CreateCarOutOfBoundsAnim;
+            car.isPlayCoinAnimation = false;
             carPool.Add(car);
         }
 

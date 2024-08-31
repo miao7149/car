@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Spine.Unity;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIReward : MonoBehaviour
@@ -17,7 +15,6 @@ public class UIReward : MonoBehaviour
     public GameObject coinContainer; // 存放金币图片的容器
     public GameObject coinContainerRV; // 存放金币图片的容器
     public GameObject m_ItemRoot;//道具根节点
-    public Sprite[] coinSprites; // 存储十张金币图片的数组
     public float frameDuration = 0.05f; // 每帧的持续时间
     public GameObject coinPrefab; // 金币图片的预制体
     const int mGoldMax = 50;//金币数量上限
@@ -71,7 +68,7 @@ public class UIReward : MonoBehaviour
         // 重置金币位置
         coin.transform.localPosition = Vector3.zero;
         // 重置金币图片
-        coin.GetComponent<Image>().sprite = coinSprites[0];
+        coin.GetComponent<Image>().sprite = GlobalManager.Instance.m_CoinSprites[0];
         //金币dotween动画重置
         coin.transform.DOKill();
         coin.SetActive(false);
@@ -135,6 +132,7 @@ public class UIReward : MonoBehaviour
     }
     private void CreateAndAnimateCoins(int goldAmount)
     {
+        AudioManager.Instance.PlayCoinSettle();
         int coinCount = Mathf.Min(goldAmount / 2, mGoldMax);
         for (int i = 0; i < coinCount; i++)
         {
@@ -172,7 +170,7 @@ public class UIReward : MonoBehaviour
                 });
             });
             // 序列帧动画
-            foreach (var sprite in coinSprites)
+            foreach (var sprite in GlobalManager.Instance.m_CoinSprites)
             {
                 sequence.AppendCallback(() => coin.GetComponent<Image>().sprite = sprite);
                 sequence.AppendInterval(frameDuration);

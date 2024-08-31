@@ -69,6 +69,7 @@ public enum GameStatu
 }
 public enum CarType
 {
+    None = 0,
     Small = 1, //车型 1-2m小车
     Big = 2, //车型 2-3m大车
     Bulldozer = 3, //推土机 1-2m
