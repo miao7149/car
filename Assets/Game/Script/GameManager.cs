@@ -7,10 +7,12 @@ using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Linq;
+using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public UI m_UI;
+    public UIGameVictoryPage m_UIGameVictoryPage;
     //游戏行动次数
     private int stepCount;
     public int StepCount
@@ -159,11 +161,38 @@ public class GameManager : MonoBehaviour
     }
     public void LoadLevelData()
     {
-        var levelIndex = GetLevelFileIndex();
-        var folderName = GetFolderName();
-        //加载json文件
-        TextAsset json = Resources.Load<TextAsset>("LevelData/" + folderName + "/" + levelIndex);
-        Debug.Log("LevelData/" + folderName + "/" + levelIndex);
+        TextAsset json = null;
+        int levelIndex = 0;
+        string folderName = "";
+        if (GlobalManager.Instance.GameType == GameType.Main)
+        {
+            levelIndex = GetLevelFileIndex();
+            folderName = GetFolderName();
+            //加载json文件
+            json = Resources.Load<TextAsset>("LevelData/" + folderName + "/" + levelIndex);
+            Debug.Log("LevelData/" + folderName + "/" + levelIndex);
+        }
+        else if (GlobalManager.Instance.GameType == GameType.ChallengeHard)
+        {
+            if (GlobalManager.Instance.CurrentHardLevel > 134)
+            {
+                levelIndex = GlobalManager.Instance.CurrentHardLevel - 134;
+                folderName = "challengesuperhard";
+            }
+            else
+            {
+                levelIndex = GlobalManager.Instance.CurrentHardLevel;
+                folderName = "challengehard";
+            }
+            //加载json文件
+            json = Resources.Load<TextAsset>("LevelData/" + folderName + "/" + levelIndex);
+            Debug.Log("LevelData/" + folderName + "/" + levelIndex);
+        }
+        if (json == null)
+        {
+            Debug.LogError("json is null");
+            return;
+        }
         // 使用 Newtonsoft.Json 解析 json 数据
         levelData = JsonConvert.DeserializeObject<LevelDataConfig>(json.text);
         var BlockDatas = levelData.BlockDatas;
@@ -905,7 +934,7 @@ public class GameManager : MonoBehaviour
                             }
                         }
                     }
-                    nextStep = nextStep + dirction;
+                    nextStep += dirction;
                 } while (outmap == false);
 
                 break;
@@ -929,7 +958,7 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
@@ -941,11 +970,11 @@ public class GameManager : MonoBehaviour
                             case 6:
                             case 7:
                                 dirction = new Vector2Int(-dirction.y, dirction.x);
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 turnCount--;
                                 break;
                             default:
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 break;
                         }
                     }
@@ -972,7 +1001,7 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
@@ -984,11 +1013,11 @@ public class GameManager : MonoBehaviour
                             case 6:
                             case 7:
                                 dirction = new Vector2Int(dirction.y, -dirction.x);
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 turnCount--;
                                 break;
                             default:
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 break;
                         }
                     }
@@ -1015,7 +1044,7 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
@@ -1029,12 +1058,12 @@ public class GameManager : MonoBehaviour
                                 if (tempStepp > 0)
                                 {
                                     tempStepp--;
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                 }
                                 else
                                 {
                                     dirction = new Vector2Int(dirction.y, -dirction.x);
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                     turnCount--;
                                     tempStepp = 1;
                                 }
@@ -1046,7 +1075,7 @@ public class GameManager : MonoBehaviour
                                     tempStepp--;
                                 }
 
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 break;
                         }
                     }
@@ -1072,7 +1101,7 @@ public class GameManager : MonoBehaviour
                     }
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
@@ -1086,12 +1115,12 @@ public class GameManager : MonoBehaviour
                                 if (tempStep > 0)
                                 {
                                     tempStep--;
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                 }
                                 else
                                 {
                                     dirction = new Vector2Int(-dirction.y, dirction.x);
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                     turnCount--;
                                     tempStep = 1;
                                 }
@@ -1103,7 +1132,7 @@ public class GameManager : MonoBehaviour
                                     tempStep--;
                                 }
 
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 break;
                         }
                     }
@@ -1265,7 +1294,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnTouchCar(Car car)
     {
-        Debug.Log("touchCar");
         if (car.dead) return;
         List<Vector2Int> posArr = new List<Vector2Int>();
         int PosArrIndex = 0;
@@ -1301,7 +1329,7 @@ public class GameManager : MonoBehaviour
                         posArr.Add(dirction * 10 + nextStep);
                     }
 
-                    nextStep = nextStep + dirction;
+                    nextStep += dirction;
                 } while (hitcar == false && outmap == false && hitBlock == false);
 
                 break;
@@ -1328,33 +1356,44 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
-                        switch (roadDataArr[nextStep.x, nextStep.y])
+                        int[] roadIds = null;
+                        if (dirction == Vector2Int.up)
                         {
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
+                            roadIds = new int[] { 3, 34, 37, 39 };
+                        }
+                        else if (dirction == Vector2Int.down)
+                        {
+                            roadIds = new int[] { 3, 36, 35, 40 };
+                        }
+                        else if (dirction == Vector2Int.left)
+                        {
+                            roadIds = new int[] { 3, 35, 34, 38 };
+                        }
+                        else if (dirction == Vector2Int.right)
+                        {
+                            roadIds = new int[] { 3, 37, 36, 41 };
+                        }
+                        var roadId = roadDataArr[nextStep.x, nextStep.y];
+                        bool isRoad = false;
+                        foreach (var item in roadIds)
+                        {
+                            if (roadId == item)
+                            {
+                                isRoad = true;
                                 posArr.Add(nextStep);
                                 dirction = new Vector2Int(-dirction.y, dirction.x);
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 turnCount--;
                                 break;
-                            default:
-                                nextStep = nextStep + dirction;
-                                break;
+                            }
+                        }
+                        if (!isRoad)
+                        {
+                            nextStep += dirction;
                         }
                     }
                 } while (hitcar == false && outmap == false && hitBlock == false);
@@ -1383,39 +1422,50 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
-                        switch (roadDataArr[nextStep.x, nextStep.y])
-                        { //十字路口可以转
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
+                        int[] roadIds = null;
+                        if (dirction == Vector2Int.up)
+                        {
+                            roadIds = new int[] { 3, 34, 35, 38 };
+                        }
+                        else if (dirction == Vector2Int.down)
+                        {
+                            roadIds = new int[] { 3, 36, 37, 41 };
+                        }
+                        else if (dirction == Vector2Int.left)
+                        {
+                            roadIds = new int[] { 3, 36, 35, 40 };
+                        }
+                        else if (dirction == Vector2Int.right)
+                        {
+                            roadIds = new int[] { 3, 37, 34, 39 };
+                        }
+                        var roadId = roadDataArr[nextStep.x, nextStep.y];
+                        bool isRoad = false;
+                        foreach (var item in roadIds)
+                        {
+                            if (roadId == item)
+                            {
+                                isRoad = true;
                                 posArr.Add(nextStep);
                                 dirction = new Vector2Int(dirction.y, -dirction.x);
-                                nextStep = nextStep + dirction;
+                                nextStep += dirction;
                                 turnCount--;
                                 break;
-                            default:
-                                nextStep = nextStep + dirction;
-                                break;
+                            }
+                        }
+                        if (!isRoad)
+                        {
+                            nextStep += dirction;
                         }
                     }
                 } while (hitcar == false && outmap == false && hitBlock == false);
 
                 break;
-            case 4: //左掉头
+            case 4: //右掉头
                 turnCount = 2;
                 dirction = car.dir;
                 nextStep = car.pos + dirction;
@@ -1439,54 +1489,65 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
-                        switch (roadDataArr[nextStep.x, nextStep.y])
+                        int[] roadIds = null;
+                        if (dirction == Vector2Int.up)
                         {
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
+                            roadIds = new int[] { 3, 34, 35, 38 };
+                        }
+                        else if (dirction == Vector2Int.down)
+                        {
+                            roadIds = new int[] { 3, 36, 37, 41 };
+                        }
+                        else if (dirction == Vector2Int.left)
+                        {
+                            roadIds = new int[] { 3, 36, 35, 40 };
+                        }
+                        else if (dirction == Vector2Int.right)
+                        {
+                            roadIds = new int[] { 3, 37, 34, 39 };
+                        }
+                        var roadId = roadDataArr[nextStep.x, nextStep.y];
+                        bool isRoad = false;
+                        foreach (var item in roadIds)
+                        {
+                            if (roadId == item)
+                            {
+                                isRoad = true;
                                 if (tempStepp > 0)
                                 {
                                     tempStepp--;
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                 }
                                 else
                                 {
                                     posArr.Add(nextStep);
                                     dirction = new Vector2Int(dirction.y, -dirction.x);
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                     turnCount--;
                                     tempStepp = 1;
                                 }
 
                                 break;
-                            default:
-                                if (tempStepp > 0)
-                                {
-                                    tempStepp--;
-                                }
+                            }
+                        }
+                        if (!isRoad)
+                        {
+                            if (tempStepp > 0)
+                            {
+                                tempStepp--;
+                            }
 
-                                nextStep = nextStep + dirction;
-                                break;
+                            nextStep += dirction;
                         }
                     }
                 } while (hitcar == false && outmap == false && hitBlock == false);
 
                 break;
-            case 5: //右掉头
+            case 5: //左掉头
 
                 turnCount = 2;
                 dirction = car.dir;
@@ -1511,48 +1572,59 @@ public class GameManager : MonoBehaviour
 
                     if (turnCount == 0)
                     {
-                        nextStep = nextStep + dirction;
+                        nextStep += dirction;
                     }
                     else
                     {
-                        switch (roadDataArr[nextStep.x, nextStep.y])
+                        int[] roadIds = null;
+                        if (dirction == Vector2Int.up)
                         {
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
+                            roadIds = new int[] { 3, 34, 37, 39 };
+                        }
+                        else if (dirction == Vector2Int.down)
+                        {
+                            roadIds = new int[] { 3, 36, 35, 40 };
+                        }
+                        else if (dirction == Vector2Int.left)
+                        {
+                            roadIds = new int[] { 3, 35, 34, 38 };
+                        }
+                        else if (dirction == Vector2Int.right)
+                        {
+                            roadIds = new int[] { 3, 37, 36, 41 };
+                        }
+                        var roadId = roadDataArr[nextStep.x, nextStep.y];
+                        bool isRoad = false;
+                        foreach (var item in roadIds)
+                        {
+                            if (roadId == item)
+                            {
+                                isRoad = true;
                                 if (tempStep > 0)
                                 {
                                     tempStep--;
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                 }
                                 else
                                 {
                                     posArr.Add(nextStep);
                                     dirction = new Vector2Int(-dirction.y, dirction.x);
-                                    nextStep = nextStep + dirction;
+                                    nextStep += dirction;
                                     turnCount--;
                                     tempStep = 1;
                                 }
 
                                 break;
-                            default:
-                                if (tempStep > 0)
-                                {
-                                    tempStep--;
-                                }
+                            }
+                        }
+                        if (!isRoad)
+                        {
+                            if (tempStep > 0)
+                            {
+                                tempStep--;
+                            }
 
-                                nextStep = nextStep + dirction;
-                                break;
+                            nextStep += dirction;
                         }
                     }
                 } while (hitcar == false && outmap == false && hitBlock == false);
@@ -1724,6 +1796,8 @@ public class GameManager : MonoBehaviour
 
     public void DeleteCar(Car car)
     {
+        car.CarOutOfBounds -= m_UI.CreateCarOutOfBoundsAnim;
+        car.isPlayCoinAnimation = false;
         carPool.Add(car);
         car.transform.SetParent(null, false);
         car.gameObject.SetActive(false);
@@ -1798,8 +1872,6 @@ public class GameManager : MonoBehaviour
         {
             car.transform.SetParent(null, false);
             car.gameObject.SetActive(false);
-            car.CarOutOfBounds -= m_UI.CreateCarOutOfBoundsAnim;
-            car.isPlayCoinAnimation = false;
             carPool.Add(car);
         }
 
@@ -1863,13 +1935,47 @@ public class GameManager : MonoBehaviour
     //胜利延时
     private IEnumerator ShowFinishUIWithDelay()
     {
+
         // 设置延迟时间
         float delay = 1.5f;
         yield return new WaitForSeconds(delay);
         GlobalManager.Instance.CurrentLevel++;
         if (GlobalManager.Instance.CurrentLevel != 0 && GlobalManager.Instance.CurrentLevel != 1 && GlobalManager.Instance.CurrentLevel != 2)
         {
-            m_UI.ShowFinishRoot(true, carDataArr.Length);
+            //金币数量
+            int coinCount = carDataArr.Length;
+            //奖杯数量
+            int trophyCount = 10;
+            //如果排位赛开启(排位赛开启后困难模式才会开启)
+            if (GlobalManager.Instance.mIsStartRankingMatch == true)
+            {
+                GlobalManager.Instance.TrophyCompleteLevel++;
+                //如果是困难关卡
+                if (GlobalManager.Instance.GameType == GameType.ChallengeHard)
+                {
+                    PlayerPrefs.SetInt("HardLevelStatus" + (GlobalManager.Instance.CurrentHardLevel + 1), 0);
+                    trophyCount = 20;
+                }
+                else
+                {
+
+                }
+                //如果开启双倍奖励
+                if (GlobalManager.Instance.IsDoubleReward)
+                {
+                    trophyCount *= 2;
+                }
+                m_UIGameVictoryPage.ShowAdvanceFinishRoot(coinCount, trophyCount);
+            }
+            else//16关之前结算
+            {
+                m_UIGameVictoryPage.ShowBeginnerFinishRoot(coinCount);
+            }
+            //如果竞速赛进行中
+            if (GlobalManager.Instance.IsCompetition)
+            {
+                m_UIGameVictoryPage.ShowRacingFinishRoot();
+            }
             GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel);//判断是否有奖励
             GlobalManager.Instance.SaveGameData();
             AudioManager.Instance.PlayVictory();

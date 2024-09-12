@@ -45,12 +45,8 @@ public class UI : MonoBehaviour
     public GameObject m_TargetUI;
     // 金币图片的预制体
     public GameObject m_CoinPrefab;
-    public GameObject m_CoinContainer; // 存放金币图片的容器
     float frameDuration = 0.05f; // 每帧的持续时间
     //金币数量文本
-    public TMP_Text m_FinishCoinText;
-    //光环
-    public GameObject m_Halo;
     //汽车出界动画根节点
     public GameObject m_CarOutOfBoundsRoot;
     //顶部UI根节点
@@ -108,7 +104,6 @@ public class UI : MonoBehaviour
     {
         GameManager.Instance.OnStepCountChanged += ChangeStepCount;
         ShowFailedRoot(false);
-        ShowFinishRoot(false);
         m_SoundSwitch.sprite = GlobalManager.Instance.IsSound ? switchSprites[0] : switchSprites[1];
         m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
         SetLanguage();
@@ -218,6 +213,7 @@ public class UI : MonoBehaviour
     public void ShowFailedRoot(bool isShow)
     {
         FailedRoot.SetActive(isShow);
+        m_TargetUI.SetActive(isShow);
         var str = GlobalManager.Instance.GetLanguageValue("ConsumeCoins");
         if (GameManager.Instance.failReason == FailReason.PeopleCrash)
         {
@@ -247,59 +243,7 @@ public class UI : MonoBehaviour
             m_FailedImage.SetNativeSize();
         }
     }
-    //显示完成界面
-    public void ShowFinishRoot(bool isShow, int CoinAmount = 0)
-    {
-        FinishRoot.SetActive(isShow);
-        if (CoinAmount > 0)
-        {
-            GlobalManager.Instance.PlayerCoin += CoinAmount;
-            m_FinishCoinText.text = "X" + CoinAmount.ToString();
-            m_Halo.SetActive(isShow);
-            //顺时针一直旋转
-            m_Halo.transform.DORotate(new Vector3(0, 0, -360), 5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
-            CreateAndAnimateCoins(CoinAmount);
-        }
-    }
-    private void CreateAndAnimateCoins(int goldAmount)
-    {
-        AudioManager.Instance.PlayCoinSettle();
-        int coinCount = Mathf.Min(goldAmount, 30);
-        for (int i = 0; i < coinCount; i++)
-        {
-            GameObject coin = Instantiate(m_CoinPrefab, m_CoinContainer.transform);
-            if (coin == null)
-            {
-                return;
-            }
-            coin.transform.localPosition = Vector3.zero; // 初始位置
-            Sequence sequence = DOTween.Sequence();
-            // 随机散开
-            Vector3 randomPosition = new Vector3(Random.Range(-200, 200), Random.Range(-200, 200), 0);
-            coin.transform.DOLocalMove(randomPosition, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
-            {
-                // 等待0.1秒
-                DOVirtual.DelayedCall(0.3f, () =>
-                {
-                    // 飞向目标UI
-                    float randomDuration = Random.Range(0.3f, 0.8f); // 随机飞行时间
-                    coin.transform.DOMove(m_TargetUI.transform.position, randomDuration).SetEase(Ease.InQuad).OnComplete(() =>
-                    {
-                        m_TargetUI.GetComponent<UICoin>().UpdateCoin();
-                        coin.SetActive(false);
-                        sequence.Kill();
-                    });
-                });
-            });
-            // 序列帧动画
-            foreach (var sprite in GlobalManager.Instance.m_CoinSprites)
-            {
-                sequence.AppendCallback(() => coin.GetComponent<Image>().sprite = sprite);
-                sequence.AppendInterval(frameDuration);
-            }
-            sequence.SetLoops(-1, LoopType.Restart);
-        }
-    }
+
     //设置按钮
     public void OnSetting()
     {

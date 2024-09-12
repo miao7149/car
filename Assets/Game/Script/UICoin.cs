@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UICoin : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_Text m_CoinText;
-    void Start()
+    void Awake()
     {
         m_CoinText.text = GlobalManager.Instance.PlayerCoin.ToString();
     }

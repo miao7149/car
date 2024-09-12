@@ -85,6 +85,7 @@ public class MenuManager : MonoBehaviour
     {
         //Application.OpenURL("https://www.baidu.com");
         AudioManager.Instance.PlayButtonClick();
+        GlobalManager.Instance.GameType = GameType.Main;
         MoveCarAppearanceAnima();
     }
     //汽车出场动画
@@ -112,9 +113,9 @@ public class MenuManager : MonoBehaviour
                 return;
             }
             //设置汽车位置
-            m_Car.transform.position = new Vector3(m_Car.transform.position.x, m_Car.transform.position.y, m_Car.transform.position.z - 1f);
+            m_Car.transform.position = new Vector3(m_Car.transform.position.x, m_Car.transform.position.y, m_Car.transform.position.z - 1.2f);
             AudioManager.Instance.PlayCarSmallMove();
-            m_Car.transform.DOMoveZ(m_Car.transform.position.z + 1f, 0.5f).SetEase(Ease.OutQuad).onComplete = () =>
+            m_Car.transform.DOMoveZ(m_Car.transform.position.z + 1.2f, 0.5f).SetEase(Ease.OutQuad).onComplete = () =>
             {
                 StartCarScaleAnimation();
                 if (GlobalManager.Instance.IsReward)

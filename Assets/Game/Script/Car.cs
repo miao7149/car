@@ -8,7 +8,7 @@ public class Car : MonoBehaviour
     public Vector2Int pos; //车头位置
 
     public Vector2Int dir; //方向 1上 2下  3左  4右
-    public int turn; //转向 1直行 2左转 3右转 4左掉头 5右掉头
+    public int turn; //转向 1直行 2左转 3右转 4右掉头 5左掉头
     public List<Vector2Int> posArr = new();
     public bool dead = false;//是否死亡
     public Tweener moveAction = null;
@@ -157,6 +157,16 @@ public class Car : MonoBehaviour
             moveAction.Kill();
             moveAction = null;
             transform.DOKill();
+        }
+    }
+    void OnDisable()
+    {
+        if (moveAction != null)
+        {
+            moveAction.Kill();
+            moveAction = null;
+            transform.DOKill();
+
         }
     }
     //显示气球

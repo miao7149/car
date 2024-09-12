@@ -164,3 +164,68 @@ public enum Prop
     Ballon = 4,//气球
     Trophy = 5//奖杯
 }
+public class TrophyProp
+{
+    public PropData[] PropArray; // 0x10
+    public PropData Trophy; // 0x18
+
+    // RVA: 0x9D78B8 Offset: 0x9D78B8 VA: 0x9D78B8
+    public TrophyProp() { }
+}
+public class PlayerInfo : IComparable<PlayerInfo>
+{
+    // Fields
+    public int Id; // 0x10
+    public int RankIndex; // 0x14
+    public string Name; // 0x18
+    public TrophyProp TrophyProp; // 0x20
+
+
+    // RVA: 0x9D8FE4 Offset: 0x9D8FE4 VA: 0x9D8FE4 Slot: 4
+    public int CompareTo(PlayerInfo obj)
+    {
+        if (obj == null)
+        {
+            throw new NullReferenceException("obj == null");
+        }
+        if (obj.TrophyProp == null)
+        {
+            throw new NullReferenceException("obj.TrophyProp == null");
+        }
+        if (this.TrophyProp == null)
+        {
+            throw new NullReferenceException("this.TrophyProp == null");
+        }
+        int v5 = obj.TrophyProp.Trophy.Count - this.TrophyProp.Trophy.Count;
+        if (v5 == 0)
+        {
+            return this.Id - obj.Id;
+        }
+        return v5;
+    }
+
+    // RVA: 0x9D9028 Offset: 0x9D9028 VA: 0x9D9028 Slot: 3
+    public override string ToString()
+    {
+        return "Name:" + this.Name + ",RankIndex:" + this.RankIndex;
+    }
+
+    // RVA: 0x9D7858 Offset: 0x9D7858 VA: 0x9D7858
+    public PlayerInfo()
+    {
+        this.Id = 1;
+        this.RankIndex = 1;
+    }
+}
+
+public class TrophyInfo
+{
+    public TimeSpan TrophyTime; // 0x10
+    public int TrophyIndex; // 0x18
+    public int RankState; // 0x28
+
+    // Methods
+
+    // RVA: 0x9D8620 Offset: 0x9D8620 VA: 0x9D8620
+    public TrophyInfo() { }
+}

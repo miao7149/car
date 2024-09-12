@@ -89,6 +89,7 @@ public class DailySignIn : MonoBehaviour
         {
             m_DailyRoot.SetActive(false);
             m_RewradRoot.SetActive(true);
+            GlobalManager.Instance.PlayerCoin += rewardCoins[dayIndex];
             CreateAndAnimateCoins(rewardCoins[dayIndex]);
         });
     }
