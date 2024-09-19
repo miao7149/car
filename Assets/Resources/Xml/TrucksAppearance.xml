@@ -1,0 +1,88 @@
+<Workbook>
+  <Worksheet Name="Language">
+    <Row>
+      <Cell Column="Id:key">1</Cell>
+      <Cell Column="ModelName">Car_1</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_1</Cell>
+      <Cell Column="UnlockConditions">1_0</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">2</Cell>
+      <Cell Column="ModelName">Car_2</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_2</Cell>
+      <Cell Column="UnlockConditions">1_30</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">3</Cell>
+      <Cell Column="ModelName">Car_3</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_3</Cell>
+      <Cell Column="UnlockConditions">2_9</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">4</Cell>
+      <Cell Column="ModelName">Car_4</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_4</Cell>
+      <Cell Column="UnlockConditions">1_140</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">5</Cell>
+      <Cell Column="ModelName">Car_5</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_5</Cell>
+      <Cell Column="UnlockConditions">1_200</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">6</Cell>
+      <Cell Column="ModelName">Car_6</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_6</Cell>
+      <Cell Column="UnlockConditions">2_27</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">7</Cell>
+      <Cell Column="ModelName">Car_7</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_7</Cell>
+      <Cell Column="UnlockConditions">1_350</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">8</Cell>
+      <Cell Column="ModelName">Car_8</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_8</Cell>
+      <Cell Column="UnlockConditions">1_450</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">9</Cell>
+      <Cell Column="ModelName">Car_9</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_9</Cell>
+      <Cell Column="UnlockConditions">2_60</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">10</Cell>
+      <Cell Column="ModelName">Car_10</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_10</Cell>
+      <Cell Column="UnlockConditions">1_800</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">11</Cell>
+      <Cell Column="ModelName">Car_11</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_11</Cell>
+      <Cell Column="UnlockConditions">1_1000</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">12</Cell>
+      <Cell Column="ModelName">Car_12</Cell>
+      <Cell Column="CarSpriteName">skin_style_frame_vehicle_12</Cell>
+      <Cell Column="UnlockConditions">2_120</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+  </Worksheet>
+</Workbook>

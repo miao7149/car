@@ -61,6 +61,15 @@ public class GlobalManager : MonoBehaviour
     //多语言字典
     [HideInInspector]
     public Dictionary<string, Dictionary<Language, string>> mLanguageDict = new Dictionary<string, Dictionary<Language, string>>();
+    //汽车外观字典
+    [HideInInspector]
+    public Dictionary<int, SkinItemData> mTrucksAppearanceDict = new Dictionary<int, SkinItemData>();
+    //地形贴图字典
+    [HideInInspector]
+    public Dictionary<int, SkinItemData> TerrainMappingDict = new Dictionary<int, SkinItemData>();
+    //汽车拖尾字典
+    [HideInInspector]
+    public Dictionary<int, SkinItemData> mTrucksTrailDict = new Dictionary<int, SkinItemData>();
     //是否第一次游戏
     [HideInInspector]
     public bool IsFirstGame = true;
@@ -76,6 +85,15 @@ public class GlobalManager : MonoBehaviour
     //游戏类型
     [HideInInspector]
     public GameType GameType = GameType.Main;
+    //玩家车辆皮肤名称
+    [HideInInspector]
+    public string PlayerCarSkinName;
+    //玩家车辆拖尾名称
+    [HideInInspector]
+    public string PlayerCarTrailName;
+    //玩家地图皮肤名称
+    [HideInInspector]
+    public string PlayerMapSkinName;
     public Dictionary<string, LevelstepsTemplate> lstLevelstepsTemplate = new();
     public Dictionary<string, TimeraceTemplate> lstTimeraceTemplate = new();
     public Dictionary<string, PlayernameTemplate> lstPlayernameTemplate = new();
@@ -134,6 +152,9 @@ public class GlobalManager : MonoBehaviour
         }
         LoadGameData();
         LoadXmlFile("Xml/TrafficLanguage");
+        LoadXmlFile("Xml/TrucksAppearance");
+        LoadXmlFile("Xml/TerrainMapping");
+        LoadXmlFile("Xml/TrucksTail");
         LoadLevelStepsTemplat();
         LoadTimeraceTemplate();
         LoadPlayernameTemplate();
@@ -176,6 +197,9 @@ public class GlobalManager : MonoBehaviour
         PlayerPrefs.SetInt("IsBulldozerIntroduce", IsBulldozerIntroduce ? 1 : 0);
         PlayerPrefs.SetString("PlayerName", PlayerName);
         PlayerPrefs.SetInt("IsStartRankingMatch", mIsStartRankingMatch ? 1 : 0);
+        PlayerPrefs.SetString("PlayerCarSkinName", PlayerCarSkinName);
+        PlayerPrefs.SetString("PlayerCarTrailName", PlayerCarTrailName);
+        PlayerPrefs.SetString("PlayerMapSkinName", PlayerMapSkinName);
         PlayerPrefs.Save();
     }
     // 加载游戏数据
@@ -195,6 +219,9 @@ public class GlobalManager : MonoBehaviour
         IsBulldozerIntroduce = PlayerPrefs.GetInt("IsBulldozerIntroduce", 1) == 1;
         PlayerName = PlayerPrefs.GetString("PlayerName", "Player_108");
         mIsStartRankingMatch = PlayerPrefs.GetInt("IsStartRankingMatch") == 1;
+        PlayerCarSkinName = PlayerPrefs.GetString("PlayerCarSkinName", "Car_1");
+        PlayerCarTrailName = PlayerPrefs.GetString("PlayerCarTrailName", "vfx_exhaust_1");
+        PlayerMapSkinName = PlayerPrefs.GetString("PlayerMapSkinName", "texture_1");
     }
     //获取系统语言
     public Language GetSystemLanguage()
@@ -256,29 +283,125 @@ public class GlobalManager : MonoBehaviour
             {
                 XmlNodeList cellList = row.SelectNodes("Cell");
                 var key = cellList[0].InnerText;
-                //如果已经存在key，则跳过
-                if (mLanguageDict.ContainsKey(key))
+                if (fileName == "Xml/TrafficLanguage")
                 {
-                    continue;
-                }
-                mLanguageDict.Add(key, new Dictionary<Language, string>());
-                foreach (XmlNode cell in cellList)
-                {
-                    string column = cell.Attributes["Column"].Value;
-                    string value = cell.InnerText;
-                    if (column != "Id:key")
+                    //如果已经存在key，则跳过
+                    if (mLanguageDict.ContainsKey(key))
                     {
-                        try
+                        continue;
+                    }
+                    mLanguageDict.Add(key, new Dictionary<Language, string>());
+                    foreach (XmlNode cell in cellList)
+                    {
+                        string column = cell.Attributes["Column"].Value;
+                        string value = cell.InnerText;
+                        if (column != "Id:key")
                         {
-                            Language language = (Language)Enum.Parse(typeof(Language), column, true);
-                            mLanguageDict[key][language] = value;
+                            try
+                            {
+                                Language language = (Language)Enum.Parse(typeof(Language), column, true);
+                                mLanguageDict[key][language] = value;
+                            }
+                            catch (ArgumentException)
+                            {
+                                Debug.LogError("无效的语言枚举值: " + column);
+                            }
                         }
-                        catch (ArgumentException)
+                        //Debug.Log("Column: " + column + ", Value: " + value);
+                    }
+                }
+                else if (fileName == "Xml/TrucksAppearance")
+                {
+                    SkinItemData trucksAppearance = new SkinItemData();
+                    //如果已经存在key，则跳过
+                    if (mTrucksAppearanceDict.ContainsKey(int.Parse(key)))
+                    {
+                        continue;
+                    }
+                    foreach (XmlNode cell in cellList)
+                    {
+                        string column = cell.Attributes["Column"].Value;
+                        string value = cell.InnerText;
+                        if (column == "ModelName")
                         {
-                            Debug.LogError("无效的语言枚举值: " + column);
+                            trucksAppearance.ModelName = value;
+                        }
+                        if (column == "CarSpriteName")
+                        {
+                            trucksAppearance.SpriteName = value;
+                        }
+                        if (column == "UnlockConditions")
+                        {
+                            trucksAppearance.UnlockConditions = value;
+                        }
+                        if (column == "Coins")
+                        {
+                            trucksAppearance.Coins = int.Parse(value);
                         }
                     }
-                    //Debug.Log("Column: " + column + ", Value: " + value);
+                    mTrucksAppearanceDict.Add(int.Parse(key), trucksAppearance);
+                }
+                else if (fileName == "Xml/TerrainMapping")
+                {
+                    SkinItemData terrainMapping = new SkinItemData();
+                    //如果已经存在key，则跳过
+                    if (TerrainMappingDict.ContainsKey(int.Parse(key)))
+                    {
+                        continue;
+                    }
+                    foreach (XmlNode cell in cellList)
+                    {
+                        string column = cell.Attributes["Column"].Value;
+                        string value = cell.InnerText;
+                        if (column == "TextureName")
+                        {
+                            terrainMapping.ModelName = value;
+                        }
+                        if (column == "SpriteName")
+                        {
+                            terrainMapping.SpriteName = value;
+                        }
+                        if (column == "UnlockConditions")
+                        {
+                            terrainMapping.UnlockConditions = value;
+                        }
+                        if (column == "Coins")
+                        {
+                            terrainMapping.Coins = int.Parse(value);
+                        }
+                    }
+                    TerrainMappingDict.Add(int.Parse(key), terrainMapping);
+                }
+                else if (fileName == "Xml/TrucksTail")
+                {
+                    SkinItemData trucksTail = new SkinItemData();
+                    //如果已经存在key，则跳过
+                    if (mTrucksTrailDict.ContainsKey(int.Parse(key)))
+                    {
+                        continue;
+                    }
+                    foreach (XmlNode cell in cellList)
+                    {
+                        string column = cell.Attributes["Column"].Value;
+                        string value = cell.InnerText;
+                        if (column == "ModelName")
+                        {
+                            trucksTail.ModelName = value;
+                        }
+                        if (column == "CarSpriteName")
+                        {
+                            trucksTail.SpriteName = value;
+                        }
+                        if (column == "UnlockConditions")
+                        {
+                            trucksTail.UnlockConditions = value;
+                        }
+                        if (column == "Coins")
+                        {
+                            trucksTail.Coins = int.Parse(value);
+                        }
+                    }
+                    mTrucksTrailDict.Add(int.Parse(key), trucksTail);
                 }
             }
         }

@@ -229,3 +229,17 @@ public class TrophyInfo
     // RVA: 0x9D8620 Offset: 0x9D8620 VA: 0x9D8620
     public TrophyInfo() { }
 }
+public struct SkinItemData
+{
+    public string ModelName;
+    public string SpriteName;
+    public string UnlockConditions;
+    public int Coins;
+}
+public enum DecorationType
+{
+    Car = 1,
+    Tail = 2,
+    Terrain = 3
+}
+

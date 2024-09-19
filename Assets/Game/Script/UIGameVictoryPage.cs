@@ -146,30 +146,47 @@ public class UIGameVictoryPage : MonoBehaviour
                 m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount.ToString();
             }
         }
-        // 获取列表项
-        LoopListViewItem2 OnGetItemByIndex(LoopListView2 listView, int index)
+        StartCoroutine(SmoothScrollToIndex(PlayerListIndex, 1.5f));
+    }
+    private IEnumerator SmoothScrollToIndex(int targetIndex, float duration)
+    {
+        int startIndex = 0;
+        float timeElapsed = 0;
+
+        while (timeElapsed < duration)
         {
-            if (index < 0 || index >= GlobalManager.Instance._trophyRankingList.Count)
-            {
-                return null;
-            }
-            LoopListViewItem2 item = null;
-            // 获取或创建列表项
-            if (index == 29)
-            {
-                item = listView.NewListViewItem("RankItemUp");
-            }
-            else if (index == 59 && GlobalManager.Instance.CurrentRank > 1)
-            {
-                item = listView.NewListViewItem("RankItemDown");
-            }
-            else
-            {
-                item = listView.NewListViewItem("RankItem");
-            }
-            item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[index], index + 1);
-            return item;
+            float t = timeElapsed / duration;
+            int currentIndex = (int)Mathf.Lerp(startIndex, targetIndex, t);
+            loopListView.MovePanelToItemIndex(currentIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
+            timeElapsed += Time.deltaTime;
+            yield return null;
         }
+
+        loopListView.MovePanelToItemIndex(targetIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
+    }
+    // 获取列表项
+    LoopListViewItem2 OnGetItemByIndex(LoopListView2 listView, int index)
+    {
+        if (index < 0 || index >= GlobalManager.Instance._trophyRankingList.Count)
+        {
+            return null;
+        }
+        LoopListViewItem2 item = null;
+        // 获取或创建列表项
+        if (index == 29)
+        {
+            item = listView.NewListViewItem("RankItemUp");
+        }
+        else if (index == 59 && GlobalManager.Instance.CurrentRank > 1)
+        {
+            item = listView.NewListViewItem("RankItemDown");
+        }
+        else
+        {
+            item = listView.NewListViewItem("RankItem");
+        }
+        item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[index], index + 1);
+        return item;
     }
     //显示完成界面
     public void ShowBeginnerFinishRoot(int coinCount = 0)

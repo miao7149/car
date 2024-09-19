@@ -108,6 +108,8 @@ public class RankingMatch : MonoBehaviour
                 int hours = (int)((remainingTime % (24 * 60 * 60)) / (60 * 60));
                 m_CountDownText.text = $"{days}天 {hours}小时";
             }
+            m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1];//设置段位图片
+            m_RankImage.GetComponent<Image>().SetNativeSize();
             GlobalManager.Instance.RefreshTrophyRankingList();
             if (IsInitLoopListView == false)
             {
@@ -118,14 +120,16 @@ public class RankingMatch : MonoBehaviour
             if (PlayerListIndex > 29)
             {
                 m_CurrentPromotionNum.GetComponent<TMP_Text>().text = (PlayerListIndex - 29).ToString();
+                if (remainingTime <= 0)
+                    GlobalManager.Instance.CurrentRank--;
             }
             else
             {
                 m_CurrentPromotionNum.GetComponent<TMP_Text>().text = "0";
+                if (remainingTime <= 0)
+                    GlobalManager.Instance.CurrentRank++;
 
             }
-            m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1];//设置段位图片
-            m_RankImage.GetComponent<Image>().SetNativeSize();
             m_CurrentPromotionDesc.GetComponent<TMP_Text>().text = "There are                 people left to reach the promotion rank";
         }
         else
@@ -180,24 +184,42 @@ public class RankingMatch : MonoBehaviour
         }
         m_RankingMatchRoot.SetActive(true);
         RefreshRankingMatch();
+        var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
+        StartCoroutine(SmoothScrollToIndex(PlayerListIndex, 1.5f));
+    }
+    private IEnumerator SmoothScrollToIndex(int targetIndex, float duration)
+    {
+        int startIndex = 0;
+        float timeElapsed = 0;
+
+        while (timeElapsed < duration)
+        {
+            float t = timeElapsed / duration;
+            int currentIndex = (int)Mathf.Lerp(startIndex, targetIndex, t);
+            loopListView.MovePanelToItemIndex(currentIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        loopListView.MovePanelToItemIndex(targetIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
     }
     //领取按钮
     public void OnGetBtn()
     {
         var propArray = GlobalManager.Instance._selfPlayerInfo.TrophyProp.PropArray;
         m_GoldReward.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() =>
-                            {
-                                if (propArray.Length == 1)
-                                {
-                                    GlobalManager.Instance.PlayerCoin += propArray[0].Count;
-                                }
-                                else if (propArray.Length == 2)
-                                {
-                                    GlobalManager.Instance.PlayerCoin += propArray[0].Count;
-                                    GlobalManager.Instance.ItemCount += propArray[1].Count;
-                                }
-                                CreateAndAnimateCoins(propArray[0].Count); // 假设金币数量为50
-                            });
+        {
+            if (propArray.Length == 1)
+            {
+                GlobalManager.Instance.PlayerCoin += propArray[0].Count;
+            }
+            else if (propArray.Length == 2)
+            {
+                GlobalManager.Instance.PlayerCoin += propArray[0].Count;
+                GlobalManager.Instance.ItemCount += propArray[1].Count;
+            }
+            CreateAndAnimateCoins(propArray[0].Count); // 假设金币数量为50
+        });
         m_ItemReward.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             m_ItemReward.transform.DOScale(0.3f, 0.6f).SetEase(Ease.OutQuad);
