@@ -27,11 +27,11 @@ public class MenuManager : MonoBehaviour
     public UIReward m_UIReward;
     //////////////////////////////////////////////////多语言设置，文本物体
     //设置标题
-    public Text m_SettingTitle;
+    public TMP_Text m_SettingTitle;
     //声音文字
-    public Text m_SoundText;
+    public TMP_Text m_SoundText;
     //震动文字
-    public Text m_VibrateText;
+    public TMP_Text m_VibrateText;
     //隐私政策
     public TMP_Text m_PrivacyText;
     //用户协议
