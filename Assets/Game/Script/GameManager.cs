@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour
     int[] StepsLoopArray = new int[] { 2, 1, 2, 1, 0, 1, 2, 2, 2, 1 };
     int[] SeedArray = new[] { 0x3B, 0x29, 0x47, 0x1D, 0x3B, 0x29, 0x47, 0x1D, 0x3B, 0x29, 0x47, 0x1D, 0x3B, 0x29, 0x47, 0x1D, 0x3B, 0x29, 0x47, 0x1D };
     LevelDataConfig levelData;
+    //地形片
+    public GameObject m_Terrain;
     private void Start()
     {
         Instance = this;
@@ -847,6 +849,8 @@ public class GameManager : MonoBehaviour
         {
             m_UI.m_ItemBtn.gameObject.SetActive(false);
         }
+        //地形贴图
+        m_Terrain.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("Image/Skin/" + GlobalManager.Instance.PlayerMapSkinName);
         StartCoroutine(PlayStartAni());
     }
     IEnumerator PlayStartAni()
@@ -2014,7 +2018,10 @@ public class GameManager : MonoBehaviour
             switch (type)
             {
                 case CarType.Small:
-                    return Instantiate(m_PrefabSmallCar).GetComponent<Car>();
+                    GameObject skinCar = Instantiate(Resources.Load<GameObject>("Prefabs/GameCar/" + GlobalManager.Instance.PlayerCarSkinName));
+                    GameObject skinTrail = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), skinCar.transform);
+                    skinTrail.transform.localPosition = new Vector3(0, 0, -0.5f);
+                    return skinCar.GetComponent<Car>();
                 case CarType.Big:
                     return Instantiate(m_PrefabBigCar).GetComponent<Car>();
                 case CarType.Bulldozer:

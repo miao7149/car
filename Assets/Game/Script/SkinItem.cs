@@ -23,6 +23,7 @@ public class SkinItem : MonoBehaviour
     DecorationType type;
     int index;
     SkinItemData skinItemData;
+    UISwitchSkin mUISwitchSkin;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class SkinItem : MonoBehaviour
     {
 
     }
-    public void Init(SkinItemData skinItemData, DecorationType type, int index)
+    public void Init(SkinItemData skinItemData, DecorationType type, int index, UISwitchSkin uISwitchSkin)
     {
         m_UseBtn.SetActive(false);
         m_InUseBtn.SetActive(false);
@@ -45,6 +46,7 @@ public class SkinItem : MonoBehaviour
         this.type = type;
         this.index = index;
         this.skinItemData = skinItemData;
+        mUISwitchSkin = uISwitchSkin;
         var str = PlayerPrefs.GetString(type.ToString() + index.ToString(), "0");
         if (index == 0)
         {
@@ -166,5 +168,6 @@ public class SkinItem : MonoBehaviour
             GlobalManager.Instance.PlayerMapSkinName = skinItemData.ModelName;
         }
         GlobalManager.Instance.SaveGameData();
+        mUISwitchSkin.ChangeSkin(type, skinItemData.ModelName);
     }
 }

@@ -200,8 +200,11 @@ public class UIGameVictoryPage : MonoBehaviour
             m_Halo.SetActive(true);
             //顺时针一直旋转
             m_Halo.transform.DORotate(new Vector3(0, 0, -360), 5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
-            GlobalManager.Instance.PlayerCoin += coinCount;
-            CreateAndAnimateCoins(coinCount);
+            m_FinishCoinText.transform.parent.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                GlobalManager.Instance.PlayerCoin += coinCount;
+                CreateAndAnimateCoins(coinCount);
+            });
         }
     }
     private void CreateAndAnimateCoins(int goldAmount)
