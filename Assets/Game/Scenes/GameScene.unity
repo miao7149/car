@@ -11884,7 +11884,7 @@ MonoBehaviour:
   failReason: 0
   IsUseItem: 0
   hitPeopleCar: {fileID: 0}
-  m_Terrain: {fileID: 0}
+  m_Terrain: {fileID: 637040528}
   speedBackCar: 30
 --- !u!4 &1281459276
 Transform:
