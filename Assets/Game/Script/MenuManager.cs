@@ -25,6 +25,8 @@ public class MenuManager : MonoBehaviour
     //震动开关按钮
     public Image m_VibrateSwitch;
     public UIReward m_UIReward;
+    //首页logo
+    public GameObject m_Logo;
     //////////////////////////////////////////////////多语言设置，文本物体
     //设置标题
     public TMP_Text m_SettingTitle;
@@ -56,6 +58,11 @@ public class MenuManager : MonoBehaviour
         SetLanguage();
         m_SoundSwitch.sprite = GlobalManager.Instance.IsSound ? switchSprites[0] : switchSprites[1];
         m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
+        m_Logo.SetActive(true);
+        DOVirtual.DelayedCall(2f, () =>
+      {
+          m_Logo.SetActive(false);
+      });
     }
     //设置多语言
     public void SetLanguage()

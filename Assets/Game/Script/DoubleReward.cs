@@ -34,7 +34,7 @@ public class DoubleReward : MonoBehaviour
         else
         {
             mGetDoubleRewardTime = DateTime.Parse(PlayerPrefs.GetString("GetDoubleRewardTime"));
-            if (DateTime.Now != mGetDoubleRewardTime)//如果当前时间和领取时间不一致
+            if (DateTime.Now.DayOfYear != mGetDoubleRewardTime.DayOfYear)//如果当前时间和领取时间不一致
             {
                 mIsGetDoubleReward = false;
                 PlayerPrefs.SetInt("IsGetDoubleReward", 0);
@@ -66,7 +66,11 @@ public class DoubleReward : MonoBehaviour
             return;
         if (mIsGetDoubleReward && (DateTime.Now - mGetDoubleRewardTime).TotalSeconds < DoubleRewardTime)
         {
-            m_DoubleRewardCountDownText.text = (DoubleRewardTime - (int)(DateTime.Now - mGetDoubleRewardTime).TotalSeconds).ToString();
+            //倒计时，显示分钟和秒
+            int remainingTime = DoubleRewardTime - (int)(DateTime.Now - mGetDoubleRewardTime).TotalSeconds;
+            int minute = remainingTime / 60;
+            int second = remainingTime % 60;
+            m_DoubleRewardCountDownText.text = minute.ToString("00") + ":" + second.ToString("00");
         }
         else
         {

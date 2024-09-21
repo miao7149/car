@@ -178,6 +178,7 @@ public class Car : MonoBehaviour
     public void StartCarScaleAnimation()
     {
         float scaleDuration = 0.1f; // 缩放动画的持续时间
+        transform.localScale = transform.localScale * 1.1f; // 缩小到汽车本身的90%
         Vector3 minScale = transform.localScale * 0.99f; // 缩小到汽车本身的90%
         transform.DOScale(minScale, scaleDuration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo); // 无限循环，来回缩放
     }

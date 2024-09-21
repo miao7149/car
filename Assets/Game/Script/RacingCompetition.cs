@@ -78,7 +78,7 @@ public class RacingCompetition : MonoBehaviour
         if (PlayerPrefs.HasKey("CompetitionTime"))
         {
             mCompetitionTime = DateTime.Parse(PlayerPrefs.GetString("CompetitionTime"));
-            if (DateTime.Now != mCompetitionTime)
+            if (DateTime.Now.DayOfYear != mCompetitionTime.DayOfYear)
             {
                 mDailyCompetitionCount = 3;
                 PlayerPrefs.SetInt("DailyCompetitionCount", mDailyCompetitionCount);

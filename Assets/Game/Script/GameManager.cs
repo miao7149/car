@@ -858,7 +858,7 @@ public class GameManager : MonoBehaviour
         foreach (var car in carArr)
         {
             car.transform.localScale = Vector3.zero;
-            car.transform.DOScale(Vector3.one, 2f).SetEase(Ease.OutBack).Play();
+            car.transform.DOScale(Vector3.one * 1.1f, 1f).SetEase(Ease.OutBack).Play();
         }
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlayGameStart();
