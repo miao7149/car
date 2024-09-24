@@ -81,73 +81,112 @@ public class AudioManager : MonoBehaviour
     public void PlayCarSmallMove()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.2f;
             soundEffectsSource.PlayOneShot(carSmallMoveClip);
+        }
+
     }
     // 播放汽车撞击音效
     public void PlayCarCrash()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(carCrashClip);
+        }
     }
     // 播放卡车行驶音效
     public void PlayCarBigMove()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(carBigMoveClip);
+        }
     }
     // 播放行人被撞击音效
     public void PlayPedestrianHit()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(pedestrianHitClip);
+        }
     }
     // 播放行人眩晕音效
     public void PlayPedestrianDizzy()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(pedestrianDizzyClip);
+        }
     }
     // 播放气球充气音效
     public void PlayBalloonInflate()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(balloonInflateClip);
+        }
     }
     // 播放气球飞行音效
     public void PlayBalloonFly()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(balloonFlyClip);
+        }
     }
     // 播放获得金币音效
     public void PlayGetCoin()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(getCoinClip);
+        }
     }
     // 播放游戏开始音效
     public void PlayGameStart()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(gameStartClip);
+        }
     }
     // 播放胜利音效
     public void PlayVictory()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(victoryClip);
+        }
     }
     // 播放失败音效
     public void PlayFail()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(failClip);
+        }
+
     }
     // 播放金币结算音效
     public void PlayCoinSettle()
     {
         if (GlobalManager.Instance.IsSound)
+        {
+            soundEffectsSource.volume = 0.5f;
             soundEffectsSource.PlayOneShot(coinSettleClip);
+        }
+
     }
     // 暂停背景音乐
     public void PauseBackgroundMusic()

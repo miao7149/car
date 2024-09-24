@@ -13,6 +13,12 @@ public class UIHardMode : MonoBehaviour
     public LoopGridView mLoopGridView;
     private List<HardItemData> hardItems = new List<HardItemData>();
     public GameObject m_HardModeRoot;
+    //通知玩家有新的困难模式关卡的委托事件
+    public delegate void NewHardModeLevel(string msg);
+    public NewHardModeLevel OnNewHardModeLevel;
+    //关闭红点委托
+    public delegate void CloseRedPoint(string message);
+    public CloseRedPoint CloseRedPointEvent;
     void Start()
     {
         hardItems.Add(new HardItemData
@@ -62,13 +68,14 @@ public class UIHardMode : MonoBehaviour
         }
         item = gridView.NewListViewItem("HardItem");
         var itemScript = item.GetComponent<HardItem>();
-        itemScript.SetItemData(itemData);
+        itemScript.SetItemData(itemData, this);
         itemScript.Init();
         return item;
     }
     public void OnCloseBtnClicked()
     {
         m_HardModeRoot.SetActive(false);
+        CloseRedPointEvent?.Invoke("Hard");
     }
     public void OnHardModeBtn()
     {

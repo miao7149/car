@@ -109,6 +109,7 @@ public class SkinItem : MonoBehaviour
                 {
                     m_UnLockBtn.SetActive(true);
                     m_Bg.GetComponent<Image>().sprite = m_BgList[1];
+                    mUISwitchSkin.OnNewSkin("Skin");
                 }
                 else
                 {
@@ -124,6 +125,7 @@ public class SkinItem : MonoBehaviour
                 {
                     m_UnLockBtn.SetActive(true);
                     m_Bg.GetComponent<Image>().sprite = m_BgList[1];
+                    mUISwitchSkin.OnNewSkin("Skin");
                 }
                 else
                 {
@@ -149,6 +151,7 @@ public class SkinItem : MonoBehaviour
         m_UnLockBtn.SetActive(false);
         //显示使用按钮
         m_UseBtn.SetActive(true);
+        mUISwitchSkin.mLoopGridView.RefreshAllShownItem();
     }
     //使用按钮
     public void OnUseBtnClick()
@@ -169,5 +172,6 @@ public class SkinItem : MonoBehaviour
         }
         GlobalManager.Instance.SaveGameData();
         mUISwitchSkin.ChangeSkin(type, skinItemData.ModelName);
+        mUISwitchSkin.mLoopGridView.RefreshAllShownItem();
     }
 }

@@ -36,7 +36,7 @@ public class UIGameVictoryPage : MonoBehaviour
     public GameObject m_AdvanceCoin;
     //奖杯
     public GameObject m_AdvanceCup;
-    public LoopListView2 loopListView;
+    public ScrollRect m_ScrollRect;
     //当前晋升描述
     public GameObject m_CurrentPromotionDesc;
     //当前晋升人数
@@ -50,6 +50,15 @@ public class UIGameVictoryPage : MonoBehaviour
     private double remainingTime; // 剩余时间
     //段位图片
     public Sprite[] m_RankSprites;
+    //预制体1
+    public GameObject m_Item1;
+    //预制体2
+    public GameObject m_Item2;
+    //预制体3
+    public GameObject m_Item3;
+    float mItemHeight1;
+    float mItemHeight2;
+    float mItemHeight3;
 
     /************************************************************************/
     //竞速赛完成界面子节点UI
@@ -66,6 +75,9 @@ public class UIGameVictoryPage : MonoBehaviour
         m_Beginner.SetActive(false);
         m_Advance.SetActive(false);
         m_Racing.SetActive(false);
+        mItemHeight1 = m_Item1.GetComponent<RectTransform>().sizeDelta.y;
+        mItemHeight2 = m_Item2.GetComponent<RectTransform>().sizeDelta.y;
+        mItemHeight3 = m_Item3.GetComponent<RectTransform>().sizeDelta.y;
     }
 
     // Update is called once per frame
@@ -108,7 +120,11 @@ public class UIGameVictoryPage : MonoBehaviour
         m_Advance.SetActive(true);
         m_TargetUI.SetActive(true);
         GlobalManager.Instance.RefreshTrophyRankingList();
-        loopListView.InitListView(GlobalManager.Instance._trophyRankingList.Count, OnGetItemByIndex);
+        //设置content的大小
+        var y = (GlobalManager.Instance._trophyRankingList.Count - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+        m_ScrollRect.content.sizeDelta = new Vector2(0, y);
+        //创建列表
+        CreatItemList();
         var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
         if (PlayerListIndex > 29)
         {
@@ -146,47 +162,67 @@ public class UIGameVictoryPage : MonoBehaviour
                 m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount.ToString();
             }
         }
-        StartCoroutine(SmoothScrollToIndex(PlayerListIndex, 1.5f));
+        SmoothScrollToIndex(PlayerListIndex - 3, 1.5f);
     }
-    private IEnumerator SmoothScrollToIndex(int targetIndex, float duration)
+    private void SmoothScrollToIndex(int targetIndex, float duration)
     {
-        int startIndex = 0;
-        float timeElapsed = 0;
-
-        while (timeElapsed < duration)
+        if (targetIndex < 0 || targetIndex >= GlobalManager.Instance._trophyRankingList.Count)
         {
-            float t = timeElapsed / duration;
-            int currentIndex = (int)Mathf.Lerp(startIndex, targetIndex, t);
-            loopListView.MovePanelToItemIndex(currentIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            return;
         }
-
-        loopListView.MovePanelToItemIndex(targetIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
-    }
-    // 获取列表项
-    LoopListViewItem2 OnGetItemByIndex(LoopListView2 listView, int index)
-    {
-        if (index < 0 || index >= GlobalManager.Instance._trophyRankingList.Count)
+        float targetY = 0;
+        //计算目标位置
+        if (targetIndex < 29)
         {
-            return null;
+            targetY = targetIndex * (mItemHeight1 + 15);
         }
-        LoopListViewItem2 item = null;
-        // 获取或创建列表项
-        if (index == 29)
+        else if (targetIndex > 29 && targetIndex < 59)
         {
-            item = listView.NewListViewItem("RankItemUp");
-        }
-        else if (index == 59 && GlobalManager.Instance.CurrentRank > 1)
-        {
-            item = listView.NewListViewItem("RankItemDown");
+            targetY = (targetIndex - 1) * (mItemHeight1 + 15) + mItemHeight2 + 15;
         }
         else
         {
-            item = listView.NewListViewItem("RankItem");
+            targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
         }
-        item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[index], index + 1);
-        return item;
+        Debug.Log("targetY:" + targetY + "TargetIndex:" + targetIndex);
+        m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad);
+    }
+    // 获取列表项
+    bool IsCreatList = false;
+    void CreatItemList()
+    {
+        float PosY = 0;
+        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++)
+        {
+            if (IsCreatList == false)
+            {
+                GameObject item = null;
+                if (i == 29)
+                {
+                    item = Instantiate(m_Item2, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight2 + 15;
+                }
+                else if (i == 59 && GlobalManager.Instance.CurrentRank > 1)
+                {
+                    item = Instantiate(m_Item3, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight3 + 15;
+                }
+                else
+                {
+                    item = Instantiate(m_Item1, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight1 + 15;
+                }
+                item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            }
+            else
+            {
+                m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            }
+        }
+        IsCreatList = true;
     }
     //显示完成界面
     public void ShowBeginnerFinishRoot(int coinCount = 0)

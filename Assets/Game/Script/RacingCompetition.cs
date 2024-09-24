@@ -72,13 +72,19 @@ public class RacingCompetition : MonoBehaviour
     private DateTime mCompetitionTime;
     //参赛次数文本
     public TMP_Text m_CompetitionCountText;
+    //每日上线后提示玩家参赛的委托事件
+    public delegate void DailyCompetitionHandler(string msg);
+    public DailyCompetitionHandler OnDailyCompetition;
+    //关闭红点委托
+    public delegate void CloseRedPoint(string message);
+    public CloseRedPoint CloseRedPointEvent;
     void Start()
     {
         //如果当前时间和参赛时间相差大于一天，重置每日参赛次数
         if (PlayerPrefs.HasKey("CompetitionTime"))
         {
             mCompetitionTime = DateTime.Parse(PlayerPrefs.GetString("CompetitionTime"));
-            if (DateTime.Now != mCompetitionTime)
+            if (DateTime.Now.DayOfYear != mCompetitionTime.DayOfYear)
             {
                 mDailyCompetitionCount = 3;
                 PlayerPrefs.SetInt("DailyCompetitionCount", mDailyCompetitionCount);
@@ -97,6 +103,10 @@ public class RacingCompetition : MonoBehaviour
         if (PlayerPrefs.HasKey("StartDate") && PlayerPrefs.HasKey("IsCompetition"))
         {
             Init();
+        }
+        if (mDailyCompetitionCount > 0)
+        {
+            OnDailyCompetition?.Invoke("Racing");
         }
     }
     //检查当前游戏状态
@@ -190,8 +200,11 @@ public class RacingCompetition : MonoBehaviour
         PlayerPrefs.SetInt("DailyCompetitionCount", mDailyCompetitionCount);
         m_CompetitionRoot.SetActive(true);
         m_StartCompetitionRoot.SetActive(false);
+        remainingTime = TotalTime - (DateTime.Now - GlobalManager.Instance.RacingStartDate).TotalSeconds;
         GlobalManager.Instance.RefreshPlayerInfoList();
         RefreshPlayerItem();
+        if (mDailyCompetitionCount == 0)
+            CloseRedPointEvent?.Invoke("Racing");
     }
     void RefreshPlayerItem()
     {

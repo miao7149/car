@@ -11,8 +11,8 @@ using UnityEngine.UI;
 public class RankingMatch : MonoBehaviour
 {
     // Start is called before the first frame update
-    public LoopListView2 loopListView;
-    bool IsInitLoopListView = false;
+    public ScrollRect m_ScrollRect;
+    bool IsCreatList = false;
     public GameObject m_RankingMatchRoot;
     //奖杯图片
     public GameObject m_RankImage;
@@ -61,8 +61,20 @@ public class RankingMatch : MonoBehaviour
     public GameObject m_Car;
     //段位物体列表
     public GameObject[] m_RankItems;
+    //预制体1
+    public GameObject m_Item1;
+    //预制体2
+    public GameObject m_Item2;
+    //预制体3
+    public GameObject m_Item3;
+    float mItemHeight1;
+    float mItemHeight2;
+    float mItemHeight3;
     void Start()
     {
+        mItemHeight1 = m_Item1.GetComponent<RectTransform>().sizeDelta.y;
+        mItemHeight2 = m_Item2.GetComponent<RectTransform>().sizeDelta.y;
+        mItemHeight3 = m_Item3.GetComponent<RectTransform>().sizeDelta.y;
         if (GlobalManager.Instance.CurrentLevel >= 15 && GlobalManager.Instance.mIsStartRankingMatch == false)
         {
             GlobalManager.Instance.mIsStartRankingMatch = true;
@@ -111,11 +123,11 @@ public class RankingMatch : MonoBehaviour
             m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1];//设置段位图片
             m_RankImage.GetComponent<Image>().SetNativeSize();
             GlobalManager.Instance.RefreshTrophyRankingList();
-            if (IsInitLoopListView == false)
-            {
-                IsInitLoopListView = true;
-                loopListView.InitListView(GlobalManager.Instance._trophyRankingList.Count, OnGetItemByIndex);
-            }
+            //设置content的大小
+            var y = (GlobalManager.Instance._trophyRankingList.Count - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+            m_ScrollRect.content.sizeDelta = new Vector2(0, y);
+            //创建列表
+            CreatItemList();
             var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
             if (PlayerListIndex > 29)
             {
@@ -139,28 +151,40 @@ public class RankingMatch : MonoBehaviour
         }
     }
     // 获取列表项
-    LoopListViewItem2 OnGetItemByIndex(LoopListView2 listView, int index)
+    void CreatItemList()
     {
-        if (index < 0 || index >= GlobalManager.Instance._trophyRankingList.Count)
+        float PosY = 0;
+        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++)
         {
-            return null;
+            if (IsCreatList == false)
+            {
+                GameObject item = null;
+                if (i == 29)
+                {
+                    item = Instantiate(m_Item2, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight2 + 15;
+                }
+                else if (i == 59 && GlobalManager.Instance.CurrentRank > 1)
+                {
+                    item = Instantiate(m_Item3, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight3 + 15;
+                }
+                else
+                {
+                    item = Instantiate(m_Item1, m_ScrollRect.content);
+                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+                    PosY -= mItemHeight1 + 15;
+                }
+                item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            }
+            else
+            {
+                m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            }
         }
-        LoopListViewItem2 item = null;
-        // 获取或创建列表项
-        if (index == 29)
-        {
-            item = listView.NewListViewItem("RankItemUp");
-        }
-        else if (index == 59 && GlobalManager.Instance.CurrentRank > 1)
-        {
-            item = listView.NewListViewItem("RankItemDown");
-        }
-        else
-        {
-            item = listView.NewListViewItem("RankItem");
-        }
-        item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[index], index + 1);
-        return item;
+        IsCreatList = true;
     }
     // Update is called once per frame
     void Update()
@@ -183,25 +207,32 @@ public class RankingMatch : MonoBehaviour
             return;
         }
         m_RankingMatchRoot.SetActive(true);
+        m_ScrollRect.content.anchoredPosition = new Vector2(0, 0);
         RefreshRankingMatch();
-        var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
-        StartCoroutine(SmoothScrollToIndex(PlayerListIndex, 1.5f));
+        SmoothScrollToIndex(GlobalManager.Instance.GetRankIndex() - 3, 1.5f);
     }
-    private IEnumerator SmoothScrollToIndex(int targetIndex, float duration)
+    private void SmoothScrollToIndex(int targetIndex, float duration)
     {
-        int startIndex = 0;
-        float timeElapsed = 0;
-
-        while (timeElapsed < duration)
+        if (targetIndex < 0 || targetIndex >= GlobalManager.Instance._trophyRankingList.Count)
         {
-            float t = timeElapsed / duration;
-            int currentIndex = (int)Mathf.Lerp(startIndex, targetIndex, t);
-            loopListView.MovePanelToItemIndex(currentIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            return;
         }
-
-        loopListView.MovePanelToItemIndex(targetIndex, loopListView.GetComponent<RectTransform>().rect.height / 2);
+        float targetY = 0;
+        //计算目标位置
+        if (targetIndex < 29)
+        {
+            targetY = targetIndex * (mItemHeight1 + 15);
+        }
+        else if (targetIndex > 29 && targetIndex < 59)
+        {
+            targetY = (targetIndex - 1) * (mItemHeight1 + 15) + mItemHeight2 + 15;
+        }
+        else
+        {
+            targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+        }
+        Debug.Log("targetY:" + targetY + "TargetIndex:" + targetIndex);
+        m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad);
     }
     //领取按钮
     public void OnGetBtn()

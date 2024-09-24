@@ -49,6 +49,12 @@ public class WheelOfFortune : MonoBehaviour
     public Button m_SpinButton;
     //转盘根节点
     public GameObject m_WheelRoot;
+    //每日上线后提示玩家抽奖的委托事件
+    public delegate void OnDailySpin(string message);
+    public OnDailySpin OnDailySpinEvent;
+    //关闭红点委托
+    public delegate void CloseRedPoint(string message);
+    public CloseRedPoint CloseRedPointEvent;
 
     void Start()
     {
@@ -70,8 +76,13 @@ public class WheelOfFortune : MonoBehaviour
             System.DateTime nowTime = System.DateTime.Now;
             if (nowTime.DayOfYear != finishTime.DayOfYear)//如果不是同一天
             {
+                OnDailySpinEvent?.Invoke("Spin");
                 m_TodaySpinCount = 5;
             }
+        }
+        else
+        {
+            OnDailySpinEvent?.Invoke("Spin");
         }
         SetSpinButtonState();//设置抽奖按钮状态
     }
@@ -297,6 +308,7 @@ public class WheelOfFortune : MonoBehaviour
             m_AdSpinRoot.SetActive(false);
             m_NoSpinRoot.SetActive(true);
             m_SpinButton.image.sprite = m_SpinButtonSprites[1];
+            CloseRedPointEvent?.Invoke("Spin");
         }
     }
 }

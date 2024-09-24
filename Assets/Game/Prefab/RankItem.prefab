@@ -430,7 +430,6 @@ GameObject:
   - component: {fileID: 5444463829619930239}
   - component: {fileID: 8442095095532996751}
   - component: {fileID: 6775161172807644163}
-  - component: {fileID: 4735264952430667167}
   - component: {fileID: 2869215051550834688}
   m_Layer: 5
   m_Name: RankItem
@@ -438,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5444463829619930239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -500,18 +499,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4735264952430667167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5147545596338324869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbcbd7952202d4d44a555aea5af2a351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2869215051550834688
 MonoBehaviour:
   m_ObjectHideFlags: 0

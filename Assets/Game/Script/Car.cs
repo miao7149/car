@@ -26,12 +26,12 @@ public class Car : MonoBehaviour
     public bool isPlayCoinAnimation = false;
     public delegate void CarOutOfBoundsHandler(Vector3 pos, Vector3 dir);
     public event CarOutOfBoundsHandler CarOutOfBounds;
-
+    public CarInfo carInfo;
     public void Init(CarInfo info)
     {
         dead = false;
         posArr.Clear();
-
+        carInfo = info;
         type = info.type;
         switch (info.dir)
         {
@@ -178,6 +178,7 @@ public class Car : MonoBehaviour
     public void StartCarScaleAnimation()
     {
         float scaleDuration = 0.1f; // 缩放动画的持续时间
+        transform.localScale = transform.localScale; // 缩小到汽车本身的90%
         Vector3 minScale = transform.localScale * 0.99f; // 缩小到汽车本身的90%
         transform.DOScale(minScale, scaleDuration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo); // 无限循环，来回缩放
     }

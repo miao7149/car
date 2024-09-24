@@ -25,6 +25,8 @@ public class MenuManager : MonoBehaviour
     //震动开关按钮
     public Image m_VibrateSwitch;
     public UIReward m_UIReward;
+    //首页logo
+    public GameObject m_Logo;
     //////////////////////////////////////////////////多语言设置，文本物体
     //设置标题
     public TMP_Text m_SettingTitle;
@@ -56,6 +58,12 @@ public class MenuManager : MonoBehaviour
         SetLanguage();
         m_SoundSwitch.sprite = GlobalManager.Instance.IsSound ? switchSprites[0] : switchSprites[1];
         m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
+        CreateCarAndTrail();
+        m_Logo.SetActive(true);
+        DOVirtual.DelayedCall(2f, () =>
+      {
+          m_Logo.SetActive(false);
+      });
     }
     //设置多语言
     public void SetLanguage()
@@ -87,6 +95,22 @@ public class MenuManager : MonoBehaviour
         AudioManager.Instance.PlayButtonClick();
         GlobalManager.Instance.GameType = GameType.Main;
         MoveCarAppearanceAnima();
+    }
+    //创建汽车和拖尾
+    public void CreateCarAndTrail()
+    {
+        if (GlobalManager.Instance.PlayerCarSkinName != "")
+        {
+            GameObject car = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarSkinName), m_Car.transform);
+            car.transform.localPosition = Vector3.zero;
+            car.transform.localScale = Vector3.one;
+        }
+        if (GlobalManager.Instance.PlayerCarTrailName != "")
+        {
+            GameObject trail = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), m_Car.transform);
+            trail.transform.localPosition = Vector3.zero;
+            trail.transform.localScale = Vector3.one;
+        }
     }
     //汽车出场动画
     public void MoveCarAppearanceAnima()
@@ -133,6 +157,7 @@ public class MenuManager : MonoBehaviour
     // 开始汽车震动动画
     public void StartCarScaleAnimation()
     {
+        return;
         float scaleDuration = 0.1f; // 缩放动画的持续时间
         Vector3 minScale = m_Car.transform.localScale * 0.99f; // 缩小到汽车本身的90%
 
@@ -164,8 +189,6 @@ public class MenuManager : MonoBehaviour
                 m_LevelList[i].transform.GetChild(0).gameObject.SetActive(true);
                 m_LevelList[i].transform.GetChild(2).gameObject.SetActive(false);
             }
-
-
         }
     }
     //设置按钮

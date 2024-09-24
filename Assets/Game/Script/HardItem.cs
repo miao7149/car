@@ -18,6 +18,7 @@ public class HardItem : MonoBehaviour
     public TMP_Text m_LevelID;
     //HardItemData
     private HardItemData mHardItemData;
+    UIHardMode mUIHardMode;
     enum HardItemState
     {
         //已完成
@@ -65,6 +66,7 @@ public class HardItem : MonoBehaviour
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(true);
             m_LockRoot.SetActive(false);
+            mUIHardMode.OnNewHardModeLevel("Hard");
         }
         else
         {
@@ -76,10 +78,11 @@ public class HardItem : MonoBehaviour
             m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = "Complete\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
         }
     }
-    public void SetItemData(HardItemData data)
+    public void SetItemData(HardItemData data, UIHardMode uiHardMode)
     {
         mHardItemData = data;
         m_LevelID.text = data.mLevelID;
+        mUIHardMode = uiHardMode;
     }
     //重玩按钮
     public void OnReplayBtn()
