@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
+  <string name="gcm_defaultSenderId" translatable="false">270559343110</string>
+  <string name="google_storage_bucket" translatable="false">traffic-jam-master-65a6d.appspot.com</string>
+  <string name="project_id" translatable="false">traffic-jam-master-65a6d</string>
+  <string name="google_api_key" translatable="false">AIzaSyDcCjgR-h4x3QEZnzt8RnB_4AaEgEygY1U</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDcCjgR-h4x3QEZnzt8RnB_4AaEgEygY1U</string>
+  <string name="google_app_id" translatable="false">1:270559343110:android:dce5c14ea6e7cbf433c987</string>
+</resources>

@@ -78,8 +78,22 @@ public class RacingCompetition : MonoBehaviour
     //关闭红点委托
     public delegate void CloseRedPoint(string message);
     public CloseRedPoint CloseRedPointEvent;
+    /////////////////////////////////////////////多语言设置，文本物体
+    //标题
+    public TMP_Text m_Title;
+    //描述
+    public TMP_Text m_Desc;
+    //继续按钮文本
+    public TMP_Text m_ContinueText;
+    //Start标题
+    public TMP_Text m_StartTitle;
+    //Start描述
+    public TMP_Text m_StartDesc;
+    //Start按钮文本
+    public TMP_Text m_StartBtnText;
     void Start()
     {
+        SetLanguage();
         //如果当前时间和参赛时间相差大于一天，重置每日参赛次数
         if (PlayerPrefs.HasKey("CompetitionTime"))
         {
@@ -108,6 +122,15 @@ public class RacingCompetition : MonoBehaviour
         {
             OnDailyCompetition?.Invoke("Racing");
         }
+    }
+    public void SetLanguage()
+    {
+        m_Title.text = GlobalManager.Instance.GetLanguageValue("LevelRacing");
+        m_Desc.text = GlobalManager.Instance.GetLanguageValue("RacingDes");
+        m_ContinueText.text = GlobalManager.Instance.GetLanguageValue("Continue");
+        m_StartTitle.text = GlobalManager.Instance.GetLanguageValue("LevelRacing");
+        m_StartDesc.text = GlobalManager.Instance.GetLanguageValue("RacingDes");
+        m_StartBtnText.text = GlobalManager.Instance.GetLanguageValue("Start");
     }
     //检查当前游戏状态
     public void CheckGameStatus()
@@ -152,13 +175,7 @@ public class RacingCompetition : MonoBehaviour
                 PlayerPrefs.DeleteKey("StartDate");
                 PlayerPrefs.DeleteKey("IsCompetition");
                 Debug.Log("比赛结束，玩家完成竞赛");
-                m_RewardRoot.SetActive(true);
-                //光环顺时针一直旋转
-                m_Halo.transform.DORotate(new Vector3(0, 0, -360), 5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
-                DOVirtual.DelayedCall(2f, () =>
-                {
-                    CreateAndAnimateCoins(rewardCoins[GlobalManager.Instance.GetPlayerRankIndex()]);
-                });
+                m_CompetitionRoot.SetActive(true);
             }
             else if (DateTime.Now - GlobalManager.Instance.RacingStartDate < TimeSpan.FromSeconds(TotalTime) && CompletionCount < 3)//比赛未结束
             {
@@ -172,6 +189,7 @@ public class RacingCompetition : MonoBehaviour
                 PlayerPrefs.DeleteKey("StartDate");
                 PlayerPrefs.DeleteKey("IsCompetition");
                 m_GameDescText.text = "比赛结束，下次好运！";
+                m_CompetitionRoot.SetActive(true);
             }
         }
     }
@@ -221,7 +239,20 @@ public class RacingCompetition : MonoBehaviour
     //继续按钮
     public void OnContinueBtn()
     {
-        m_CompetitionRoot.SetActive(false);
+        if (GlobalManager.Instance._RacingSelfPlayerInfo.CompleteLevel >= 30) //玩家完成比赛,比赛结束
+        {
+            m_RewardRoot.SetActive(true);
+            //光环顺时针一直旋转
+            m_Halo.transform.DORotate(new Vector3(0, 0, -360), 5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                CreateAndAnimateCoins(rewardCoins[GlobalManager.Instance.GetPlayerRankIndex()]);
+            });
+        }
+        else
+        {
+            m_CompetitionRoot.SetActive(false);
+        }
     }
     public void OnCloseStartCompetitionBtn()
     {
@@ -289,6 +320,7 @@ public class RacingCompetition : MonoBehaviour
         DOVirtual.DelayedCall(2f, () =>
        {
            m_RewardRoot.SetActive(false);
+           m_CompetitionRoot.SetActive(false);
        });
     }
 

@@ -407,7 +407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X50
+  m_text: X20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7d9b815372b75417997ebf1bc57aef4d, type: 2}
   m_sharedMaterial: {fileID: 1931503294597584429, guid: 7d9b815372b75417997ebf1bc57aef4d, type: 2}
@@ -851,6 +851,8 @@ MonoBehaviour:
   m_CanUnlockRoot: {fileID: 4164032488795081221}
   m_LockRoot: {fileID: 7652602092153411386}
   m_LevelID: {fileID: 2504811053642488843}
+  m_PlayText: {fileID: 6057176675720520834}
+  m_ReplayText: {fileID: 7698822379126475069}
 --- !u!1 &3470949762756078335
 GameObject:
   m_ObjectHideFlags: 0

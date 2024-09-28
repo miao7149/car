@@ -55,6 +55,13 @@ public class WheelOfFortune : MonoBehaviour
     //关闭红点委托
     public delegate void CloseRedPoint(string message);
     public CloseRedPoint CloseRedPointEvent;
+    /////////////////////////////////////////////多语言设置，文本物体
+    //标题
+    public TMP_Text m_Title;
+    //开始抽奖按钮
+    public TMP_Text m_SpinText;
+    //观看广告按钮
+    public TMP_Text m_AdText;
 
     void Start()
     {
@@ -85,6 +92,13 @@ public class WheelOfFortune : MonoBehaviour
             OnDailySpinEvent?.Invoke("Spin");
         }
         SetSpinButtonState();//设置抽奖按钮状态
+        SetLanguage();
+    }
+    public void SetLanguage()
+    {
+        m_Title.text = GlobalManager.Instance.GetLanguageValue("LuckuSpin");
+        m_SpinText.text = GlobalManager.Instance.GetLanguageValue("StartDraw");
+        m_AdText.text = GlobalManager.Instance.GetLanguageValue("StartDraw");
     }
     void Update()
     {
@@ -126,7 +140,6 @@ public class WheelOfFortune : MonoBehaviour
 
                 // 计算中奖扇区
                 selectedSector = Mathf.FloorToInt((targetAngle + 30) / anglePerSector);
-                Debug.Log("Selected Sector: " + (selectedSector + 1));
                 isSpinning = false;
             });
 
@@ -226,9 +239,15 @@ public class WheelOfFortune : MonoBehaviour
         }
         else if (m_TodaySpinCount > 0)//如果还有抽奖次数
         {
-            m_TodaySpinCount--;
-            PlayerPrefs.SetInt("TodaySpinCount", m_TodaySpinCount);
-            StartSpin();
+            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
+            {
+                m_TodaySpinCount--;
+                PlayerPrefs.SetInt("TodaySpinCount", m_TodaySpinCount);
+                StartSpin();
+            }, () =>
+        {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
+        });
         }
         else
         {

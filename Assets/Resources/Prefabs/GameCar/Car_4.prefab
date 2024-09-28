@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 583448836251645204}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6407, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.6407, z: -0.7}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -539,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 6351897327199825601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5947, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.5947, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -645,6 +645,13 @@ MonoBehaviour:
   sprite: {fileID: 7745008958230055090}
   droneTargetPosition: {fileID: 0}
   isPlayCoinAnimation: 0
+  carInfo:
+    type: 0
+    posX: 0
+    posY: 0
+    dir: 0
+    turn: 0
+  mTrail: {fileID: 0}
 --- !u!1 &7836979716818383362
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6730da5eb902a4229a192a2e0012e1df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6730da5eb902a4229a192a2e0012e1df, type: 3}
       propertyPath: m_LocalRotation.w

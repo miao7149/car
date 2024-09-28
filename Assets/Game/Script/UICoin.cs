@@ -13,7 +13,12 @@ public class UICoin : MonoBehaviour
     {
         m_CoinText.text = GlobalManager.Instance.PlayerCoin.ToString();
     }
-
+    void Start()
+    {
+    }
+    void OnDestroy()
+    {
+    }
     // Update is called once per frame
     void Update()
     {

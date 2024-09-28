@@ -116,6 +116,7 @@ public class UIGameVictoryPage : MonoBehaviour
     {
         GlobalManager.Instance.PlayerCoin += coinCount;
         GlobalManager.Instance._selfPlayerInfo.TrophyProp.Trophy.Count += trophyCount;
+        GlobalManager.Instance._selfTrophyCount += trophyCount;
         FinishRoot.SetActive(true);
         m_Advance.SetActive(true);
         m_TargetUI.SetActive(true);
@@ -184,7 +185,6 @@ public class UIGameVictoryPage : MonoBehaviour
         {
             targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
         }
-        Debug.Log("targetY:" + targetY + "TargetIndex:" + targetIndex);
         m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad);
     }
     // 获取列表项

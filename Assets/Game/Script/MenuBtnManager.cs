@@ -41,46 +41,47 @@ public class MenuBtnManager : MonoBehaviour
     }
     void Start()
     {
+        var str = GlobalManager.Instance.GetLanguageValue("Unlock");
         if (GlobalManager.Instance.CurrentLevel > 4)
         {
             m_RacingBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Racing";
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Racing");
             m_RacingBtn.GetComponent<Button>().interactable = true;
         }
         else
         {
             m_RacingBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Lv5 unlock";
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "5");
             m_RacingBtn.GetComponent<Button>().interactable = false;
         }
         if (GlobalManager.Instance.CurrentLevel > 6)
         {
             m_WheelBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Spin";
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Spin");
             m_WheelBtn.GetComponent<Button>().interactable = true;
         }
         else
         {
             m_WheelBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Lv7 unlock";
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "7");
             m_WheelBtn.GetComponent<Button>().interactable = false;
         }
         if (GlobalManager.Instance.CurrentLevel > 13)
         {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "League";
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("League");
             m_QualifyingBtn.GetComponent<Button>().interactable = true;
         }
         else
         {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Lv14 unlock";
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "14");
             m_QualifyingBtn.GetComponent<Button>().interactable = false;
         }
 
@@ -88,28 +89,28 @@ public class MenuBtnManager : MonoBehaviour
         {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Hard";
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
             m_HardBtn.GetComponent<Button>().interactable = true;
         }
         else
         {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Lv15 unlock";
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "15");
             m_HardBtn.GetComponent<Button>().interactable = false;
         }
         if (GlobalManager.Instance.CurrentLevel > 16)
         {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Skin";
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Skin");
             m_SkinBtn.GetComponent<Button>().interactable = true;
         }
         else
         {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = "Lv17 unlock";
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "17");
             m_SkinBtn.GetComponent<Button>().interactable = false;
         }
     }

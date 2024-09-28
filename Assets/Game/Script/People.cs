@@ -10,6 +10,9 @@ public class People : MonoBehaviour
     private bool isTrigger = false;
     private float TriggerTime = 1;
     public Animator m_Animator;
+    //晕倒后的角色
+    public GameObject m_Faint;
+    public PeoInfoItem peoInfo;
 
     void OnDestroy()
     {
@@ -18,13 +21,19 @@ public class People : MonoBehaviour
             action.Kill();
         }
     }
+    float Speed = 1f;
     public void Init(PeoInfoItem peoInfoItem)
     {
+        peoInfo = peoInfoItem;
         gameObject.SetActive(true);
         transform.SetParent(transform, false);
+        main.transform.localEulerAngles = new Vector3(0, 0, 0);
+        m_Animator.gameObject.SetActive(true);
+        m_Faint.SetActive(false);
         var p1 = GameManager.Instance.ConvertPos(new Vector3(peoInfoItem.pos1.x, 0, peoInfoItem.pos1.y));
         var p2 = GameManager.Instance.ConvertPos(new Vector3(peoInfoItem.pos2.x, 0, peoInfoItem.pos2.y));
         Vector3 direction = (p2 - p1).normalized;
+        var dis = Vector3.Distance(p1, p2);
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.localRotation = lookRotation;
         transform.localPosition = p1;
@@ -34,13 +43,13 @@ public class People : MonoBehaviour
 
         // 移动到p2
         action.AppendCallback(() => m_Animator.CrossFade("walk", 0.1f)); // 开始行走动画
-        action.Append(transform.DOLocalMove(p2, 4).SetEase(Ease.Linear).OnComplete(() => TurnAround(gameObject, p2, p1, m_Animator)));
+        action.Append(transform.DOLocalMove(p2, dis / Speed).SetEase(Ease.Linear).OnComplete(() => TurnAround(gameObject, p2, p1, m_Animator)));
         action.AppendCallback(() => m_Animator.CrossFade("normal", 0.1f)); // 停止行走动画
         action.AppendInterval(1); // 停顿1秒
 
         // 移动到p1
         action.AppendCallback(() => m_Animator.CrossFade("walk", 0.1f)); // 开始行走动画
-        action.Append(transform.DOLocalMove(p1, 4).SetEase(Ease.Linear).OnComplete(() => TurnAround(gameObject, p1, p2, m_Animator)));
+        action.Append(transform.DOLocalMove(p1, dis / Speed).SetEase(Ease.Linear).OnComplete(() => TurnAround(gameObject, p1, p2, m_Animator)));
         action.AppendCallback(() => m_Animator.CrossFade("normal", 0.1f)); // 停止行走动画
         action.AppendInterval(1); // 停顿1秒
 
@@ -51,10 +60,12 @@ public class People : MonoBehaviour
 
     public void Hit(Vector3 dir)
     {
+        m_Animator.gameObject.SetActive(false);
+        m_Faint.SetActive(true);
         action.Kill();
         main.transform.localEulerAngles = new Vector3(0, 0, 90);
         transform.DOLocalRotateQuaternion(Quaternion.LookRotation(dir), 1f).SetEase(Ease.OutCirc).Play();
-        transform.DOLocalMove(transform.localPosition + dir.normalized * 3, 1f).SetEase(Ease.OutCirc).Play();
+        transform.DOLocalMove(transform.localPosition + dir.normalized * 1.5f, 1f).SetEase(Ease.OutCirc).Play();
     }
     void Update()
     {
@@ -77,18 +88,19 @@ public class People : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (isTrigger || GameManager.Instance.gameStatu != GameStatu.playing) return;
+        if (isTrigger) return;
         isTrigger = true;
         var car = other.transform.parent.parent.GetComponent<Car>();
         GameManager.Instance.failReason = FailReason.PeopleCrash;
         GameManager.Instance.SetGameStatu(GameStatu.faled);
         GameManager.Instance.hitPeopleCar = car;
+        GameManager.Instance.hitPeople = this;
         car.moveAction.Kill();
         AudioManager.Instance.PlayPedestrianHit();
         DOVirtual.DelayedCall(2f, () =>
-       {
-           GameManager.Instance.DeleteCar(car);
-       });
-        //Hit(car.transform.localRotation * Vector3.forward);
+        {
+            GameManager.Instance.DeleteCar(car);
+        });
+        Hit(car.transform.localRotation * Vector3.forward);
     }
 }

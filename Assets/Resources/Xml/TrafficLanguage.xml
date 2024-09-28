@@ -172,7 +172,7 @@
     <Row>
       <Cell Column="Id:key">PrivacyPolicy</Cell>
       <Cell Column="English">Privacy Policy</Cell>
-      <Cell Column="Chinese">隐私政策</Cell>
+      <Cell Column="Chinese">隐私条款</Cell>
       <Cell Column="Japanese">プライバシー ポリシー</Cell>
       <Cell Column="Portuguese">Política de privacidade</Cell>
       <Cell Column="Spanish">Política de privacidad</Cell>
@@ -430,7 +430,7 @@
       <Cell Column="Russian">Ежедневные награды</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">First day</Cell>
+      <Cell Column="Id:key">Day1</Cell>
       <Cell Column="English">First day</Cell>
       <Cell Column="Chinese">第一天</Cell>
       <Cell Column="Japanese">1 日目</Cell>
@@ -443,7 +443,7 @@
       <Cell Column="Russian">Первый день</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">Second day</Cell>
+      <Cell Column="Id:key">Day2</Cell>
       <Cell Column="English">Second day</Cell>
       <Cell Column="Chinese">第二天</Cell>
       <Cell Column="Japanese">2 日目</Cell>
@@ -456,7 +456,7 @@
       <Cell Column="Russian">Второй день</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">Third day</Cell>
+      <Cell Column="Id:key">Day3</Cell>
       <Cell Column="English">Third day</Cell>
       <Cell Column="Chinese">第三天</Cell>
       <Cell Column="Japanese">3 日目</Cell>
@@ -469,7 +469,7 @@
       <Cell Column="Russian">Третий день</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">Fourth day</Cell>
+      <Cell Column="Id:key">Day4</Cell>
       <Cell Column="English">Fourth day</Cell>
       <Cell Column="Chinese">第四天</Cell>
       <Cell Column="Japanese">4 日目</Cell>
@@ -482,7 +482,7 @@
       <Cell Column="Russian">Четвертый день</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">Fifth day</Cell>
+      <Cell Column="Id:key">Day5</Cell>
       <Cell Column="English">Fifth day</Cell>
       <Cell Column="Chinese">第五天</Cell>
       <Cell Column="Japanese">5 日目</Cell>
@@ -495,7 +495,7 @@
       <Cell Column="Russian">Пятый день</Cell>
     </Row>
     <Row>
-      <Cell Column="Id:key">Sixth day</Cell>
+      <Cell Column="Id:key">Day6</Cell>
       <Cell Column="English">Sixth day</Cell>
       <Cell Column="Chinese">第六天</Cell>
       <Cell Column="Japanese">6 日目</Cell>
@@ -532,6 +532,448 @@
       <Cell Column="Korean">청구</Cell>
       <Cell Column="Arabic">اطالب</Cell>
       <Cell Column="Russian">Заявка</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">LuckuSpin</Cell>
+      <Cell Column="English">Lucku Spin</Cell>
+      <Cell Column="Chinese">幸运转盘</Cell>
+      <Cell Column="Japanese">Lucku スピン</Cell>
+      <Cell Column="Portuguese">Lucku Spin</Cell>
+      <Cell Column="Spanish">Lucku Spin</Cell>
+      <Cell Column="German">Lucku Spin</Cell>
+      <Cell Column="French">Lucku Spin</Cell>
+      <Cell Column="Korean">루쿠 스핀</Cell>
+      <Cell Column="Arabic">Lucku Spin</Cell>
+      <Cell Column="Russian">Lucku Spin</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">StartDraw</Cell>
+      <Cell Column="English">Start Draw</Cell>
+      <Cell Column="Chinese">开始抽奖</Cell>
+      <Cell Column="Japanese">抽選開始</Cell>
+      <Cell Column="Portuguese">Iniciar sorteio</Cell>
+      <Cell Column="Spanish">Iniciar sorteo</Cell>
+      <Cell Column="German">Ziehung starten</Cell>
+      <Cell Column="French">Commencer le tirage au sort</Cell>
+      <Cell Column="Korean">추첨 시작</Cell>
+      <Cell Column="Arabic">ابدأ السحب</Cell>
+      <Cell Column="Russian">Начать розыгрыш</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">LevelRacing</Cell>
+      <Cell Column="English">Level Racing</Cell>
+      <Cell Column="Chinese">冲关竞赛</Cell>
+      <Cell Column="Japanese">レベル レース</Cell>
+      <Cell Column="Portuguese">Corrida de nível</Cell>
+      <Cell Column="Spanish">Carreras de niveles</Cell>
+      <Cell Column="German">Level-Rennen</Cell>
+      <Cell Column="French">Course de niveaux</Cell>
+      <Cell Column="Korean">레벨 레이싱</Cell>
+      <Cell Column="Arabic">سباق المستويات</Cell>
+      <Cell Column="Russian">Гонки по уровням</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">RacingDes</Cell>
+      <Cell Column="English">Complete 30 levels before other players to win rewards</Cell>
+      <Cell Column="Chinese">在其他选手之前完成30关卡来赢得奖励</Cell>
+      <Cell Column="Japanese">他のプレイヤーより先に 30 レベルをクリアして報酬を獲得</Cell>
+      <Cell Column="Portuguese">Complete 30 níveis antes dos outros jogadores para ganhar recompensas</Cell>
+      <Cell Column="Spanish">Completa 30 niveles antes que otros jugadores para ganar recompensas</Cell>
+      <Cell Column="German">Schließe 30 Level vor anderen Spielern ab, um Belohnungen zu gewinnen</Cell>
+      <Cell Column="French">Terminez 30 niveaux avant les autres joueurs pour gagner des récompenses</Cell>
+      <Cell Column="Korean">다른 플레이어보다 먼저 30레벨을 완료하여 보상을 받으세요</Cell>
+      <Cell Column="Arabic">أكمل 30 مستوى قبل اللاعبين الآخرين للفوز بالمكافآت</Cell>
+      <Cell Column="Russian">Пройдите 30 уровней раньше других игроков, чтобы выиграть награды</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Replay</Cell>
+      <Cell Column="English">Replay</Cell>
+      <Cell Column="Chinese">重玩</Cell>
+      <Cell Column="Japanese">リプレイ</Cell>
+      <Cell Column="Portuguese">Repetir</Cell>
+      <Cell Column="Spanish">Volver a jugar</Cell>
+      <Cell Column="German">Wiederholen</Cell>
+      <Cell Column="French">Rejouer</Cell>
+      <Cell Column="Korean">재생</Cell>
+      <Cell Column="Arabic">إعادة التشغيل</Cell>
+      <Cell Column="Russian">Повторить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Play</Cell>
+      <Cell Column="English">Play</Cell>
+      <Cell Column="Chinese">游玩</Cell>
+      <Cell Column="Japanese">プレイ</Cell>
+      <Cell Column="Portuguese">Jogar</Cell>
+      <Cell Column="Spanish">Jugar</Cell>
+      <Cell Column="German">Spielen</Cell>
+      <Cell Column="French">Jouer</Cell>
+      <Cell Column="Korean">재생</Cell>
+      <Cell Column="Arabic">اللعب</Cell>
+      <Cell Column="Russian">Играть</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">UnLockedDes</Cell>
+      <Cell Column="English">Complete</Cell>
+      <Cell Column="Chinese">完成</Cell>
+      <Cell Column="Japanese">完了</Cell>
+      <Cell Column="Portuguese">Completar</Cell>
+      <Cell Column="Spanish">Completar</Cell>
+      <Cell Column="German">Abschließen</Cell>
+      <Cell Column="French">Terminer</Cell>
+      <Cell Column="Korean">완료</Cell>
+      <Cell Column="Arabic">أكمل</Cell>
+      <Cell Column="Russian">Завершить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">LeagueRank</Cell>
+      <Cell Column="English">League rank</Cell>
+      <Cell Column="Chinese">联赛段位</Cell>
+      <Cell Column="Japanese">リーグ ランク</Cell>
+      <Cell Column="Portuguese">Classificação da liga</Cell>
+      <Cell Column="Spanish">Rango de liga</Cell>
+      <Cell Column="German">Ligarang</Cell>
+      <Cell Column="French">Rang de ligue</Cell>
+      <Cell Column="Korean">리그 랭크</Cell>
+      <Cell Column="Arabic">مرتبة الدوري</Cell>
+      <Cell Column="Russian">Ранг в лиге</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">RankingSettlement</Cell>
+      <Cell Column="English">You are No.xx</Cell>
+      <Cell Column="Chinese">你是第xx名</Cell>
+      <Cell Column="Japanese">あなたは No.xx です</Cell>
+      <Cell Column="Portuguese">Você é o nº xx</Cell>
+      <Cell Column="Spanish">Eres el n.° xx</Cell>
+      <Cell Column="German">Du bist Nr. xx</Cell>
+      <Cell Column="French">Vous êtes n°xx</Cell>
+      <Cell Column="Korean">당신은 No.xx입니다</Cell>
+      <Cell Column="Arabic">أنت رقم xx</Cell>
+      <Cell Column="Russian">Вы №xx</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">RankSettlement</Cell>
+      <Cell Column="English">You are still at rank xx</Cell>
+      <Cell Column="Chinese">你依旧是xx段位</Cell>
+      <Cell Column="Japanese">あなたはまだランク xx です</Cell>
+      <Cell Column="Portuguese">Você ainda está na classificação xx</Cell>
+      <Cell Column="Spanish">Aún estás en el rango xx</Cell>
+      <Cell Column="German">Du bist noch auf Rang xx</Cell>
+      <Cell Column="French">Vous êtes toujours au rang xx</Cell>
+      <Cell Column="Korean">당신은 아직 랭크 xx에 있습니다</Cell>
+      <Cell Column="Arabic">ما زلت في المرتبة xx</Cell>
+      <Cell Column="Russian">Вы все еще на ранге xx</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">PromotionDes</Cell>
+      <Cell Column="English">There are                 people left to reach the promotion rank</Cell>
+      <Cell Column="Chinese">再超过                 人就可以晋级</Cell>
+      <Cell Column="Japanese">昇格ランクに到達するにはあと                 人必要です</Cell>
+      <Cell Column="Portuguese">Restam                 pessoas para alcançar a classificação de promoção</Cell>
+      <Cell Column="Spanish">Quedan                 personas para alcanzar el rango de ascenso</Cell>
+      <Cell Column="German">Es sind noch                 Leute übrig, die den Aufstiegsrang erreichen</Cell>
+      <Cell Column="French">Il reste                 personnes pour atteindre le rang de promotion</Cell>
+      <Cell Column="Korean">승격 랭크에 도달할                 명이 남았습니다</Cell>
+      <Cell Column="Arabic">يوجد                 شخص متبقٍ للوصول إلى مرتبة الترقية</Cell>
+      <Cell Column="Russian">Осталось                 человек, чтобы достичь ранга повышения</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank1</Cell>
+      <Cell Column="English">Bronze</Cell>
+      <Cell Column="Chinese">青铜</Cell>
+      <Cell Column="Japanese">ブロンズ</Cell>
+      <Cell Column="Portuguese">Bronze</Cell>
+      <Cell Column="Spanish">Bronce</Cell>
+      <Cell Column="German">Bronze</Cell>
+      <Cell Column="French">Bronze</Cell>
+      <Cell Column="Korean">브론즈</Cell>
+      <Cell Column="Arabic">برونزية</Cell>
+      <Cell Column="Russian">Бронза</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank2</Cell>
+      <Cell Column="English">Silver</Cell>
+      <Cell Column="Chinese">白银</Cell>
+      <Cell Column="Japanese">シルバー</Cell>
+      <Cell Column="Portuguese">Prata</Cell>
+      <Cell Column="Spanish">Plata</Cell>
+      <Cell Column="German">Silber</Cell>
+      <Cell Column="French">Argent</Cell>
+      <Cell Column="Korean">실버</Cell>
+      <Cell Column="Arabic">فضية</Cell>
+      <Cell Column="Russian">Серебро</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank3</Cell>
+      <Cell Column="English">Gold</Cell>
+      <Cell Column="Chinese">黄金</Cell>
+      <Cell Column="Japanese">ゴールド</Cell>
+      <Cell Column="Portuguese">Ouro</Cell>
+      <Cell Column="Spanish">Oro</Cell>
+      <Cell Column="German">Gold</Cell>
+      <Cell Column="French">Or</Cell>
+      <Cell Column="Korean">골드</Cell>
+      <Cell Column="Arabic">ذهبية</Cell>
+      <Cell Column="Russian">Золото</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank4</Cell>
+      <Cell Column="English">Platinum</Cell>
+      <Cell Column="Chinese">铂金</Cell>
+      <Cell Column="Japanese">プラチナ</Cell>
+      <Cell Column="Portuguese">Platina</Cell>
+      <Cell Column="Spanish">Platino</Cell>
+      <Cell Column="German">Platin</Cell>
+      <Cell Column="French">Platine</Cell>
+      <Cell Column="Korean">플래티넘</Cell>
+      <Cell Column="Arabic">بلاتينية</Cell>
+      <Cell Column="Russian">Платина</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank5</Cell>
+      <Cell Column="English">Diamond</Cell>
+      <Cell Column="Chinese">钻石</Cell>
+      <Cell Column="Japanese">ダイヤモンド</Cell>
+      <Cell Column="Portuguese">Diamante</Cell>
+      <Cell Column="Spanish">Diamante</Cell>
+      <Cell Column="German">Diamant</Cell>
+      <Cell Column="French">Diamant</Cell>
+      <Cell Column="Korean">다이아몬드</Cell>
+      <Cell Column="Arabic">ألماسية</Cell>
+      <Cell Column="Russian">Бриллиант</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Rank6</Cell>
+      <Cell Column="English">Legendary</Cell>
+      <Cell Column="Chinese">传奇</Cell>
+      <Cell Column="Japanese">レジェンダリー</Cell>
+      <Cell Column="Portuguese">Lendário</Cell>
+      <Cell Column="Spanish">Legendario</Cell>
+      <Cell Column="German">Legendär</Cell>
+      <Cell Column="French">Légendaire</Cell>
+      <Cell Column="Korean">레전더리</Cell>
+      <Cell Column="Arabic">أسطورية</Cell>
+      <Cell Column="Russian">Легендарный</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Skin</Cell>
+      <Cell Column="English">Skin</Cell>
+      <Cell Column="Chinese">皮肤</Cell>
+      <Cell Column="Japanese">スキン</Cell>
+      <Cell Column="Portuguese">Pele</Cell>
+      <Cell Column="Spanish">Aspecto</Cell>
+      <Cell Column="German">Skin</Cell>
+      <Cell Column="French">Skin</Cell>
+      <Cell Column="Korean">스킨</Cell>
+      <Cell Column="Arabic">مظهر</Cell>
+      <Cell Column="Russian">Кожа</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">HardMode</Cell>
+      <Cell Column="English">Hard</Cell>
+      <Cell Column="Chinese">困难</Cell>
+      <Cell Column="Japanese">ハード</Cell>
+      <Cell Column="Portuguese">Difícil</Cell>
+      <Cell Column="Spanish">Difícil</Cell>
+      <Cell Column="German">Schwer</Cell>
+      <Cell Column="French">Dur</Cell>
+      <Cell Column="Korean">하드</Cell>
+      <Cell Column="Arabic">صلب</Cell>
+      <Cell Column="Russian">Сложный</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Vehicle</Cell>
+      <Cell Column="English">Vehicle</Cell>
+      <Cell Column="Chinese">车辆</Cell>
+      <Cell Column="Japanese">車両</Cell>
+      <Cell Column="Portuguese">Veículo</Cell>
+      <Cell Column="Spanish">Vehículo</Cell>
+      <Cell Column="German">Fahrzeug</Cell>
+      <Cell Column="French">Véhicule</Cell>
+      <Cell Column="Korean">차량</Cell>
+      <Cell Column="Arabic">مركبة</Cell>
+      <Cell Column="Russian">Транспорт</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Exhaust</Cell>
+      <Cell Column="English">Exhaust</Cell>
+      <Cell Column="Chinese">尾气</Cell>
+      <Cell Column="Japanese">排気装置</Cell>
+      <Cell Column="Portuguese">Escapamento</Cell>
+      <Cell Column="Spanish">Escape</Cell>
+      <Cell Column="German">Auspuff</Cell>
+      <Cell Column="French">Échappement</Cell>
+      <Cell Column="Korean">배기</Cell>
+      <Cell Column="Arabic">عادم</Cell>
+      <Cell Column="Russian">Выхлоп</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Street</Cell>
+      <Cell Column="English">Street</Cell>
+      <Cell Column="Chinese">街道</Cell>
+      <Cell Column="Japanese">ストリート</Cell>
+      <Cell Column="Portuguese">Rua</Cell>
+      <Cell Column="Spanish">Calle</Cell>
+      <Cell Column="German">Straße</Cell>
+      <Cell Column="French">Rue</Cell>
+      <Cell Column="Korean">거리</Cell>
+      <Cell Column="Arabic">شارع</Cell>
+      <Cell Column="Russian">Улица</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Selected</Cell>
+      <Cell Column="English">Selected</Cell>
+      <Cell Column="Chinese">选中</Cell>
+      <Cell Column="Japanese">選択済み</Cell>
+      <Cell Column="Portuguese">Selecionado</Cell>
+      <Cell Column="Spanish">Seleccionado</Cell>
+      <Cell Column="German">Ausgewählt</Cell>
+      <Cell Column="French">Sélectionné</Cell>
+      <Cell Column="Korean">선택됨</Cell>
+      <Cell Column="Arabic">محدد</Cell>
+      <Cell Column="Russian">Выбрано</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">UnlockConditionDes</Cell>
+      <Cell Column="English">Unlocked at hard level xx</Cell>
+      <Cell Column="Chinese">在困难关卡xx关解锁</Cell>
+      <Cell Column="Japanese">ハード レベル xx でロック解除</Cell>
+      <Cell Column="Portuguese">Desbloqueado no nível difícil xx</Cell>
+      <Cell Column="Spanish">Desbloqueado en el nivel difícil xx</Cell>
+      <Cell Column="German">Freigeschaltet auf schwerem Level xx</Cell>
+      <Cell Column="French">Débloqué au niveau difficile xx</Cell>
+      <Cell Column="Korean">하드 레벨 xx에서 잠금 해제</Cell>
+      <Cell Column="Arabic">مفتوح في المستوى الصعب xx</Cell>
+      <Cell Column="Russian">Открывается на сложном уровне xx</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Level</Cell>
+      <Cell Column="English">level xx</Cell>
+      <Cell Column="Chinese">xx关卡</Cell>
+      <Cell Column="Japanese">レベル xx</Cell>
+      <Cell Column="Portuguese">nível xx</Cell>
+      <Cell Column="Spanish">nivel xx</Cell>
+      <Cell Column="German">Level xx</Cell>
+      <Cell Column="French">niveau xx</Cell>
+      <Cell Column="Korean">레벨 xx</Cell>
+      <Cell Column="Arabic">المستوى xx</Cell>
+      <Cell Column="Russian">уровень xx</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">DoubleReward</Cell>
+      <Cell Column="English">Double Reward</Cell>
+      <Cell Column="Chinese">双倍奖励</Cell>
+      <Cell Column="Japanese">ダブル報酬</Cell>
+      <Cell Column="Portuguese">Recompensa Dupla</Cell>
+      <Cell Column="Spanish">Doble recompensa</Cell>
+      <Cell Column="German">Doppelte Belohnung</Cell>
+      <Cell Column="French">Double récompense</Cell>
+      <Cell Column="Korean">더블 리워드</Cell>
+      <Cell Column="Arabic">مكافأة مضاعفة</Cell>
+      <Cell Column="Russian">Двойная награда</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">DoubleRewardDes</Cell>
+      <Cell Column="English">In the next 15 minutes, you will  receive double trophy rewards</Cell>
+      <Cell Column="Chinese">在接下来的15分钟内，你将获得双倍奖杯奖励</Cell>
+      <Cell Column="Japanese">次の 15 分間に、ダブルトロフィー報酬を受け取ります</Cell>
+      <Cell Column="Portuguese">Nos próximos 15 minutos, você receberá recompensas de troféus em dobro</Cell>
+      <Cell Column="Spanish">En los próximos 15 minutos, recibirás el doble de recompensas en trofeos</Cell>
+      <Cell Column="German">In den nächsten 15 Minuten erhältst du die doppelte Trophäenbelohnung</Cell>
+      <Cell Column="French">Dans les 15 prochaines minutes, vous recevrez le double de récompenses en trophées</Cell>
+      <Cell Column="Korean">다음 15분 동안 트로피 보상을 두 배로 받게 됩니다</Cell>
+      <Cell Column="Arabic">في الدقائق الـ 15 التالية، ستحصل على مكافآت كأس مضاعفة</Cell>
+      <Cell Column="Russian">В течение следующих 15 минут вы получите двойные трофейные награды</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Spin</Cell>
+      <Cell Column="English">Spin</Cell>
+      <Cell Column="Chinese">抽奖</Cell>
+      <Cell Column="Japanese">宝くじ</Cell>
+      <Cell Column="Portuguese">Spin</Cell>
+      <Cell Column="Spanish">Girar</Cell>
+      <Cell Column="German">Spin</Cell>
+      <Cell Column="French">Spin</Cell>
+      <Cell Column="Korean">스핀</Cell>
+      <Cell Column="Arabic">يلف</Cell>
+      <Cell Column="Russian">Вращение</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Racing</Cell>
+      <Cell Column="English">Racing</Cell>
+      <Cell Column="Chinese">赛车</Cell>
+      <Cell Column="Japanese">レース</Cell>
+      <Cell Column="Portuguese">Racing</Cell>
+      <Cell Column="Spanish">Carreras</Cell>
+      <Cell Column="German">Racing</Cell>
+      <Cell Column="French">Racing</Cell>
+      <Cell Column="Korean">레이싱</Cell>
+      <Cell Column="Arabic">سباق</Cell>
+      <Cell Column="Russian">Гонки</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">League</Cell>
+      <Cell Column="English">League</Cell>
+      <Cell Column="Chinese">联赛</Cell>
+      <Cell Column="Japanese">リーグ</Cell>
+      <Cell Column="Portuguese">Liga</Cell>
+      <Cell Column="Spanish">Liga</Cell>
+      <Cell Column="German">Liga</Cell>
+      <Cell Column="French">Ligue</Cell>
+      <Cell Column="Korean">리그</Cell>
+      <Cell Column="Arabic">الدوري</Cell>
+      <Cell Column="Russian">Лига</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">RankDes</Cell>
+      <Cell Column="English">Complete levels to collect trophies, earn higher  ranks and get</Cell>
+      <Cell Column="Chinese">完成关卡以收集奖杯，赢得更高排名并获得</Cell>
+      <Cell Column="Japanese">レベルを完了してトロフィーを収集し、より高いランキングを獲得して獲得しましょう</Cell>
+      <Cell Column="Portuguese">Complete os níveis para coletar troféus, ganhar classificações mais altas e obter</Cell>
+      <Cell Column="Spanish">Completa niveles para recolectar trofeos, obtener rangos más altos y obtener</Cell>
+      <Cell Column="German">Schließe Levels ab, um Trophäen zu sammeln, höhere Ränge zu erreichen und</Cell>
+      <Cell Column="French">Terminez les niveaux pour collecter des trophées, gagner des rangs plus élevés et obtenir</Cell>
+      <Cell Column="Korean">레벨을 완료하여 트로피를 수집하고 더 높은 순위를 획득하고 획득하세요.</Cell>
+      <Cell Column="Arabic">أكمل المستويات لجمع الجوائز وكسب رتب أعلى والحصول على</Cell>
+      <Cell Column="Russian">Проходите уровни, чтобы собирать трофеи, зарабатывайте более высокие ранги и получайте</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Unlock</Cell>
+      <Cell Column="English">Lvxx Unlock</Cell>
+      <Cell Column="Chinese">Lvxx 解锁</Cell>
+      <Cell Column="Japanese">Lvxxロック解除</Cell>
+      <Cell Column="Portuguese">Desbloqueio Lvxx</Cell>
+      <Cell Column="Spanish">Desbloqueo de nivel xx</Cell>
+      <Cell Column="German">Lvxx freizuschalten</Cell>
+      <Cell Column="French">Lvxx Unlock</Cell>
+      <Cell Column="Korean">Lvxx 잠금 해제</Cell>
+      <Cell Column="Arabic">فتح Lvxx</Cell>
+      <Cell Column="Russian">Lvxx Разблокировка</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">UnlockNewSkins</Cell>
+      <Cell Column="English">Unlock New Skins</Cell>
+      <Cell Column="Chinese">解锁新皮肤</Cell>
+      <Cell Column="Japanese">新しいスキンのロックを解除する</Cell>
+      <Cell Column="Portuguese">Desbloqueie novas skins</Cell>
+      <Cell Column="Spanish">Desbloquea nuevos aspectos</Cell>
+      <Cell Column="German">Neue Skins freizuschalten</Cell>
+      <Cell Column="French">Débloquez de nouveaux skins</Cell>
+      <Cell Column="Korean">새로운 스킨 잠금 해제</Cell>
+      <Cell Column="Arabic">فتح جلود جديدة</Cell>
+      <Cell Column="Russian">Разблокируйте новые скины</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">later</Cell>
+      <Cell Column="English">later</Cell>
+      <Cell Column="Chinese">稍后</Cell>
+      <Cell Column="Japanese">後で</Cell>
+      <Cell Column="Portuguese">mais tarde</Cell>
+      <Cell Column="Spanish">más adelante</Cell>
+      <Cell Column="German">später</Cell>
+      <Cell Column="French">plus tard</Cell>
+      <Cell Column="Korean">나중에</Cell>
+      <Cell Column="Arabic">لاحقًا</Cell>
+      <Cell Column="Russian">позже</Cell>
     </Row>
   </Worksheet>
 </Workbook>

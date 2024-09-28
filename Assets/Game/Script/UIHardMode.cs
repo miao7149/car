@@ -19,6 +19,7 @@ public class UIHardMode : MonoBehaviour
     //关闭红点委托
     public delegate void CloseRedPoint(string message);
     public CloseRedPoint CloseRedPointEvent;
+    public GameObject m_UICoin;
     void Start()
     {
         hardItems.Add(new HardItemData

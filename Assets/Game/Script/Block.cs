@@ -31,7 +31,6 @@ public class Block : MonoBehaviour
     //碰撞检测
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("路障碰撞检测");
         var car = other.transform.parent.parent.GetComponent<Car>();
 
         if (car.type == CarType.Bulldozer)//推土机

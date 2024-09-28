@@ -19,13 +19,23 @@ public class DailySignIn : MonoBehaviour
     public GameObject m_TargetUI;
     float frameDuration = 0.05f;
     public GameObject m_RewradRoot;//奖励界面
+    /////////////////////////////////////////////多语言设置，文本物体
+    //标题
+    public TMP_Text m_Title;
+    //领取按钮文本
+    public TMP_Text m_SignInText;
 
     void Start()
     {
         LoadSignInData();
         UpdateSignInImages();
+        SetLanguage();
     }
-
+    public void SetLanguage()
+    {
+        m_Title.text = GlobalManager.Instance.GetLanguageValue("DailyRewards");
+        m_SignInText.text = GlobalManager.Instance.GetLanguageValue("Claim");
+    }
     void LoadSignInData()
     {
         // 从PlayerPrefs加载签到数据
@@ -101,7 +111,7 @@ public class DailySignIn : MonoBehaviour
             dayImages[i].sprite = signInStatus[i] ? signedInSprite : notSignedInSprite;
             dayImages[i].transform.GetChild(3).gameObject.SetActive(signInStatus[i]);
             dayImages[i].transform.GetChild(2).GetComponent<TMP_Text>().text = "X" + rewardCoins[i].ToString();
-
+            dayImages[i].transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
         }
         int dayIndex = (int)(DateTime.Now - lastSignInDate).TotalDays % 7;
         if (lastSignInDate == DateTime.MinValue)

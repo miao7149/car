@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Xml;
 using System;
-using System.Text.RegularExpressions;
 public class GlobalManager : MonoBehaviour
 {
     // 单例实例
@@ -34,9 +33,26 @@ public class GlobalManager : MonoBehaviour
     //玩家金币
     [HideInInspector]
     public int PlayerCoin;
+    private int itemCount;
     //玩家道具数量
     [HideInInspector]
-    public int ItemCount;
+    public int ItemCount
+    {
+        get
+        {
+            return itemCount;
+        }
+        set
+        {
+            itemCount = value;
+            // 触发事件
+            OnItemCountChanged?.Invoke(itemCount);
+        }
+    }
+    public delegate void ItemCountChangedHandler(int newItemCount);
+
+    // 定义一个事件
+    public event ItemCountChangedHandler OnItemCountChanged;
     //当前关卡
     [HideInInspector]
     public int CurrentLevel;
@@ -124,6 +140,8 @@ public class GlobalManager : MonoBehaviour
     public List<PlayerInfo> _trophyRankingList; // 0x18
     //private TrophyInfo _selfTrophyInfo; // 0x20
     private List<RobotTemplate> _curRobotData; // 0x38
+    //玩家奖杯数量
+    public int _selfTrophyCount;
     //开始时间
     public DateTime StartDate;
     //是否已经开始排位赛
@@ -200,6 +218,7 @@ public class GlobalManager : MonoBehaviour
         PlayerPrefs.SetString("PlayerCarSkinName", PlayerCarSkinName);
         PlayerPrefs.SetString("PlayerCarTrailName", PlayerCarTrailName);
         PlayerPrefs.SetString("PlayerMapSkinName", PlayerMapSkinName);
+        PlayerPrefs.SetInt("TrophyCount", _selfTrophyCount);
         PlayerPrefs.Save();
     }
     // 加载游戏数据
@@ -222,6 +241,7 @@ public class GlobalManager : MonoBehaviour
         PlayerCarSkinName = PlayerPrefs.GetString("PlayerCarSkinName", "Car_1");
         PlayerCarTrailName = PlayerPrefs.GetString("PlayerCarTrailName", "vfx_exhaust_1");
         PlayerMapSkinName = PlayerPrefs.GetString("PlayerMapSkinName", "texture_1");
+        _selfTrophyCount = PlayerPrefs.GetInt("TrophyCount", 0);
     }
     //获取系统语言
     public Language GetSystemLanguage()
@@ -276,7 +296,6 @@ public class GlobalManager : MonoBehaviour
         foreach (XmlNode worksheet in worksheetList)
         {
             string sheetName = worksheet.Attributes["Name"].Value;
-            Debug.Log("Worksheet: " + sheetName);
 
             XmlNodeList rowList = worksheet.SelectNodes("Row");
             foreach (XmlNode row in rowList)
@@ -567,7 +586,7 @@ public class GlobalManager : MonoBehaviour
                 Id = -1,
                 TrophyProp = new TrophyProp()
                 {
-                    Trophy = new PropData(Prop.Trophy, 0)
+                    Trophy = new PropData(Prop.Trophy, _selfTrophyCount)
                 },
                 Name = PlayerName
             };

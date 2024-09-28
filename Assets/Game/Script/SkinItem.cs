@@ -27,7 +27,7 @@ public class SkinItem : MonoBehaviour
 
     void Start()
     {
-
+        m_UseBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Selected");
     }
 
     // Update is called once per frame
@@ -116,7 +116,9 @@ public class SkinItem : MonoBehaviour
                     m_Bg.GetComponent<Image>().sprite = m_BgList[2];
                     m_Lock.SetActive(true);
                     m_UnLockDesc.SetActive(true);
-                    m_UnLockDesc.GetComponent<TMP_Text>().text = "通关第" + unlockConditions[1] + "关解锁";
+                    var desStr = GlobalManager.Instance.GetLanguageValue("Level");
+                    desStr = desStr.Replace("xx", unlockConditions[1].ToString());
+                    m_UnLockDesc.GetComponent<TMP_Text>().text = desStr;
                 }
             }
             else if (unlockConditions[0] == "2")//困难关卡
@@ -132,7 +134,9 @@ public class SkinItem : MonoBehaviour
                     m_Bg.GetComponent<Image>().sprite = m_BgList[2];
                     m_Lock.SetActive(true);
                     m_UnLockDesc.SetActive(true);
-                    m_UnLockDesc.GetComponent<TMP_Text>().text = "通关困难关卡第" + unlockConditions[1] + "关解锁";
+                    var desStr = GlobalManager.Instance.GetLanguageValue("UnlockConditionDes");
+                    desStr = desStr.Replace("xx", unlockConditions[1].ToString());
+                    m_UnLockDesc.GetComponent<TMP_Text>().text = desStr;
                 }
             }
         }
@@ -143,9 +147,11 @@ public class SkinItem : MonoBehaviour
     {
         if (GlobalManager.Instance.PlayerCoin < skinItemData.Coins) //金币不足
         {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("CoinNotEnough"));
             return;
         }
         GlobalManager.Instance.PlayerCoin -= skinItemData.Coins;
+        mUISwitchSkin.m_UICoin.GetComponent<UICoin>().UpdateCoin();
         PlayerPrefs.SetString(type.ToString() + index.ToString(), "1");
         //隐藏解锁按钮
         m_UnLockBtn.SetActive(false);

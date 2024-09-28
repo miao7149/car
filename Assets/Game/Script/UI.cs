@@ -29,6 +29,8 @@ public class UI : MonoBehaviour
     public GameObject MainLevelRoot;
     //困难关卡Root
     public GameObject HardLevelRoot;
+    //开始关卡Root
+    public GameObject StartLevelRoot;
     //游戏介绍Root
     public GameObject GameIntroduceRoot;
     //道具介绍Root
@@ -108,6 +110,12 @@ public class UI : MonoBehaviour
         m_VibrateSwitch.sprite = GlobalManager.Instance.IsVibrate ? switchSprites[0] : switchSprites[1];
         SetLanguage();
         CheckTopSafeArea();
+        ChangeItemCount(GlobalManager.Instance.ItemCount);
+        GlobalManager.Instance.OnItemCountChanged += ChangeItemCount;
+    }
+    public void OnDisable()
+    {
+        GlobalManager.Instance.OnItemCountChanged -= ChangeItemCount;
     }
     public void SetLanguage()
     {
@@ -122,7 +130,6 @@ public class UI : MonoBehaviour
         m_ContinueSettingText.text = GlobalManager.Instance.GetLanguageValue("Continue");
         m_DroneText.text = GlobalManager.Instance.GetLanguageValue("Drone");
         m_DroneIntroduceText.text = GlobalManager.Instance.GetLanguageValue("DroneDes");
-        m_WatchAdText.text = GlobalManager.Instance.GetLanguageValue("WatchAd");
         m_NewGameText.text = GlobalManager.Instance.GetLanguageValue("NewGameplay");
         m_OkText.text = GlobalManager.Instance.GetLanguageValue("Ok");
         m_PeopleText.text = GlobalManager.Instance.GetLanguageValue("Pedestrian");
@@ -145,8 +152,11 @@ public class UI : MonoBehaviour
     //点击重新开始按钮
     public void OnTouchReplay()
     {
-        GameManager.Instance.InitGame();
-        ShowFailedRoot(false);
+        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(() =>
+        {
+            GameManager.Instance.InitGame();
+            ShowFailedRoot(false);
+        });
     }
     //道具使用按钮
     public void OnUseItemBtn()
@@ -160,9 +170,26 @@ public class UI : MonoBehaviour
         }
         else
         {
-            Debug.Log("道具不足");
-            GlobalManager.Instance.ItemCount++;
-            ChangeItemCount(GlobalManager.Instance.ItemCount);
+            if (GlobalManager.Instance.PlayerCoin >= 500)//使用金币购买
+            {
+                GameManager.Instance.IsUseItem = true;
+                ShowItemIntroduce();
+                HideGuideFinger();
+                GlobalManager.Instance.PlayerCoin -= 500;
+            }
+            else //看广告
+            {
+                ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
+                {
+                    GameManager.Instance.IsUseItem = true;
+                    ShowItemIntroduce();
+                    HideGuideFinger();
+                },
+                () =>
+                {
+                    TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("WatchAdFailed"));
+                });
+            }
         }
         AudioManager.Instance.PlayButtonClick();
     }
@@ -170,6 +197,21 @@ public class UI : MonoBehaviour
     public void ChangeItemCount(int count)
     {
         ItemCountText.text = count.ToString();
+        if (count <= 0 && GlobalManager.Instance.PlayerCoin >= 500)
+        {
+            m_ItemBtn.transform.GetChild(1).gameObject.SetActive(true);
+            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else if (count <= 0 && GlobalManager.Instance.PlayerCoin < 500)
+        {
+            m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
+            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else
+        {
+            m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
+            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+        }
     }
     //更新行动次数
     public void ChangeStepCount(int count)
@@ -187,9 +229,19 @@ public class UI : MonoBehaviour
     {
         if (gameType == GameType.Main)
         {
-            MainLevelRoot.SetActive(true);
-            HardLevelRoot.SetActive(false);
-            MainLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+            if (GlobalManager.Instance.CurrentLevel < 10)
+            {
+                MainLevelRoot.SetActive(false);
+                StartLevelRoot.SetActive(true);
+                StartLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+            }
+            else
+            {
+                MainLevelRoot.SetActive(true);
+                StartLevelRoot.SetActive(false);
+                HardLevelRoot.SetActive(false);
+                MainLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+            }
         }
         else
         {
@@ -201,7 +253,47 @@ public class UI : MonoBehaviour
     //复活按钮
     public void OnTouchRevive()
     {
+        //判断是否有足够的金币
+        if (GameManager.Instance.failReason == FailReason.PeopleCrash)
+        {
+            if (GlobalManager.Instance.PlayerCoin >= 1000)
+            {
+                GlobalManager.Instance.PlayerCoin -= 1000;
+                m_TargetUI.GetComponent<UICoin>().UpdateCoin();
+            }
+            else
+            {
+                TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("CoinNotEnough"));
+                return;
+            }
+        }
+        else
+        {
+            if (GlobalManager.Instance.PlayerCoin >= 600)
+            {
+                GlobalManager.Instance.PlayerCoin -= 600;
+                m_TargetUI.GetComponent<UICoin>().UpdateCoin();
+            }
+            else
+            {
+                TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("CoinNotEnough"));
+                return;
+            }
+        }
         GameManager.Instance.ContinueGame();
+        AudioManager.Instance.PlayButtonClick();
+    }
+    //观看广告复活
+    public void OnWatchAdRevive()
+    {
+        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
+        {
+            GameManager.Instance.ContinueGame();
+        },
+        () =>
+        {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("WatchAdFailed"));
+        });
         AudioManager.Instance.PlayButtonClick();
     }
     public void OnContinue()//胜利界面点击继续按钮
@@ -223,11 +315,13 @@ public class UI : MonoBehaviour
             {
                 str = str.Replace("xxx", "");
             }
-            m_CostCoinText.text = str;
+            m_CostCoinText.text = GlobalManager.Instance.GetLanguageValue("Continue");
             m_CoinText.text = "1000";
             m_GameOverText.text = GlobalManager.Instance.GetLanguageValue("GameOver");
             m_FailedImage.sprite = sprites[1];
             m_FailedImage.SetNativeSize();
+            m_FailedImage.transform.GetChild(0).gameObject.SetActive(false);
+            m_WatchAdText.text = GlobalManager.Instance.GetLanguageValue("Continue");
         }
         else
         {
@@ -236,11 +330,13 @@ public class UI : MonoBehaviour
             {
                 str = str.Replace("xxx", "");
             }
-            m_CostCoinText.text = str;
+            m_CostCoinText.text = "+5";
             m_CoinText.text = "600";
             m_GameOverText.text = GlobalManager.Instance.GetLanguageValue("OutOfSteps");
             m_FailedImage.sprite = sprites[0];
             m_FailedImage.SetNativeSize();
+            m_WatchAdText.text = "+5";
+            m_FailedImage.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
@@ -343,11 +439,13 @@ public class UI : MonoBehaviour
     public void ShowItemIntroduce()
     {
         ItemIntroduceRoot.SetActive(true);
+        m_ItemBtn.gameObject.SetActive(false);
     }
     public void OnHideItemIntroduceBtn()
     {
         GameManager.Instance.IsUseItem = false;
         ItemIntroduceRoot.SetActive(false);
+        m_ItemBtn.gameObject.SetActive(true);
     }
     //显示引导手指
     Sequence GuideSequence;

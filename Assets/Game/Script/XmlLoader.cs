@@ -29,8 +29,6 @@ public class XmlLoader : MonoBehaviour
         foreach (XmlNode worksheet in worksheetList)
         {
             string sheetName = worksheet.Attributes["Name"].Value;
-            Debug.Log("Worksheet: " + sheetName);
-
             XmlNodeList rowList = worksheet.SelectNodes("Row");
             foreach (XmlNode row in rowList)
             {
@@ -39,7 +37,6 @@ public class XmlLoader : MonoBehaviour
                 {
                     string column = cell.Attributes["Column"].Value;
                     string value = cell.InnerText;
-                    Debug.Log("Column: " + column + ", Value: " + value);
                 }
             }
         }

@@ -68,7 +68,8 @@ public class AudioManager : MonoBehaviour
         backgroundMusicSource.volume = 0.5f; // 设置音量
 
         // 播放背景音乐
-        backgroundMusicSource.Play();
+        if (GlobalManager.Instance.IsSound)
+            backgroundMusicSource.Play();
     }
 
     // 播放按钮点击音效
@@ -191,17 +192,20 @@ public class AudioManager : MonoBehaviour
     // 暂停背景音乐
     public void PauseBackgroundMusic()
     {
-        backgroundMusicSource.Pause();
+        if (GlobalManager.Instance.IsSound)
+            backgroundMusicSource.Pause();
     }
     // 恢复背景音乐
     public void ResumeBackgroundMusic()
     {
-        backgroundMusicSource.Play();
+        if (GlobalManager.Instance.IsSound)
+            backgroundMusicSource.Play();
     }
     // 停止背景音乐
     public void StopBackgroundMusic()
     {
-        backgroundMusicSource.Stop();
+        if (GlobalManager.Instance.IsSound)
+            backgroundMusicSource.Stop();
     }
     // 设置背景音乐音量
     public void SetBackgroundMusicVolume(float volume)

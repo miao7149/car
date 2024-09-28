@@ -146,6 +146,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7de6dfe066f64ac38ad08e1c242c1a5, type: 3}
   sprite: {fileID: 262334394382137535}
   droneTargetPosition: {fileID: 0}
+  isPlayCoinAnimation: 0
+  carInfo:
+    type: 0
+    posX: 0
+    posY: 0
+    dir: 0
+    turn: 0
+  mTrail: {fileID: 0}
 --- !u!1001 &1609672662402555519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,31 +214,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: car3
       objectReference: {fileID: 0}
+    - target: {fileID: 4193976444282632601, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -6028453385581945554, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4193976444282632601, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3090612119631198642}
+      addedObject: {fileID: 488173504182888481}
   m_SourcePrefab: {fileID: 100100000, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
 --- !u!4 &1286918709416573332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
   m_PrefabInstance: {fileID: 1609672662402555519}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4179363921637557073 stripped
+--- !u!1 &3199046230600263654 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -6028453385581945554, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4193976444282632601, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
   m_PrefabInstance: {fileID: 1609672662402555519}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &3090612119631198642
+--- !u!64 &488173504182888481
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179363921637557073}
+  m_GameObject: {fileID: 3199046230600263654}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -245,7 +257,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4953210205193268842, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
+  m_Mesh: {fileID: -1339720239512493272, guid: bd4d2f4f627c6474083deba1de37680a, type: 3}
 --- !u!1001 &4521560650584913129
 PrefabInstance:
   m_ObjectHideFlags: 0

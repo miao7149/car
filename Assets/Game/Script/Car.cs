@@ -27,6 +27,7 @@ public class Car : MonoBehaviour
     public delegate void CarOutOfBoundsHandler(Vector3 pos, Vector3 dir);
     public event CarOutOfBoundsHandler CarOutOfBounds;
     public CarInfo carInfo;
+    public GameObject mTrail;
     public void Init(CarInfo info)
     {
         dead = false;

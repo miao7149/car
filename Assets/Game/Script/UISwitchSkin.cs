@@ -6,6 +6,7 @@ using SuperScrollView;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UISwitchSkin : MonoBehaviour
 {
@@ -25,6 +26,23 @@ public class UISwitchSkin : MonoBehaviour
     public CloseRedPoint CloseRedPointEvent;
     //主界面汽车
     public GameObject m_Car;
+    //金币UI
+    public GameObject m_UICoin;
+    /////////////////////////////////////////////多语言设置，文本物体
+    //标题
+    public TMP_Text m_Title;
+    //汽车按钮文本
+    public TMP_Text m_CarText;
+    //尾巴按钮文本
+    public TMP_Text m_TailText;
+    //地图按钮文本
+    public TMP_Text m_MapText;
+    //汽车遮罩按钮文本
+    public TMP_Text m_CarMaskText;
+    //尾巴遮罩按钮文本
+    public TMP_Text m_TailMaskText;
+    //地图遮罩按钮文本
+    public TMP_Text m_MapMaskText;
     void Start()
     {
         mLoopGridView.InitGridView(GlobalManager.Instance.mTrucksAppearanceDict.Count, OnGetItemByRowColumn);
@@ -34,6 +52,17 @@ public class UISwitchSkin : MonoBehaviour
         Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), m_SkinRoot.transform);
         m_SkinMap.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/Skin/" + GlobalManager.Instance.PlayerMapSkinName);
         CheckNewSkin();
+        SetLanguage();
+    }
+    public void SetLanguage()
+    {
+        m_Title.text = GlobalManager.Instance.GetLanguageValue("Skin");
+        m_CarText.text = GlobalManager.Instance.GetLanguageValue("Vehicle");
+        m_TailText.text = GlobalManager.Instance.GetLanguageValue("Exhaust");
+        m_MapText.text = GlobalManager.Instance.GetLanguageValue("Street");
+        m_CarMaskText.text = GlobalManager.Instance.GetLanguageValue("Vehicle");
+        m_TailMaskText.text = GlobalManager.Instance.GetLanguageValue("Exhaust");
+        m_MapMaskText.text = GlobalManager.Instance.GetLanguageValue("Street");
     }
     LoopGridViewItem OnGetItemByRowColumn(LoopGridView gridView, int index, int row, int column)
     {
@@ -145,17 +174,6 @@ public class UISwitchSkin : MonoBehaviour
                     GameObject skinTail = Instantiate(Resources.Load<GameObject>("Prefabs/" + skinName));
                     skinTail.transform.SetParent(m_SkinRoot.transform);
                     skinTail.transform.localPosition = Vector3.zero;
-                    foreach (Transform child in m_Car.transform)
-                    {
-                        if (child.tag == "SkinTail")
-                        {
-                            Destroy(child.gameObject);
-                        }
-                    }
-                    GameObject carSkin = Instantiate(Resources.Load<GameObject>("Prefabs/" + skinName));
-                    carSkin.transform.SetParent(m_Car.transform);
-                    carSkin.transform.localPosition = Vector3.zero;
-                    carSkin.transform.localScale = new Vector3(1, 1, 1);
                 }
                 m_RawImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(-Screen.width + m_RawImage.GetComponent<RectTransform>().sizeDelta.x / 2, m_RawImage.transform.localPosition.y, m_RawImage.transform.localPosition.z);
                 m_RawImage.transform.DOMoveX(Screen.width / 2, 0.5f);

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270559343110",
+    "project_id": "traffic-jam-master-65a6d",
+    "storage_bucket": "traffic-jam-master-65a6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270559343110:android:dce5c14ea6e7cbf433c987",
+        "android_client_info": {
+          "package_name": "com.game.tjm_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcCjgR-h4x3QEZnzt8RnB_4AaEgEygY1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

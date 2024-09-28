@@ -30,11 +30,20 @@ public class HardItem : MonoBehaviour
         //未解锁
         Lock
     }
+    /////////////////////////////////////////////多语言设置，文本物体
+    //游玩按钮文本
+    public TMP_Text m_PlayText;
+    //重玩按钮文本
+    public TMP_Text m_ReplayText;
     void Start()
     {
-
+        SetLanguage();
     }
-
+    public void SetLanguage()
+    {
+        m_PlayText.text = GlobalManager.Instance.GetLanguageValue("Play");
+        m_ReplayText.text = GlobalManager.Instance.GetLanguageValue("Replay");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,14 +53,14 @@ public class HardItem : MonoBehaviour
     {
         var hardLevelStatus = PlayerPrefs.GetInt("HardLevelStatus" + mHardItemData.mLevelID, -1);//0已完成 1已解锁 
         //已完成
-        if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount && hardLevelStatus == 0)
+        if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount - 1 && hardLevelStatus == 0)
         {
             m_CompletedRoot.SetActive(true);
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(false);
             m_LockRoot.SetActive(false);
         }
-        else if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount && hardLevelStatus == 1)
+        else if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount - 1 && hardLevelStatus == 1)
         {
             //已解锁
             m_CompletedRoot.SetActive(false);
@@ -59,7 +68,7 @@ public class HardItem : MonoBehaviour
             m_CanUnlockRoot.SetActive(false);
             m_LockRoot.SetActive(false);
         }
-        else if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount)
+        else if (GlobalManager.Instance.CurrentLevel > mHardItemData.mUnlockLevelCount - 1)
         {
             //可解锁
             m_CompletedRoot.SetActive(false);
@@ -75,7 +84,7 @@ public class HardItem : MonoBehaviour
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(false);
             m_LockRoot.SetActive(true);
-            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = "Complete\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
+            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("UnLockedDes") + "\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
         }
     }
     public void SetItemData(HardItemData data, UIHardMode uiHardMode)
@@ -104,9 +113,14 @@ public class HardItem : MonoBehaviour
         if (GlobalManager.Instance.PlayerCoin >= 100)
         {
             GlobalManager.Instance.PlayerCoin -= 100;
+            mUIHardMode.m_UICoin.GetComponent<UICoin>().UpdateCoin();
             PlayerPrefs.SetInt("HardLevelStatus" + mHardItemData.mLevelID, 1);
             GlobalManager.Instance.SaveGameData();
             Init();
+        }
+        else
+        {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("CoinNotEnough"));
         }
     }
 }

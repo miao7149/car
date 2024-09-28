@@ -27,6 +27,10 @@ public class MenuManager : MonoBehaviour
     public UIReward m_UIReward;
     //首页logo
     public GameObject m_Logo;
+    //UI金币
+    public GameObject m_UICoin;
+    //输入框
+    public TMP_InputField m_InputField;
     //////////////////////////////////////////////////多语言设置，文本物体
     //设置标题
     public TMP_Text m_SettingTitle;
@@ -61,9 +65,11 @@ public class MenuManager : MonoBehaviour
         CreateCarAndTrail();
         m_Logo.SetActive(true);
         DOVirtual.DelayedCall(2f, () =>
-      {
-          m_Logo.SetActive(false);
-      });
+        {
+            m_Logo.SetActive(false);
+        });
+        m_InputField.onEndEdit.AddListener(OnInputFieldEndEdit);
+        m_InputField.text = GlobalManager.Instance.PlayerName;
     }
     //设置多语言
     public void SetLanguage()
@@ -105,12 +111,6 @@ public class MenuManager : MonoBehaviour
             car.transform.localPosition = Vector3.zero;
             car.transform.localScale = Vector3.one;
         }
-        if (GlobalManager.Instance.PlayerCarTrailName != "")
-        {
-            GameObject trail = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), m_Car.transform);
-            trail.transform.localPosition = Vector3.zero;
-            trail.transform.localScale = Vector3.one;
-        }
     }
     //汽车出场动画
     public void MoveCarAppearanceAnima()
@@ -120,12 +120,12 @@ public class MenuManager : MonoBehaviour
             return;
         }
         AudioManager.Instance.PlayCarSmallMove();
-        m_Car.transform.DOMoveZ(m_Car.transform.position.z + 1f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
+        m_Car.transform.DOMoveZ(m_Car.transform.position.z + 3.6f, 0.7f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         });
         //相机跟随
-        m_Camera.transform.DOMoveZ(m_Camera.transform.position.z + 1f, 0.5f).SetEase(Ease.OutQuad);
+        m_Camera.transform.DOMoveZ(m_Camera.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuad);
     }
     //汽车入场动画
     public void MoveCarEnterAnima()
@@ -154,10 +154,15 @@ public class MenuManager : MonoBehaviour
         }
 
     }
+    //InputField 输入框回调
+    public void OnInputFieldEndEdit(string value)
+    {
+        GlobalManager.Instance.PlayerName = value;
+        Debug.Log("输入框输入的内容：" + value);
+    }
     // 开始汽车震动动画
     public void StartCarScaleAnimation()
     {
-        return;
         float scaleDuration = 0.1f; // 缩放动画的持续时间
         Vector3 minScale = m_Car.transform.localScale * 0.99f; // 缩小到汽车本身的90%
 

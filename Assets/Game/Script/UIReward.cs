@@ -23,6 +23,8 @@ public class UIReward : MonoBehaviour
     public int initialPoolSize = 20;
     public PropData[] Rewards = new PropData[] { new(Prop.Coin, 50) };//第一个奖励
     public PropData[] RewardsRv = new PropData[] { new(Prop.Coin, 355), new(Prop.Ballon, 1) };//第二个奖励
+    //是否首次领取第二次奖励
+    public bool mIsFirstGetRewardRV = true;
     void Start()
     {
         if (skeletonGraphic != null)
@@ -35,6 +37,7 @@ public class UIReward : MonoBehaviour
         }
         skeletonGraphic.AnimationState.SetAnimation(0, "daiji", true);
         skeletonGraphicRV.AnimationState.SetAnimation(0, "daiji", true);
+        mIsFirstGetRewardRV = PlayerPrefs.GetInt("IsFirstGetRewardRV", 0) == 0;
     }
     private void OnDestroy()
     {
@@ -224,7 +227,22 @@ public class UIReward : MonoBehaviour
     {
         if (skeletonGraphicRV == null)
             return;
-        skeletonGraphicRV.AnimationState.SetAnimation(0, "animation", false);
+        if (mIsFirstGetRewardRV)//首次领取第二次奖励
+        {
+            skeletonGraphicRV.AnimationState.SetAnimation(0, "animation", false);
+            PlayerPrefs.SetInt("IsFirstGetRewardRV", 1);
+        }
+        else
+        {
+            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
+            {
+                skeletonGraphicRV.AnimationState.SetAnimation(0, "animation", false);
+            }, () =>
+        {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
+        });
+        }
+
     }
     //放弃按钮
     public void OnGiveUpClick()
