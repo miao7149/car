@@ -975,5 +975,213 @@
       <Cell Column="Arabic">لاحقًا</Cell>
       <Cell Column="Russian">позже</Cell>
     </Row>
+    <Row>
+      <Cell Column="Id:key">Tips1</Cell>
+      <Cell Column="English">Complete levels and get trophies！</Cell>
+      <Cell Column="Chinese">完成关卡，获得奖杯！</Cell>
+      <Cell Column="Japanese">レベルをクリアしてトロフィーを獲得しましょう！</Cell>
+      <Cell Column="Portuguese">Complete os níveis e ganhe troféus！</Cell>
+      <Cell Column="Spanish">¡Completa niveles y obtén trofeos!</Cell>
+      <Cell Column="German">Schließe Level ab und erhalte Trophäen!</Cell>
+      <Cell Column="French">Terminez les niveaux et obtenez des trophées !</Cell>
+      <Cell Column="Korean">레벨을 완료하고 트로피를 받으세요!</Cell>
+      <Cell Column="Arabic">أكمل المستويات واحصل على الجوائز!</Cell>
+      <Cell Column="Russian">Проходите уровни и получайте трофеи!</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Tips2</Cell>
+      <Cell Column="English">Keep your rank rising！</Cell>
+      <Cell Column="Chinese">不断提升你的排名！</Cell>
+      <Cell Column="Japanese">ランクを上げ続けましょう！</Cell>
+      <Cell Column="Portuguese">Mantenha sua classificação subindo！</Cell>
+      <Cell Column="Spanish">¡Sigue subiendo de rango!</Cell>
+      <Cell Column="German">Steige in deinem Rang!</Cell>
+      <Cell Column="French">Continuez à augmenter votre rang !</Cell>
+      <Cell Column="Korean">계급을 계속 높이세요!</Cell>
+      <Cell Column="Arabic">استمر في رفع رتبتك!</Cell>
+      <Cell Column="Russian">Повышайте свой рейтинг!</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Tips3</Cell>
+      <Cell Column="English">Time ends to upgrade to senior league！</Cell>
+      <Cell Column="Chinese">升级到高级联赛的时间已到！</Cell>
+      <Cell Column="Japanese">シニアリーグにアップグレードする時間は終了です！</Cell>
+      <Cell Column="Portuguese">O tempo acaba para atualizar para a liga sênior！</Cell>
+      <Cell Column="Spanish">¡Se acabó el tiempo para ascender a la liga sénior!</Cell>
+      <Cell Column="German">Die Zeit für den Aufstieg in die Oberliga ist abgelaufen!</Cell>
+      <Cell Column="French">Le temps pour passer à la ligue senior est écoulé !</Cell>
+      <Cell Column="Korean">시니어 리그로 업그레이드할 시간이 끝났습니다!</Cell>
+      <Cell Column="Arabic">انتهى الوقت للترقية إلى الدوري الممتاز!</Cell>
+      <Cell Column="Russian">Время перехода в высшую лигу истекает!</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Tips4</Cell>
+      <Cell Column="English">Tap to continue</Cell>
+      <Cell Column="Chinese">点击继续</Cell>
+      <Cell Column="Japanese">タップして続行</Cell>
+      <Cell Column="Portuguese">Toque para continuar</Cell>
+      <Cell Column="Spanish">Toca para continuar</Cell>
+      <Cell Column="German">Tippe, um fortzufahren</Cell>
+      <Cell Column="French">Appuyez pour continuer</Cell>
+      <Cell Column="Korean">계속하려면 탭하세요</Cell>
+      <Cell Column="Arabic">انقر للمتابعة</Cell>
+      <Cell Column="Russian">Нажмите, чтобы продолжить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">CoinNotEnough</Cell>
+      <Cell Column="English">Not Enough Coins</Cell>
+      <Cell Column="Chinese">金币不足</Cell>
+      <Cell Column="Japanese">コインが足りません</Cell>
+      <Cell Column="Portuguese">Não há moedas suficientes</Cell>
+      <Cell Column="Spanish">No hay suficientes monedas</Cell>
+      <Cell Column="German">Nicht genug Münzen</Cell>
+      <Cell Column="French">Pas assez de pièces</Cell>
+      <Cell Column="Korean">동전이 충분하지 않음</Cell>
+      <Cell Column="Arabic">لا يوجد عدد كافٍ من العملات</Cell>
+      <Cell Column="Russian">Недостаточно монет</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">AdNotReady</Cell>
+      <Cell Column="English">Ads Not Ready</Cell>
+      <Cell Column="Chinese">抱歉，广告未准备好</Cell>
+      <Cell Column="Japanese">広告がまだ準備できていません</Cell>
+      <Cell Column="Portuguese">Anúncios não prontos</Cell>
+      <Cell Column="Spanish">Los anuncios no están listos</Cell>
+      <Cell Column="German">Werbung nicht bereit</Cell>
+      <Cell Column="French">Les publicités ne sont pas prêtes</Cell>
+      <Cell Column="Korean">광고가 준비되지 않음</Cell>
+      <Cell Column="Arabic">الإعلانات غير جاهزة</Cell>
+      <Cell Column="Russian">Реклама не готова</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">FiveStarRating</Cell>
+      <Cell Column="English">Please rate 5 stars if you like this game.</Cell>
+      <Cell Column="Chinese">如果你喜欢我们游戏，请给我们五星好评</Cell>
+      <Cell Column="Japanese">このゲームが気に入ったら、5 つ星を付けてください。</Cell>
+      <Cell Column="Portuguese">Por favor, avalie com 5 estrelas se você gosta deste jogo.</Cell>
+      <Cell Column="Spanish">Califica con 5 estrellas si te gusta este juego.</Cell>
+      <Cell Column="German">Bitte bewerten Sie das Spiel mit 5 Sternen, wenn es Ihnen gefällt.</Cell>
+      <Cell Column="French">Veuillez noter 5 étoiles si vous aimez ce jeu.</Cell>
+      <Cell Column="Korean">이 게임이 마음에 드시면 별 5개를 주세요.</Cell>
+      <Cell Column="Arabic">يرجى تقييم اللعبة بخمس نجوم إذا أعجبتك.</Cell>
+      <Cell Column="Russian">Пожалуйста, оцените игру на 5 звезд, если она вам понравилась.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Proposal</Cell>
+      <Cell Column="English">Please level your suggestions</Cell>
+      <Cell Column="Chinese">请留下您的建议</Cell>
+      <Cell Column="Japanese">ご提案のレベルをお知らせください</Cell>
+      <Cell Column="Portuguese">Por favor, nivele suas sugestões</Cell>
+      <Cell Column="Spanish">Nivela tus sugerencias</Cell>
+      <Cell Column="German">Bitte teilen Sie Ihre Vorschläge mit</Cell>
+      <Cell Column="French">Veuillez noter vos suggestions</Cell>
+      <Cell Column="Korean">제안을 레벨로 지정해 주세요</Cell>
+      <Cell Column="Arabic">يرجى رفع مستوى اقتراحاتك</Cell>
+      <Cell Column="Russian">Пожалуйста, оцените свои предложения</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">InputProposal</Cell>
+      <Cell Column="English">Type your suggestions here</Cell>
+      <Cell Column="Chinese">在这里输入您的建议</Cell>
+      <Cell Column="Japanese">ご提案をここに入力してください</Cell>
+      <Cell Column="Portuguese">Digite suas sugestões aqui</Cell>
+      <Cell Column="Spanish">Escribe tus sugerencias aquí</Cell>
+      <Cell Column="German">Geben Sie hier Ihre Vorschläge ein</Cell>
+      <Cell Column="French">Tapez vos suggestions ici</Cell>
+      <Cell Column="Korean">제안을 여기에 입력하세요</Cell>
+      <Cell Column="Arabic">اكتب اقتراحاتك هنا</Cell>
+      <Cell Column="Russian">Введите свои предложения здесь</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Submit</Cell>
+      <Cell Column="English">Submit</Cell>
+      <Cell Column="Chinese">提交</Cell>
+      <Cell Column="Japanese">送信</Cell>
+      <Cell Column="Portuguese">Enviar</Cell>
+      <Cell Column="Spanish">Enviar</Cell>
+      <Cell Column="German">Senden</Cell>
+      <Cell Column="French">Soumettre</Cell>
+      <Cell Column="Korean">제출</Cell>
+      <Cell Column="Arabic">إرسال</Cell>
+      <Cell Column="Russian">Отправить</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Exit</Cell>
+      <Cell Column="English">Exit</Cell>
+      <Cell Column="Chinese">退出</Cell>
+      <Cell Column="Japanese">終了</Cell>
+      <Cell Column="Portuguese">Sair</Cell>
+      <Cell Column="Spanish">Salir</Cell>
+      <Cell Column="German">Beenden</Cell>
+      <Cell Column="French">Quitter</Cell>
+      <Cell Column="Korean">종료</Cell>
+      <Cell Column="Arabic">خروج</Cell>
+      <Cell Column="Russian">Выйти</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Thanks</Cell>
+      <Cell Column="English">Thank you for your valuable feedback, it is important for us to improve our game.</Cell>
+      <Cell Column="Chinese">感谢您的宝贵反馈，这对我们提升游戏很重要！</Cell>
+      <Cell Column="Japanese">貴重なフィードバックをありがとうございます。ゲームを改善するために重要です。</Cell>
+      <Cell Column="Portuguese">Obrigado pelo seu valioso feedback, é importante para nós melhorarmos nosso jogo.</Cell>
+      <Cell Column="Spanish">Gracias por tus valiosos comentarios, es importante para nosotros mejorar nuestro juego.</Cell>
+      <Cell Column="German">Vielen Dank für Ihr wertvolles Feedback, es ist uns wichtig, unser Spiel zu verbessern.</Cell>
+      <Cell Column="French">Merci pour vos précieux commentaires, ils sont importants pour nous d'améliorer notre jeu.</Cell>
+      <Cell Column="Korean">귀하의 소중한 피드백을 주셔서 감사합니다. 이는 게임을 개선하는 데 중요합니다.</Cell>
+      <Cell Column="Arabic">شكرًا لك على ملاحظاتك القيمة، من المهم بالنسبة لنا تحسين لعبتنا.</Cell>
+      <Cell Column="Russian">Спасибо за ваш ценный отзыв, нам важно улучшить нашу игру.</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Feedback</Cell>
+      <Cell Column="English">Feedback</Cell>
+      <Cell Column="Chinese">反馈</Cell>
+      <Cell Column="Japanese">フィードバック</Cell>
+      <Cell Column="Portuguese">Feedback</Cell>
+      <Cell Column="Spanish">Comentarios</Cell>
+      <Cell Column="German">Feedback</Cell>
+      <Cell Column="French">Commentaires</Cell>
+      <Cell Column="Korean">피드백</Cell>
+      <Cell Column="Arabic">الملاحظات</Cell>
+      <Cell Column="Russian">Отзыв</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">CompetitionOver</Cell>
+      <Cell Column="English">The game is over, try harder next time!</Cell>
+      <Cell Column="Chinese">比赛结束，下次好运！</Cell>
+      <Cell Column="Japanese">ゲームは終わりました。次回はもっと頑張りましょう!</Cell>
+      <Cell Column="Portuguese">O jogo acabou, tente mais da próxima vez!</Cell>
+      <Cell Column="Spanish">¡El juego ha terminado, esfuérzate más la próxima vez!</Cell>
+      <Cell Column="German">Das Spiel ist vorbei, gib dir nächstes Mal mehr Mühe!</Cell>
+      <Cell Column="French">Le jeu est terminé, essayez encore plus fort la prochaine fois !</Cell>
+      <Cell Column="Korean">게임은 끝났습니다. 다음에는 더 열심히 노력하세요!</Cell>
+      <Cell Column="Arabic">انتهت اللعبة، حاول أن تبذل المزيد من الجهد في المرة القادمة!</Cell>
+      <Cell Column="Russian">Игра окончена, постарайся лучше в следующий раз!</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Day</Cell>
+      <Cell Column="English">Days</Cell>
+      <Cell Column="Chinese">天</Cell>
+      <Cell Column="Japanese">日数</Cell>
+      <Cell Column="Portuguese">Dias</Cell>
+      <Cell Column="Spanish">Días</Cell>
+      <Cell Column="German">Tage</Cell>
+      <Cell Column="French">Jours</Cell>
+      <Cell Column="Korean">일</Cell>
+      <Cell Column="Arabic">أيام</Cell>
+      <Cell Column="Russian">Дни</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">Hour</Cell>
+      <Cell Column="English">Hours</Cell>
+      <Cell Column="Chinese">小时</Cell>
+      <Cell Column="Japanese">時間数</Cell>
+      <Cell Column="Portuguese">Horas</Cell>
+      <Cell Column="Spanish">Horas</Cell>
+      <Cell Column="German">Stunden</Cell>
+      <Cell Column="French">Heures</Cell>
+      <Cell Column="Korean">시간</Cell>
+      <Cell Column="Arabic">ساعات</Cell>
+      <Cell Column="Russian">Часы</Cell>
+    </Row>
   </Worksheet>
 </Workbook>

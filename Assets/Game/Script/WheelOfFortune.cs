@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class WheelOfFortune : MonoBehaviour
 {
+    //转盘界面
+    public GameObject m_WheelPanel;
     public Image wheelImage; // 转盘的 Image 组件
     public float spinDuration = 5f; // 旋转持续时间
     public int numberOfSectors = 8; // 扇区数量
@@ -236,24 +238,24 @@ public class WheelOfFortune : MonoBehaviour
             StartSpin();
             IsFirstSpinning = false;
             PlayerPrefs.SetInt("IsFirstSpinning", 0);
+            SetSpinButtonState();
         }
         else if (m_TodaySpinCount > 0)//如果还有抽奖次数
         {
             ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
             {
+                Debug.Log("转盘回调");
                 m_TodaySpinCount--;
                 PlayerPrefs.SetInt("TodaySpinCount", m_TodaySpinCount);
                 StartSpin();
+                SetSpinButtonState();
             }, () =>
-        {
-            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
-        });
+            {
+                TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
+            });
         }
-        else
-        {
-            System.DateTime finishTime = System.DateTime.Now;
-            PlayerPrefs.SetString("SpinFinishTime", finishTime.ToString());
-        }
+        System.DateTime finishTime = System.DateTime.Now;
+        PlayerPrefs.SetString("SpinFinishTime", finishTime.ToString());
         SetSpinButtonState();
     }
     private void CreateAndAnimateCoins(int goldAmount)
@@ -298,6 +300,12 @@ public class WheelOfFortune : MonoBehaviour
        {
            m_RewardRoot.SetActive(false);
        });
+    }
+    //转盘按钮
+    public void OnClickWheel()
+    {
+        m_WheelPanel.SetActive(true);
+        AudioManager.Instance.PlayButtonClick();
     }
     public void OnClose()
     {

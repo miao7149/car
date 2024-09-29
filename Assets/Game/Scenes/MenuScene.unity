@@ -735,7 +735,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 648396247}
+  - {fileID: 1941260169}
+  - {fileID: 535246614}
+  - {fileID: 997289895}
   m_Father: {fileID: 311219281}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1817,7 +1821,6 @@ MonoBehaviour:
   m_CountDownText: {fileID: 886404851}
   m_StartCompetitionRoot: {fileID: 1840409124}
   m_CompetitionRoot: {fileID: 55178540}
-  m_GameDescText: {fileID: 1256420546}
   m_CoinPrefab: {fileID: 1792559981599853603, guid: f5d355a6222394abcb01cf927e0ab8ec, type: 3}
   m_CoinContainer: {fileID: 233109596}
   m_TargetUI: {fileID: 4726867752357915917}
@@ -6525,12 +6528,12 @@ MonoBehaviour:
   m_DescRoot: {fileID: 311219280}
   m_Car: {fileID: 5492919562750037372}
   m_RankItems:
-  - {fileID: 319751477}
-  - {fileID: 1091139588}
-  - {fileID: 939154367}
-  - {fileID: 1625387216}
-  - {fileID: 1000159521}
-  - {fileID: 1711411444}
+  - {fileID: 2887962674841546322}
+  - {fileID: 4324098050312243394}
+  - {fileID: 5501864686148446117}
+  - {fileID: 5232090544479363133}
+  - {fileID: 3326763202307131460}
+  - {fileID: 8983257591351061958}
   m_Item1: {fileID: 6825338256191096427, guid: 54f952b08cdca4ebbbfeac5e086658cb, type: 3}
   m_Item2: {fileID: 7723529229535721989, guid: d58d76df138684941934851b83576351, type: 3}
   m_Item3: {fileID: 22706166466288639, guid: 7e321b867222649b4b6460fac440c259, type: 3}
@@ -7171,6 +7174,11 @@ MonoBehaviour:
   m_SwitchSkin: {fileID: 436322000}
   m_HardMode: {fileID: 1834916275}
   m_RankingMatch: {fileID: 245550583}
+  IsSkinFirstEnter: 1
+  IsWheelFirstEnter: 1
+  IsHardFirstEnter: 1
+  IsQualifyingFirstEnter: 1
+  IsRacingFirstEnter: 1
 --- !u!1 &267571923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7735,20 +7743,16 @@ RectTransform:
   - {fileID: 1114270017}
   - {fileID: 1696886718}
   - {fileID: 225760774}
-  - {fileID: 648396247}
-  - {fileID: 1941260169}
-  - {fileID: 535246614}
-  - {fileID: 997289895}
   - {fileID: 1174901355}
   - {fileID: 191783367}
   - {fileID: 529729948}
   - {fileID: 1644915119}
   m_Father: {fileID: 1566550840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311219282
 MonoBehaviour:
@@ -8119,13 +8123,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319751477}
   m_CullTransparentMesh: 1
+--- !u!4 &328356807 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 415478, guid: a3267720e82aa41c1a05ab29824902b4, type: 3}
+  m_PrefabInstance: {fileID: 340416153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &340416153
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1476931201}
     m_Modifications:
     - target: {fileID: 115478, guid: a3267720e82aa41c1a05ab29824902b4, type: 3}
       propertyPath: m_Name
@@ -10898,8 +10907,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1232341448}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 927708459}
+        m_TargetAssemblyTypeName: WheelOfFortune, Assembly-CSharp
         m_MethodName: OnClickWheel
         m_Mode: 1
         m_Arguments:
@@ -13645,16 +13654,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535246613}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 311219281}
+  m_Father: {fileID: 25810187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 242.2, y: 236.37}
+  m_AnchoredPosition: {x: 242.2, y: 49.07007}
   m_SizeDelta: {x: 128, y: 135.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535246615
@@ -15231,16 +15240,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648396246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 311219281}
+  m_Father: {fileID: 25810187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -257.1, y: 236.37}
+  m_AnchoredPosition: {x: -257.1, y: 49.07007}
   m_SizeDelta: {x: 111.5, y: 135.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648396248
@@ -20945,6 +20954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3616b9049b0e422187d8e1847ab9a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_WheelPanel: {fileID: 657360440}
   wheelImage: {fileID: 978332030}
   spinDuration: 5
   numberOfSectors: 6
@@ -22389,16 +22399,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997289894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 311219281}
+  m_Father: {fileID: 25810187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 141.59998}
+  m_AnchoredPosition: {x: 0, y: -45.69995}
   m_SizeDelta: {x: 429.3, y: 135.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997289896
@@ -23674,12 +23684,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053609938}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.9116793, y: 0.64093435, z: -12.931818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1476931201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1056457408
 GameObject:
@@ -27608,7 +27618,6 @@ MonoBehaviour:
   - {fileID: 919132148735815964}
   m_SettingPanel: {fileID: 1671473297}
   m_Camera: {fileID: 1183077683}
-  m_WheelPanel: {fileID: 657360440}
   switchSprites:
   - {fileID: 21300000, guid: 8d8d40351e3404678b5d8efc5cbe49f6, type: 3}
   - {fileID: 21300000, guid: eab5031efb2ed4e7db594d36820064be, type: 3}
@@ -31711,7 +31720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1429950052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32635,8 +32644,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1053609940}
   - {fileID: 542408116}
   - {fileID: 163651751}
+  - {fileID: 328356807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1476931202
@@ -42913,16 +42924,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941260168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 311219281}
+  m_Father: {fileID: 25810187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -122.9, y: 236.37}
+  m_AnchoredPosition: {x: -122.9, y: 49.07007}
   m_SizeDelta: {x: 111.5, y: 135.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941260170
@@ -81587,7 +81598,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 245550583}
         m_TargetAssemblyTypeName: RankingMatch, Assembly-CSharp
         m_MethodName: OnCloseBtn
         m_Mode: 1
@@ -87993,8 +88004,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6446583899475652865}
   - {fileID: 5622089127662830210}
+  - {fileID: 6446583899475652865}
   m_Father: {fileID: 8888092121112579137}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -101601,5 +101612,3 @@ SceneRoots:
   - {fileID: 104873274}
   - {fileID: 1339057620}
   - {fileID: 813956503}
-  - {fileID: 1053609940}
-  - {fileID: 340416153}

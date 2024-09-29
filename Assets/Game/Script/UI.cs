@@ -225,7 +225,7 @@ public class UI : MonoBehaviour
         m_StepText.text = GlobalManager.Instance.GetLanguageValue("StepNumber") + ":" + count.ToString();
     }
     //更新关卡数
-    public void ChangeLevelCount(int count, GameType gameType)
+    public void ChangeLevelCount(GameType gameType)
     {
         if (gameType == GameType.Main)
         {
@@ -233,21 +233,21 @@ public class UI : MonoBehaviour
             {
                 MainLevelRoot.SetActive(false);
                 StartLevelRoot.SetActive(true);
-                StartLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+                StartLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
             }
             else
             {
                 MainLevelRoot.SetActive(true);
                 StartLevelRoot.SetActive(false);
                 HardLevelRoot.SetActive(false);
-                MainLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+                MainLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
             }
         }
         else
         {
             MainLevelRoot.SetActive(false);
             HardLevelRoot.SetActive(true);
-            HardLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + count.ToString();
+            HardLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentHardLevel + 1).ToString();
         }
     }
     //复活按钮
@@ -330,12 +330,12 @@ public class UI : MonoBehaviour
             {
                 str = str.Replace("xxx", "");
             }
-            m_CostCoinText.text = "+5";
+            m_CostCoinText.text = "+5 Steps";
             m_CoinText.text = "600";
             m_GameOverText.text = GlobalManager.Instance.GetLanguageValue("OutOfSteps");
             m_FailedImage.sprite = sprites[0];
             m_FailedImage.SetNativeSize();
-            m_WatchAdText.text = "+5";
+            m_WatchAdText.text = "+5 Steps";
             m_FailedImage.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
