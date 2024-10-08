@@ -16,6 +16,8 @@ public class TrafficLight : MonoBehaviour
     public TextMesh m_Text;
     private bool isTrigger = false;
     private float TriggerTime = 1;
+    public GameObject m_Lv;
+    public GameObject m_Hong;
     void Awake()
     {
         redTime = 3;
@@ -25,6 +27,7 @@ public class TrafficLight : MonoBehaviour
     {
         //默认红灯
         m_Light.color = Color.red;
+        m_Hong.SetActive(true);
         m_Text.text = redTime.ToString();
     }
 
@@ -43,6 +46,8 @@ public class TrafficLight : MonoBehaviour
                 redTime = 0;
                 greenTime = 5;
                 m_Light.color = Color.green;
+                m_Lv.SetActive(true);
+                m_Hong.SetActive(false);
             }
         }
         //绿灯倒计时
@@ -57,6 +62,8 @@ public class TrafficLight : MonoBehaviour
                 greenTime = 0;
                 redTime = 3;
                 m_Light.color = Color.red;
+                m_Lv.SetActive(false);
+                m_Hong.SetActive(true);
             }
         }
         if (isTrigger)

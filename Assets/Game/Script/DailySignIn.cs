@@ -19,6 +19,8 @@ public class DailySignIn : MonoBehaviour
     public GameObject m_TargetUI;
     float frameDuration = 0.05f;
     public GameObject m_RewradRoot;//奖励界面
+    //初始签到时间
+    public DateTime m_StartDailySignTime;
     /////////////////////////////////////////////多语言设置，文本物体
     //标题
     public TMP_Text m_Title;
@@ -47,9 +49,9 @@ public class DailySignIn : MonoBehaviour
         // 加载上次签到日期
         string lastSignInDateString = PlayerPrefs.GetString("LastSignInDate", DateTime.MinValue.ToString());
         lastSignInDate = DateTime.Parse(lastSignInDateString);
-
+        m_StartDailySignTime = DateTime.Parse(PlayerPrefs.GetString("StartDailySignTime", DateTime.MinValue.ToString()));
         // 如果上次签到日期不是昨天，重置签到状态
-        if ((DateTime.Now - lastSignInDate).Days > 1)
+        if ((DateTime.Now - lastSignInDate).Days > 1 || (DateTime.Now - m_StartDailySignTime).Days >= 7)
         {
             ResetSignInStatus();
         }
@@ -79,11 +81,13 @@ public class DailySignIn : MonoBehaviour
             signInStatus[i] = false;
         }
         SaveSignInData();
+        m_StartDailySignTime = DateTime.Now;
+        PlayerPrefs.SetString("StartDailySignTime", m_StartDailySignTime.ToString());
     }
 
     public void SignIn()
     {
-        int dayIndex = (int)(DateTime.Now - lastSignInDate).TotalDays % 7;
+        int dayIndex = (int)(DateTime.Now - m_StartDailySignTime).TotalDays;
         if (lastSignInDate == DateTime.MinValue)
         {
             dayIndex = 0;
@@ -113,7 +117,7 @@ public class DailySignIn : MonoBehaviour
             dayImages[i].transform.GetChild(2).GetComponent<TMP_Text>().text = "X" + rewardCoins[i].ToString();
             dayImages[i].transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
         }
-        int dayIndex = (int)(DateTime.Now - lastSignInDate).TotalDays % 7;
+        int dayIndex = (int)(DateTime.Now - m_StartDailySignTime).TotalDays;
         if (lastSignInDate == DateTime.MinValue)
         {
             dayIndex = 0;

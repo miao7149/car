@@ -102,11 +102,14 @@ public class RewardedAdsManager : MonoBehaviour
 
     private void OnRewardedAdHiddenEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
+        Debug.Log("广告回调：OnRewardedAdHiddenEvent");
         // Rewarded ad is hidden. Pre-load the next ad
         LoadRewardedAd();
         if (success)
         {
+            Debug.Log("视频广告广告完成回调");
             successCallBack.Invoke();
+            Debug.Log("successCallBack ！= null");
             successCallBack = null;
             ApplovinSDKManager.Instance().lastShowTime = Time.time;
             AudioSettings.Reset(AudioSettings.GetConfiguration());

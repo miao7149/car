@@ -57,8 +57,6 @@ public class RacingCompetition : MonoBehaviour
     public GameObject m_StartCompetitionRoot;
     //比赛中根节点
     public GameObject m_CompetitionRoot;
-    //游戏描述文本
-    public TMP_Text m_GameDescText;
     public GameObject m_CoinPrefab; // 金币预制体
     public GameObject m_CoinContainer; // 金币容器
     public GameObject m_TargetUI; // 目标UI
@@ -126,7 +124,6 @@ public class RacingCompetition : MonoBehaviour
     public void SetLanguage()
     {
         m_Title.text = GlobalManager.Instance.GetLanguageValue("LevelRacing");
-        m_Desc.text = GlobalManager.Instance.GetLanguageValue("RacingDes");
         m_ContinueText.text = GlobalManager.Instance.GetLanguageValue("Continue");
         m_StartTitle.text = GlobalManager.Instance.GetLanguageValue("LevelRacing");
         m_StartDesc.text = GlobalManager.Instance.GetLanguageValue("RacingDes");
@@ -147,6 +144,7 @@ public class RacingCompetition : MonoBehaviour
     }
     public void Init()
     {
+        m_Desc.text = GlobalManager.Instance.GetLanguageValue("RacingDes");
         //获取开始时间
         GlobalManager.Instance.RacingStartDate = DateTime.Parse(PlayerPrefs.GetString("StartDate"));
         remainingTime = TotalTime - (DateTime.Now - GlobalManager.Instance.RacingStartDate).TotalSeconds;
@@ -174,7 +172,6 @@ public class RacingCompetition : MonoBehaviour
                 GlobalManager.Instance.IsCompetition = false;
                 PlayerPrefs.DeleteKey("StartDate");
                 PlayerPrefs.DeleteKey("IsCompetition");
-                Debug.Log("比赛结束，玩家完成竞赛");
                 m_CompetitionRoot.SetActive(true);
             }
             else if (DateTime.Now - GlobalManager.Instance.RacingStartDate < TimeSpan.FromSeconds(TotalTime) && CompletionCount < 3)//比赛未结束
@@ -188,7 +185,7 @@ public class RacingCompetition : MonoBehaviour
                 GlobalManager.Instance.IsCompetition = false;
                 PlayerPrefs.DeleteKey("StartDate");
                 PlayerPrefs.DeleteKey("IsCompetition");
-                m_GameDescText.text = "比赛结束，下次好运！";
+                m_Desc.text = GlobalManager.Instance.GetLanguageValue("CompetitionOver");
                 m_CompetitionRoot.SetActive(true);
             }
         }

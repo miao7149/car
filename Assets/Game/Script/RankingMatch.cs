@@ -108,14 +108,13 @@ public class RankingMatch : MonoBehaviour
         mItemHeight1 = m_Item1.GetComponent<RectTransform>().sizeDelta.y;
         mItemHeight2 = m_Item2.GetComponent<RectTransform>().sizeDelta.y;
         mItemHeight3 = m_Item3.GetComponent<RectTransform>().sizeDelta.y;
-        if (GlobalManager.Instance.CurrentLevel >= 15 && GlobalManager.Instance.mIsStartRankingMatch == false)
+        if (GlobalManager.Instance.CurrentLevel >= 14 && GlobalManager.Instance.mIsStartRankingMatch == false)
         {
             GlobalManager.Instance.mIsStartRankingMatch = true;
             GlobalManager.Instance.StartDate = DateTime.Now;
             //保存开始时间
             PlayerPrefs.SetString("RankingStartDate", GlobalManager.Instance.StartDate.ToString());
             PlayerPrefs.SetInt("IsStartRankingMatch", 1);
-            m_RankingMatchRoot.SetActive(true);
             RefreshRankingMatch();
         }
         else
@@ -171,7 +170,7 @@ public class RankingMatch : MonoBehaviour
                 //更新倒计时文本，只显示天数和小时数
                 int days = (int)(remainingTime / (24 * 60 * 60));
                 int hours = (int)((remainingTime % (24 * 60 * 60)) / (60 * 60));
-                m_CountDownText.text = $"{days}天 {hours}小时";
+                m_CountDownText.text = days + GlobalManager.Instance.GetLanguageValue("Day") + hours + GlobalManager.Instance.GetLanguageValue("Hour");
             }
             m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1];//设置段位图片
             m_RankImage.GetComponent<Image>().SetNativeSize();
@@ -434,7 +433,7 @@ public class RankingMatch : MonoBehaviour
     {
         m_MainRoot.SetActive(false);
         m_RankRoot.SetActive(true);
-        m_Car.transform.DOMoveY(m_RankItems[GlobalManager.Instance.CurrentRank - 1].transform.position.y, 0.5f).SetEase(Ease.OutQuad);
+        m_Car.transform.DOMoveY(m_RankItems[GlobalManager.Instance.CurrentRank - 1].transform.GetChild(0).transform.position.y, 0.5f).SetEase(Ease.OutQuad);
     }
     //显示描述界面
     public void ShowDescPage()
@@ -445,5 +444,27 @@ public class RankingMatch : MonoBehaviour
     public void CloseDescPage()
     {
         m_DescRoot.SetActive(false);
+    }
+    //第一次打开处理逻辑
+    public void FirstOpenRankingMatch()
+    {
+        m_RankingMatchRoot.SetActive(true);
+        m_ScrollRect.content.anchoredPosition = new Vector2(0, 0);
+        RefreshRankingMatch();
+        SmoothScrollToIndex(GlobalManager.Instance.GetRankIndex() - 3, 1.5f);
+        //继续、段位、详情按钮不可点击
+        m_ContinueBtn.GetComponent<Button>().interactable = false;
+        m_DetailBtn.GetComponent<Button>().interactable = false;
+        m_RankBtn.GetComponent<Button>().interactable = false;
+        //使用DOTween等待1秒
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            //继续、段位、详情按钮可点击
+            m_ContinueBtn.GetComponent<Button>().interactable = true;
+            m_DetailBtn.GetComponent<Button>().interactable = true;
+            m_RankBtn.GetComponent<Button>().interactable = true;
+            //显示详情界面
+            ShowDescPage();
+        });
     }
 }

@@ -14,8 +14,6 @@ public class MenuManager : MonoBehaviour
     public GameObject m_SettingPanel;
     //相机
     public Camera m_Camera;
-    //转盘界面
-    public GameObject m_WheelPanel;
     //开关按钮切换图片
     public List<Sprite> switchSprites;
     //路牌图标图片
@@ -158,7 +156,7 @@ public class MenuManager : MonoBehaviour
     public void OnInputFieldEndEdit(string value)
     {
         GlobalManager.Instance.PlayerName = value;
-        Debug.Log("输入框输入的内容：" + value);
+        GlobalManager.Instance.SaveGameData();
     }
     // 开始汽车震动动画
     public void StartCarScaleAnimation()
@@ -235,12 +233,6 @@ public class MenuManager : MonoBehaviour
             AudioManager.Instance.StopBackgroundMusic();
             m_SoundSwitch.sprite = switchSprites[1];
         }
-    }
-    //转盘按钮
-    public void OnClickWheel()
-    {
-        m_WheelPanel.SetActive(true);
-        AudioManager.Instance.PlayButtonClick();
     }
     //隐私政策按钮
     public void OnClickPrivacy()

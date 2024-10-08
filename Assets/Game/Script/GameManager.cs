@@ -851,9 +851,9 @@ public class GameManager : MonoBehaviour
         //初始化信号灯
         foreach (var item in trafficLightDataArr)
         {
-            var light = Instantiate(prefabTrafficLight).GetComponent<TrafficLight>();
-            light.transform.SetParent(transform, false);
-            light.transform.localPosition = ConvertPos(new Vector3(item.pos.x, 0, item.pos.y));
+            var light = Instantiate(prefabTrafficLight).transform.GetChild(0).GetComponent<TrafficLight>();
+            light.transform.parent.SetParent(transform, false);
+            light.transform.parent.localPosition = ConvertPos(new Vector3(item.pos.x, 0, item.pos.y));
             light.Init(item);
             trafficLightArr.Add(light);
         }
@@ -884,7 +884,7 @@ public class GameManager : MonoBehaviour
         yield return null;
         //获取关卡步数
         StepCount = GetStepCount(GlobalManager.Instance.GameType, levelData);
-        m_UI.ChangeLevelCount(GlobalManager.Instance.CurrentLevel + 1, GlobalManager.Instance.GameType);
+        m_UI.ChangeLevelCount(GlobalManager.Instance.GameType);
         yield return new WaitForSeconds(0.5f);
         SetGameStatu(GameStatu.playing);
         foreach (var car in carArr)
@@ -2087,11 +2087,22 @@ public class GameManager : MonoBehaviour
     //胜利延时
     private IEnumerator ShowFinishUIWithDelay()
     {
-
+        yield return new WaitForSeconds(1.5f);
+        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(() =>
+        {
+        });
         // 设置延迟时间
-        float delay = 1.5f;
+        float delay = 0.8f;
         yield return new WaitForSeconds(delay);
-        GlobalManager.Instance.CurrentLevel++;
+        if (GlobalManager.Instance.GameType == GameType.ChallengeHard)
+        {
+            GlobalManager.Instance.CurrentHardLevel++;
+
+        }
+        else
+        {
+            GlobalManager.Instance.CurrentLevel++;
+        }
         if (GlobalManager.Instance.CurrentLevel != 0 && GlobalManager.Instance.CurrentLevel != 1 && GlobalManager.Instance.CurrentLevel != 2)
         {
             //金币数量

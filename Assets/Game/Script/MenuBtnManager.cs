@@ -28,6 +28,16 @@ public class MenuBtnManager : MonoBehaviour
     public UIHardMode m_HardMode;
     //排位赛脚本
     public RankingMatch m_RankingMatch;
+    //是否第一次进入换皮肤界面
+    public bool IsSkinFirstEnter = true;
+    //是否第一次进入转哦安界面
+    public bool IsWheelFirstEnter = true;
+    //是否第一次进入困难模式界面
+    public bool IsHardFirstEnter = true;
+    //是否第一次进入排位赛界面
+    public bool IsQualifyingFirstEnter = true;
+    //是否第一次进入竞赛界面
+    public bool IsRacingFirstEnter = true;
     void OnEnable()
     {
         m_WheelOfFortune.OnDailySpinEvent += RedPointAnim;
@@ -48,6 +58,17 @@ public class MenuBtnManager : MonoBehaviour
             m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
             m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Racing");
             m_RacingBtn.GetComponent<Button>().interactable = true;
+            IsRacingFirstEnter = PlayerPrefs.GetInt("IsRacingFirstEnter", 1) == 1;
+            if (IsRacingFirstEnter)
+            {
+                //DoTween等待两秒
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    m_Racing.OnRacingBtn();
+                    IsRacingFirstEnter = false;
+                    PlayerPrefs.SetInt("IsRacingFirstEnter", 0);
+                });
+            }
         }
         else
         {
@@ -62,6 +83,16 @@ public class MenuBtnManager : MonoBehaviour
             m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
             m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Spin");
             m_WheelBtn.GetComponent<Button>().interactable = true;
+            IsWheelFirstEnter = PlayerPrefs.GetInt("IsWheelFirstEnter", 1) == 1;
+            if (IsWheelFirstEnter)
+            {
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    m_WheelOfFortune.OnClickWheel();
+                    IsWheelFirstEnter = false;
+                    PlayerPrefs.SetInt("IsWheelFirstEnter", 0);
+                });
+            }
         }
         else
         {
@@ -76,6 +107,16 @@ public class MenuBtnManager : MonoBehaviour
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("League");
             m_QualifyingBtn.GetComponent<Button>().interactable = true;
+            IsQualifyingFirstEnter = PlayerPrefs.GetInt("IsQualifyingFirstEnter", 1) == 1;
+            if (IsQualifyingFirstEnter)
+            {
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    m_RankingMatch.FirstOpenRankingMatch();
+                    IsQualifyingFirstEnter = false;
+                    PlayerPrefs.SetInt("IsQualifyingFirstEnter", 0);
+                });
+            }
         }
         else
         {
@@ -91,6 +132,16 @@ public class MenuBtnManager : MonoBehaviour
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
             m_HardBtn.GetComponent<Button>().interactable = true;
+            IsHardFirstEnter = PlayerPrefs.GetInt("IsHardFirstEnter", 1) == 1;
+            if (IsHardFirstEnter)
+            {
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    m_HardMode.OnHardModeBtn();
+                    IsHardFirstEnter = false;
+                    PlayerPrefs.SetInt("IsHardFirstEnter", 0);
+                });
+            }
         }
         else
         {
@@ -105,6 +156,16 @@ public class MenuBtnManager : MonoBehaviour
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Skin");
             m_SkinBtn.GetComponent<Button>().interactable = true;
+            IsSkinFirstEnter = PlayerPrefs.GetInt("IsSkinFirstEnter", 1) == 1;
+            if (IsSkinFirstEnter)
+            {
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    m_SwitchSkin.OnOpenSwitchBtn();
+                    IsSkinFirstEnter = false;
+                    PlayerPrefs.SetInt("IsSkinFirstEnter", 0);
+                });
+            }
         }
         else
         {
