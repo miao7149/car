@@ -1,0 +1,9 @@
+ani_starchallenge_giftbox_1.png
+size:512,256
+filter:Linear,Linear
+starchallenge_giftbox_1_bottom
+bounds:269,2,221,197
+offsets:1,1,223,199
+starchallenge_giftbox_1_cover
+bounds:2,6,265,193
+offsets:1,1,267,195

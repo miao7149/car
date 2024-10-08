@@ -1,0 +1,17 @@
+<!-- AppLovin MAX OpenWrap adapter plugin version: 1.1.0 -->
+<dependencies>
+	<iosPods>
+		<iosPod name="AppLovinPubMaticAdapter" version="~>1.1">
+			<sources>
+				<source>https://github.com/CocoaPods/Specs</source>
+			</sources>
+      </iosPod>
+  </iosPods>
+	<androidPackages>
+		<androidPackage spec="com.applovin.mediation:alopenwrapadapter:1.1.+">
+			<repositories>
+				<repository>https://repo.pubmatic.com/artifactory/public-repos</repository>
+			</repositories>
+		</androidPackage>
+	</androidPackages>
+</dependencies>

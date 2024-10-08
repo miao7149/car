@@ -1,0 +1,88 @@
+<Workbook>
+  <Worksheet Name="Language">
+    <Row>
+      <Cell Column="Id:key">1</Cell>
+      <Cell Column="TextureName">texture_1</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_1</Cell>
+      <Cell Column="UnlockConditions">1_0</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">2</Cell>
+      <Cell Column="TextureName">texture_2</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_2</Cell>
+      <Cell Column="UnlockConditions">1_200</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">3</Cell>
+      <Cell Column="TextureName">texture_3</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_3</Cell>
+      <Cell Column="UnlockConditions">2_50</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">4</Cell>
+      <Cell Column="TextureName">texture_4</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_4</Cell>
+      <Cell Column="UnlockConditions">1_500</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">5</Cell>
+      <Cell Column="TextureName">texture_5</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_5</Cell>
+      <Cell Column="UnlockConditions">1_800</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">6</Cell>
+      <Cell Column="TextureName">texture_6</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_6</Cell>
+      <Cell Column="UnlockConditions">2_100</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">7</Cell>
+      <Cell Column="TextureName">texture_7</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_7</Cell>
+      <Cell Column="UnlockConditions">1_1200</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">8</Cell>
+      <Cell Column="TextureName">texture_8</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_8</Cell>
+      <Cell Column="UnlockConditions">1_1500</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">9</Cell>
+      <Cell Column="TextureName">texture_9</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_9</Cell>
+      <Cell Column="UnlockConditions">2_150</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">10</Cell>
+      <Cell Column="TextureName">texture_10</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_10</Cell>
+      <Cell Column="UnlockConditions">1_1800</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">11</Cell>
+      <Cell Column="TextureName">texture_11</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_11</Cell>
+      <Cell Column="UnlockConditions">1_2000</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+    <Row>
+      <Cell Column="Id:key">12</Cell>
+      <Cell Column="TextureName">texture_12</Cell>
+      <Cell Column="SpriteName">skin_style_frame_street_12</Cell>
+      <Cell Column="UnlockConditions">2_200</Cell>
+      <Cell Column="Coins">3000</Cell>
+    </Row>
+  </Worksheet>
+</Workbook>
