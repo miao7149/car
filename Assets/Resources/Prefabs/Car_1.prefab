@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4385834297242857491}
+  - component: {fileID: 220680830731394620}
   m_Layer: 11
   m_Name: Car_1
   m_TagString: SkinCar
@@ -32,6 +33,22 @@ Transform:
   - {fileID: 1415244580748567920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &220680830731394620
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650946759720244918}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1452775985726210715
 PrefabInstance:
   m_ObjectHideFlags: 0

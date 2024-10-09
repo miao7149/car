@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221094817750279976}
   - component: {fileID: 1922257348413103309}
+  - component: {fileID: 5047713680943993171}
   m_Layer: 0
   m_Name: BigCar
   m_TagString: Untagged
@@ -154,6 +155,22 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+--- !u!111 &5047713680943993171
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150818051858469260}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &6581458195393442505
 PrefabInstance:
   m_ObjectHideFlags: 0

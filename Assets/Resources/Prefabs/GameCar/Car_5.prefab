@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5050382446023916105}
   - component: {fileID: 4071173422398205268}
+  - component: {fileID: 2317620065892456810}
   m_Layer: 0
   m_Name: Car_5
   m_TagString: Untagged
@@ -306,6 +307,22 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+--- !u!111 &2317620065892456810
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019410961990221995}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1790850436617361187
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221094817750279976}
   - component: {fileID: 1922257348413103309}
+  - component: {fileID: 8159212246596535090}
   m_Layer: 0
   m_Name: car
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3764827568433665262}
   - {fileID: 4612226312359334464}
@@ -146,6 +147,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7de6dfe066f64ac38ad08e1c242c1a5, type: 3}
   sprite: {fileID: 3846053272859726570}
   droneTargetPosition: {fileID: 0}
+  isPlayCoinAnimation: 0
+  carInfo:
+    type: 0
+    posX: 0
+    posY: 0
+    dir: 0
+    turn: 0
+  mTrail: {fileID: 0}
+--- !u!111 &8159212246596535090
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150818051858469260}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &4906260257633407747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,6 +301,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a3c514773234347fd8cb31754beb9681, type: 3}
       propertyPath: m_Name
       value: car
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3c514773234347fd8cb31754beb9681, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

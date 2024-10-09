@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3158177249587061454}
   - component: {fileID: 8442042754355263458}
+  - component: {fileID: 6279987190161357123}
   m_Layer: 0
   m_Name: Bulldozer
   m_TagString: Untagged
@@ -154,6 +155,22 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+--- !u!111 &6279987190161357123
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819092892382400383}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 71062f8ace35648579565dc57b054ef4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1609672662402555519
 PrefabInstance:
   m_ObjectHideFlags: 0
