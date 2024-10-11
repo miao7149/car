@@ -105,10 +105,10 @@ public class TrafficLight : MonoBehaviour {
             Debug.Log("信号灯碰撞检测");
             isTrigger = true;
             var car = other.transform.parent.parent.GetComponent<Car>();
-            // if (car.dead) {
-            GameManager.Instance.StepCount -= 2; //减少行动力
-            GameManager.Instance.CheckGameResult();
-            // }
+            if (car.backing == false) {
+                GameManager.Instance.StepCount -= 2; //减少行动力
+                GameManager.Instance.CheckGameResult();
+            }
         }
     }
 }

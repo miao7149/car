@@ -107,6 +107,17 @@ public class MenuManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            GlobalManager.Instance.CurrentLevel++;
+            PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
+            SetLevelList();
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            GlobalManager.Instance.CurrentLevel--;
+            PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
+            SetLevelList();
+        }
     }
 
     void OnDestroy() {
@@ -118,6 +129,7 @@ public class MenuManager : MonoBehaviour {
         //Application.OpenURL("https://www.baidu.com");
         AudioManager.Instance.PlayButtonClick();
         GlobalManager.Instance.GameType = GameType.Main;
+        GlobalManager.Instance.difficuteMode = m_LevelList[0].transform.GetChild(0).gameObject.activeSelf == false;
         MoveCarAppearanceAnima();
     }
 
@@ -130,19 +142,36 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
+    private Vector3 offsetCamera;
+
     //汽车出场动画
     public void MoveCarAppearanceAnima() {
         if (m_Camera == null || m_Camera.transform == null || m_Car == null || m_Car.transform == null) {
             return;
         }
 
+        offsetCamera = m_Camera.transform.position - m_Car.transform.position;
+
         AudioManager.Instance.PlayCarSmallMove();
-        m_Car.transform.DOMoveZ(m_Car.transform.position.z + 3.6f, 0.7f).SetEase(Ease.OutQuad).OnComplete(() => {
+        m_Car.transform.GetChild(2).GetComponent<Animation>().Stop();
+        //StartCoroutine(CameraFollowCar());
+        m_Car.transform.DOMoveZ(m_Car.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuart).OnComplete(() => {
+            //StopCoroutine(CameraFollowCar());
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         });
         //相机跟随
-        m_Camera.transform.DOMoveZ(m_Camera.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuad);
+        m_CameraNode.transform.DOMoveZ(m_Camera.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuart);
+        m_Camera.transform.DOShakePosition(0.7f, 0.03f, 30, 0.1f, false, true).SetEase(Ease.InOutQuad);
     }
+
+    public GameObject m_CameraNode;
+
+    // IEnumerator CameraFollowCar() {
+    //     while (true) {
+    //         yield return null;
+    //         m_Camera.transform.position = m_Car.transform.position + offsetCamera;
+    //     }
+    // }
 
     //汽车入场动画
     public void MoveCarEnterAnima() {

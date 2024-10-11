@@ -38,6 +38,8 @@ public class Car : MonoBehaviour {
     public CarInfo carInfo;
     public GameObject mTrail;
 
+    public bool backing = false;
+
     public void Init(CarInfo info) {
         dead = false;
         posArr.Clear();
