@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AssetKits.ParticleImage;
 using DG.Tweening;
 using SuperScrollView;
 using TMPro;
@@ -92,6 +93,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     public Sprite m_OtherPlayerIcon;
 
     void Start() {
+        InitItemList();
         //初始化界面
         FinishRoot.SetActive(false);
         m_Beginner.SetActive(false);
@@ -129,12 +131,18 @@ public class UIGameVictoryPage : MonoBehaviour {
         m_Racing.transform.DOLocalMoveY(m_Racing.transform.localPosition.y + m_Racing.GetComponent<RectTransform>().sizeDelta.y, 0.5f);
     }
 
+    public ParticleImage particleRank;
+
     //显示进阶完成界面
     public void ShowAdvanceFinishRoot(int coinCount = 0, int trophyCount = 0) {
         bool doubleScore = GlobalManager.Instance.IsDoubleReward;
         if (doubleScore) {
             trophyCount *= 2;
         }
+
+        GlobalManager.Instance.RefreshTrophyRankingList();
+        int oldRank = GlobalManager.Instance.GetRankIndex();
+        CreatItemList();
 
         GlobalManager.Instance.PlayerCoin += coinCount;
         GlobalManager.Instance._selfPlayerInfo.TrophyProp.Trophy.Count += trophyCount;
@@ -144,10 +152,10 @@ public class UIGameVictoryPage : MonoBehaviour {
         m_TargetUI.SetActive(true);
         GlobalManager.Instance.RefreshTrophyRankingList();
         //设置content的大小
-        var y = (GlobalManager.Instance._trophyRankingList.Count - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
-        m_ScrollRect.content.sizeDelta = new Vector2(0, y);
+        // var y = (GlobalManager.Instance._trophyRankingList.Count) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+        // m_ScrollRect.content.sizeDelta = new Vector2(0, y);
         //创建列表
-        CreatItemList();
+        // CreatItemList();
         string s = "There are                 people left to reach the promotion rank";
 
         var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
@@ -163,6 +171,9 @@ public class UIGameVictoryPage : MonoBehaviour {
         m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
         m_RankImage.GetComponent<Image>().SetNativeSize();
         m_CurrentPromotionDesc.GetComponent<TMP_Text>().text = s;
+        m_ScrollRect.enabled = false;
+
+        SmoothScrollToIndex(oldRank - 3, 0);
         //获取开始时间
         string startDate = PlayerPrefs.GetString("RankingStartDate");
         if (startDate != "") {
@@ -184,17 +195,56 @@ public class UIGameVictoryPage : MonoBehaviour {
                 m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount;
                 if (doubleScore) {
                     m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount / 2;
-                    StartCoroutine(PlayDoubleAni(trophyCount));
+                    StartCoroutine(PlayDoubleAni(trophyCount, () => {
+                        StartCoroutine(PlayRankAni(oldRank, PlayerListIndex));
+                    }));
+                }
+                else {
+                    StartCoroutine(PlayRankAni(oldRank, PlayerListIndex));
                 }
             }
         }
+    }
 
-        SmoothScrollToIndex(PlayerListIndex - 3, 1.5f);
+    IEnumerator PlayRankAni(int old, int current) {
+        Debug.Log("old" + old + "current" + current);
+        particleRank.attractorTarget = itemArr[old].GetComponent<RankingMatchItem>().m_RankIcon.transform;
+        particleRank.Play();
+
+        while (particleRank.isPlaying) {
+            yield return null;
+        }
+
+        itemArr[old].transform.SetAsLastSibling();
+
+        itemArr[old].transform.DOScale(Vector3.one * 1.2f, 0.3f).Play();
+        yield return new WaitForSeconds(0.3f);
+        SmoothScrollToIndex(current - 3, 0.7f);
+        itemArr[old].GetComponent<RectTransform>().DOAnchorPosY(itemArr[current].GetComponent<RectTransform>().anchoredPosition.y, 0.7f).Play();
+        yield return new WaitForSeconds(1);
+        itemArr[old].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[current], current + 1);
+        itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
+
+        if (old > current) {
+            for (int i = current; i < old; i++) {
+                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i + 1], i + 2);
+            }
+        }
+
+        if (old < current) {
+            for (int i = current; i > old; i--) {
+                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i - 1], i);
+            }
+        }
+
+        m_ScrollRect.enabled = true;
     }
 
     public Animation doubleAni;
 
-    IEnumerator PlayDoubleAni(int count) {
+    IEnumerator PlayDoubleAni(int count, Action cb) {
         yield return new WaitForSeconds(1);
         doubleAni.Play();
         yield return new WaitForSeconds(1f);
@@ -206,61 +256,152 @@ public class UIGameVictoryPage : MonoBehaviour {
         DOTween.To(() => count / 2, x => {
             //startValue = x; // 更新局部变量
             m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + x; // 更新文本
-        }, count, 1).Play();
+        }, count, 1).OnComplete(() => {
+            cb?.Invoke();
+        }).Play();
     }
 
     private void SmoothScrollToIndex(int targetIndex, float duration) {
-        if (targetIndex < 0 || targetIndex >= GlobalManager.Instance._trophyRankingList.Count) {
-            return;
-        }
+        // if (targetIndex < 0 || targetIndex >= GlobalManager.Instance._trophyRankingList.Count) {
+        //     return;
+        // }
 
-        float targetY = 0;
-        //计算目标位置
-        if (targetIndex < 29) {
-            targetY = targetIndex * (mItemHeight1 + 15);
-        }
-        else if (targetIndex > 29 && targetIndex < 59) {
-            targetY = (targetIndex - 1) * (mItemHeight1 + 15) + mItemHeight2 + 15;
+        float targetY = -GetItemPos(targetIndex).y;
+        // //计算目标位置
+        // if (targetIndex < 29) {
+        //     targetY = targetIndex * (mItemHeight1 + 15);
+        // }
+        // else if (targetIndex > 29 && targetIndex < 59) {
+        //     targetY = (targetIndex - 1) * (mItemHeight1 + 15) + mItemHeight2 + 15;
+        // }
+        // else {
+        //     targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+        // }
+
+        if (duration == 0) {
+            m_ScrollRect.content.localPosition = new Vector3(m_ScrollRect.content.localPosition.x, targetY, 0);
         }
         else {
-            targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
+            m_ScrollRect.content.DOLocalMoveY(targetY, duration).Play();
         }
-
-        m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad);
     }
 
     // 获取列表项
-    bool IsCreatList = false;
+    // bool IsCreatList = false;
 
     void CreatItemList() {
-        float PosY = 0;
-        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
-            if (IsCreatList == false) {
-                GameObject item = null;
-                if (i == 29) {
-                    item = Instantiate(m_Item2, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight2 + 15;
-                }
-                else if (i == 59 && GlobalManager.Instance.CurrentRank > 1) {
-                    item = Instantiate(m_Item3, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight3 + 15;
-                }
-                else {
-                    item = Instantiate(m_Item1, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight1 + 15;
-                }
+        // float PosY = 0;
+        // for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
+        //     if (IsCreatList == false) {
+        //         GameObject item = null;
+        //         if (i == 29) {
+        //             item = Instantiate(m_Item2, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight2 + 15;
+        //         }
+        //         else if (i == 59 && GlobalManager.Instance.CurrentRank > 1) {
+        //             item = Instantiate(m_Item3, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight3 + 15;
+        //         }
+        //         else {
+        //             item = Instantiate(m_Item1, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight1 + 15;
+        //         }
+        //
+        //         item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        //     }
+        //     else {
+        //         m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        //     }
+        // }
 
-                item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        var y = (GlobalManager.Instance._trophyRankingList.Count) * (mItemHeight1 + 15);
+
+
+        for (int i = 0; i < itemArr.Count; i++) {
+            itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            SetItemPostion(itemArr[i], GetItemPos(i));
+        }
+
+        if (GlobalManager.Instance.CurrentRank < 6) {
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (60 * (mItemHeight1 + 15)));
+        }
+        else {
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+        }
+
+        itemUP.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(30 * (mItemHeight1 + 15)));
+
+        if (GlobalManager.Instance.CurrentRank < 6) {
+            itemUP.SetActive(true);
+            y += (mItemHeight2 + 15);
+        }
+        else {
+            itemUP.SetActive(false);
+        }
+
+        if (GlobalManager.Instance.CurrentRank > 1) {
+            itemDown.SetActive(true);
+            y += (mItemHeight3 + 15);
+        }
+        else {
+            itemDown.SetActive(false);
+        }
+
+        m_ScrollRect.content.sizeDelta = new Vector2(0, y);
+
+        // IsCreatList = true;
+    }
+
+    private GameObject itemUP;
+    private GameObject itemDown;
+
+    private List<GameObject> itemArr = new();
+
+    void InitItemList() {
+        itemUP = Instantiate(m_Item2, m_ScrollRect.content);
+        itemDown = Instantiate(m_Item3, m_ScrollRect.content);
+
+        itemUP.SetActive(false);
+        itemDown.SetActive(false);
+        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
+            itemArr.Add(Instantiate(m_Item1, m_ScrollRect.content));
+        }
+    }
+
+
+    void SetItemPostion(GameObject item, Vector2 p, float during = 0) {
+        if (during == 0) {
+            item.GetComponent<RectTransform>().anchoredPosition = p;
+            return;
+        }
+        else {
+            item.GetComponent<RectTransform>().DOAnchorPosY(p.y, during).Play();
+        }
+    }
+
+    Vector2 GetItemPos(int index) {
+        Vector2 result = new Vector2(0, -index * (mItemHeight1 + 15));
+        if (index <= 29) {
+        }
+        else if (index <= 59) {
+            if (GlobalManager.Instance.CurrentRank < 6) {
+                result += new Vector2(0, -mItemHeight2);
             }
-            else {
-                m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        }
+        else {
+            if (GlobalManager.Instance.CurrentRank < 6) {
+                result += new Vector2(0, -mItemHeight2);
+            }
+
+            if (GlobalManager.Instance.CurrentRank > 1) {
+                result += new Vector2(0, -mItemHeight3);
             }
         }
 
-        IsCreatList = true;
+        return result;
     }
 
     //显示完成界面

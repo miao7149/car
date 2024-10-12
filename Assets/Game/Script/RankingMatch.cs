@@ -186,6 +186,7 @@ public class RankingMatch : MonoBehaviour {
     }
 
     public void RefreshRankingMatch() {
+        //GlobalManager.Instance.RefreshTrophyRankingList();
         //获取开始时间
         string startDate = PlayerPrefs.GetString("RankingStartDate");
         if (startDate != "") {
@@ -274,34 +275,124 @@ public class RankingMatch : MonoBehaviour {
 
     // 获取列表项
     void CreatItemList() {
-        float PosY = 0;
-        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
-            if (IsCreatList == false) {
-                GameObject item = null;
-                if (i == 29) {
-                    item = Instantiate(m_Item2, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight2 + 15;
-                }
-                else if (i == 59 && GlobalManager.Instance.CurrentRank > 1) {
-                    item = Instantiate(m_Item3, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight3 + 15;
-                }
-                else {
-                    item = Instantiate(m_Item1, m_ScrollRect.content);
-                    item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
-                    PosY -= mItemHeight1 + 15;
-                }
+        // float PosY = 0;
+        // for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
+        //     if (IsCreatList == false) {
+        //         GameObject item = null;
+        //         if (i == 29) {
+        //             item = Instantiate(m_Item2, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight2 + 15;
+        //         }
+        //         else if (i == 59 && GlobalManager.Instance.CurrentRank > 1) {
+        //             item = Instantiate(m_Item3, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight3 + 15;
+        //         }
+        //         else {
+        //             item = Instantiate(m_Item1, m_ScrollRect.content);
+        //             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, PosY);
+        //             PosY -= mItemHeight1 + 15;
+        //         }
+        //
+        //         item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        //     }
+        //     else {
+        //         m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        //     }
+        // }
+        //
+        // IsCreatList = true;
+        if (!IsCreatList) {
+            InitItemList();
+            IsCreatList = true;
+        }
 
-                item.GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+
+        var y = (GlobalManager.Instance._trophyRankingList.Count) * (mItemHeight1 + 15);
+
+
+        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
+            Debug.Log(i);
+            itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+            SetItemPostion(itemArr[i], GetItemPos(i));
+        }
+
+        if (GlobalManager.Instance.CurrentRank < 6) {
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (60 * (mItemHeight1 + 15)));
+        }
+        else {
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+        }
+
+        itemUP.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(30 * (mItemHeight1 + 15)));
+
+        if (GlobalManager.Instance.CurrentRank < 6) {
+            itemUP.SetActive(true);
+            y += (mItemHeight2 + 15);
+        }
+        else {
+            itemUP.SetActive(false);
+        }
+
+        if (GlobalManager.Instance.CurrentRank > 1) {
+            itemDown.SetActive(true);
+            y += (mItemHeight3 + 15);
+        }
+        else {
+            itemDown.SetActive(false);
+        }
+
+        m_ScrollRect.content.sizeDelta = new Vector2(0, y);
+    }
+
+    private GameObject itemUP;
+    private GameObject itemDown;
+
+    private List<GameObject> itemArr = new();
+
+    void InitItemList() {
+        itemUP = Instantiate(m_Item2, m_ScrollRect.content);
+        itemDown = Instantiate(m_Item3, m_ScrollRect.content);
+
+        itemUP.SetActive(false);
+        itemDown.SetActive(false);
+        for (int i = 0; i < 99; i++) {
+            itemArr.Add(Instantiate(m_Item1, m_ScrollRect.content));
+        }
+    }
+
+
+    void SetItemPostion(GameObject item, Vector2 p, float during = 0) {
+        if (during == 0) {
+            item.GetComponent<RectTransform>().anchoredPosition = p;
+            return;
+        }
+        else {
+            item.GetComponent<RectTransform>().DOAnchorPosY(p.y, during).Play();
+        }
+    }
+
+    Vector2 GetItemPos(int index) {
+        Vector2 result = new Vector2(0, -index * (mItemHeight1 + 15));
+        if (index <= 29) {
+        }
+        else if (index <= 59) {
+            if (GlobalManager.Instance.CurrentRank < 6) {
+                result += new Vector2(0, -mItemHeight2);
             }
-            else {
-                m_ScrollRect.content.GetChild(i).GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
+        }
+        else {
+            if (GlobalManager.Instance.CurrentRank < 6) {
+                result += new Vector2(0, -mItemHeight2);
+            }
+
+            if (GlobalManager.Instance.CurrentRank > 1) {
+                result += new Vector2(0, -mItemHeight3);
             }
         }
 
-        IsCreatList = true;
+        return result;
     }
 
     // Update is called once per frame
