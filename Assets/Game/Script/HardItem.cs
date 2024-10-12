@@ -19,7 +19,7 @@ public class HardItem : MonoBehaviour {
     public GameObject m_LockRoot;
 
     //关卡ID
-    public TMP_Text m_LevelID;
+    public Text m_LevelID;
 
     //HardItemData
     private HardItemData mHardItemData;
@@ -41,19 +41,7 @@ public class HardItem : MonoBehaviour {
 
     /////////////////////////////////////////////多语言设置，文本物体
     //游玩按钮文本
-    public TMP_Text m_PlayText;
 
-    //重玩按钮文本
-    public TMP_Text m_ReplayText;
-
-    void Start() {
-        SetLanguage();
-    }
-
-    public void SetLanguage() {
-        m_PlayText.text = GlobalManager.Instance.GetLanguageValue("Play");
-        m_ReplayText.text = GlobalManager.Instance.GetLanguageValue("Replay");
-    }
 
     // Update is called once per frame
     void Update() {
@@ -89,7 +77,7 @@ public class HardItem : MonoBehaviour {
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(false);
             m_LockRoot.SetActive(true);
-            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("UnLockedDes") + "\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
+            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("UnLockedDes") + "\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
         }
     }
 

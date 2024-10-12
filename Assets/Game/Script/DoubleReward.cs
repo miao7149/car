@@ -3,105 +3,98 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DoubleReward : MonoBehaviour
-{
+public class DoubleReward : MonoBehaviour {
     // Start is called before the first frame update
     //双倍奖励按钮
     public GameObject m_DoubleReward;
+
     public GameObject m_DoubleRewardRoot;
+
     //是否已经领取双倍奖励
     bool mIsGetDoubleReward;
+
     //领取时间
     public DateTime mGetDoubleRewardTime;
+
     //双倍奖励持续15分钟
     public const int DoubleRewardTime = 15 * 60;
+
     //双倍奖励背景
     public GameObject m_DoubleRewardBg;
+
     //双倍奖励倒计时根节点
     public GameObject m_DoubleRewardCountDownRoot;
+
     //倒计时文本
-    public TMP_Text m_DoubleRewardCountDownText;
+    public Text m_DoubleRewardCountDownText;
     /////////////////////////////////////////////多语言设置，文本物体
     //双倍奖励标题
-    public TMP_Text m_DoubleRewardTitle;
-    //双倍奖励描述
-    public TMP_Text m_DoubleRewardDesc;
-    //双倍奖励按钮文本
-    public TMP_Text m_DoubleRewardBtnText;
-    void Start()
-    {
-        if (PlayerPrefs.HasKey("GetDoubleRewardTime") == false && PlayerPrefs.HasKey("IsGetDoubleReward") == false)
-        {
+
+    void Start() {
+        if (PlayerPrefs.HasKey("GetDoubleRewardTime") == false && PlayerPrefs.HasKey("IsGetDoubleReward") == false) {
             mIsGetDoubleReward = false;
             PlayerPrefs.SetInt("IsGetDoubleReward", 0);
             mGetDoubleRewardTime = DateTime.MinValue;
             PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
         }
-        else
-        {
+        else {
             mGetDoubleRewardTime = DateTime.Parse(PlayerPrefs.GetString("GetDoubleRewardTime"));
-            if (DateTime.Now.DayOfYear != mGetDoubleRewardTime.DayOfYear)//如果当前时间和领取时间不一致
+            if (DateTime.Now.DayOfYear != mGetDoubleRewardTime.DayOfYear) //如果当前时间和领取时间不一致
             {
                 mIsGetDoubleReward = false;
                 PlayerPrefs.SetInt("IsGetDoubleReward", 0);
             }
-            else
-            {
+            else {
                 mIsGetDoubleReward = PlayerPrefs.GetInt("IsGetDoubleReward") == 1;
             }
         }
+
         //如果已经领取双倍奖励，并且当前时间和领取时间相差小于15分钟
-        if (mIsGetDoubleReward && (DateTime.Now - mGetDoubleRewardTime).TotalSeconds < DoubleRewardTime)
-        {
+        if (mIsGetDoubleReward && (DateTime.Now - mGetDoubleRewardTime).TotalSeconds < DoubleRewardTime) {
             GlobalManager.Instance.IsDoubleReward = true;
             m_DoubleRewardBg.SetActive(true);
             m_DoubleRewardCountDownRoot.SetActive(true);
         }
-        else
-        {
+        else {
             m_DoubleRewardBg.SetActive(false);
             m_DoubleRewardCountDownRoot.SetActive(false);
             mIsGetDoubleReward = false;
         }
+
         m_DoubleReward.SetActive(!mIsGetDoubleReward);
         SetLanguage();
     }
-    public void SetLanguage()
-    {
-        m_DoubleRewardTitle.text = GlobalManager.Instance.GetLanguageValue("DoubleReward");
-        m_DoubleRewardDesc.text = GlobalManager.Instance.GetLanguageValue("DoubleRewardDes");
-        m_DoubleRewardBtnText.text = GlobalManager.Instance.GetLanguageValue("Claim");
+
+    public void SetLanguage() {
     }
+
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (GlobalManager.Instance.IsDoubleReward == false)
             return;
-        if (mIsGetDoubleReward && (DateTime.Now - mGetDoubleRewardTime).TotalSeconds < DoubleRewardTime)
-        {
+        if (mIsGetDoubleReward && (DateTime.Now - mGetDoubleRewardTime).TotalSeconds < DoubleRewardTime) {
             //倒计时，显示分钟和秒
             int remainingTime = DoubleRewardTime - (int)(DateTime.Now - mGetDoubleRewardTime).TotalSeconds;
             int minute = remainingTime / 60;
             int second = remainingTime % 60;
             m_DoubleRewardCountDownText.text = minute.ToString("00") + ":" + second.ToString("00");
         }
-        else
-        {
+        else {
             m_DoubleRewardCountDownRoot.SetActive(false);
             m_DoubleRewardBg.SetActive(false);
             GlobalManager.Instance.IsDoubleReward = false;
         }
     }
-    public void OnDoubleRewardBtn()
-    {
+
+    public void OnDoubleRewardBtn() {
         m_DoubleRewardRoot.SetActive(!m_DoubleRewardRoot.activeSelf);
     }
+
     //领取双倍奖励按钮
-    public void OnGetDoubleRewardBtn()
-    {
-        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() =>
-        {
+    public void OnGetDoubleRewardBtn() {
+        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
             mIsGetDoubleReward = true;
             PlayerPrefs.SetInt("IsGetDoubleReward", 1);
             mGetDoubleRewardTime = DateTime.Now;
@@ -111,8 +104,7 @@ public class DoubleReward : MonoBehaviour
             m_DoubleRewardBg.SetActive(true);
             m_DoubleRewardCountDownRoot.SetActive(true);
             GlobalManager.Instance.IsDoubleReward = true;
-        }, () =>
-        {
+        }, () => {
             TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
         });
     }

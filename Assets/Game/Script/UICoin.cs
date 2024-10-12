@@ -4,28 +4,27 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UICoin : MonoBehaviour
-{
+public class UICoin : MonoBehaviour {
     // Start is called before the first frame update
-    public TMP_Text m_CoinText;
-    void Awake()
-    {
+    public Text m_CoinText;
+
+    void Awake() {
         m_CoinText.text = GlobalManager.Instance.PlayerCoin.ToString();
     }
-    void Start()
-    {
-    }
-    void OnDestroy()
-    {
-    }
-    // Update is called once per frame
-    void Update()
-    {
 
+    void Start() {
     }
-    public void UpdateCoin()
-    {
+
+    void OnDestroy() {
+    }
+
+    // Update is called once per frame
+    void Update() {
+    }
+
+    public void UpdateCoin() {
         int startValue = int.Parse(m_CoinText.text);
         int endValue = GlobalManager.Instance.PlayerCoin;
 

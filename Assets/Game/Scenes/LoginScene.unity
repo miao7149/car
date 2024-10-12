@@ -194,6 +194,7 @@ MonoBehaviour:
   PlayerCarSkinName: 
   PlayerCarTrailName: 
   PlayerMapSkinName: 
+  difficuteMode: 0
   m_CoinSprites:
   - {fileID: 21300000, guid: 90125ca4178b7410fb5ffb24d3fd141e, type: 3}
   - {fileID: 21300000, guid: 03f31f3488ccc469bb0e01ec9e56c6cf, type: 3}
@@ -816,6 +817,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TipsRoot: {fileID: 1139130893}
   m_TipsText: {fileID: 716228619}
+--- !u!1 &1688566424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688566426}
+  - component: {fileID: 1688566425}
+  m_Layer: 0
+  m_Name: LanguageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1688566425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688566424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d934eb5933d4b1aae95469046f019d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: {fileID: 11400000, guid: bc2216195d43141f680d6c1dd2ed0ae7, type: 2}
+  languageID: 
+--- !u!4 &1688566426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688566424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717717664
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,3 +1022,4 @@ SceneRoots:
   - {fileID: 1157551807}
   - {fileID: 1717717666}
   - {fileID: 53546924}
+  - {fileID: 1688566426}

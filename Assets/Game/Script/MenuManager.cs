@@ -39,41 +39,10 @@ public class MenuManager : MonoBehaviour {
     public GameObject m_UICoin;
 
     //输入框
-    public TMP_InputField m_InputField;
+    public InputField m_InputField;
 
     //////////////////////////////////////////////////多语言设置，文本物体
-    //设置标题
-    public TMP_Text m_SettingTitle;
 
-    //声音文字
-    public TMP_Text m_SoundText;
-
-    //震动文字
-    public TMP_Text m_VibrateText;
-
-    //隐私政策
-    public TMP_Text m_PrivacyText;
-
-    //用户协议
-    public TMP_Text m_UserAgreementText;
-
-    //开始按钮文字
-    public TMP_Text m_StartText;
-
-    //打开按钮文本
-    public TMP_Text m_OpenText;
-
-    //打开按钮文本
-    public TMP_Text m_OpenText1;
-
-    //礼盒奖励文本
-    public TMP_Text m_RewardText;
-
-    //更多奖励文本
-    public TMP_Text m_MoreRewardText;
-
-    //放弃按钮文本
-    public TMP_Text m_GiveUpText;
 
     void Start() {
         SetLevelList();
@@ -92,17 +61,6 @@ public class MenuManager : MonoBehaviour {
 
     //设置多语言
     public void SetLanguage() {
-        m_SettingTitle.text = GlobalManager.Instance.GetLanguageValue("Settings");
-        m_SoundText.text = GlobalManager.Instance.GetLanguageValue("Audio");
-        m_VibrateText.text = GlobalManager.Instance.GetLanguageValue("Vibrate");
-        m_StartText.text = GlobalManager.Instance.GetLanguageValue("Start");
-        m_PrivacyText.text = GlobalManager.Instance.mLanguageDict["PrivacyPolicy"][GlobalManager.Instance.CurrentLanguage];
-        m_UserAgreementText.text = GlobalManager.Instance.mLanguageDict["UserAgreement"][GlobalManager.Instance.CurrentLanguage];
-        m_OpenText.text = GlobalManager.Instance.GetLanguageValue("Open");
-        m_OpenText1.text = GlobalManager.Instance.GetLanguageValue("Open");
-        m_RewardText.text = GlobalManager.Instance.GetLanguageValue("GiftBoxReward");
-        m_MoreRewardText.text = GlobalManager.Instance.GetLanguageValue("MoreRewards");
-        m_GiveUpText.text = GlobalManager.Instance.GetLanguageValue("GiveUp");
     }
 
     // Update is called once per frame

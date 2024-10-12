@@ -34,7 +34,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     float frameDuration = 0.05f; // 每帧的持续时间
 
     //金币数量文本
-    public TMP_Text m_FinishCoinText;
+    public Text m_FinishCoinText;
 
     //光环
     public GameObject m_Halo;
@@ -59,7 +59,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     public GameObject m_RankImage;
 
     //倒计时文本
-    public TMP_Text m_CountDownText;
+    public Text m_CountDownText;
 
     //七天倒计时（秒）
     private const float mCountDownTime = 7 * 24 * 60 * 60;
@@ -117,8 +117,8 @@ public class UIGameVictoryPage : MonoBehaviour {
         var playerInfoList = GlobalManager.Instance._playerInfoList;
         for (int i = 0; i < m_PlayerList.Count; i++) {
             if (m_PlayerList[i] != null && playerInfoList[i] != null) {
-                m_PlayerList[i].transform.GetChild(1).GetComponent<TMP_Text>().text = playerInfoList[i].Name;
-                m_PlayerList[i].transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = playerInfoList[i].CompleteLevel.ToString() + "/30";
+                m_PlayerList[i].transform.GetChild(1).GetComponent<Text>().text = playerInfoList[i].Name;
+                m_PlayerList[i].transform.GetChild(0).GetChild(1).GetComponent<Text>().text = playerInfoList[i].CompleteLevel.ToString() + "/30";
                 if (playerInfoList[i].Id >= 0) {
                     m_PlayerList[i].GetComponent<Image>().sprite = m_OtherPlayerIcon;
                 }
@@ -160,17 +160,17 @@ public class UIGameVictoryPage : MonoBehaviour {
 
         var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
         if (PlayerListIndex > 29) {
-            m_CurrentPromotionNum.GetComponent<TMP_Text>().text = (PlayerListIndex - 29).ToString();
+            m_CurrentPromotionNum.GetComponent<Text>().text = (PlayerListIndex - 29).ToString();
             //s =
         }
         else {
-            m_CurrentPromotionNum.GetComponent<TMP_Text>().text = "0";
+            m_CurrentPromotionNum.GetComponent<Text>().text = "0";
             s = "保持名次，在倒计时结束后提升段位";
         }
 
         m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
         m_RankImage.GetComponent<Image>().SetNativeSize();
-        m_CurrentPromotionDesc.GetComponent<TMP_Text>().text = s;
+        m_CurrentPromotionDesc.GetComponent<Text>().text = s;
         m_ScrollRect.enabled = false;
 
         SmoothScrollToIndex(oldRank - 3, 0);
@@ -191,10 +191,10 @@ public class UIGameVictoryPage : MonoBehaviour {
             }
 
             if (coinCount > 0 && trophyCount > 0) {
-                m_AdvanceCoin.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + coinCount.ToString();
-                m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount;
+                m_AdvanceCoin.transform.GetChild(0).GetComponent<Text>().text = "X" + coinCount.ToString();
+                m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount;
                 if (doubleScore) {
-                    m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + trophyCount / 2;
+                    m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount / 2;
                     StartCoroutine(PlayDoubleAni(trophyCount, () => {
                         StartCoroutine(PlayRankAni(oldRank, PlayerListIndex));
                     }));
@@ -204,6 +204,7 @@ public class UIGameVictoryPage : MonoBehaviour {
                 }
             }
         }
+
     }
 
     IEnumerator PlayRankAni(int old, int current) {
@@ -255,7 +256,7 @@ public class UIGameVictoryPage : MonoBehaviour {
 
         DOTween.To(() => count / 2, x => {
             //startValue = x; // 更新局部变量
-            m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + x; // 更新文本
+            m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + x; // 更新文本
         }, count, 1).OnComplete(() => {
             cb?.Invoke();
         }).Play();

@@ -1,0 +1,98 @@
+﻿Id:key,English,Chinese,Japanese,Portuguese,Spanish,German,French,Korean,Arabic,Russian
+language_name,English,中文,日本語,Português,Español,Deutsch,Français,한국인,العربية,Русский
+Audio,Audio,声音,オーディオ,Áudio,Audio,Audio,Audio,오디오,الصوت,Аудио
+Vibrate,Vibrate,震动,バイブレーション,Vibrar,Vibrar,Vibrieren,Vibrer,진동,اهتزاز,Вибрация
+Start,Start,开始,開始,Iniciar,Iniciar,Start,Démarrer,시작,ابدأ,Начать
+Continue,Continue,继续,続行,Continuar,Continuar,Fortfahren,Continuer,계속,استمر,Продолжить
+ConsumeCoins,Consume xxx Conis,消耗xxx金币,xxx Conis を消費,Consumir xxx Conis,Consumir xxx Conis,xxx Conis konsumieren,Consommer xxx Conis,xxx Conis 소비,استهلك xxx Conis,Потреблять xxx Conis
+GameOver,Game Over,游戏结束,ゲームオーバー,Fim de jogo,Fin del juego,Game Over,Jeu terminé,게임 종료,انتهت اللعبة,Игра окончена
+TryAgain,Retry,再来一次,再試行,Repetir,Reintentar,Wiederholen,Réessayer,재시도,أعد المحاولة,Повторить
+OutOfSteps,Out of Steps,步数用尽,ステップ不足,Fora de etapas,Pasos fuera de juego,Keine Schritte mehr,Pas terminé,단계 없음,خارج الخطوات,Вышел из Шагов
+Step,Step,步,ステップ,Etapa,Paso,Schritt,Étape,단계,الخطوة,Шаг
+StepNumber,Steps,步数,ステップ,Etapas,Pasos,Schritte,Étapes,단계,الخطوات,Шаги
+Settings,Settings,设置,設定,Configurações,Configuración,Einstellungen,Paramètres,설정,الإعدادات,Настройки
+UserAgreement,User Agreement,用户协议,利用規約,Contrato do usuário,Acuerdo de usuario,Benutzervereinbarung,Contrat d'utilisation,사용자 계약,اتفاقية المستخدم,Пользовательское соглашение
+PrivacyPolicy,Privacy Policy,隐私条款,プライバシー ポリシー,Política de privacidade,Política de privacidad,Datenschutzrichtlinie,Politique de confidentialité,개인정보 보호정책,سياسة الخصوصية,Политика конфиденциальности
+Complete,Complete,完成,完了,Completo,Completo,Vollständig,Complet,완벽한,مكتمل,Полный
+Open,Open！,开启！,オープン！,Aberto！,¡Abrir!,Öffnen！,Ouvert !,열기!,افتح!,Открыть！
+GiftBoxReward,Gift Rewards,礼盒奖励,ギフト報酬,Recompensas de presente,Recompensas de regalo,Geschenkbelohnungen,Récompenses cadeaux,선물 보상,مكافآت الهدايا,Подарочные награды
+MoreRewards,More Rewards,更多奖励,その他の報酬,Mais recompensas,Más recompensas,Weitere Belohnungen,Plus de récompenses,더 많은 보상,المزيد من المكافآت,Больше наград
+GiveUp,Give Up,放弃,諦める,Desistir,Renunciar,Aufgeben,Abandonner,포기,استسلم,Сдаться
+Drone,Drone,无人机,ドローン,Drone,Dron,Drohne,Drone,드론,طائرة بدون طيار,Дрон
+DroneDes,Click on any car to use the drone.,点击任意车辆来使用无人机,ドローンを使用するには、任意の車をクリックします。,Clique em qualquer carro para usar o drone.,Haz clic en cualquier coche para usar el dron.,"Klicken Sie auf ein beliebiges Auto, um die Drohne zu verwenden.",Cliquez sur n'importe quelle voiture pour utiliser le drone.,드론을 사용하려면 차량을 클릭하세요.,انقر فوق أي سيارة لاستخدام الطائرة بدون طيار.,"Нажмите на любую машину, чтобы использовать дрон."
+GuidanceTips1,Click to move a car.,点击来移动小车,車を動かすにはクリックします。,Clique para mover um carro.,Haz clic para mover un coche.,"Klicken Sie, um ein Auto zu bewegen.",Cliquez pour déplacer une voiture.,클릭하여 차량을 이동하세요.,انقر لتحريك سيارة.,"Нажмите, чтобы переместить машину."
+GuidanceTips2,The car will turn at the first intersection.,小车会在第一个路口转弯,車は最初の交差点で曲がります。,O carro fará a curva no primeiro cruzamento.,El coche girará en la primera intersección.,Das Auto wird an der ersten Kreuzung abbiegen.,La voiture tournera à la première intersection.,첫 번째 교차로에서 차량이 회전합니다.,ستدور السيارة عند أول تقاطع.,Машина повернет на первом перекрестке.
+WatchAd,Watch AD,观看广告,広告を見る,Assistir AD,Ver anuncio,Anzeige ansehen,Regarder la publicité,광고 보기,شاهد الإعلان,Смотрите рекламу
+NewGameplay,New Gameplay,新玩法,新しいゲームプレイ,Nova jogabilidade,Nueva jugabilidad,Neues Gameplay,Nouveau gameplay,새로운 게임 플레이,طريقة لعب جديدة,Новый игровой процесс
+OK,OK,好的,OK,OK,Aceptar,OK,OK,확인,حسنًا,ОК
+Pedestrian,Pedestrian,行人,歩行者,Pedestre,Peatón,Fußgänger,Piéton,보행자,مشاة,Пешеход
+PedestrianDes,Game fails when hitting  a pedestrian.,游戏在撞击行人时失败,歩行者にぶつかるとゲームに失敗します。,O jogo falha ao atingir um pedestre.,El juego falla al atropellar a un peatón.,"Das Spiel schlägt fehl, wenn ein Fußgänger angefahren wird.",Le jeu échoue lorsqu'il heurte un piéton.,보행자를 치면 게임이 실패합니다.,تفشل اللعبة عند الاصطدام بمشاة.,Игра терпит неудачу при сбитии пешехода.
+TrafficLight,Traffic Light,信号灯,信号機,Semáforo,Semáforo,Ampel,Feu de circulation,신호등,إشارة المرور,Светофор
+TrafficLightDes,"If you run a red light, you will lose 2 opportunities to move.",如果你闯红灯，你将失去两次移动机会,赤信号を無視すると、移動する機会が 2 回失われます。,"Se você passar no sinal vermelho, perderá 2 oportunidades de se mover.","Si te saltas un semáforo en rojo, perderás 2 oportunidades de moverte.","Wenn Sie eine rote Ampel überfahren, verlieren Sie 2 Möglichkeiten, sich zu bewegen.","Si vous grillez un feu rouge, vous perdrez 2 occasions de vous déplacer.",적신호를 무시하면 이동할 수 있는 기회가 2번 사라집니다.,إذا تجاوزت إشارة المرور الحمراء، فستخسر فرصتين للتحرك.,"Если вы проедете на красный свет, вы потеряете 2 возможности для движения."
+Bulldozer,Bulldozer,推土机,ブルドーザー,Trator,Bulldozer,Bulldozer,Bulldozer,불도저,جرافة,Бульдозер
+BulldozerDes,Use a bulldozer to clear rocks from the road.,用推土机来清理路面上的石头,ブルドーザーを使用して、道路から岩を取り除きます。,Use um trator para remover pedras da estrada.,Usa un bulldozer para despejar las rocas de la carretera.,"Verwenden Sie einen Bulldozer, um Steine ​​von der Straße zu räumen.",Utilisez un bulldozer pour dégager les rochers de la route.,불도저를 사용하여 도로에서 돌을 치우세요.,استخدم جرافة لإزالة الصخور من الطريق.,"Используйте бульдозер, чтобы расчистить дорогу от камней."
+DailyRewards,Daily rewards,每日奖励,毎日の報酬,Recompensas diárias,Recompensas diarias,Tägliche Belohnungen,Récompenses quotidiennes,일일 보상,المكافآت اليومية,Ежедневные награды
+Day1,First day,第一天,1 日目,Primeiro dia,Primer día,Erster Tag,Premier jour,첫째 날,اليوم الأول,Первый день
+Day2,Second day,第二天,2 日目,Segundo dia,Segundo día,Zweiter Tag,Deuxième jour,둘째 날,اليوم الثاني,Второй день
+Day3,Third day,第三天,3 日目,Terceiro dia,Tercer día,Dritter Tag,Troisième jour,셋째 날,اليوم الثالث,Третий день
+Day4,Fourth day,第四天,4 日目,Quarto dia,Cuarto día,Vierter Tag,Quatrième jour,넷째 날,اليوم الرابع,Четвертый день
+Day5,Fifth day,第五天,5 日目,Quinto dia,Quinto día,Fünfter Tag,Cinquième jour,다섯째 날,اليوم الخامس,Пятый день
+Day6,Sixth day,第六天,6 日目,Sexto dia,Sexto día,Sechster Tag,Sixième jour,여섯째 날,اليوم السادس,Шестой день
+Seventh day,Seventh day,第七天,7 日目,Sétimo dia,Séptimo día,Siebter Tag,Septième jour,일곱째 날,اليوم السابع,Седьмой день
+Claim,Claim,领取,受け取る,Reivindicar,Reclamar,Anspruch,Réclamation,청구,اطالب,Заявка
+LuckuSpin,Lucky Spin,幸运转盘,ラッキースピン,Giro da sorte,Giro de la suerte,Glücksdreh,Tour de chance,럭키 스핀,الدوران المحظوظ,Удачный спин
+StartDraw,Start Draw,开始抽奖,抽選開始,Iniciar sorteio,Iniciar sorteo,Ziehung starten,Commencer le tirage au sort,추첨 시작,ابدأ السحب,Начать розыгрыш
+LevelRacing,Level Racing,冲关竞赛,レベル レース,Corrida de nível,Carreras de niveles,Level-Rennen,Course de niveaux,레벨 레이싱,سباق المستويات,Гонки по уровням
+RacingDes,Complete 30 levels before other players to win rewards,在其他选手之前完成30关卡来赢得奖励,他のプレイヤーより先に 30 レベルをクリアして報酬を獲得,Complete 30 níveis antes dos outros jogadores para ganhar recompensas,Completa 30 niveles antes que otros jugadores para ganar recompensas,"Schließe 30 Level vor anderen Spielern ab, um Belohnungen zu gewinnen",Terminez 30 niveaux avant les autres joueurs pour gagner des récompenses,다른 플레이어보다 먼저 30레벨을 완료하여 보상을 받으세요,أكمل 30 مستوى قبل اللاعبين الآخرين للفوز بالمكافآت,"Пройдите 30 уровней раньше других игроков, чтобы выиграть награды"
+Replay,Replay,重玩,リプレイ,Repetir,Volver a jugar,Wiederholen,Rejouer,재생,إعادة التشغيل,Повторить
+Play,Play,游玩,プレイ,Jogar,Jugar,Spielen,Jouer,재생,اللعب,Играть
+UnLockedDes,Complete,完成,完了,Completar,Completar,Abschließen,Terminer,완료,أكمل,Завершить
+LeagueRank,League rank,联赛段位,リーグ ランク,Classificação da liga,Rango de liga,Ligarang,Rang de ligue,리그 랭크,مرتبة الدوري,Ранг в лиге
+RankingSettlement,You are No.xx,你是第xx名,あなたは No.xx です,Você é o nº xx,Eres el n.° xx,Du bist Nr. xx,Vous êtes n°xx,당신은 No.xx입니다,أنت رقم xx,Вы №xx
+RankSettlement,You are still at rank xx,你依旧是xx段位,あなたはまだランク xx です,Você ainda está na classificação xx,Aún estás en el rango xx,Du bist noch auf Rang xx,Vous êtes toujours au rang xx,당신은 아직 랭크 xx에 있습니다,ما زلت في المرتبة xx,Вы все еще на ранге xx
+PromotionDes,There are <size=80><color=blue><b>XX</b></color></size> people left to reach the promotion rank,再超过 <size=80><color=blue><b>XX</b></color></size> 人就可以晋级,昇格ランクに到達するにはあと <size=80><color=blue><b>XX</b></color></size> 人必要です,Restam <size=80><color=blue><b>XX</b></color></size> pessoas para alcançar a classificação de promoção,Quedan <size=80><color=blue><b>XX</b></color></size> personas para alcanzar el rango de ascenso,"Es sind noch <size=80><color=blue><b>XX</b></color></size> Leute übrig, die den Aufstiegsrang erreichen",Il reste <size=80><color=blue><b>XX</b></color></size> personnes pour atteindre le rang de promotion,승격 랭크에 도달할 <size=80><color=blue><b>XX</b></color></size> 명이 남았습니다,يوجد <size=80><color=blue><b>XX</b></color></size> شخص متبقٍ للوصول إلى مرتبة الترقية,"Осталось <size=80><color=blue><b>XX</b></color></size> человек, чтобы достичь ранга повышения"
+Rank1,Bronze,青铜,ブロンズ,Bronze,Bronce,Bronze,Bronze,브론즈,برونزية,Бронза
+Rank2,Silver,白银,シルバー,Prata,Plata,Silber,Argent,실버,فضية,Серебро
+Rank3,Gold,黄金,ゴールド,Ouro,Oro,Gold,Or,골드,ذهبية,Золото
+Rank4,Platinum,铂金,プラチナ,Platina,Platino,Platin,Platine,플래티넘,بلاتينية,Платина
+Rank5,Diamond,钻石,ダイヤモンド,Diamante,Diamante,Diamant,Diamant,다이아몬드,ألماسية,Бриллиант
+Rank6,Legendary,传奇,レジェンダリー,Lendário,Legendario,Legendär,Légendaire,레전더리,أسطورية,Легендарный
+Skin,Skin,皮肤,スキン,Pele,Aspecto,Skin,Skin,스킨,مظهر,Кожа
+HardMode,Hard,困难,ハード,Difícil,Difícil,Schwer,Dur,하드,صلب,Сложный
+Vehicle,Vehicle,车辆,車両,Veículo,Vehículo,Fahrzeug,Véhicule,차량,مركبة,Транспорт
+Exhaust,Exhaust,尾气,排気装置,Escapamento,Escape,Auspuff,Échappement,배기,عادم,Выхлоп
+Street,Street,街道,ストリート,Rua,Calle,Straße,Rue,거리,شارع,Улица
+Selected,Selected,选中,選択済み,Selecionado,Seleccionado,Ausgewählt,Sélectionné,선택됨,محدد,Выбрано
+UnlockConditionDes,Unlocked at hard level xx,在困难关卡xx关解锁,ハード レベル xx でロック解除,Desbloqueado no nível difícil xx,Desbloqueado en el nivel difícil xx,Freigeschaltet auf schwerem Level xx,Débloqué au niveau difficile xx,하드 레벨 xx에서 잠금 해제,مفتوح في المستوى الصعب xx,Открывается на сложном уровне xx
+Level,level xx,xx关卡,レベル xx,nível xx,nivel xx,Level xx,niveau xx,레벨 xx,المستوى xx,уровень xx
+DoubleReward,Double Reward,双倍奖励,ダブル報酬,Recompensa Dupla,Doble recompensa,Doppelte Belohnung,Double récompense,더블 리워드,مكافأة مضاعفة,Двойная награда
+DoubleRewardDes,"In the next 15 minutes, you will  receive double trophy rewards",在接下来的15分钟内，你将获得双倍奖杯奖励,次の 15 分間に、ダブルトロフィー報酬を受け取ります,"Nos próximos 15 minutos, você receberá recompensas de troféus em dobro","En los próximos 15 minutos, recibirás el doble de recompensas en trofeos",In den nächsten 15 Minuten erhältst du die doppelte Trophäenbelohnung,"Dans les 15 prochaines minutes, vous recevrez le double de récompenses en trophées",다음 15분 동안 트로피 보상을 두 배로 받게 됩니다,في الدقائق الـ 15 التالية، ستحصل على مكافآت كأس مضاعفة,В течение следующих 15 минут вы получите двойные трофейные награды
+Spin,Spin,抽奖,宝くじ,Spin,Girar,Spin,Spin,스핀,يلف,Вращение
+Racing,Racing,赛车,レース,Racing,Carreras,Racing,Racing,레이싱,سباق,Гонки
+League,League,联赛,リーグ,Liga,Liga,Liga,Ligue,리그,الدوري,Лига
+RankDes,"Complete levels to collect trophies, earn higher  ranks and get",完成关卡以收集奖杯，赢得更高排名并获得,レベルを完了してトロフィーを収集し、より高いランキングを獲得して獲得しましょう,"Complete os níveis para coletar troféus, ganhar classificações mais altas e obter","Completa niveles para recolectar trofeos, obtener rangos más altos y obtener","Schließe Levels ab, um Trophäen zu sammeln, höhere Ränge zu erreichen und","Terminez les niveaux pour collecter des trophées, gagner des rangs plus élevés et obtenir",레벨을 완료하여 트로피를 수집하고 더 높은 순위를 획득하고 획득하세요.,أكمل المستويات لجمع الجوائز وكسب رتب أعلى والحصول على,"Проходите уровни, чтобы собирать трофеи, зарабатывайте более высокие ранги и получайте"
+Unlock,Lvxx Unlock,Lvxx 解锁,Lvxxロック解除,Desbloqueio Lvxx,Desbloqueo de nivel xx,Lvxx freizuschalten,Lvxx Unlock,Lvxx 잠금 해제,فتح Lvxx,Lvxx Разблокировка
+UnlockNewSkins,Unlock New Skins,解锁新皮肤,新しいスキンのロックを解除する,Desbloqueie novas skins,Desbloquea nuevos aspectos,Neue Skins freizuschalten,Débloquez de nouveaux skins,새로운 스킨 잠금 해제,فتح جلود جديدة,Разблокируйте новые скины
+later,later,稍后,後で,mais tarde,más adelante,später,plus tard,나중에,لاحقًا,позже
+Tips1,Complete levels and get trophies！,完成关卡，获得奖杯！,レベルをクリアしてトロフィーを獲得しましょう！,Complete os níveis e ganhe troféus！,¡Completa niveles y obtén trofeos!,Schließe Level ab und erhalte Trophäen!,Terminez les niveaux et obtenez des trophées !,레벨을 완료하고 트로피를 받으세요!,أكمل المستويات واحصل على الجوائز!,Проходите уровни и получайте трофеи!
+Tips2,Keep your rank rising！,不断提升你的排名！,ランクを上げ続けましょう！,Mantenha sua classificação subindo！,¡Sigue subiendo de rango!,Steige in deinem Rang!,Continuez à augmenter votre rang !,계급을 계속 높이세요!,استمر في رفع رتبتك!,Повышайте свой рейтинг!
+Tips3,Time ends to upgrade to senior league！,升级到高级联赛的时间已到！,シニアリーグにアップグレードする時間は終了です！,O tempo acaba para atualizar para a liga sênior！,¡Se acabó el tiempo para ascender a la liga sénior!,Die Zeit für den Aufstieg in die Oberliga ist abgelaufen!,Le temps pour passer à la ligue senior est écoulé !,시니어 리그로 업그레이드할 시간이 끝났습니다!,انتهى الوقت للترقية إلى الدوري الممتاز!,Время перехода в высшую лигу истекает!
+Tips4,Tap to continue,点击继续,タップして続行,Toque para continuar,Toca para continuar,"Tippe, um fortzufahren",Appuyez pour continuer,계속하려면 탭하세요,انقر للمتابعة,"Нажмите, чтобы продолжить"
+CoinNotEnough,Not Enough Coins,金币不足,コインが足りません,Não há moedas suficientes,No hay suficientes monedas,Nicht genug Münzen,Pas assez de pièces,동전이 충분하지 않음,لا يوجد عدد كافٍ من العملات,Недостаточно монет
+AdNotReady,Ads Not Ready,抱歉，广告未准备好,広告がまだ準備できていません,Anúncios não prontos,Los anuncios no están listos,Werbung nicht bereit,Les publicités ne sont pas prêtes,광고가 준비되지 않음,الإعلانات غير جاهزة,Реклама не готова
+FiveStarRating,Please rate 5 stars if you like this game.,如果你喜欢我们游戏，请给我们五星好评,このゲームが気に入ったら、5 つ星を付けてください。,"Por favor, avalie com 5 estrelas se você gosta deste jogo.",Califica con 5 estrellas si te gusta este juego.,"Bitte bewerten Sie das Spiel mit 5 Sternen, wenn es Ihnen gefällt.",Veuillez noter 5 étoiles si vous aimez ce jeu.,이 게임이 마음에 드시면 별 5개를 주세요.,يرجى تقييم اللعبة بخمس نجوم إذا أعجبتك.,"Пожалуйста, оцените игру на 5 звезд, если она вам понравилась."
+Proposal,Please level your suggestions,请留下您的建议,ご提案のレベルをお知らせください,"Por favor, nivele suas sugestões",Nivela tus sugerencias,Bitte teilen Sie Ihre Vorschläge mit,Veuillez noter vos suggestions,제안을 레벨로 지정해 주세요,يرجى رفع مستوى اقتراحاتك,"Пожалуйста, оцените свои предложения"
+InputProposal,Type your suggestions here,在这里输入您的建议,ご提案をここに入力してください,Digite suas sugestões aqui,Escribe tus sugerencias aquí,Geben Sie hier Ihre Vorschläge ein,Tapez vos suggestions ici,제안을 여기에 입력하세요,اكتب اقتراحاتك هنا,Введите свои предложения здесь
+Submit,Submit,提交,送信,Enviar,Enviar,Senden,Soumettre,제출,إرسال,Отправить
+Exit,Exit,退出,終了,Sair,Salir,Beenden,Quitter,종료,خروج,Выйти
+Thanks,"Thank you for your valuable feedback, it is important for us to improve our game.",感谢您的宝贵反馈，这对我们提升游戏很重要！,貴重なフィードバックをありがとうございます。ゲームを改善するために重要です。,"Obrigado pelo seu valioso feedback, é importante para nós melhorarmos nosso jogo.","Gracias por tus valiosos comentarios, es importante para nosotros mejorar nuestro juego.","Vielen Dank für Ihr wertvolles Feedback, es ist uns wichtig, unser Spiel zu verbessern.","Merci pour vos précieux commentaires, ils sont importants pour nous d'améliorer notre jeu.",귀하의 소중한 피드백을 주셔서 감사합니다. 이는 게임을 개선하는 데 중요합니다.,شكرًا لك على ملاحظاتك القيمة، من المهم بالنسبة لنا تحسين لعبتنا.,"Спасибо за ваш ценный отзыв, нам важно улучшить нашу игру."
+Feedback,Feedback,反馈,フィードバック,Feedback,Comentarios,Feedback,Commentaires,피드백,الملاحظات,Отзыв
+CompetitionOver,"The game is over, try harder next time!",比赛结束，下次好运！,ゲームは終わりました。次回はもっと頑張りましょう!,"O jogo acabou, tente mais da próxima vez!","¡El juego ha terminado, esfuérzate más la próxima vez!","Das Spiel ist vorbei, gib dir nächstes Mal mehr Mühe!","Le jeu est terminé, essayez encore plus fort la prochaine fois !",게임은 끝났습니다. 다음에는 더 열심히 노력하세요!,انتهت اللعبة، حاول أن تبذل المزيد من الجهد في المرة القادمة!,"Игра окончена, постарайся лучше в следующий раз!"
+Day,Days,天,日数,Dias,Días,Tage,Jours,일,أيام,Дни
+Hour,Hours,小时,時間数,Horas,Horas,Stunden,Heures,시간,ساعات,Часы
+,,保持排名以提升段位！,,,,,,,,
+,,恭喜您达到XX段位！,,,,,,,,
+,,你,,,,,,,,
+,,段位提升！,,,,,,,,
+,,段位下降,,,,,,,,
+,,,,,,,,,,

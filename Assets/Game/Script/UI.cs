@@ -78,73 +78,26 @@ public class UI : MonoBehaviour {
 
     /////////////////////////////////////////////多语言设置，文本物体
     //步数
-    public TMP_Text m_StepText;
+    public Text m_StepText;
 
     //游戏结束
-    public TMP_Text m_GameOverText;
+    public Text m_GameOverText;
 
     //再来一次
-    public TMP_Text m_PlayAgainText;
+
 
     //花费金币
-    public TMP_Text m_CostCoinText;
+    public Text m_CostCoinText;
 
-    //完成
-    public TMP_Text m_FinishText;
-
-    //继续
-    public TMP_Text m_ContinueText;
 
     //金币数量
-    public TMP_Text m_CoinText;
+    public Text m_CoinText;
 
     //设置标题
-    public TMP_Text m_SettingTitle;
 
-    //声音文字
-    public TMP_Text m_SoundText;
-
-    //震动文字
-    public TMP_Text m_VibrateText;
-
-    //退出文字
-    public TMP_Text m_ExitText;
-
-    //继续文字
-    public TMP_Text m_ContinueSettingText;
-
-    //无人机文字
-    public TMP_Text m_DroneText;
-
-    //无人机介绍
-    public TMP_Text m_DroneIntroduceText;
 
     //观看广告
-    public TMP_Text m_WatchAdText;
-
-    //新游戏文字
-    public TMP_Text m_NewGameText;
-
-    //OK按钮文字
-    public TMP_Text m_OkText;
-
-    //行人文字
-    public TMP_Text m_PeopleText;
-
-    //行人介绍
-    public TMP_Text m_PeopleIntroduceText;
-
-    //信号灯文字
-    public TMP_Text m_TrafficLightText;
-
-    //信号灯介绍
-    public TMP_Text m_TrafficLightIntroduceText;
-
-    //推土机文字
-    public TMP_Text m_BulldozerText;
-
-    //推土机介绍
-    public TMP_Text m_BulldozerIntroduceText;
+    public Text m_WatchAdText;
 
 
     void Start() {
@@ -164,24 +117,6 @@ public class UI : MonoBehaviour {
 
     public void SetLanguage() {
         m_GameOverText.text = GlobalManager.Instance.GetLanguageValue("GameOver");
-        m_PlayAgainText.text = GlobalManager.Instance.GetLanguageValue("TryAgain");
-        m_FinishText.text = GlobalManager.Instance.GetLanguageValue("Complete");
-        m_ContinueText.text = GlobalManager.Instance.GetLanguageValue("Continue");
-        m_SettingTitle.text = GlobalManager.Instance.GetLanguageValue("Settings");
-        m_SoundText.text = GlobalManager.Instance.GetLanguageValue("Audio");
-        m_VibrateText.text = GlobalManager.Instance.GetLanguageValue("Vibrate");
-        m_ExitText.text = GlobalManager.Instance.GetLanguageValue("Exit");
-        m_ContinueSettingText.text = GlobalManager.Instance.GetLanguageValue("Continue");
-        m_DroneText.text = GlobalManager.Instance.GetLanguageValue("Drone");
-        m_DroneIntroduceText.text = GlobalManager.Instance.GetLanguageValue("DroneDes");
-        m_NewGameText.text = GlobalManager.Instance.GetLanguageValue("NewGameplay");
-        m_OkText.text = GlobalManager.Instance.GetLanguageValue("Ok");
-        m_PeopleText.text = GlobalManager.Instance.GetLanguageValue("Pedestrian");
-        m_PeopleIntroduceText.text = GlobalManager.Instance.GetLanguageValue("PedestrianDes");
-        m_TrafficLightText.text = GlobalManager.Instance.GetLanguageValue("TrafficLight");
-        m_TrafficLightIntroduceText.text = GlobalManager.Instance.GetLanguageValue("TrafficLightDes");
-        m_BulldozerText.text = GlobalManager.Instance.GetLanguageValue("Bulldozer");
-        m_BulldozerIntroduceText.text = GlobalManager.Instance.GetLanguageValue("BulldozerDes");
     }
 
     void OnDestroy() {
@@ -267,19 +202,19 @@ public class UI : MonoBehaviour {
             if (GlobalManager.Instance.CurrentLevel < 10) {
                 MainLevelRoot.SetActive(false);
                 StartLevelRoot.SetActive(true);
-                StartLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
+                StartLevelRoot.transform.GetChild(0).GetComponent<Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
             }
             else {
                 MainLevelRoot.SetActive(true);
                 StartLevelRoot.SetActive(false);
                 HardLevelRoot.SetActive(false);
-                MainLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
+                MainLevelRoot.transform.GetChild(0).GetComponent<Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
             }
         }
         else {
             MainLevelRoot.SetActive(false);
             HardLevelRoot.SetActive(true);
-            HardLevelRoot.transform.GetChild(0).GetComponent<TMP_Text>().text = "Lv " + (GlobalManager.Instance.CurrentHardLevel + 1).ToString();
+            HardLevelRoot.transform.GetChild(0).GetComponent<Text>().text = "Lv " + (GlobalManager.Instance.CurrentHardLevel + 1).ToString();
         }
     }
 
@@ -488,9 +423,9 @@ public class UI : MonoBehaviour {
     public void ShowGuideTip(int level) {
         m_GuideTip.SetActive(true);
         if (level == 0)
-            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips1");
+            m_GuideTip.transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips1");
         else
-            m_GuideTip.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips2");
+            m_GuideTip.transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("GuidanceTips2");
     }
 
     //隐藏引导提示

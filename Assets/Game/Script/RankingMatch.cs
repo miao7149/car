@@ -19,7 +19,7 @@ public class RankingMatch : MonoBehaviour {
     public GameObject m_RankImage;
 
     //倒计时文本
-    public TMP_Text m_CountDownText;
+    public Text m_CountDownText;
 
     //七天倒计时（秒）
     private const float mCountDownTime = 7 * 24 * 60 * 60;
@@ -100,52 +100,26 @@ public class RankingMatch : MonoBehaviour {
 
     /////////////////////////////////////////////多语言设置，文本物体
     //标题文本
-    public TMP_Text m_TitleText;
 
-    //继续按钮文本
-    public TMP_Text m_ContinueBtnText;
-
-    //领取按钮文本
-    public TMP_Text m_GetBtnText;
-
-    //段位继续按钮文本
-    public TMP_Text m_RankContinueBtnText;
-
-    //段位界面描述文本
-    public TMP_Text m_RankDescText;
 
     //青铜段位文本
-    public TMP_Text m_BronzeText;
+    public Text m_BronzeText;
 
     //白银段位文本
-    public TMP_Text m_SilverText;
+    public Text m_SilverText;
 
     //黄金段位文本
-    public TMP_Text m_GoldText;
+    public Text m_GoldText;
 
     //铂金段位文本
-    public TMP_Text m_PlatinumText;
+    public Text m_PlatinumText;
 
     //钻石段位文本
-    public TMP_Text m_DiamondText;
+    public Text m_DiamondText;
 
     //王者段位文本
-    public TMP_Text m_KingText;
+    public Text m_KingText;
 
-    //奖励界面获取按钮文本
-    public TMP_Text m_GetRewardText;
-
-    //提示1文本
-    public TMP_Text m_Tip1Text;
-
-    //提示2文本
-    public TMP_Text m_Tip2Text;
-
-    //提示3文本
-    public TMP_Text m_Tip3Text;
-
-    //提示4文本
-    public TMP_Text m_Tip4Text;
 
     void Start() {
         mItemHeight1 = m_Item1.GetComponent<RectTransform>().sizeDelta.y;
@@ -167,22 +141,6 @@ public class RankingMatch : MonoBehaviour {
     }
 
     public void SetLanguage() {
-        m_TitleText.text = GlobalManager.Instance.GetLanguageValue("LeagueRank");
-        m_ContinueBtnText.text = GlobalManager.Instance.GetLanguageValue("Continue");
-        m_GetBtnText.text = GlobalManager.Instance.GetLanguageValue("Claim");
-        m_RankContinueBtnText.text = GlobalManager.Instance.GetLanguageValue("Continue");
-        m_RankDescText.text = GlobalManager.Instance.GetLanguageValue("RankDes");
-        m_BronzeText.text = GlobalManager.Instance.GetLanguageValue("Rank1");
-        m_SilverText.text = GlobalManager.Instance.GetLanguageValue("Rank2");
-        m_GoldText.text = GlobalManager.Instance.GetLanguageValue("Rank3");
-        m_PlatinumText.text = GlobalManager.Instance.GetLanguageValue("Rank4");
-        m_DiamondText.text = GlobalManager.Instance.GetLanguageValue("Rank5");
-        m_KingText.text = GlobalManager.Instance.GetLanguageValue("Rank6");
-        m_GetRewardText.text = GlobalManager.Instance.GetLanguageValue("Claim");
-        m_Tip1Text.text = GlobalManager.Instance.GetLanguageValue("Tips1");
-        m_Tip2Text.text = GlobalManager.Instance.GetLanguageValue("Tips2");
-        m_Tip3Text.text = GlobalManager.Instance.GetLanguageValue("Tips3");
-        m_Tip4Text.text = GlobalManager.Instance.GetLanguageValue("Tips4");
     }
 
     public void RefreshRankingMatch() {
@@ -215,25 +173,25 @@ public class RankingMatch : MonoBehaviour {
 
             m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
             m_RankImage.GetComponent<Image>().SetNativeSize();
-            m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString());
+            m_RankImage.transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString());
             switch (GlobalManager.Instance.CurrentRank) {
                 case 1:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_BronzeText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_BronzeText.color;
                     break;
                 case 2:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_SilverText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_SilverText.color;
                     break;
                 case 3:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_GoldText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_GoldText.color;
                     break;
                 case 4:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_PlatinumText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_PlatinumText.color;
                     break;
                 case 5:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_DiamondText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_DiamondText.color;
                     break;
                 case 6:
-                    m_RankImage.transform.GetChild(0).GetComponent<TMP_Text>().color = m_KingText.color;
+                    m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_KingText.color;
                     break;
                 default:
                     break;
@@ -265,7 +223,7 @@ public class RankingMatch : MonoBehaviour {
 
             //查找字符串xx 替换为当前晋升人数
             str = str.Replace("                 ", "<size=150%><color=#7F68F0>" + currentPromotionNum.ToString() + "</color></size>");
-            m_CurrentPromotionDesc.GetComponent<TMP_Text>().text = str;
+            m_CurrentPromotionDesc.GetComponent<Text>().text = str;
         }
         else {
             GlobalManager.Instance.mIsStartRankingMatch = false;
@@ -518,21 +476,21 @@ public class RankingMatch : MonoBehaviour {
             m_GoldReward.SetActive(true);
             m_ItemReward.SetActive(false);
             m_GoldReward.transform.localPosition = new Vector3(0, m_GoldReward.transform.localPosition.y, 0);
-            m_GoldReward.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + propArray[0].Count.ToString();
+            m_GoldReward.transform.GetChild(0).GetComponent<Text>().text = "X" + propArray[0].Count.ToString();
         }
         else if (propArray.Length == 2) //金币和道具
         {
             if (propArray[2].Type == Prop.Ballon) {
                 m_GoldReward.SetActive(true);
                 m_ItemReward.SetActive(true);
-                m_GoldReward.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + propArray[0].Count.ToString();
-                m_ItemReward.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + propArray[1].Count.ToString();
+                m_GoldReward.transform.GetChild(0).GetComponent<Text>().text = "X" + propArray[0].Count.ToString();
+                m_ItemReward.transform.GetChild(0).GetComponent<Text>().text = "X" + propArray[1].Count.ToString();
             }
             else {
                 m_GoldReward.SetActive(true);
                 m_ItemReward.SetActive(false);
                 m_GoldReward.transform.localPosition = new Vector3(0, m_GoldReward.transform.localPosition.y, 0);
-                m_GoldReward.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" + propArray[0].Count.ToString();
+                m_GoldReward.transform.GetChild(0).GetComponent<Text>().text = "X" + propArray[0].Count.ToString();
             }
         }
 
@@ -540,11 +498,11 @@ public class RankingMatch : MonoBehaviour {
         var str1 = GlobalManager.Instance.GetLanguageValue("RankingSettlement");
         //查找字符串xx 替换为当前排名
         str1 = str1.Replace("xx", PlayerListIndex.ToString());
-        m_CurrentRankDesc.GetComponent<TMP_Text>().text = str1; //当前排名
+        m_CurrentRankDesc.GetComponent<Text>().text = str1; //当前排名
         var str2 = GlobalManager.Instance.GetLanguageValue("RankSettlement");
         //查找字符串xx 替换为当前段位
         str2 = str2.Replace("xx", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString()));
-        m_CurrentRankDesc2.GetComponent<TMP_Text>().text = str2;
+        m_CurrentRankDesc2.GetComponent<Text>().text = str2;
     }
 
     //显示排位赛详情

@@ -87,8 +87,8 @@ public class MenuBtnManager : MonoBehaviour {
         var str = GlobalManager.Instance.GetLanguageValue("Unlock");
         if (GlobalManager.Instance.CurrentLevel > 5) {
             m_RacingBtn.transform.GetChild(2).gameObject.SetActive(false);
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Racing");
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Racing");
             m_RacingBtn.GetComponent<Button>().interactable = true;
             IsRacingFirstEnter = PlayerPrefs.GetInt("IsRacingFirstEnter", 1) == 1;
             if (IsRacingFirstEnter) {
@@ -103,15 +103,15 @@ public class MenuBtnManager : MonoBehaviour {
         }
         else {
             m_RacingBtn.transform.GetChild(2).gameObject.SetActive(true);
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "6");
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
+            m_RacingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "6");
             m_RacingBtn.GetComponent<Button>().interactable = false;
         }
 
         if (GlobalManager.Instance.CurrentLevel > 6) {
             m_WheelBtn.transform.GetChild(2).gameObject.SetActive(false);
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Spin");
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Spin");
             m_WheelBtn.GetComponent<Button>().interactable = true;
             IsWheelFirstEnter = PlayerPrefs.GetInt("IsWheelFirstEnter", 1) == 1;
             if (IsWheelFirstEnter) {
@@ -124,15 +124,15 @@ public class MenuBtnManager : MonoBehaviour {
         }
         else {
             m_WheelBtn.transform.GetChild(2).gameObject.SetActive(true);
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "7");
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
+            m_WheelBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "7");
             m_WheelBtn.GetComponent<Button>().interactable = false;
         }
 
         if (GlobalManager.Instance.CurrentLevel > 13) {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(false);
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("League");
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("League");
             m_QualifyingBtn.GetComponent<Button>().interactable = true;
             IsQualifyingFirstEnter = PlayerPrefs.GetInt("IsQualifyingFirstEnter", 1) == 1;
             if (IsQualifyingFirstEnter) {
@@ -145,15 +145,15 @@ public class MenuBtnManager : MonoBehaviour {
         }
         else {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(true);
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "14");
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "14");
             m_QualifyingBtn.GetComponent<Button>().interactable = false;
         }
 
         if (GlobalManager.Instance.CurrentLevel > 15) {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(false);
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
             m_HardBtn.GetComponent<Button>().interactable = true;
             IsHardFirstEnter = PlayerPrefs.GetInt("IsHardFirstEnter", 1) == 1;
             if (IsHardFirstEnter) {
@@ -166,15 +166,15 @@ public class MenuBtnManager : MonoBehaviour {
         }
         else {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(true);
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "15");
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "15");
             m_HardBtn.GetComponent<Button>().interactable = false;
         }
 
         if (GlobalManager.Instance.CurrentLevel > 16) {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(false);
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 48;
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Skin");
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Skin");
             m_SkinBtn.GetComponent<Button>().interactable = true;
             IsSkinFirstEnter = PlayerPrefs.GetInt("IsSkinFirstEnter", 1) == 1;
             if (IsSkinFirstEnter) {
@@ -187,8 +187,8 @@ public class MenuBtnManager : MonoBehaviour {
         }
         else {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(true);
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().fontSize = 36;
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str.Replace("xx", "17");
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "17");
             m_SkinBtn.GetComponent<Button>().interactable = false;
         }
     }

@@ -25,11 +25,7 @@ public class DailySignIn : MonoBehaviour {
     //初始签到时间
     // public DateTime m_StartDailySignTime;
     /////////////////////////////////////////////多语言设置，文本物体
-    //标题
-    public TMP_Text m_Title;
 
-    //领取按钮文本
-    public TMP_Text m_SignInText;
 
     void Start() {
         LoadSignInData();
@@ -38,8 +34,6 @@ public class DailySignIn : MonoBehaviour {
     }
 
     public void SetLanguage() {
-        m_Title.text = GlobalManager.Instance.GetLanguageValue("DailyRewards");
-        m_SignInText.text = GlobalManager.Instance.GetLanguageValue("Claim");
     }
 
     void LoadSignInData() {
@@ -118,8 +112,8 @@ public class DailySignIn : MonoBehaviour {
         for (int i = 0; i < 7; i++) {
             dayImages[i].sprite = i > signCount ? signedInSprite : notSignedInSprite;
             dayImages[i].transform.GetChild(3).gameObject.SetActive(i < signCount);
-            dayImages[i].transform.GetChild(2).GetComponent<TMP_Text>().text = "X" + rewardCoins[i].ToString();
-            dayImages[i].transform.GetChild(0).GetComponent<TMP_Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
+            dayImages[i].transform.GetChild(2).GetComponent<Text>().text = "X" + rewardCoins[i].ToString();
+            dayImages[i].transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
         }
 
         int dayIndex = signCount;
