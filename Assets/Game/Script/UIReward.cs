@@ -29,27 +29,27 @@ public class UIReward : MonoBehaviour {
 
 
     void Start() {
-        if (skeletonGraphic != null) {
-            // 订阅动画完成事件
-            skeletonGraphic.AnimationState.Complete += OnAnimationComplete;
-            skeletonGraphic.AnimationState.Event += OnAnimationEvent;
-            skeletonGraphicRV.AnimationState.Complete += OnAnimationComplete;
-            skeletonGraphicRV.AnimationState.Event += OnAnimationEvent;
-        }
-
-        skeletonGraphic.AnimationState.SetAnimation(0, "daiji", true);
-        skeletonGraphicRV.AnimationState.SetAnimation(0, "daiji", true);
+        // if (skeletonGraphic != null) {
+        //     // 订阅动画完成事件
+        //     skeletonGraphic.AnimationState.Complete += OnAnimationComplete;
+        //     skeletonGraphic.AnimationState.Event += OnAnimationEvent;
+        //     skeletonGraphicRV.AnimationState.Complete += OnAnimationComplete;
+        //     skeletonGraphicRV.AnimationState.Event += OnAnimationEvent;
+        // }
+        //
+        // skeletonGraphic.AnimationState.SetAnimation(0, "daiji", true);
+        // skeletonGraphicRV.AnimationState.SetAnimation(0, "daiji", true);
         mIsFirstGetRewardRV = PlayerPrefs.GetInt("IsFirstGetRewardRV", 0) == 0;
     }
 
     private void OnDestroy() {
-        // 取消订阅动画完成事件
-        if (skeletonGraphic != null) {
-            skeletonGraphic.AnimationState.Complete -= OnAnimationComplete;
-            skeletonGraphic.AnimationState.Event -= OnAnimationEvent;
-            skeletonGraphicRV.AnimationState.Complete -= OnAnimationComplete;
-            skeletonGraphicRV.AnimationState.Event -= OnAnimationEvent;
-        }
+        // // 取消订阅动画完成事件
+        // if (skeletonGraphic != null) {
+        //     skeletonGraphic.AnimationState.Complete -= OnAnimationComplete;
+        //     skeletonGraphic.AnimationState.Event -= OnAnimationEvent;
+        //     skeletonGraphicRV.AnimationState.Complete -= OnAnimationComplete;
+        //     skeletonGraphicRV.AnimationState.Event -= OnAnimationEvent;
+        // }
     }
 
     private GameObject GetCoin(Transform prant) {
@@ -179,6 +179,10 @@ public class UIReward : MonoBehaviour {
 
     public void ShowReward() {
         m_RewardRoot.SetActive(true);
+        skeletonGraphic.AnimationState.SetAnimation(0, "idle1", false);
+        DOVirtual.DelayedCall(1.34f, () => {
+            skeletonGraphic.AnimationState.SetAnimation(0, "idle2", true);
+        });
     }
 
     public void HideReward() {
@@ -187,6 +191,10 @@ public class UIReward : MonoBehaviour {
 
     public void ShowRewardRV() {
         m_RewardRootRV.SetActive(true);
+        skeletonGraphicRV.AnimationState.SetAnimation(0, "idle1", false);
+        DOVirtual.DelayedCall(1.34f, () => {
+            skeletonGraphicRV.AnimationState.SetAnimation(0, "idle2", true);
+        });
     }
 
     public void HideRewardRV() {
@@ -197,7 +205,17 @@ public class UIReward : MonoBehaviour {
     public void OnOpenGiftClick() {
         if (skeletonGraphic == null)
             return;
-        skeletonGraphic.AnimationState.SetAnimation(0, "animation", false);
+        skeletonGraphic.AnimationState.SetAnimation(0, "open", false);
+
+        DOVirtual.DelayedCall(1.34f, () => {
+            coinContainer.transform.DOLocalMove(new Vector3(0, coinContainer.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+            coinContainer.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                coinContainer.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
+                    GlobalManager.Instance.PlayerCoin += Rewards[0].Count;
+                    CreateAndAnimateCoins(Rewards[0].Count); // 假设金币数量为50
+                });
+            });
+        });
     }
 
     public void OnOpenGiftClickRV() {
@@ -205,12 +223,46 @@ public class UIReward : MonoBehaviour {
             return;
         if (mIsFirstGetRewardRV) //首次领取第二次奖励
         {
-            skeletonGraphicRV.AnimationState.SetAnimation(0, "animation", false);
+            skeletonGraphicRV.AnimationState.SetAnimation(0, "open", false);
+            DOVirtual.DelayedCall(1.34f, () => {
+                coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                m_ItemRoot.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x + 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                coinContainerRV.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                    coinContainerRV.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
+                        GlobalManager.Instance.PlayerCoin += RewardsRv[0].Count;
+                        GlobalManager.Instance.ItemCount += RewardsRv[1].Count;
+                        CreateAndAnimateCoins(RewardsRv[0].Count); // 假设金币数量为50
+                    });
+                });
+                m_ItemRoot.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                    m_ItemRoot.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutQuad).OnComplete(() => {
+                        m_ItemRoot.transform.DOScale(0.3f, 0.6f).SetEase(Ease.OutQuad);
+                        m_ItemRoot.GetComponent<Image>().DOFade(0, 0.6f);
+                    });
+                });
+            });
             PlayerPrefs.SetInt("IsFirstGetRewardRV", 1);
         }
         else {
             ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
-                skeletonGraphicRV.AnimationState.SetAnimation(0, "animation", false);
+                skeletonGraphicRV.AnimationState.SetAnimation(0, "open", false);
+                DOVirtual.DelayedCall(1.34f, () => {
+                    coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                    m_ItemRoot.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x + 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                    coinContainerRV.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                        coinContainerRV.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
+                            GlobalManager.Instance.PlayerCoin += RewardsRv[0].Count;
+                            GlobalManager.Instance.ItemCount += RewardsRv[1].Count;
+                            CreateAndAnimateCoins(RewardsRv[0].Count); // 假设金币数量为50
+                        });
+                    });
+                    m_ItemRoot.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                        m_ItemRoot.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutQuad).OnComplete(() => {
+                            m_ItemRoot.transform.DOScale(0.3f, 0.6f).SetEase(Ease.OutQuad);
+                            m_ItemRoot.GetComponent<Image>().DOFade(0, 0.6f);
+                        });
+                    });
+                });
             }, () => {
                 TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
             });
