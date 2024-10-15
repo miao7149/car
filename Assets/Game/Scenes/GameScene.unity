@@ -10365,6 +10365,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2372899611147178404, guid: c7e8a6fdcc3ed3549831780c34f9b7de, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372899611147178404, guid: c7e8a6fdcc3ed3549831780c34f9b7de, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372899611147178404, guid: c7e8a6fdcc3ed3549831780c34f9b7de, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372899611147178404, guid: c7e8a6fdcc3ed3549831780c34f9b7de, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3160826421551293723, guid: c7e8a6fdcc3ed3549831780c34f9b7de, type: 3}
       propertyPath: m_Name
       value: Directional Light
@@ -11121,6 +11137,18 @@ PrefabInstance:
     - target: {fileID: 674041174575192859, guid: d87c1843c75382946b5a9dfe8d931f5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677572410240424472, guid: d87c1843c75382946b5a9dfe8d931f5b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677572410240424472, guid: d87c1843c75382946b5a9dfe8d931f5b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677572410240424472, guid: d87c1843c75382946b5a9dfe8d931f5b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5458293702868803128, guid: d87c1843c75382946b5a9dfe8d931f5b, type: 3}
       propertyPath: m_Name
