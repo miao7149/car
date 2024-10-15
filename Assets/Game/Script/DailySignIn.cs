@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using DG.Tweening;
+using MM;
 
 public class DailySignIn : MonoBehaviour {
     public Image[] dayImages; // 七天的Image数组
@@ -113,7 +114,11 @@ public class DailySignIn : MonoBehaviour {
             dayImages[i].sprite = i > signCount ? signedInSprite : notSignedInSprite;
             dayImages[i].transform.GetChild(3).gameObject.SetActive(i < signCount);
             dayImages[i].transform.GetChild(2).GetComponent<Text>().text = "X" + rewardCoins[i].ToString();
-            dayImages[i].transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
+            //dayImages[i].transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
+            if (i < 5)
+                dayImages[i].transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Day" + (i + 1));
+            else
+                dayImages[i].transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Seventh day");
         }
 
         int dayIndex = signCount;

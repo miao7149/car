@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,8 @@ public class HardItem : MonoBehaviour {
     //HardItemData
     private HardItemData mHardItemData;
     UIHardMode mUIHardMode;
+
+    public Animation ani;
 
     enum HardItemState {
         //已完成
@@ -107,7 +110,11 @@ public class HardItem : MonoBehaviour {
             mUIHardMode.m_UICoin.GetComponent<UICoin>().UpdateCoin();
             PlayerPrefs.SetInt("HardLevelStatus" + mHardItemData.mLevelID, 1);
             GlobalManager.Instance.SaveGameData();
-            Init();
+
+            ani.Play();
+            DOVirtual.DelayedCall(1.35f, () => {
+                Init();
+            });
         }
         else {
             TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("CoinNotEnough"));

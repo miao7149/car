@@ -273,7 +273,7 @@ public class RankingMatch : MonoBehaviour {
 
 
         for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
-            Debug.Log(i);
+            //  Debug.Log(i);
             itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i], i + 1);
             SetItemPostion(itemArr[i], GetItemPos(i));
         }

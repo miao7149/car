@@ -11,11 +11,17 @@ namespace MM {
 
         private void Awake() {
             languageID = Application.systemLanguage.ToString();
+
+
             if (!languages.Contains(languageID)) {
                 languageID = "English";
             }
 
-            languageID = "English";
+            if (languageID == "ChineseSimplified") {
+                languageID = "Chinese";
+            }
+
+            //languageID = "English";
 
             Instance = this;
             //DontDestroyOnLoad(gameObject);
