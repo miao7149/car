@@ -1810,7 +1810,7 @@ public class GameManager : MonoBehaviour {
 
         GetHitDir(car, dir, out bool left, out bool right);
         if (left) {
-            var r = car.transform.localRotation;
+            var r = car.transform.localEulerAngles;
             car.transform.DOLocalRotate(new Vector3(r.x, r.y, -20), 0.2f).OnComplete(() => {
                 car.transform.DOLocalRotate(new Vector3(r.x, r.y, 0), 0.2f).OnComplete(() => {
                     callback?.Invoke();
@@ -1824,7 +1824,7 @@ public class GameManager : MonoBehaviour {
         }
 
         if (right) {
-            var r = car.transform.localRotation;
+            var r = car.transform.localEulerAngles;
             car.transform.DOLocalRotate(new Vector3(r.x, r.y, 20), 0.2f).OnComplete(() => {
                 car.transform.DOLocalRotate(new Vector3(r.x, r.y, 0), 0.2f).OnComplete(() => {
                     callback?.Invoke();

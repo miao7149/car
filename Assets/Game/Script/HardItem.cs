@@ -69,7 +69,6 @@ public class HardItem : MonoBehaviour {
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(true);
             m_LockRoot.SetActive(false);
-            //mUIHardMode.OnNewHardModeLevel("Hard");
         }
         else {
             //未解锁

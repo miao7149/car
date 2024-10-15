@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
+using MM;
 
 public class UI : MonoBehaviour {
     // Start is called before the first frame update
@@ -338,18 +339,27 @@ public class UI : MonoBehaviour {
         GameManager.Instance.InitGame();
     }
 
+    public Text IntroduceTitle;
+
+
     //显示游戏介绍
     public void ShowGameIntroduce(string gameIntroType) {
         GameIntroduceRoot.SetActive(true);
         if (gameIntroType == "Bulldozer") {
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+
             var bulldozer = FindChildByName(GameIntroduceRoot.transform, "Bulldozer");
             bulldozer.gameObject.SetActive(true);
         }
         else if (gameIntroType == "People") {
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+
             var people = FindChildByName(GameIntroduceRoot.transform, "People");
             people.gameObject.SetActive(true);
         }
         else {
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+
             var trafficLight = FindChildByName(GameIntroduceRoot.transform, "TrafficLights");
             trafficLight.gameObject.SetActive(true);
         }
