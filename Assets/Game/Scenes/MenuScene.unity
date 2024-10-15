@@ -16231,22 +16231,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.657
       objectReference: {fileID: 0}
-    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
-      propertyPath: m_Color.g
-      value: 0.78753495
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6839622
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
-      propertyPath: m_Intensity
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8436382560018292906, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
       propertyPath: m_Name
       value: Directional Light_m2
@@ -17383,6 +17367,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72b8c02cff79344ee95d4ca0bee78cdd, type: 3}
   m_PrefabInstance: {fileID: 839941240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &851855510
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1339057620}
+    m_Modifications:
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33745822
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6213871
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6213871
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.33745822
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 122.990005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726844515267850140, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+      propertyPath: m_Name
+      value: Spot Light_skin_car
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+--- !u!4 &851855511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3759551460777405012, guid: 8ff9fd71a70e28f40bbebda26487eed1, type: 3}
+  m_PrefabInstance: {fileID: 851855510}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &852949162
 GameObject:
@@ -24670,7 +24716,6 @@ MonoBehaviour:
   m_Logo: {fileID: 1520670096}
   m_UICoin: {fileID: 4726867752357915917}
   m_InputField: {fileID: 645766511}
-  m_CameraNode: {fileID: 0}
 --- !u!4 &1232341449
 Transform:
   m_ObjectHideFlags: 0
@@ -26851,6 +26896,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 851855511}
   - {fileID: 1980421570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38253,10 +38299,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3718442051400255975, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Name
       value: Directional Light_m
