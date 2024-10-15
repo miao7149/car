@@ -95,7 +95,8 @@ GameObject:
   - component: {fileID: 221094817750279976}
   - component: {fileID: 1922257348413103309}
   - component: {fileID: 5047713680943993171}
-  m_Layer: 0
+  - component: {fileID: 587099451588815412}
+  m_Layer: 12
   m_Name: BigCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,6 +156,7 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+  backing: 0
 --- !u!111 &5047713680943993171
 Animation:
   m_ObjectHideFlags: 0
@@ -171,6 +173,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &587099451588815412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150818051858469260}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 2.2472982}
+  m_Center: {x: 0, y: 0, z: -0.8830619}
 --- !u!1001 &6581458195393442505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,15 +402,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4598087122167447179, guid: 59133e06cc3fe41658fd9767070dca1d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1045861241497630704}
+      addedObject: {fileID: 7707957037255088487}
   m_SourcePrefab: {fileID: 100100000, guid: 59133e06cc3fe41658fd9767070dca1d, type: 3}
 --- !u!1 &5871599154914362249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4598087122167447179, guid: 59133e06cc3fe41658fd9767070dca1d, type: 3}
   m_PrefabInstance: {fileID: 7976916945296506114}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1045861241497630704
-MeshCollider:
+--- !u!65 &7707957037255088487
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -404,10 +427,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8808220218687768431, guid: 59133e06cc3fe41658fd9767070dca1d, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.85058796, y: 0.9345668, z: 0.44820762}
+  m_Center: {x: -0.000000059604645, y: 0.4672834, z: 1.0308503}
 --- !u!4 &7582103335076649705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 59133e06cc3fe41658fd9767070dca1d, type: 3}

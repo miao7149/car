@@ -90,7 +90,7 @@ public class HardItem : MonoBehaviour {
     //重玩按钮
     public void OnReplayBtn() {
         GlobalManager.Instance.GameType = GameType.ChallengeHard;
-        GlobalManager.Instance.CurrentHardLevel = int.Parse(mHardItemData.mLevelID);
+        GlobalManager.Instance.CurrentHardLevel = int.Parse(mHardItemData.mLevelID) - 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
     }
 

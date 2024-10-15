@@ -262,7 +262,8 @@ GameObject:
   - component: {fileID: 6418262644967543222}
   - component: {fileID: 2485523757591939199}
   - component: {fileID: 5004130440012454740}
-  m_Layer: 0
+  - component: {fileID: -3319564547209591186}
+  m_Layer: 12
   m_Name: Car_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +323,7 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+  backing: 0
 --- !u!111 &5004130440012454740
 Animation:
   m_ObjectHideFlags: 0
@@ -338,6 +340,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &-3319564547209591186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418274000602386841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.769973, y: 0.53494215, z: 1.5077497}
+  m_Center: {x: -0.0192509, y: 0.23252892, z: -0.5208042}
 --- !u!1 &2219132771407854194
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,10 +951,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6518721552607929116, guid: 53e0f44d6dba0cb4a95a6f45652d477e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3201562762919632797}
   m_SourcePrefab: {fileID: 100100000, guid: 53e0f44d6dba0cb4a95a6f45652d477e, type: 3}
 --- !u!4 &6406656921343746232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 53e0f44d6dba0cb4a95a6f45652d477e, type: 3}
   m_PrefabInstance: {fileID: 6873546345601337171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8857283811308706743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6518721552607929116, guid: 53e0f44d6dba0cb4a95a6f45652d477e, type: 3}
+  m_PrefabInstance: {fileID: 6873546345601337171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3201562762919632797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857283811308706743}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.60326445, y: 0.48159996, z: 0.41282368}
+  m_Center: {x: 0.015742242, y: 0.24069999, z: 0.52191436}

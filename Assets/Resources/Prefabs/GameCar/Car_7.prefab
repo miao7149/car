@@ -111,7 +111,8 @@ GameObject:
   - component: {fileID: 5059791052664481668}
   - component: {fileID: 255681386027100632}
   - component: {fileID: 7804855329171534054}
-  m_Layer: 0
+  - component: {fileID: 6666990435958482164}
+  m_Layer: 12
   m_Name: Car_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +172,7 @@ MonoBehaviour:
     dir: 0
     turn: 0
   mTrail: {fileID: 0}
+  backing: 0
 --- !u!111 &7804855329171534054
 Animation:
   m_ObjectHideFlags: 0
@@ -187,6 +189,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &6666990435958482164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851305724344669280}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.769973, y: 0.53494215, z: 1.5077497}
+  m_Center: {x: -0.0192509, y: 0.23252892, z: -0.5208042}
 --- !u!1 &3220501119335178803
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +954,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -4706007778851823754, guid: 9bce0e37acd744d8584fd28833e182be, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5275616455277722355}
+      addedObject: {fileID: 951601407374456614}
   m_SourcePrefab: {fileID: 100100000, guid: 9bce0e37acd744d8584fd28833e182be, type: 3}
 --- !u!4 &5639477953139001655 stripped
 Transform:
@@ -943,8 +966,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -4706007778851823754, guid: 9bce0e37acd744d8584fd28833e182be, type: 3}
   m_PrefabInstance: {fileID: 5317003128867008220}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &5275616455277722355
-MeshCollider:
+--- !u!65 &951601407374456614
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -961,7 +984,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8919177601700557132, guid: 9bce0e37acd744d8584fd28833e182be, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.60326445, y: 0.48159996, z: 0.41282368}
+  m_Center: {x: 0.015742242, y: 0.24069999, z: 0.52191436}
