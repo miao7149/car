@@ -889,7 +889,7 @@ public class GameManager : MonoBehaviour {
                         VibrationManager.Vibrate(30, 180);
                         m_UI.HideGuideFinger();
                         if (IsUseItem) //使用道具
-                            StartCoroutine(UseItem(hit.collider.transform.parent.parent.GetComponent<Car>().transform));
+                            StartCoroutine(UseItem(hit.collider.transform.GetComponent<Car>().transform));
                         //LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
                         else {
                             if (GlobalManager.Instance.CurrentLevel >= 10) {

@@ -129,11 +129,11 @@ public class MenuManager : MonoBehaviour {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         });
         //相机跟随
-        m_CameraNode.transform.DOMoveZ(m_Camera.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuart);
-        m_Camera.transform.DOShakePosition(0.7f, 0.03f, 30, 0.1f, false, true).SetEase(Ease.InOutQuad);
+        m_Camera.transform.DOMoveZ(m_Camera.transform.position.z + 3.6f, 0.7f).SetEase(Ease.InOutQuart);
+        //m_Camera.transform.DOShakePosition(0.7f, 0.03f, 30, 0.1f, false, true).SetEase(Ease.InOutQuad);
     }
 
-    public GameObject m_CameraNode;
+    //public GameObject m_CameraNode;
 
     // IEnumerator CameraFollowCar() {
     //     while (true) {

@@ -346,19 +346,19 @@ public class UI : MonoBehaviour {
     public void ShowGameIntroduce(string gameIntroType) {
         GameIntroduceRoot.SetActive(true);
         if (gameIntroType == "Bulldozer") {
-            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("Bulldozer");
 
             var bulldozer = FindChildByName(GameIntroduceRoot.transform, "Bulldozer");
             bulldozer.gameObject.SetActive(true);
         }
         else if (gameIntroType == "People") {
-            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("Pedestrian");
 
             var people = FindChildByName(GameIntroduceRoot.transform, "People");
             people.gameObject.SetActive(true);
         }
         else {
-            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("");
+            IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("TrafficLight");
 
             var trafficLight = FindChildByName(GameIntroduceRoot.transform, "TrafficLights");
             trafficLight.gameObject.SetActive(true);

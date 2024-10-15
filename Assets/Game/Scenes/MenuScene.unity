@@ -10571,38 +10571,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485967325}
   m_CullTransparentMesh: 1
---- !u!1 &488962098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 488962099}
-  m_Layer: 0
-  m_Name: CameraNode
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &488962099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488962098}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.667, z: -30.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1183077684}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &491361261
 GameObject:
   m_ObjectHideFlags: 0
@@ -23713,7 +23681,7 @@ Camera:
   m_GameObject: {fileID: 1183077681}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0.37788254, b: 0.9716981, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -23764,11 +23732,11 @@ Transform:
   m_GameObject: {fileID: 1183077681}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17510897, y: -0, z: -0, w: 0.9845491}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.667, z: -30.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 488962099}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 20.17, y: 0, z: 0}
 --- !u!114 &1183077685
 MonoBehaviour:
@@ -24702,7 +24670,7 @@ MonoBehaviour:
   m_Logo: {fileID: 1520670096}
   m_UICoin: {fileID: 4726867752357915917}
   m_InputField: {fileID: 645766511}
-  m_CameraNode: {fileID: 488962098}
+  m_CameraNode: {fileID: 0}
 --- !u!4 &1232341449
 Transform:
   m_ObjectHideFlags: 0
@@ -97910,6 +97878,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1183077684}
   - {fileID: 797159472}
   - {fileID: 1525243274}
   - {fileID: 1984105028}
@@ -97923,4 +97892,3 @@ SceneRoots:
   - {fileID: 1132395685}
   - {fileID: 104873274}
   - {fileID: 1339057620}
-  - {fileID: 488962099}
