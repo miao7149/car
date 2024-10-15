@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AssetKits.ParticleImage;
 using DG.Tweening;
+using MM;
 using SuperScrollView;
 using TMPro;
 using UnityEngine;
@@ -53,7 +54,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     public GameObject m_CurrentPromotionDesc;
 
     //当前晋升人数
-    public GameObject m_CurrentPromotionNum;
+    // public GameObject m_CurrentPromotionNum;
 
     //奖杯图片
     public GameObject m_RankImage;
@@ -156,16 +157,17 @@ public class UIGameVictoryPage : MonoBehaviour {
         // m_ScrollRect.content.sizeDelta = new Vector2(0, y);
         //创建列表
         // CreatItemList();
-        string s = "There are                 people left to reach the promotion rank";
+        //string s = "There are                 people left to reach the promotion rank";
+        string s;
 
         var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
         if (PlayerListIndex > 29) {
-            m_CurrentPromotionNum.GetComponent<Text>().text = (PlayerListIndex - 29).ToString();
-            //s =
+            //m_CurrentPromotionNum.GetComponent<Text>().text = (PlayerListIndex - 29).ToString();
+            s = LanguageManager.Instance.GetStringByCode("PromotionDes", "" + (PlayerListIndex - 29));
         }
         else {
-            m_CurrentPromotionNum.GetComponent<Text>().text = "0";
-            s = "保持名次，在倒计时结束后提升段位";
+            //m_CurrentPromotionNum.GetComponent<Text>().text = "0";
+            s = LanguageManager.Instance.GetStringByCode("KeepRank");
         }
 
         m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
@@ -204,7 +206,6 @@ public class UIGameVictoryPage : MonoBehaviour {
                 }
             }
         }
-
     }
 
     IEnumerator PlayRankAni(int old, int current) {

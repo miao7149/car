@@ -5470,12 +5470,12 @@ MonoBehaviour:
   m_Item1: {fileID: 6825338256191096427, guid: 54f952b08cdca4ebbbfeac5e086658cb, type: 3}
   m_Item2: {fileID: 7723529229535721989, guid: d58d76df138684941934851b83576351, type: 3}
   m_Item3: {fileID: 22706166466288639, guid: 7e321b867222649b4b6460fac440c259, type: 3}
-  m_BronzeText: {fileID: 0}
-  m_SilverText: {fileID: 0}
-  m_GoldText: {fileID: 0}
-  m_PlatinumText: {fileID: 0}
-  m_DiamondText: {fileID: 0}
-  m_KingText: {fileID: 0}
+  m_BronzeText: {fileID: 9039252943919298788}
+  m_SilverText: {fileID: 8521742788139482246}
+  m_GoldText: {fileID: 7621958954835778038}
+  m_PlatinumText: {fileID: 8091492307247576688}
+  m_DiamondText: {fileID: 5755014463636742376}
+  m_KingText: {fileID: 5959839210557944431}
 --- !u!1 &248148777
 GameObject:
   m_ObjectHideFlags: 0
@@ -92417,7 +92417,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8249625706371303483}
   m_HandleRect: {fileID: 8516678721752867031}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -94363,7 +94363,7 @@ RectTransform:
   m_Father: {fileID: 8035090525393353522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

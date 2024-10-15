@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using MM;
 using SuperScrollView;
 using TMPro;
 using UnityEngine;
@@ -216,13 +217,14 @@ public class RankingMatch : MonoBehaviour {
                     GlobalManager.Instance.CurrentRank++;
             }
 
-            var str = GlobalManager.Instance.GetLanguageValue("PromotionDes");
+            //var str = GlobalManager.Instance.GetLanguageValue("PromotionDes");
+            var str = LanguageManager.Instance.GetStringByCode("PromotionDes", currentPromotionNum + "");
             if (currentPromotionNum == 0) {
-                str = "保持名次，在倒计时结束后提升段位";
+                str = LanguageManager.Instance.GetStringByCode("KeepRank");
             }
 
             //查找字符串xx 替换为当前晋升人数
-            str = str.Replace("                 ", "<size=150%><color=#7F68F0>" + currentPromotionNum.ToString() + "</color></size>");
+            //str = str.Replace("                 ", "<size=150%><color=#7F68F0>" + currentPromotionNum.ToString() + "</color></size>");
             m_CurrentPromotionDesc.GetComponent<Text>().text = str;
         }
         else {

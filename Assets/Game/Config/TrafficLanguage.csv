@@ -90,9 +90,9 @@ Feedback,Feedback,反馈,フィードバック,Feedback,Comentarios,Feedback,Com
 CompetitionOver,"The game is over, try harder next time!",比赛结束，下次好运！,ゲームは終わりました。次回はもっと頑張りましょう!,"O jogo acabou, tente mais da próxima vez!","¡El juego ha terminado, esfuérzate más la próxima vez!","Das Spiel ist vorbei, gib dir nächstes Mal mehr Mühe!","Le jeu est terminé, essayez encore plus fort la prochaine fois !",게임은 끝났습니다. 다음에는 더 열심히 노력하세요!,انتهت اللعبة، حاول أن تبذل المزيد من الجهد في المرة القادمة!,"Игра окончена, постарайся лучше в следующий раз!"
 Day,Days,天,日数,Dias,Días,Tage,Jours,일,أيام,Дни
 Hour,Hours,小时,時間数,Horas,Horas,Stunden,Heures,시간,ساعات,Часы
-,,保持排名以提升段位！,,,,,,,,
-,,恭喜您达到XX段位！,,,,,,,,
-,,你,,,,,,,,
-,,段位提升！,,,,,,,,
-,,段位下降,,,,,,,,
+KeepRank,Keep ranking to improve your rank!,保持排名以提升段位！,ランキングを維持してランクを上げましょう！,Continue classificando para melhorar sua classificação!,¡Sigue subiendo de rango para mejorar tu posición!,"Steigern Sie Ihr Ranking weiter, um Ihren Rang zu verbessern!",Continuez à vous classer pour améliorer votre rang !,순위를 높이려면 순위를 계속 올리세요!,استمر في الترتيب لتحسين ترتيبك!,Продолжайте повышать свой рейтинг!
+ReachNewRank,Congratulations on reaching rank XX!,恭喜您达到XX段位！,XXランク到達おめでとうございます！,Parabéns por atingir a classificação XX!,¡Felicitaciones por alcanzar el rango XX!,Herzlichen Glückwunsch zum Erreichen von Rang XX!,Félicitations pour avoir atteint le rang XX !,랭크 XX 달성 축하합니다!,تهانينا على الوصول إلى المرتبة XX!,Поздравляем с достижением ранга XX!
+YOU,You,你,あなた,Você,¡Tú,Sie,Toi,당신,لقد,Вы
+RankUp,Rank Up!,段位提升！,ランクアップ！,Subiu de classificação!,¡Sube de rango!,steigen im Ranking auf!,Montez en grade !,랭크 업!,ارتقيت في الترتيب!,Повысить рейтинг!
+RankDown,Rank Down,段位下降,ランクが下がる,Desceu de classificação,¡Baja de rango!,Sinken im Ranking,Descendez en grade,랭크 다운,تراجعت في الترتيب,Понизить рейтинг
 ,,,,,,,,,,
