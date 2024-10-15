@@ -20,6 +20,18 @@ public class CheatLayer : MonoBehaviour {
             case "win":
                 GameManager.Instance.SetGameStatu(GameStatu.finish);
                 break;
+
+            case "up":
+                GlobalManager.Instance.CurrentLevel++;
+                PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
+                MenuManager.Instance().SetLevelList();
+                break;
+            case "down":
+
+                GlobalManager.Instance.CurrentLevel--;
+                PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
+                MenuManager.instance.SetLevelList();
+                break;
         }
     }
 

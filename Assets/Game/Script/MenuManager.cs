@@ -6,6 +6,16 @@ using UnityEngine.UI;
 using TMPro;
 
 public class MenuManager : MonoBehaviour {
+    public static MenuManager instance;
+
+    public static MenuManager Instance() {
+        if (instance == null) {
+            instance = FindObjectOfType<MenuManager>();
+        }
+
+        return instance;
+    }
+
     // Start is called before the first frame update
     //汽车物体
     public GameObject m_Car;
@@ -79,6 +89,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     void OnDestroy() {
+        instance = null;
         DOTween.KillAll();
     }
 
