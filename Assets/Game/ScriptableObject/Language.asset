@@ -314,7 +314,8 @@ MonoBehaviour:
     - code: RankSettlement
       value: "\u4F60\u4F9D\u65E7\u662Fxx\u6BB5\u4F4D"
     - code: PromotionDes
-      value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u4EBA\u5C31\u53EF\u4EE5\u664B\u7EA7"
+      value: "\u518D\u8D85\u8FC7 <size=80><color=#7b6ce8><b>XX</b></color></size>
+        \u4EBA\u5C31\u53EF\u4EE5\u664B\u7EA7"
     - code: Rank1
       value: "\u9752\u94DC"
     - code: Rank2

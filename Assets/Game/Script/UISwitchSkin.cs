@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI.Extensions;
 
 public class UISwitchSkin : MonoBehaviour {
     // Start is called before the first frame update
@@ -87,6 +88,7 @@ public class UISwitchSkin : MonoBehaviour {
                 BtnMaskList[2].SetActive(false);
                 mLoopGridView.SetListItemCount(GlobalManager.Instance.mTrucksAppearanceDict.Count, false);
                 mLoopGridView.RefreshAllShownItem();
+                mLoopGridView.ScrollRect.ScrollToTop();
                 break;
             case DecorationType.Tail:
                 BtnMaskList[0].SetActive(false);
@@ -94,6 +96,7 @@ public class UISwitchSkin : MonoBehaviour {
                 BtnMaskList[2].SetActive(false);
                 mLoopGridView.SetListItemCount(GlobalManager.Instance.mTrucksTrailDict.Count, false);
                 mLoopGridView.RefreshAllShownItem();
+                mLoopGridView.ScrollRect.ScrollToTop();
                 break;
             case DecorationType.Terrain:
                 BtnMaskList[0].SetActive(false);
@@ -101,6 +104,7 @@ public class UISwitchSkin : MonoBehaviour {
                 BtnMaskList[2].SetActive(true);
                 mLoopGridView.SetListItemCount(GlobalManager.Instance.TerrainMappingDict.Count, false);
                 mLoopGridView.RefreshAllShownItem();
+                mLoopGridView.ScrollRect.ScrollToTop();
                 break;
             default:
                 break;
