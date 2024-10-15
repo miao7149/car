@@ -729,8 +729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3441, y: 20.034}
-  m_SizeDelta: {x: 371.31, y: 82.933}
+  m_AnchoredPosition: {x: 12.3121, y: 30}
+  m_SizeDelta: {x: 395.246, y: 95.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &108495002
 CanvasRenderer:
@@ -766,8 +766,8 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 50
-    m_Alignment: 4
+    m_MaxSize: 45
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3989,7 +3989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &555302848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4008,7 +4008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 23}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &586376699
@@ -4227,7 +4227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 363}
+  m_AnchoredPosition: {x: 0, y: 531}
   m_SizeDelta: {x: 520, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596743080
@@ -4796,7 +4796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96d2e7a08b084c7ca99e2ad0a99ea0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: Setting
+  code: Settings
 --- !u!114 &682579383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12536,7 +12536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1146841432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13587,8 +13587,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.087104, y: 19.375}
-  m_SizeDelta: {x: 219.0807, y: 84.25}
+  m_AnchoredPosition: {x: 16.293287, y: 25}
+  m_SizeDelta: {x: 237.4931, y: 95.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1297058053
 CanvasRenderer:
@@ -13624,14 +13624,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 60
-    m_Alignment: 4
+    m_MaxSize: 45
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lv 200
+  m_Text: Lv 20000
 --- !u!114 &1297058055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15512,7 +15512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1673183660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17576,7 +17576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -242.90002}
+  m_AnchoredPosition: {x: 0, y: -265.90002}
   m_SizeDelta: {x: 955, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843060192
@@ -18722,7 +18722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963300219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19962,8 +19962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -161.90356}
-  m_SizeDelta: {x: -100, y: -1220.5796}
+  m_AnchoredPosition: {x: 0, y: -62.768433}
+  m_SizeDelta: {x: -100, y: -1418.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2069502038808508939
 RectTransform:
@@ -20060,10 +20060,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: dcf365863426045e39735f756810faf8, type: 3}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 45
     m_Alignment: 3
     m_AlignByGeometry: 1

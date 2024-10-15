@@ -32,6 +32,5 @@ public class UICoin : MonoBehaviour {
         DOTween.To(() => startValue, x => startValue = x, endValue, 1f)
             .OnUpdate(() => m_CoinText.text = startValue.ToString())
             .SetEase(Ease.OutQuad);
-        int a = 0;
     }
 }
