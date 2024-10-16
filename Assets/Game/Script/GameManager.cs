@@ -68,8 +68,10 @@ public class GameManager : MonoBehaviour {
 
     private List<RoadItem> roadArr = new();
     private List<RoadItem> extendRoadArr = new();
+
     private List<RoadItem> roadPool = new();
-    private List<Car> carPool = new();
+
+    // private List<Car> carPool = new();
     private List<Car> carArr = new();
 
     private List<People> peopleArr = new();
@@ -888,9 +890,12 @@ public class GameManager : MonoBehaviour {
                     if (hit.collider != null) {
                         VibrationManager.Vibrate(30, 180);
                         m_UI.HideGuideFinger();
-                        if (IsUseItem) //使用道具
-                            StartCoroutine(UseItem(hit.collider.transform.GetComponent<Car>().transform));
-                        //LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
+                        if (IsUseItem) { //使用道具
+                            var car = hit.collider.transform.GetComponent<Car>();
+                            if (!carArr.Contains(car)) return;
+                            StartCoroutine(UseItem(car.transform));
+                            //LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
+                        }
                         else {
                             if (GlobalManager.Instance.CurrentLevel >= 10) {
                                 StepCount--; //行动次数减一
@@ -1897,9 +1902,10 @@ public class GameManager : MonoBehaviour {
     public void DeleteCar(Car car) {
         car.CarOutOfBounds -= m_UI.CreateCarOutOfBoundsAnim;
         car.isPlayCoinAnimation = false;
-        carPool.Add(car);
+        //carPool.Add(car);
         car.transform.SetParent(null, false);
         car.gameObject.SetActive(false);
+        Destroy(car.gameObject);
         CheckGameWin();
     }
 
@@ -1964,7 +1970,8 @@ public class GameManager : MonoBehaviour {
         foreach (var car in carArr) {
             car.transform.SetParent(null, false);
             car.gameObject.SetActive(false);
-            carPool.Add(car);
+            // carPool.Add(car);
+            Destroy(car.gameObject);
         }
 
         carArr.Clear();
@@ -2090,38 +2097,38 @@ public class GameManager : MonoBehaviour {
     }
 
     public Car BornCar(CarType type) {
-        Car result = null;
-        for (int i = 0; i < carPool.Count; i++) {
-            if (carPool[i].type == type) {
-                result = carPool[i];
-                result.sprite.gameObject.SetActive(true);
-                if (result.mTrail != null)
-                    result.mTrail.SetActive(false);
-                carPool.RemoveAt(i);
-                break;
-            }
+        // Car result = null;
+        // for (int i = 0; i < carPool.Count; i++) {
+        //     if (carPool[i].type == type) {
+        //         result = carPool[i];
+        //         result.sprite.gameObject.SetActive(true);
+        //         if (result.mTrail != null)
+        //             result.mTrail.SetActive(false);
+        //         carPool.RemoveAt(i);
+        //         break;
+        //     }
+        // }
+        //
+        // if (result == null) {
+        switch (type) {
+            case CarType.Small:
+                GameObject skinCar = Instantiate(Resources.Load<GameObject>("Prefabs/GameCar/" + GlobalManager.Instance.PlayerCarSkinName));
+                GameObject skinTrail = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), skinCar.transform);
+                skinTrail.transform.localPosition = new Vector3(0, 0, -0.5f);
+                skinTrail.SetActive(false);
+                skinCar.GetComponent<Car>().mTrail = skinTrail;
+                return skinCar.GetComponent<Car>();
+            case CarType.Big:
+                return Instantiate(m_PrefabBigCar).GetComponent<Car>();
+            case CarType.Bulldozer:
+                return Instantiate(m_PrefabBulldozer).GetComponent<Car>();
+            default:
+                return null;
         }
-
-        if (result == null) {
-            switch (type) {
-                case CarType.Small:
-                    GameObject skinCar = Instantiate(Resources.Load<GameObject>("Prefabs/GameCar/" + GlobalManager.Instance.PlayerCarSkinName));
-                    GameObject skinTrail = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarTrailName), skinCar.transform);
-                    skinTrail.transform.localPosition = new Vector3(0, 0, -0.5f);
-                    skinTrail.SetActive(false);
-                    skinCar.GetComponent<Car>().mTrail = skinTrail;
-                    return skinCar.GetComponent<Car>();
-                case CarType.Big:
-                    return Instantiate(m_PrefabBigCar).GetComponent<Car>();
-                case CarType.Bulldozer:
-                    return Instantiate(m_PrefabBulldozer).GetComponent<Car>();
-                default:
-                    return null;
-            }
-        }
-        else {
-            return result;
-        }
+        // }
+        // else {
+        //     return result;
+        // }
     }
 
     public RoadItem BornRoad(int type) {
