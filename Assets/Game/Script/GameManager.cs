@@ -1106,7 +1106,8 @@ public class GameManager : MonoBehaviour {
     //使用气球道具
     void LiftCarWithBalloon(Transform car) {
         AudioManager.Instance.PlayBalloonFly();
-        --GlobalManager.Instance.ItemCount; //更新道具数量UI
+        if (GlobalManager.Instance.ItemCount > 0)
+            --GlobalManager.Instance.ItemCount; //更新道具数量UI
         IsUseItem = false;
         m_UI.OnHideItemIntroduceBtn();
         carArr.Remove(car.GetComponent<Car>());
@@ -1179,7 +1180,8 @@ public class GameManager : MonoBehaviour {
 
     //触发道具动画
     IEnumerator UseItem(Transform car) {
-        --GlobalManager.Instance.ItemCount; //更新道具数量UI
+        if (GlobalManager.Instance.ItemCount > 0)
+            --GlobalManager.Instance.ItemCount; //更新道具数量UI
         IsUseItem = false;
         m_UI.OnHideItemIntroduceBtn();
         carArr.Remove(car.GetComponent<Car>());
@@ -2022,59 +2024,59 @@ public class GameManager : MonoBehaviour {
     private IEnumerator ShowFinishUIWithDelay() {
         yield return new WaitForSeconds(1.5f);
         ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(() => {
+            // // 设置延迟时间
+            // float delay = 0.8f;
+            // yield return new WaitForSeconds(delay);
+            if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
+                GlobalManager.Instance.CurrentHardLevel++;
+            }
+            else {
+                GlobalManager.Instance.CurrentLevel++;
+            }
+
+            if (GlobalManager.Instance.CurrentLevel != 0 && GlobalManager.Instance.CurrentLevel != 1 && GlobalManager.Instance.CurrentLevel != 2) {
+                //金币数量
+                int coinCount = carDataArr.Length;
+                //奖杯数量
+                int trophyCount = 10;
+                //如果排位赛开启(排位赛开启后困难模式才会开启)
+                if (GlobalManager.Instance.mIsStartRankingMatch == true && GlobalManager.Instance.CurrentLevel >= 15) {
+                    GlobalManager.Instance.TrophyCompleteLevel++;
+                    //如果是困难关卡
+                    if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
+                        PlayerPrefs.SetInt("HardLevelStatus" + (GlobalManager.Instance.CurrentHardLevel), 0);
+                        trophyCount = 20;
+                        coinCount = 50;
+                    }
+                    else if (GlobalManager.Instance.difficuteMode) {
+                        trophyCount = 20;
+                    }
+
+                    //如果开启双倍奖励
+                    // if (GlobalManager.Instance.IsDoubleReward) {
+                    //     trophyCount *= 2;
+                    // }
+
+                    m_UIGameVictoryPage.ShowAdvanceFinishRoot(coinCount, trophyCount);
+                }
+                else //16关之前结算
+                {
+                    m_UIGameVictoryPage.ShowBeginnerFinishRoot(coinCount);
+                }
+
+                //如果竞速赛进行中
+                if (GlobalManager.Instance.IsCompetition) {
+                    m_UIGameVictoryPage.ShowRacingFinishRoot();
+                }
+
+                GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel); //判断是否有奖励
+                GlobalManager.Instance.SaveGameData();
+                AudioManager.Instance.PlayVictory();
+            }
+            else {
+                InitGame();
+            }
         });
-        // 设置延迟时间
-        float delay = 0.8f;
-        yield return new WaitForSeconds(delay);
-        if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
-            GlobalManager.Instance.CurrentHardLevel++;
-        }
-        else {
-            GlobalManager.Instance.CurrentLevel++;
-        }
-
-        if (GlobalManager.Instance.CurrentLevel != 0 && GlobalManager.Instance.CurrentLevel != 1 && GlobalManager.Instance.CurrentLevel != 2) {
-            //金币数量
-            int coinCount = carDataArr.Length;
-            //奖杯数量
-            int trophyCount = 10;
-            //如果排位赛开启(排位赛开启后困难模式才会开启)
-            if (GlobalManager.Instance.mIsStartRankingMatch == true && GlobalManager.Instance.CurrentLevel >= 15) {
-                GlobalManager.Instance.TrophyCompleteLevel++;
-                //如果是困难关卡
-                if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
-                    PlayerPrefs.SetInt("HardLevelStatus" + (GlobalManager.Instance.CurrentHardLevel), 0);
-                    trophyCount = 20;
-                    coinCount = 50;
-                }
-                else if (GlobalManager.Instance.difficuteMode) {
-                    trophyCount = 20;
-                }
-
-                //如果开启双倍奖励
-                // if (GlobalManager.Instance.IsDoubleReward) {
-                //     trophyCount *= 2;
-                // }
-
-                m_UIGameVictoryPage.ShowAdvanceFinishRoot(coinCount, trophyCount);
-            }
-            else //16关之前结算
-            {
-                m_UIGameVictoryPage.ShowBeginnerFinishRoot(coinCount);
-            }
-
-            //如果竞速赛进行中
-            if (GlobalManager.Instance.IsCompetition) {
-                m_UIGameVictoryPage.ShowRacingFinishRoot();
-            }
-
-            GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel); //判断是否有奖励
-            GlobalManager.Instance.SaveGameData();
-            AudioManager.Instance.PlayVictory();
-        }
-        else {
-            InitGame();
-        }
     }
 
     //左下角坐标 转 中心坐标

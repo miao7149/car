@@ -32,6 +32,12 @@ public class CheatLayer : MonoBehaviour {
                 PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
                 MenuManager.instance.SetLevelList();
                 break;
+            case "coin":
+                GlobalManager.Instance.PlayerCoin = 99999;
+
+                PlayerPrefs.SetInt("PlayerCoin", 99999);
+                PlayerPrefs.Save();
+                break;
         }
     }
 
