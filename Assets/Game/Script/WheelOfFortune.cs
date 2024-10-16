@@ -17,10 +17,10 @@ public class WheelOfFortune : MonoBehaviour {
 
     public PropData[] propDatas = new PropData[] {
         new() { Type = Prop.Coin, Count = 1000 },
-        new() { Type = Prop.Ballon, Count = 5 },
+        new() { Type = Prop.Ballon, Count = 2 },
         new() { Type = Prop.Coin, Count = 150 },
         new() { Type = Prop.Ballon, Count = 1 },
-        new() { Type = Prop.Coin, Count = 50 },
+        new() { Type = Prop.Coin, Count = 250 },
         new() { Type = Prop.Coin, Count = 400 },
     }; //奖品数据
 

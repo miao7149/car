@@ -941,7 +941,7 @@ MonoBehaviour:
   _emitOnSurface: 1
   _emitterThickness: 0
   _loop: 0
-  _duration: 0.5
+  _duration: 0.3
   _playMode: 0
   _startSize:
     separable: 1
@@ -1094,7 +1094,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 1
+    m_ConstantMax: 0.7
   _startSpeed:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -1111,7 +1111,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 2
+    m_ConstantMax: 4
   _colorOverLifetime:
     m_Mode: 1
     m_GradientMin:
@@ -1857,7 +1857,7 @@ MonoBehaviour:
     m_ConstantMax: -9.81
   _targetModule:
     enabled: 1
-  _attractorTarget: {fileID: 0}
+  _attractorTarget: {fileID: 596743079}
   _toTarget:
     m_Mode: 1
     m_CurveMultiplier: 1
@@ -2034,7 +2034,7 @@ MonoBehaviour:
     to: 1
   _textureSheetFPS: 25
   _textureSheetCycles: 1
-  _rate: 10
+  _rate: 30
   _rateOverLifetime: 0
   _rateOverDistance: 0
   _bursts: []

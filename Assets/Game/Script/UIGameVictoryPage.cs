@@ -209,7 +209,11 @@ public class UIGameVictoryPage : MonoBehaviour {
     }
 
     IEnumerator PlayRankAni(int old, int current) {
-        Debug.Log("old" + old + "current" + current);
+        // Debug.Log("old" + old + "current" + current);
+
+        itemArr[old].transform.DOScale(Vector3.one * 1.2f, 0.3f).Play();
+        yield return new WaitForSeconds(0.3f);
+
         particleRank.attractorTarget = itemArr[old].GetComponent<RankingMatchItem>().m_RankIcon.transform;
         particleRank.Play();
 
@@ -219,37 +223,44 @@ public class UIGameVictoryPage : MonoBehaviour {
 
         itemArr[old].transform.SetAsLastSibling();
 
-        itemArr[old].transform.DOScale(Vector3.one * 1.2f, 0.3f).Play();
-        yield return new WaitForSeconds(0.3f);
-        SmoothScrollToIndex(current - 3, 0.7f);
-        itemArr[old].GetComponent<RectTransform>().DOAnchorPosY(itemArr[current].GetComponent<RectTransform>().anchoredPosition.y, 0.7f).Play();
-        yield return new WaitForSeconds(1);
-        itemArr[old].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[current], current + 1);
-        itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
 
-        if (old > current) {
-            for (int i = current; i < old; i++) {
-                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
-                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i + 1], i + 2);
-            }
+        if (old == current) {
+            itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
+            m_ScrollRect.enabled = true;
         }
+        else {
+            SmoothScrollToIndex(current - 3, 0.7f);
+            itemArr[old].GetComponent<RectTransform>().DOAnchorPosY(itemArr[current].GetComponent<RectTransform>().anchoredPosition.y, 0.5f).Play();
+            yield return new WaitForSeconds(0.7f);
 
-        if (old < current) {
-            for (int i = current; i > old; i--) {
-                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
-                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i - 1], i);
+
+            itemArr[old].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[current], current + 1);
+            itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
+
+            if (old > current) {
+                for (int i = current; i < old; i++) {
+                    itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                    itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i + 1], i + 2);
+                }
             }
-        }
 
-        m_ScrollRect.enabled = true;
+            if (old < current) {
+                for (int i = current; i > old; i--) {
+                    itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                    itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i - 1], i);
+                }
+            }
+
+            m_ScrollRect.enabled = true;
+        }
     }
 
     public Animation doubleAni;
 
     IEnumerator PlayDoubleAni(int count, Action cb) {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         doubleAni.Play();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
 
         // DOTween.To(x => x = count / 2,count/2, count, 1.5f).OnUpdate(() => {
         //     m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" +x;
@@ -258,7 +269,7 @@ public class UIGameVictoryPage : MonoBehaviour {
         DOTween.To(() => count / 2, x => {
             //startValue = x; // 更新局部变量
             m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + x; // 更新文本
-        }, count, 1).OnComplete(() => {
+        }, count, 0.5f).OnComplete(() => {
             cb?.Invoke();
         }).Play();
     }
