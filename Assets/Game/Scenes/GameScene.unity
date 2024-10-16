@@ -928,7 +928,7 @@ MonoBehaviour:
   _emitterConstraintEnabled:
     enabled: 0
   _emitterConstraintTransform: {fileID: 0}
-  _shape: 1
+  _shape: 0
   _spread: 0
   _spreadLoop: 1
   _startDelay: 0
@@ -941,7 +941,7 @@ MonoBehaviour:
   _emitOnSurface: 1
   _emitterThickness: 0
   _loop: 0
-  _duration: 0.3
+  _duration: 0.5
   _playMode: 0
   _startSize:
     separable: 1
@@ -1094,7 +1094,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 0.7
+    m_ConstantMax: 0.6
   _startSpeed:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -1901,7 +1901,7 @@ MonoBehaviour:
   _vortexModule:
     enabled: 0
   _velocityModule:
-    enabled: 0
+    enabled: 1
   _velocitySpace: 0
   _velocityOverLifetime:
     separable: 0
@@ -1939,7 +1939,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 0
+      m_ConstantMax: 4.66
     yCurve:
       m_Mode: 0
       m_CurveMultiplier: 0
@@ -17885,6 +17885,7 @@ MonoBehaviour:
   m_CoinText: {fileID: 1389356066}
   m_WatchAdText: {fileID: 1052013295}
   IntroduceTitle: {fileID: 455410410}
+  StepAniNodePrefab: {fileID: 7380144923358236607, guid: 4707e098174df4b258d6e34bd0f4fd30, type: 3}
 --- !u!1 &1932930930
 GameObject:
   m_ObjectHideFlags: 0

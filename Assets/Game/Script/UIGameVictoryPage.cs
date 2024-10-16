@@ -217,42 +217,42 @@ public class UIGameVictoryPage : MonoBehaviour {
         particleRank.attractorTarget = itemArr[old].GetComponent<RankingMatchItem>().m_RankIcon.transform;
         particleRank.Play();
 
-        while (particleRank.isPlaying) {
-            yield return null;
-        }
+        // while (particleRank.isPlaying) {
+        //     yield return null;
+        // }
 
         itemArr[old].transform.SetAsLastSibling();
 
 
-        if (old == current) {
-            itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
-            m_ScrollRect.enabled = true;
-        }
-        else {
-            SmoothScrollToIndex(current - 3, 0.7f);
-            itemArr[old].GetComponent<RectTransform>().DOAnchorPosY(itemArr[current].GetComponent<RectTransform>().anchoredPosition.y, 0.5f).Play();
-            yield return new WaitForSeconds(0.7f);
+        // if (old == current) {
+        //     itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
+        //     m_ScrollRect.enabled = true;
+        // }
+        // else {
+        SmoothScrollToIndex(current - 3, 0.7f);
+        itemArr[old].GetComponent<RectTransform>().DOAnchorPosY(itemArr[current].GetComponent<RectTransform>().anchoredPosition.y, 0.7f).Play();
+        yield return new WaitForSeconds(1f);
 
 
-            itemArr[old].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[current], current + 1);
-            itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
+        itemArr[old].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[current], current + 1);
+        itemArr[old].transform.DOScale(Vector3.one, 0.3f).Play();
 
-            if (old > current) {
-                for (int i = current; i < old; i++) {
-                    itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
-                    itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i + 1], i + 2);
-                }
+        if (old > current) {
+            for (int i = current; i < old; i++) {
+                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i + 1], i + 2);
             }
-
-            if (old < current) {
-                for (int i = current; i > old; i--) {
-                    itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
-                    itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i - 1], i);
-                }
-            }
-
-            m_ScrollRect.enabled = true;
         }
+
+        if (old < current) {
+            for (int i = current; i > old; i--) {
+                itemArr[i].GetComponent<RectTransform>().DOAnchorPosY(GetItemPos(i + 1).y, 0.3f).Play();
+                itemArr[i].GetComponent<RankingMatchItem>().Init(GlobalManager.Instance._trophyRankingList[i - 1], i);
+            }
+        }
+
+        m_ScrollRect.enabled = true;
+        // }
     }
 
     public Animation doubleAni;

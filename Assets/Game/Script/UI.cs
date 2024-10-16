@@ -473,4 +473,35 @@ public class UI : MonoBehaviour {
             m_TargetUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(m_TargetUI.GetComponent<RectTransform>().anchoredPosition.x, m_TargetUI.GetComponent<RectTransform>().anchoredPosition.y - safeArea.y);
         }
     }
+
+
+    public GameObject StepAniNodePrefab;
+
+    public void PlayStepAni(Transform target) {
+        var pos = target.TransformPoint(Vector3.zero);
+        pos = transform.InverseTransformPoint(pos);
+        var StepAniNode = Instantiate(StepAniNodePrefab, transform.parent);
+        StepAniNode.transform.localPosition = pos;
+
+        var mainCamera = Camera.main;
+
+
+        // 将3D物体的世界位置转换为屏幕坐标
+        Vector3 screenPoint = mainCamera.WorldToScreenPoint(target.position);
+        Debug.Log(screenPoint);
+
+        // 将屏幕坐标转换为Canvas的坐标
+        Vector2 anchoredPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), screenPoint, null, out anchoredPosition);
+
+        Debug.Log(anchoredPosition);
+        // 更新UI元素位置
+        StepAniNode.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+
+        StepAniNode.GetComponent<Animation>().Play();
+
+        DOVirtual.DelayedCall(2f, () => {
+            Destroy(StepAniNode);
+        }).Play();
+    }
 }

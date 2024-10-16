@@ -18,7 +18,7 @@ public class TrafficLight : MonoBehaviour {
 
     //倒计时文字
     public TextMesh m_Text;
-    private bool isTrigger = false;
+
     private float TriggerTime = 1;
     public GameObject m_Lv;
     public GameObject m_Hong;
@@ -66,14 +66,6 @@ public class TrafficLight : MonoBehaviour {
                 m_Hong.SetActive(true);
             }
         }
-
-        if (isTrigger) {
-            TriggerTime -= Time.deltaTime;
-            if (TriggerTime <= 0) {
-                isTrigger = false;
-                TriggerTime = 1;
-            }
-        }
     }
 
     public void Init(TrafficLightInfo lightInfo) {
@@ -101,13 +93,15 @@ public class TrafficLight : MonoBehaviour {
 
     //如果是红灯，开启碰撞检测
     void OnTriggerEnter(Collider other) {
-        if (state == 0 && !isTrigger) {
+        if (state == 0) {
             Debug.Log("信号灯碰撞检测");
-            isTrigger = true;
+
             var car = other.transform.parent.parent.GetComponent<Car>();
             if (car.backing == false) {
                 GameManager.Instance.StepCount -= 2; //减少行动力
                 GameManager.Instance.CheckGameResult();
+                //GameManager.Instance.m_UI.PlayStepAni(car.transform);
+                GameManager.Instance.m_UI.PlayStepAni(transform);
             }
         }
     }

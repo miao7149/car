@@ -114,18 +114,26 @@ public class People : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
+        var car = other.transform.parent.parent.GetComponent<Car>();
+        if (car.backing) return;
         if (isTrigger) return;
         isTrigger = true;
-        var car = other.transform.parent.parent.GetComponent<Car>();
+
         GameManager.Instance.failReason = FailReason.PeopleCrash;
+
         GameManager.Instance.SetGameStatu(GameStatu.faled);
+        GameManager.Instance.StepCount += 1;
+
+
         GameManager.Instance.hitPeopleCar = car;
         GameManager.Instance.hitPeople = this;
         car.moveAction.Kill();
+        if (car.mTrail != null)
+            car.mTrail.SetActive(false);
         AudioManager.Instance.PlayPedestrianHit();
-        DOVirtual.DelayedCall(2f, () => {
-            GameManager.Instance.DeleteCar(car);
-        });
+        // DOVirtual.DelayedCall(2f, () => {
+        //     GameManager.Instance.DeleteCar(car);
+        // });
         Hit(car.transform.localRotation * Vector3.forward);
     }
 }

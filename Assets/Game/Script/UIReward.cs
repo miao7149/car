@@ -178,6 +178,7 @@ public class UIReward : MonoBehaviour {
     }
 
     public void ShowReward() {
+        cantouch = true;
         m_RewardRoot.SetActive(true);
         skeletonGraphic.AnimationState.SetAnimation(0, "idle1", false);
         DOVirtual.DelayedCall(1.34f, () => {
@@ -190,6 +191,7 @@ public class UIReward : MonoBehaviour {
     }
 
     public void ShowRewardRV() {
+        cantouch = true;
         m_RewardRootRV.SetActive(true);
         skeletonGraphicRV.AnimationState.SetAnimation(0, "idle1", false);
         DOVirtual.DelayedCall(1.34f, () => {
@@ -201,8 +203,12 @@ public class UIReward : MonoBehaviour {
         m_RewardRootRV.SetActive(false);
     }
 
+    private bool cantouch = true;
+
     //点击领取奖励
     public void OnOpenGiftClick() {
+        if (!cantouch) return;
+        cantouch = false;
         if (skeletonGraphic == null)
             return;
         skeletonGraphic.AnimationState.SetAnimation(0, "open", false);
@@ -219,6 +225,8 @@ public class UIReward : MonoBehaviour {
     }
 
     public void OnOpenGiftClickRV() {
+        if (!cantouch) return;
+        cantouch = false;
         if (skeletonGraphicRV == null)
             return;
         if (mIsFirstGetRewardRV) //首次领取第二次奖励
