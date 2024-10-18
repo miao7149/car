@@ -16285,6 +16285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light_m2
       objectReference: {fileID: 0}
+    - target: {fileID: 8436382560018292906, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38401,11 +38405,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.b
-      value: 0.8117648
+      value: 0.6784314
       objectReference: {fileID: 0}
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.g
-      value: 0.8117648
+      value: 0.77647066
       objectReference: {fileID: 0}
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.r
