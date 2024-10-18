@@ -209,7 +209,8 @@ public class UI : MonoBehaviour {
                 MainLevelRoot.SetActive(true);
                 StartLevelRoot.SetActive(false);
                 HardLevelRoot.SetActive(false);
-                MainLevelRoot.transform.GetChild(0).GetComponent<Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
+                // MainLevelRoot.transform.GetChild(0).GetComponent<Text>().text = "Lv " + (GlobalManager.Instance.CurrentLevel + 1).ToString();
+                MainLevelRoot.transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Level", "" + (GlobalManager.Instance.CurrentLevel + 1));
             }
         }
         else {

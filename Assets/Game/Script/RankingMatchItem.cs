@@ -28,16 +28,28 @@ public class RankingMatchItem : MonoBehaviour {
         m_NameText.text = playerInfo.Name;
         m_ScoreText.text = playerInfo.TrophyProp.Trophy.Count.ToString();
         if (index <= 30) {
-            m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[0];
-            m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[0];
+            if (GlobalManager.Instance.CurrentRank == 6) {
+                m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[1];
+                m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[1];
+            }
+            else {
+                m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[0];
+                m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[0];
+            }
         }
         else if (index > 60 && GlobalManager.Instance.CurrentRank > 1) {
             m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[2];
             m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[2];
         }
         else {
-            m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[1];
-            m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[1];
+            if (GlobalManager.Instance.CurrentRank == 6) {
+                m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[2];
+                m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[2];
+            }
+            else {
+                m_IdBg.GetComponent<Image>().sprite = m_IdBgSprite[1];
+                m_ItemBg.GetComponent<Image>().sprite = m_ItemBgSprite[1];
+            }
         }
 
         if (playerInfo.Id == -1) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using MM;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,7 +80,7 @@ public class HardItem : MonoBehaviour {
             m_UnlockRoot.SetActive(false);
             m_CanUnlockRoot.SetActive(false);
             m_LockRoot.SetActive(true);
-            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("UnLockedDes") + "\nlevel " + mHardItemData.mUnlockLevelCount.ToString();
+            m_LockRoot.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("UnLockedDes") + "\n" + LanguageManager.Instance.GetStringByCode("Level", mHardItemData.mUnlockLevelCount + "");
         }
     }
 

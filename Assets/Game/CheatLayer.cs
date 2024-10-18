@@ -22,13 +22,13 @@ public class CheatLayer : MonoBehaviour {
                 break;
 
             case "up":
-                GlobalManager.Instance.CurrentLevel++;
+                GlobalManager.Instance.CurrentLevel += 100;
                 PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
                 MenuManager.Instance().SetLevelList();
                 break;
             case "down":
 
-                GlobalManager.Instance.CurrentLevel--;
+                GlobalManager.Instance.CurrentLevel -= 100;
                 PlayerPrefs.SetInt("CurrentLevel", GlobalManager.Instance.CurrentLevel);
                 MenuManager.instance.SetLevelList();
                 break;

@@ -57,6 +57,7 @@ public class DailySignIn : MonoBehaviour {
 
         if (GlobalManager.Instance.CurrentLevel > 7 && (DateTime.Now - lastSignInDate).Days >= 1) {
             m_DailyRoot.SetActive(true);
+            cantouch = true;
         }
     }
 
@@ -86,7 +87,14 @@ public class DailySignIn : MonoBehaviour {
     }
 
 
+    private bool cantouch = true;
+
     public void SignIn() {
+        if (cantouch == false) {
+            return;
+        }
+
+        cantouch = false;
         int dayIndex = signCount;
         if (lastSignInDate == DateTime.MinValue) {
             dayIndex = 0;

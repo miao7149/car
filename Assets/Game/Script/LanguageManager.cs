@@ -35,6 +35,9 @@ namespace MM {
             var a = language.GetValue(languageID, code);
             if (a.Contains("XX"))
                 return a.Replace("XX", arg);
+
+            if (a.Contains("xx"))
+                return a.Replace("xx", arg);
             return a;
         }
     }

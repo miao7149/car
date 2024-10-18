@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MM;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -108,8 +109,9 @@ public class SkinItem : MonoBehaviour {
                     m_Bg.GetComponent<Image>().sprite = m_BgList[2];
                     m_Lock.SetActive(true);
                     m_UnLockDesc.SetActive(true);
-                    var desStr = GlobalManager.Instance.GetLanguageValue("Level");
-                    desStr = desStr.Replace("xx", unlockConditions[1].ToString());
+                    // var desStr = GlobalManager.Instance.GetLanguageValue("Level");
+                    // desStr = desStr.Replace("xx", unlockConditions[1].ToString());
+                    var desStr = LanguageManager.Instance.GetStringByCode("Unlock", unlockConditions[1].ToString());
                     m_UnLockDesc.GetComponent<Text>().text = desStr;
                 }
             }

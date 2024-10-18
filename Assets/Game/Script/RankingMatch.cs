@@ -172,14 +172,15 @@ public class RankingMatch : MonoBehaviour {
                 //更新倒计时文本，只显示天数和小时数
                 int days = (int)(remainingTime / (24 * 60 * 60));
                 int hours = (int)((remainingTime % (24 * 60 * 60)) / (60 * 60));
-                m_CountDownText.text = days + GlobalManager.Instance.GetLanguageValue("Day") + hours + GlobalManager.Instance.GetLanguageValue("Hour");
+                m_CountDownText.text = days + LanguageManager.Instance.GetStringByCode("Day") + hours + LanguageManager.Instance.GetStringByCode("Hour");
             }
 
             Debug.Log(GlobalManager.Instance.CurrentRank);
 
             m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
             m_RankImage.GetComponent<Image>().SetNativeSize();
-            m_RankImage.transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString());
+            m_RankImage.transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Rank" + GlobalManager.Instance.CurrentRank);
+            //m_RankImage.transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString());
             switch (GlobalManager.Instance.CurrentRank) {
                 case 1:
                     m_RankImage.transform.GetChild(0).GetComponent<Text>().color = m_BronzeText.color;
@@ -212,10 +213,22 @@ public class RankingMatch : MonoBehaviour {
             var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
             int currentPromotionNum = 0;
             levelUp = 0;
-            if (PlayerListIndex > 29) {
+            if (PlayerListIndex > 59) {
                 currentPromotionNum = PlayerListIndex - 29;
                 if (remainingTime <= 0) {
                     if (GlobalManager.Instance.CurrentRank > 1) {
+                        GlobalManager.Instance.CurrentRank--;
+                        PlayerPrefs.SetInt("CurrentRank", GlobalManager.Instance.CurrentRank);
+
+                        PlayerPrefs.Save();
+                        levelUp = -1;
+                    }
+                }
+            }
+            else if (PlayerListIndex > 29) {
+                currentPromotionNum = PlayerListIndex - 29;
+                if (remainingTime <= 0) {
+                    if (GlobalManager.Instance.CurrentRank == 6) {
                         GlobalManager.Instance.CurrentRank--;
                         PlayerPrefs.SetInt("CurrentRank", GlobalManager.Instance.CurrentRank);
 
@@ -239,8 +252,15 @@ public class RankingMatch : MonoBehaviour {
 
             //var str = GlobalManager.Instance.GetLanguageValue("PromotionDes");
             var str = LanguageManager.Instance.GetStringByCode("PromotionDes", currentPromotionNum + "");
+            if (GlobalManager.Instance.CurrentRank == 6) {
+                str = LanguageManager.Instance.GetStringByCode("MaintainDes", currentPromotionNum + "");
+            }
+
             if (currentPromotionNum == 0) {
                 str = LanguageManager.Instance.GetStringByCode("KeepRank");
+                if (GlobalManager.Instance.CurrentRank == 6) {
+                    str = LanguageManager.Instance.GetStringByCode("MaintainRank");
+                }
             }
 
             //查找字符串xx 替换为当前晋升人数
@@ -308,7 +328,8 @@ public class RankingMatch : MonoBehaviour {
             itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (60 * (mItemHeight1 + 15)));
         }
         else {
-            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+            // itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (29 * (mItemHeight1 + 15)));
         }
 
         itemUP.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(30 * (mItemHeight1 + 15)));
@@ -364,17 +385,24 @@ public class RankingMatch : MonoBehaviour {
         if (index <= 29) {
         }
         else if (index <= 59) {
-            if (GlobalManager.Instance.CurrentRank < 6) {
-                result += new Vector2(0, -mItemHeight2);
-            }
+            // if (GlobalManager.Instance.CurrentRank < 6) {
+            result += new Vector2(0, -mItemHeight2);
+            // }
         }
         else {
-            if (GlobalManager.Instance.CurrentRank < 6) {
+            // if (GlobalManager.Instance.CurrentRank < 6) {
+            //     result += new Vector2(0, -mItemHeight2);
+            // }
+            //
+            // if (GlobalManager.Instance.CurrentRank > 1) {
+            //     result += new Vector2(0, -mItemHeight3);
+            // }
+            if (GlobalManager.Instance.CurrentRank == 6 || GlobalManager.Instance.CurrentRank == 1) {
                 result += new Vector2(0, -mItemHeight2);
             }
-
-            if (GlobalManager.Instance.CurrentRank > 1) {
-                result += new Vector2(0, -mItemHeight3);
+            else {
+                result += new Vector2(0, -mItemHeight2);
+                result += new Vector2(0, -mItemHeight2);
             }
         }
 
@@ -446,6 +474,8 @@ public class RankingMatch : MonoBehaviour {
             m_ItemReward.GetComponent<Image>().DOFade(0, 0.6f);
         });
     }
+
+    public Animation rankAni;
 
     private void CreateAndAnimateCoins(int goldAmount) {
         AudioManager.Instance.PlayCoinSettle();
@@ -558,7 +588,10 @@ public class RankingMatch : MonoBehaviour {
     public void ShowRankPage() {
         m_MainRoot.SetActive(false);
         m_RankRoot.SetActive(true);
-        m_Car.transform.DOMoveY(m_RankItems[GlobalManager.Instance.CurrentRank - 1].transform.GetChild(0).transform.position.y, 0.5f).SetEase(Ease.OutQuad);
+        rankAni.Play();
+        DOVirtual.DelayedCall(2f, () => {
+            m_Car.transform.DOMoveY(m_RankItems[GlobalManager.Instance.CurrentRank - 1].transform.GetChild(0).transform.position.y, 0.5f).SetEase(Ease.OutQuad);
+        });
     }
 
     //显示描述界面

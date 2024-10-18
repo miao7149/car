@@ -164,13 +164,20 @@ public class UIGameVictoryPage : MonoBehaviour {
         if (PlayerListIndex > 29) {
             //m_CurrentPromotionNum.GetComponent<Text>().text = (PlayerListIndex - 29).ToString();
             s = LanguageManager.Instance.GetStringByCode("PromotionDes", "" + (PlayerListIndex - 29));
+            if (GlobalManager.Instance.CurrentRank == 6) {
+                s = LanguageManager.Instance.GetStringByCode("MaintainDes", "" + (PlayerListIndex - 29));
+            }
         }
         else {
             //m_CurrentPromotionNum.GetComponent<Text>().text = "0";
             s = LanguageManager.Instance.GetStringByCode("KeepRank");
+            if (GlobalManager.Instance.CurrentRank == 6) {
+                s = LanguageManager.Instance.GetStringByCode("MaintainRank");
+            }
         }
 
         m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
+        m_RankImage.transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Rank" + GlobalManager.Instance.CurrentRank);
         m_RankImage.GetComponent<Image>().SetNativeSize();
         m_CurrentPromotionDesc.GetComponent<Text>().text = s;
         m_ScrollRect.enabled = false;
@@ -342,7 +349,8 @@ public class UIGameVictoryPage : MonoBehaviour {
             itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (60 * (mItemHeight1 + 15)));
         }
         else {
-            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+            //itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(60 * (mItemHeight1 + 15)));
+            itemDown.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -mItemHeight2 - (29 * (mItemHeight1 + 15)));
         }
 
         itemUP.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -(30 * (mItemHeight1 + 15)));
@@ -400,17 +408,24 @@ public class UIGameVictoryPage : MonoBehaviour {
         if (index <= 29) {
         }
         else if (index <= 59) {
-            if (GlobalManager.Instance.CurrentRank < 6) {
-                result += new Vector2(0, -mItemHeight2);
-            }
+            //if (GlobalManager.Instance.CurrentRank < 6) {
+            result += new Vector2(0, -mItemHeight2);
+            //}
         }
         else {
-            if (GlobalManager.Instance.CurrentRank < 6) {
+            // if (GlobalManager.Instance.CurrentRank < 6) {
+            //     result += new Vector2(0, -mItemHeight2);
+            // }
+            //
+            // if (GlobalManager.Instance.CurrentRank > 1) {
+            //     result += new Vector2(0, -mItemHeight3);
+            // }
+            if (GlobalManager.Instance.CurrentRank == 6 || GlobalManager.Instance.CurrentRank == 1) {
                 result += new Vector2(0, -mItemHeight2);
             }
-
-            if (GlobalManager.Instance.CurrentRank > 1) {
-                result += new Vector2(0, -mItemHeight3);
+            else {
+                result += new Vector2(0, -mItemHeight2);
+                result += new Vector2(0, -mItemHeight2);
             }
         }
 

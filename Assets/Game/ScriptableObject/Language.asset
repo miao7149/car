@@ -118,7 +118,7 @@ MonoBehaviour:
     - code: RankSettlement
       value: You are still at rank xx
     - code: PromotionDes
-      value: There are <size=80><color=blue><b>XX</b></color></size> people left
+      value: There are <size=80><color=blue><b>XX</b></color></size> player left
         to reach the promotion rank
     - code: Rank1
       value: Bronze
@@ -142,8 +142,6 @@ MonoBehaviour:
       value: Exhaust
     - code: Street
       value: Street
-    - code: Selected
-      value: Selected
     - code: UnlockConditionDes
       value: Unlocked at hard level xx
     - code: Level
@@ -151,7 +149,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: Double Reward
     - code: DoubleRewardDes
-      value: '"In the next 15 minutes, you will  receive double trophy rewards"'
+      value: '"In the next 15 minutes, you will receive double trophy rewards"'
     - code: Spin
       value: Spin
     - code: Racing
@@ -159,9 +157,10 @@ MonoBehaviour:
     - code: League
       value: League
     - code: RankDes
-      value: '"Complete levels to collect trophies, earn higher  ranks and get"'
+      value: '"Complete levels to collect trophies, earn higher ranks and get more
+        rewards"'
     - code: Unlock
-      value: Lvxx Unlock
+      value: Unlock at level XX
     - code: UnlockNewSkins
       value: Unlock New Skins
     - code: later
@@ -196,9 +195,9 @@ MonoBehaviour:
     - code: CompetitionOver
       value: '"The game is over, try harder next time!"'
     - code: Day
-      value: Days
+      value: D
     - code: Hour
-      value: Hours
+      value: H
     - code: KeepRank
       value: Keep ranking to improve your rank!
     - code: ReachNewRank
@@ -219,6 +218,13 @@ MonoBehaviour:
       value: You drop to XX rank
     - code: Rankinghold
       value: You are still in the XX rank
+    - code: Selected
+      value: Select
+    - code: MaintainDes
+      value: There are <size=80><color=blue><b>XX</b></color></size> player left
+        to maintain rank!
+    - code: MaintainRank
+      value: Keep ranking to maintain your rank!
   - key: Chinese
     values:
     - code: language_name
@@ -324,7 +330,7 @@ MonoBehaviour:
     - code: RankSettlement
       value: "\u4F60\u4F9D\u65E7\u662Fxx\u6BB5\u4F4D"
     - code: PromotionDes
-      value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u4EBA\u5C31\u53EF\u4EE5\u664B\u7EA7"
+      value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u73A9\u5BB6\u5C31\u53EF\u4EE5\u664B\u7EA7"
     - code: Rank1
       value: "\u9752\u94DC"
     - code: Rank2
@@ -347,8 +353,6 @@ MonoBehaviour:
       value: "\u5C3E\u6C14"
     - code: Street
       value: "\u8857\u9053"
-    - code: Selected
-      value: "\u9009\u4E2D"
     - code: UnlockConditionDes
       value: "\u5728\u56F0\u96BE\u5173\u5361xx\u5173\u89E3\u9501"
     - code: Level
@@ -364,9 +368,9 @@ MonoBehaviour:
     - code: League
       value: "\u8054\u8D5B"
     - code: RankDes
-      value: "\u5B8C\u6210\u5173\u5361\u4EE5\u6536\u96C6\u5956\u676F\uFF0C\u8D62\u5F97\u66F4\u9AD8\u6392\u540D\u5E76\u83B7\u5F97"
+      value: "\u5B8C\u6210\u5173\u5361\u4EE5\u6536\u96C6\u5956\u676F\uFF0C\u8D62\u5F97\u66F4\u9AD8\u6392\u540D\u5E76\u83B7\u5F97\u66F4\u591A\u5956\u52B1"
     - code: Unlock
-      value: "Lvxx \u89E3\u9501"
+      value: "\u5728XX\u5173\u89E3\u9501"
     - code: UnlockNewSkins
       value: "\u89E3\u9501\u65B0\u76AE\u80A4"
     - code: later
@@ -423,6 +427,12 @@ MonoBehaviour:
       value: "\u60A8\u4E0B\u964D\u5230XX\u6BB5\u4F4D"
     - code: Rankinghold
       value: "\u60A8\u4F9D\u65E7\u662FXX\u6BB5\u4F4D"
+    - code: Selected
+      value: "\u9009\u62E9"
+    - code: MaintainDes
+      value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u4EBA\u4EE5\u7EF4\u6301\u6BB5\u4F4D"
+    - code: MaintainRank
+      value: "\u4FDD\u6301\u6392\u540D\u4EE5\u7EF4\u6301\u6BB5\u4F4D"
   - key: Japanese
     values:
     - code: language_name
@@ -554,8 +564,6 @@ MonoBehaviour:
       value: "\u6392\u6C17\u88C5\u7F6E"
     - code: Street
       value: "\u30B9\u30C8\u30EA\u30FC\u30C8"
-    - code: Selected
-      value: "\u9078\u629E\u6E08\u307F"
     - code: UnlockConditionDes
       value: "\u30CF\u30FC\u30C9 \u30EC\u30D9\u30EB xx \u3067\u30ED\u30C3\u30AF\u89E3\u9664"
     - code: Level
@@ -571,9 +579,9 @@ MonoBehaviour:
     - code: League
       value: "\u30EA\u30FC\u30B0"
     - code: RankDes
-      value: "\u30EC\u30D9\u30EB\u3092\u5B8C\u4E86\u3057\u3066\u30C8\u30ED\u30D5\u30A3\u30FC\u3092\u53CE\u96C6\u3057\u3001\u3088\u308A\u9AD8\u3044\u30E9\u30F3\u30AD\u30F3\u30B0\u3092\u7372\u5F97\u3057\u3066\u7372\u5F97\u3057\u307E\u3057\u3087\u3046"
+      value: "\u30EC\u30D9\u30EB\u3092\u30AF\u30EA\u30A2\u3057\u3066\u30C8\u30ED\u30D5\u30A3\u30FC\u3092\u96C6\u3081\u3001\u3088\u308A\u9AD8\u3044\u30E9\u30F3\u30AF\u3092\u7372\u5F97\u3057\u3001\u3088\u308A\u591A\u304F\u306E\u5831\u916C\u3092\u7372\u5F97\u3057\u307E\u3057\u3087\u3046"
     - code: Unlock
-      value: "Lvxx\u30ED\u30C3\u30AF\u89E3\u9664"
+      value: "\u30EC\u30D9\u30EBXX\u3067\u30A2\u30F3\u30ED\u30C3\u30AF"
     - code: UnlockNewSkins
       value: "\u65B0\u3057\u3044\u30B9\u30AD\u30F3\u306E\u30ED\u30C3\u30AF\u3092\u89E3\u9664\u3059\u308B"
     - code: later
@@ -632,6 +640,13 @@ MonoBehaviour:
       value: "XX \u30E9\u30F3\u30AF\u306B\u843D\u3061\u307E\u3057\u305F"
     - code: Rankinghold
       value: "\u3042\u306A\u305F\u306F\u307E\u3060 XX \u30E9\u30F3\u30AF\u3067\u3059"
+    - code: Selected
+      value: "\u9078\u629E"
+    - code: MaintainDes
+      value: "\u30E9\u30F3\u30AF\u3092\u7DAD\u6301\u3067\u304D\u308B\u30D7\u30EC\u30A4\u30E4\u30FC\u306F
+        <size=80><color=blue><b>XX</b></color></size> \u4EBA\u6B8B\u3063\u3066\u3044\u307E\u3059!"
+    - code: MaintainRank
+      value: "\u30E9\u30F3\u30AF\u3092\u7DAD\u6301\u3059\u308B\u306B\u306F\u3001\u30E9\u30F3\u30AD\u30F3\u30B0\u3092\u7DAD\u6301\u3057\u3066\u304F\u3060\u3055\u3044!"
   - key: Portuguese
     values:
     - code: language_name
@@ -762,8 +777,6 @@ MonoBehaviour:
       value: Escapamento
     - code: Street
       value: Rua
-    - code: Selected
-      value: Selecionado
     - code: UnlockConditionDes
       value: "Desbloqueado no n\xEDvel dif\xEDcil xx"
     - code: Level
@@ -780,10 +793,10 @@ MonoBehaviour:
     - code: League
       value: Liga
     - code: RankDes
-      value: "\"Complete os n\xEDveis para coletar trof\xE9us, ganhar classifica\xE7\xF5es
-        mais altas e obter\""
+      value: "\"Complete n\xEDveis para coletar trof\xE9us, ganhar classifica\xE7\xF5es
+        mais altas e obter mais recompensas\""
     - code: Unlock
-      value: Desbloqueio Lvxx
+      value: "Desbloqueie no n\xEDvel XX"
     - code: UnlockNewSkins
       value: Desbloqueie novas skins
     - code: later
@@ -841,6 +854,13 @@ MonoBehaviour:
       value: "Voc\xEA cai para a classifica\xE7\xE3o XX"
     - code: Rankinghold
       value: "Voc\xEA ainda est\xE1 na classifica\xE7\xE3o XX"
+    - code: Selected
+      value: Selecione
+    - code: MaintainDes
+      value: "H\xE1 <size=80><color=blue><b>XX</b></color></size> jogadores restantes
+        para manter a classifica\xE7\xE3o!"
+    - code: MaintainRank
+      value: "Continue classificando para manter sua classifica\xE7\xE3o!"
   - key: Spanish
     values:
     - code: language_name
@@ -971,8 +991,6 @@ MonoBehaviour:
       value: Escape
     - code: Street
       value: Calle
-    - code: Selected
-      value: Seleccionado
     - code: UnlockConditionDes
       value: "Desbloqueado en el nivel dif\xEDcil xx"
     - code: Level
@@ -990,9 +1008,9 @@ MonoBehaviour:
       value: Liga
     - code: RankDes
       value: "\"Completa niveles para recolectar trofeos, obtener rangos m\xE1s altos
-        y obtener\""
+        y obtener m\xE1s recompensas.\""
     - code: Unlock
-      value: Desbloqueo de nivel xx
+      value: Desbloquear en el nivel XX
     - code: UnlockNewSkins
       value: Desbloquea nuevos aspectos
     - code: later
@@ -1050,6 +1068,13 @@ MonoBehaviour:
       value: Bajas al rango XX
     - code: Rankinghold
       value: "A\xFAn est\xE1s en el rango XX1"
+    - code: Selected
+      value: Seleccionar
+    - code: MaintainDes
+      value: "\xA1Quedan <size=80><color=blue><b>XX</b></color></size> jugadores
+        para mantener el rango!"
+    - code: MaintainRank
+      value: "\xA1Sigue en el ranking para mantener tu rango!"
   - key: German
     values:
     - code: language_name
@@ -1181,8 +1206,6 @@ MonoBehaviour:
       value: Auspuff
     - code: Street
       value: "Stra\xDFe"
-    - code: Selected
-      value: "Ausgew\xE4hlt"
     - code: UnlockConditionDes
       value: Freigeschaltet auf schwerem Level xx
     - code: Level
@@ -1198,10 +1221,10 @@ MonoBehaviour:
     - code: League
       value: Liga
     - code: RankDes
-      value: "\"Schlie\xDFe Levels ab, um Troph\xE4en zu sammeln, h\xF6here R\xE4nge
-        zu erreichen und\""
+      value: "\"Schlie\xDFe Level ab, um Troph\xE4en zu sammeln, h\xF6here R\xE4nge
+        zu erreichen und mehr Belohnungen zu erhalten\""
     - code: Unlock
-      value: Lvxx freizuschalten
+      value: Freischalten auf Level XX
     - code: UnlockNewSkins
       value: Neue Skins freizuschalten
     - code: later
@@ -1259,6 +1282,13 @@ MonoBehaviour:
       value: "Du f\xE4llst auf Rang XX zur\xFCck"
     - code: Rankinghold
       value: Du bist immer noch im Rang XX1
+    - code: Selected
+      value: "Ausw\xE4hlen"
+    - code: MaintainDes
+      value: "\"Es sind noch <size=80><color=blue><b>XX</b></color></size> Spieler
+        \xFCbrig, um den Rang zu halten!\""
+    - code: MaintainRank
+      value: '"Halten Sie Ihren Rang, um Ihren Rang zu halten!"'
   - key: French
     values:
     - code: language_name
@@ -1388,8 +1418,6 @@ MonoBehaviour:
       value: "\xC9chappement"
     - code: Street
       value: Rue
-    - code: Selected
-      value: "S\xE9lectionn\xE9"
     - code: UnlockConditionDes
       value: "D\xE9bloqu\xE9 au niveau difficile xx"
     - code: Level
@@ -1407,9 +1435,9 @@ MonoBehaviour:
       value: Ligue
     - code: RankDes
       value: "\"Terminez les niveaux pour collecter des troph\xE9es, gagner des rangs
-        plus \xE9lev\xE9s et obtenir\""
+        plus \xE9lev\xE9s et obtenir plus de r\xE9compenses\""
     - code: Unlock
-      value: Lvxx Unlock
+      value: "D\xE9bloquer au niveau XX"
     - code: UnlockNewSkins
       value: "D\xE9bloquez de nouveaux skins"
     - code: later
@@ -1467,6 +1495,13 @@ MonoBehaviour:
       value: Vous descendez au rang XX
     - code: Rankinghold
       value: "Vous \xEAtes toujours au rang XX1"
+    - code: Selected
+      value: "S\xE9lectionner"
+    - code: MaintainDes
+      value: "Il reste <size=80><color=blue><b>XX</b></color></size> joueur pour
+        maintenir son rang\_!"
+    - code: MaintainRank
+      value: "Restez dans le classement pour conserver votre rang\_!"
   - key: Korean
     values:
     - code: language_name
@@ -1601,8 +1636,6 @@ MonoBehaviour:
       value: "\uBC30\uAE30"
     - code: Street
       value: "\uAC70\uB9AC"
-    - code: Selected
-      value: "\uC120\uD0DD\uB428"
     - code: UnlockConditionDes
       value: "\uD558\uB4DC \uB808\uBCA8 xx\uC5D0\uC11C \uC7A0\uAE08 \uD574\uC81C"
     - code: Level
@@ -1619,11 +1652,11 @@ MonoBehaviour:
     - code: League
       value: "\uB9AC\uADF8"
     - code: RankDes
-      value: "\uB808\uBCA8\uC744 \uC644\uB8CC\uD558\uC5EC \uD2B8\uB85C\uD53C\uB97C
-        \uC218\uC9D1\uD558\uACE0 \uB354 \uB192\uC740 \uC21C\uC704\uB97C \uD68D\uB4DD\uD558\uACE0
-        \uD68D\uB4DD\uD558\uC138\uC694."
+      value: "\uD2B8\uB85C\uD53C\uB97C \uBAA8\uC73C\uACE0 \uB354 \uB192\uC740 \uC21C\uC704\uB97C
+        \uC5BB\uACE0 \uB354 \uB9CE\uC740 \uBCF4\uC0C1\uC744 \uBC1B\uC73C\uB824\uBA74
+        \uB808\uBCA8\uC744 \uC644\uB8CC\uD558\uC138\uC694."
     - code: Unlock
-      value: "Lvxx \uC7A0\uAE08 \uD574\uC81C"
+      value: "\uB808\uBCA8 XX\uC5D0\uC11C \uC7A0\uAE08 \uD574\uC81C"
     - code: UnlockNewSkins
       value: "\uC0C8\uB85C\uC6B4 \uC2A4\uD0A8 \uC7A0\uAE08 \uD574\uC81C"
     - code: later
@@ -1688,6 +1721,14 @@ MonoBehaviour:
     - code: Rankinghold
       value: "\uB2F9\uC2E0\uC740 \uC5EC\uC804\uD788 \u200B\u200BXX \uB7AD\uD06C\uC5D0
         \uC788\uC2B5\uB2C8\uB2E4."
+    - code: Selected
+      value: "\uC120\uD0DD"
+    - code: MaintainDes
+      value: "\uB7AD\uD06C\uB97C \uC720\uC9C0\uD558\uB824\uBA74 <size=80><color=blue><b>XX</b></color></size>\uBA85\uC758
+        \uD50C\uB808\uC774\uC5B4\uAC00 \uB0A8\uC558\uC2B5\uB2C8\uB2E4!"
+    - code: MaintainRank
+      value: "\uB7AD\uD06C\uB97C \uC720\uC9C0\uD558\uB824\uBA74 \uB7AD\uD06C\uB97C
+        \uC720\uC9C0\uD558\uC138\uC694!"
   - key: Arabic
     values:
     - code: language_name
@@ -1830,8 +1871,6 @@ MonoBehaviour:
       value: "\u0639\u0627\u062F\u0645"
     - code: Street
       value: "\u0634\u0627\u0631\u0639"
-    - code: Selected
-      value: "\u0645\u062D\u062F\u062F"
     - code: UnlockConditionDes
       value: "\u0645\u0641\u062A\u0648\u062D \u0641\u064A \u0627\u0644\u0645\u0633\u062A\u0648\u0649
         \u0627\u0644\u0635\u0639\u0628 xx"
@@ -1854,9 +1893,10 @@ MonoBehaviour:
       value: "\u0623\u0643\u0645\u0644 \u0627\u0644\u0645\u0633\u062A\u0648\u064A\u0627\u062A
         \u0644\u062C\u0645\u0639 \u0627\u0644\u062C\u0648\u0627\u0626\u0632 \u0648\u0643\u0633\u0628
         \u0631\u062A\u0628 \u0623\u0639\u0644\u0649 \u0648\u0627\u0644\u062D\u0635\u0648\u0644
-        \u0639\u0644\u0649"
+        \u0639\u0644\u0649 \u0627\u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u0645\u0643\u0627\u0641\u0622\u062A"
     - code: Unlock
-      value: "\u0641\u062A\u062D Lvxx"
+      value: "\u0641\u062A\u062D \u0639\u0646\u062F \u0627\u0644\u0645\u0633\u062A\u0648\u0649
+        XX"
     - code: UnlockNewSkins
       value: "\u0641\u062A\u062D \u062C\u0644\u0648\u062F \u062C\u062F\u064A\u062F\u0629"
     - code: later
@@ -1931,6 +1971,15 @@ MonoBehaviour:
     - code: Rankinghold
       value: "\u0645\u0627 \u0632\u0644\u062A \u0641\u064A \u0631\u062A\u0628\u0629
         XX1"
+    - code: Selected
+      value: "\u062D\u062F\u062F"
+    - code: MaintainDes
+      value: "\u064A\u0648\u062C\u062F <size=80><color=blue><b>XX</b></color></size>
+        \u0644\u0627\u0639\u0628 \u0645\u062A\u0628\u0642\u064D \u0644\u0644\u062D\u0641\u0627\u0638
+        \u0639\u0644\u0649 \u0627\u0644\u062A\u0635\u0646\u064A\u0641!"
+    - code: MaintainRank
+      value: "\u0627\u0633\u062A\u0645\u0631 \u0641\u064A \u0627\u0644\u062A\u0635\u0646\u064A\u0641
+        \u0644\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u062A\u0635\u0646\u064A\u0641\u0643!"
   - key: Russian
     values:
     - code: language_name
@@ -2079,8 +2128,6 @@ MonoBehaviour:
       value: "\u0412\u044B\u0445\u043B\u043E\u043F"
     - code: Street
       value: "\u0423\u043B\u0438\u0446\u0430"
-    - code: Selected
-      value: "\u0412\u044B\u0431\u0440\u0430\u043D\u043E"
     - code: UnlockConditionDes
       value: "\u041E\u0442\u043A\u0440\u044B\u0432\u0430\u0435\u0442\u0441\u044F
         \u043D\u0430 \u0441\u043B\u043E\u0436\u043D\u043E\u043C \u0443\u0440\u043E\u0432\u043D\u0435
@@ -2102,12 +2149,14 @@ MonoBehaviour:
       value: "\u041B\u0438\u0433\u0430"
     - code: RankDes
       value: "\"\u041F\u0440\u043E\u0445\u043E\u0434\u0438\u0442\u0435 \u0443\u0440\u043E\u0432\u043D\u0438,
-        \u0447\u0442\u043E\u0431\u044B \u0441\u043E\u0431\u0438\u0440\u0430\u0442\u044C
-        \u0442\u0440\u043E\u0444\u0435\u0438, \u0437\u0430\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0439\u0442\u0435
+        \u0441\u043E\u0431\u0438\u0440\u0430\u0439\u0442\u0435 \u0442\u0440\u043E\u0444\u0435\u0438,
+        \u0437\u0430\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0439\u0442\u0435
         \u0431\u043E\u043B\u0435\u0435 \u0432\u044B\u0441\u043E\u043A\u0438\u0435
-        \u0440\u0430\u043D\u0433\u0438 \u0438 \u043F\u043E\u043B\u0443\u0447\u0430\u0439\u0442\u0435\""
+        \u0440\u0430\u043D\u0433\u0438 \u0438 \u043F\u043E\u043B\u0443\u0447\u0430\u0439\u0442\u0435
+        \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0430\u0433\u0440\u0430\u0434.\""
     - code: Unlock
-      value: "Lvxx \u0420\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0430"
+      value: "\u0420\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u0442\u044C
+        \u043D\u0430 \u0443\u0440\u043E\u0432\u043D\u0435 XX"
     - code: UnlockNewSkins
       value: "\u0420\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u0443\u0439\u0442\u0435
         \u043D\u043E\u0432\u044B\u0435 \u0441\u043A\u0438\u043D\u044B"
@@ -2184,3 +2233,13 @@ MonoBehaviour:
         \u0434\u043E XX \u0440\u0430\u043D\u0433\u0430"
     - code: Rankinghold
       value: "\u0412\u044B \u0432\u0441\u0435 \u0435\u0449\u0435 \u0432 XX \u0440\u0430\u043D\u0433\u04351"
+    - code: Selected
+      value: "\u0412\u044B\u0431\u0440\u0430\u0442\u044C"
+    - code: MaintainDes
+      value: "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C <size=80><color=blue><b>XX</b></color></size>
+        \u0438\u0433\u0440\u043E\u043A\u043E\u0432 \u0434\u043B\u044F \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F
+        \u0440\u0435\u0439\u0442\u0438\u043D\u0433\u0430!"
+    - code: MaintainRank
+      value: "\"\u0421\u043E\u0445\u0440\u0430\u043D\u044F\u0439\u0442\u0435 \u0440\u0435\u0439\u0442\u0438\u043D\u0433,
+        \u0447\u0442\u043E\u0431\u044B \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
+        \u0441\u0432\u043E\u0439 \u0440\u0435\u0439\u0442\u0438\u043D\u0433!\""

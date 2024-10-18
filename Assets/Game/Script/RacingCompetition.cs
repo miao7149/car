@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using MM;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -207,6 +208,7 @@ public class RacingCompetition : MonoBehaviour {
         mDailyCompetitionCount--;
         PlayerPrefs.SetInt("DailyCompetitionCount", mDailyCompetitionCount);
         m_CompetitionRoot.SetActive(true);
+        Init();
         m_StartCompetitionRoot.SetActive(false);
         remainingTime = TotalTime - (DateTime.Now - GlobalManager.Instance.RacingStartDate).TotalSeconds;
         GlobalManager.Instance.RefreshPlayerInfoList();
@@ -256,11 +258,15 @@ public class RacingCompetition : MonoBehaviour {
 
             if (remainingTime <= 0) {
                 remainingTime = 0;
+                m_CountDownText.text = LanguageManager.Instance.GetStringByCode("END");
             }
             else {
                 //更新倒计时文本，以分钟为单位
                 m_CountDownText.text = string.Format("{0:D2}:{1:D2}", (int)remainingTime / 60, (int)remainingTime % 60);
             }
+        }
+        else {
+            m_CountDownText.text = LanguageManager.Instance.GetStringByCode("END");
         }
     }
 
