@@ -111,7 +111,12 @@ public class MenuManager : MonoBehaviour {
             car.transform.localPosition = Vector3.zero;
             car.transform.localScale = Vector3.one;
 
-            car.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[0] = homeMaterials[int.Parse(GlobalManager.Instance.PlayerCarSkinName.Split("_")[1]) - 1];
+            Material[] ma = new Material[2];
+            ma[0] = homeMaterials[int.Parse(GlobalManager.Instance.PlayerCarSkinName.Split("_")[1]) - 1];
+            ma[1] = car.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[1];
+            car.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials = ma;
+
+            //car.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[0] = homeMaterials[int.Parse(GlobalManager.Instance.PlayerCarSkinName.Split("_")[1]) - 1];
         }
     }
 

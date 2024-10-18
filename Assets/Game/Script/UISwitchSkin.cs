@@ -113,6 +113,8 @@ public class UISwitchSkin : MonoBehaviour {
         mLoopGridView.RefreshAllShownItem();
     }
 
+    public MenuManager mm;
+
     //更改皮肤
     public void ChangeSkin(DecorationType type, string skinName) {
         if (type == DecorationType.Terrain) {
@@ -131,6 +133,12 @@ public class UISwitchSkin : MonoBehaviour {
                     GameObject skinCar = Instantiate(Resources.Load<GameObject>("Prefabs/" + skinName));
                     skinCar.transform.SetParent(m_SkinRoot.transform);
                     skinCar.transform.localPosition = Vector3.zero;
+
+                    Material[] ma = new Material[2];
+                    ma[0] = mm.homeMaterials[int.Parse(skinName.Split("_")[1]) - 1];
+                    ma[1] = skinCar.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[1];
+                    skinCar.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials = ma;
+
                     //通过查找m_Car下的所有子物体，找到Tag为SkinCar的物体，然后删除物体，再加载新的皮肤
                     foreach (Transform child in m_Car.transform) {
                         if (child.tag == "SkinCar") {
