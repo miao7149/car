@@ -16253,6 +16253,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.657
       objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8436382560018292906, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
       propertyPath: m_Name
       value: Directional Light_m2
@@ -30113,7 +30125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1520670097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38358,6 +38370,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3718442051400255975, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Name
       value: Directional Light_m
