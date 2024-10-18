@@ -38388,19 +38388,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.b
-      value: 0.90196085
+      value: 0.8117648
       objectReference: {fileID: 0}
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.g
-      value: 0.9843138
+      value: 0.8117648
       objectReference: {fileID: 0}
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.8117648
       objectReference: {fileID: 0}
     - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Intensity
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3718442051400255975, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Name
