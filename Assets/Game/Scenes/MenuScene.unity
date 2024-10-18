@@ -7527,7 +7527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -43.114365}
+  m_AnchoredPosition: {x: 0, y: -43.114258}
   m_SizeDelta: {x: -120, y: -501.7413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &362172359
@@ -11965,7 +11965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 91.79529}
+  m_AnchoredPosition: {x: 0, y: 91.795166}
   m_SizeDelta: {x: -120, y: -233.4907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572994183
@@ -16267,6 +16267,18 @@ PrefabInstance:
     - target: {fileID: 4617360456713895779, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437362558447708164, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8436382560018292906, guid: 24beacb9acaefa44183c79cbe1ad6611, type: 3}
       propertyPath: m_Name
@@ -38373,6 +38385,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991596539201399138, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3718442051400255975, guid: 081f4126c07dc0045ab00b32e71481df, type: 3}
       propertyPath: m_Name
       value: Directional Light_m
@@ -63037,7 +63061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32.36023}
+  m_AnchoredPosition: {x: 0, y: -32.36035}
   m_SizeDelta: {x: -148, y: -1030.1897}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &4072262610872082684

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: car3
+  m_Name: car4
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -67,7 +67,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.9
     - _GlossyReflections: 1
     - _Metallic: 0.5
     - _Mode: 0
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
-    - _EmissionColor: {r: 0.1882353, g: 0.17388144, b: 0.09803922, a: 1}
+    - _Color: {r: 1, g: 0.8833292, b: 0.85490197, a: 1}
+    - _EmissionColor: {r: 0.1792453, g: 0.10698785, b: 0.09385013, a: 1}
   m_BuildTextureStacks: []
