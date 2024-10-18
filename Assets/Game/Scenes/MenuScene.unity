@@ -24779,6 +24779,19 @@ MonoBehaviour:
   m_Logo: {fileID: 1520670096}
   m_UICoin: {fileID: 4726867752357915917}
   m_InputField: {fileID: 645766511}
+  homeMaterials:
+  - {fileID: 2100000, guid: 447c9d8999d0b6a49b343b4b46ef19c5, type: 2}
+  - {fileID: 2100000, guid: f43cf18cebd802b4eb805a57e0a949bf, type: 2}
+  - {fileID: 2100000, guid: b4723dc03f1898249a56623ecf338657, type: 2}
+  - {fileID: 2100000, guid: 8c9f782492484934291490ee3ea9ac55, type: 2}
+  - {fileID: 2100000, guid: 797a5855a610c8147af5ced17f405ac5, type: 2}
+  - {fileID: 2100000, guid: 56301d7ee9f54a2459e53d7a09c0015f, type: 2}
+  - {fileID: 2100000, guid: 7292eaa4d8380904cbc9b2d0f006cf76, type: 2}
+  - {fileID: 2100000, guid: 629e5e87713e0e041a9147703bb53d39, type: 2}
+  - {fileID: 2100000, guid: b4c47324537da27469feff2cb29fbf9f, type: 2}
+  - {fileID: 2100000, guid: 98823c70057c9e443aa0d5af42ea49f5, type: 2}
+  - {fileID: 2100000, guid: a7a0589921b44f04c93a1c60b864b905, type: 2}
+  - {fileID: 2100000, guid: 05314565ab02dcf4791e2b10c6e3514a, type: 2}
 --- !u!4 &1232341449
 Transform:
   m_ObjectHideFlags: 0

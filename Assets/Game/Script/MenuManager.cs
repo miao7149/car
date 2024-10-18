@@ -102,12 +102,16 @@ public class MenuManager : MonoBehaviour {
         MoveCarAppearanceAnima();
     }
 
+    public Material[] homeMaterials;
+
     //创建汽车和拖尾
     public void CreateCarAndTrail() {
         if (GlobalManager.Instance.PlayerCarSkinName != "") {
             GameObject car = Instantiate(Resources.Load<GameObject>("Prefabs/" + GlobalManager.Instance.PlayerCarSkinName), m_Car.transform);
             car.transform.localPosition = Vector3.zero;
             car.transform.localScale = Vector3.one;
+
+            car.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().materials[0] = homeMaterials[int.Parse(GlobalManager.Instance.PlayerCarSkinName.Split("_")[1]) - 1];
         }
     }
 
