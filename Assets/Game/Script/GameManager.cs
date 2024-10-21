@@ -897,11 +897,17 @@ public class GameManager : MonoBehaviour {
                             //LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
                         }
                         else {
+                            var car = hit.collider.transform.GetComponent<Car>();
+
+                            if (!carArr.Contains(car)) {
+                                return;
+                            }
+
                             if (GlobalManager.Instance.CurrentLevel >= 10) {
                                 StepCount--; //行动次数减一
                             }
 
-                            OnTouchCar(hit.collider.transform.GetComponent<Car>());
+                            OnTouchCar(car);
                         }
                     }
                 }
