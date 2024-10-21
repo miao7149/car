@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class FiveStar : MonoBehaviour {
@@ -27,7 +28,7 @@ public class FiveStar : MonoBehaviour {
 
     void Start() {
         m_IsShowFiveStar = PlayerPrefs.GetInt("IsShowFiveStar", 0) == 1;
-        if (GlobalManager.Instance.CurrentLevel > 9 && m_IsShowFiveStar == false) {
+        if (GlobalManager.Instance.CurrentLevel > 8 && m_IsShowFiveStar == false) {
             m_Root.SetActive(true);
             StartCoroutine(RunMarquee());
             StartCoroutine(RunHaloAnimation());
@@ -104,6 +105,10 @@ public class FiveStar : MonoBehaviour {
         if (mStarIndex == 4) {
             //跳转网页
             Application.OpenURL("https://play.google.com/store/apps/details?id=com.game.tjm_android");
+        }
+        else {
+            string s = m_InputField.GetComponent<InputField>().text;
+            //StartCoroutine(Global.PostRequest("", s));
         }
 
         m_Root.SetActive(false);

@@ -1,88 +1,88 @@
 <Workbook>
-  <Worksheet Name="Language">
-    <Row>
-      <Cell Column="Id:key">1</Cell>
-      <Cell Column="ModelName">vfx_exhaust_1</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_1</Cell>
-      <Cell Column="UnlockConditions">1_0</Cell>
-      <Cell Column="Coins">1000</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">2</Cell>
-      <Cell Column="ModelName">vfx_exhaust_2</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_2</Cell>
-      <Cell Column="UnlockConditions">1_18</Cell>
-      <Cell Column="Coins">1000</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">3</Cell>
-      <Cell Column="ModelName">vfx_exhaust_3</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_3</Cell>
-      <Cell Column="UnlockConditions">2_6</Cell>
-      <Cell Column="Coins">1000</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">4</Cell>
-      <Cell Column="ModelName">vfx_exhaust_4</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_4</Cell>
-      <Cell Column="UnlockConditions">1_110</Cell>
-      <Cell Column="Coins">1500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">5</Cell>
-      <Cell Column="ModelName">vfx_exhaust_5</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_5</Cell>
-      <Cell Column="UnlockConditions">1_190</Cell>
-      <Cell Column="Coins">1500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">6</Cell>
-      <Cell Column="ModelName">vfx_exhaust_6</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_6</Cell>
-      <Cell Column="UnlockConditions">2_29</Cell>
-      <Cell Column="Coins">1500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">7</Cell>
-      <Cell Column="ModelName">vfx_exhaust_7</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_7</Cell>
-      <Cell Column="UnlockConditions">1_390</Cell>
-      <Cell Column="Coins">2500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">8</Cell>
-      <Cell Column="ModelName">vfx_exhaust_8</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_8</Cell>
-      <Cell Column="UnlockConditions">1_490</Cell>
-      <Cell Column="Coins">2500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">9</Cell>
-      <Cell Column="ModelName">vfx_exhaust_9</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_9</Cell>
-      <Cell Column="UnlockConditions">2_59</Cell>
-      <Cell Column="Coins">2500</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">10</Cell>
-      <Cell Column="ModelName">vfx_exhaust_10</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_10</Cell>
-      <Cell Column="UnlockConditions">1_690</Cell>
-      <Cell Column="Coins">3000</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">11</Cell>
-      <Cell Column="ModelName">vfx_exhaust_11</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_11</Cell>
-      <Cell Column="UnlockConditions">1_790</Cell>
-      <Cell Column="Coins">3000</Cell>
-    </Row>
-    <Row>
-      <Cell Column="Id:key">12</Cell>
-      <Cell Column="ModelName">vfx_exhaust_12</Cell>
-      <Cell Column="CarSpriteName">skin_style_frame_exhaust_12</Cell>
-      <Cell Column="UnlockConditions">2_89</Cell>
-      <Cell Column="Coins">3000</Cell>
-    </Row>
-  </Worksheet>
+    <Worksheet Name="Language">
+        <Row>
+            <Cell Column="Id:key">1</Cell>
+            <Cell Column="ModelName">vfx_exhaust_1</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_1</Cell>
+            <Cell Column="UnlockConditions">1_0</Cell>
+            <Cell Column="Coins">1000</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">2</Cell>
+            <Cell Column="ModelName">vfx_exhaust_2</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_2</Cell>
+            <Cell Column="UnlockConditions">1_18</Cell>
+            <Cell Column="Coins">1000</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">3</Cell>
+            <Cell Column="ModelName">vfx_exhaust_3</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_3</Cell>
+            <Cell Column="UnlockConditions">2_6</Cell>
+            <Cell Column="Coins">1000</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">4</Cell>
+            <Cell Column="ModelName">vfx_exhaust_4</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_4</Cell>
+            <Cell Column="UnlockConditions">1_110</Cell>
+            <Cell Column="Coins">1500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">5</Cell>
+            <Cell Column="ModelName">vfx_exhaust_5</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_5</Cell>
+            <Cell Column="UnlockConditions">1_190</Cell>
+            <Cell Column="Coins">1500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">6</Cell>
+            <Cell Column="ModelName">vfx_exhaust_6</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_6</Cell>
+            <Cell Column="UnlockConditions">2_29</Cell>
+            <Cell Column="Coins">1500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">7</Cell>
+            <Cell Column="ModelName">vfx_exhaust_7</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_7</Cell>
+            <Cell Column="UnlockConditions">1_390</Cell>
+            <Cell Column="Coins">2500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">8</Cell>
+            <Cell Column="ModelName">vfx_exhaust_8</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_8</Cell>
+            <Cell Column="UnlockConditions">1_490</Cell>
+            <Cell Column="Coins">2500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">9</Cell>
+            <Cell Column="ModelName">vfx_exhaust_9</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_9</Cell>
+            <Cell Column="UnlockConditions">2_59</Cell>
+            <Cell Column="Coins">2500</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">10</Cell>
+            <Cell Column="ModelName">vfx_exhaust_10</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_10</Cell>
+            <Cell Column="UnlockConditions">1_690</Cell>
+            <Cell Column="Coins">3000</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">11</Cell>
+            <Cell Column="ModelName">vfx_exhaust_11</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_11</Cell>
+            <Cell Column="UnlockConditions">1_790</Cell>
+            <Cell Column="Coins">3000</Cell>
+        </Row>
+        <Row>
+            <Cell Column="Id:key">12</Cell>
+            <Cell Column="ModelName">vfx_exhaust_12</Cell>
+            <Cell Column="CarSpriteName">skin_style_frame_exhaust_12</Cell>
+            <Cell Column="UnlockConditions">2_89</Cell>
+            <Cell Column="Coins">3000</Cell>
+        </Row>
+    </Worksheet>
 </Workbook>

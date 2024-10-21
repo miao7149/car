@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3759040840169597902}
   m_Layer: 11
   m_Name: vfx_exhaust_7
-  m_TagString: Untagged
+  m_TagString: SkinTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -480,6 +480,7 @@ MonoBehaviour:
   m_UnLockBtn: {fileID: 8942050783336218298}
   m_InUseBtn: {fileID: 8314935798839977658}
   m_UseBtn: {fileID: 4009152920578009406}
+  cost: {fileID: 212578042706266594}
   m_BgList:
   - {fileID: 21300000, guid: c5a585465419c49f684240838139c68f, type: 3}
   - {fileID: 21300000, guid: 5bdfeaa55e2524d21a1a7ef2a91695cb, type: 3}

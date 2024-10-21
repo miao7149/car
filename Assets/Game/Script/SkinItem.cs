@@ -23,6 +23,7 @@ public class SkinItem : MonoBehaviour {
 
     //使用按钮
     public GameObject m_UseBtn;
+    public Text cost;
 
     //背景图片列表
     public List<Sprite> m_BgList;
@@ -45,6 +46,8 @@ public class SkinItem : MonoBehaviour {
         m_Lock.SetActive(false);
         m_UnLockBtn.SetActive(false);
         m_UnLockDesc.SetActive(false);
+
+        cost.text = skinItemData.Coins + "";
         m_Icon.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/Skin/" + skinItemData.SpriteName);
         this.type = type;
         this.index = index;

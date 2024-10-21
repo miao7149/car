@@ -13,6 +13,10 @@ public class UIReward : MonoBehaviour {
     public SkeletonGraphic skeletonGraphicRV; //礼盒
     public GameObject coinContainer; // 存放金币图片的容器
     public GameObject coinContainerRV; // 存放金币图片的容器
+
+
+    public Text t;
+    public Text tRv;
     public GameObject m_ItemRoot; //道具根节点
     public float frameDuration = 0.05f; // 每帧的持续时间
     public GameObject coinPrefab; // 金币图片的预制体
@@ -27,6 +31,7 @@ public class UIReward : MonoBehaviour {
     //是否首次领取第二次奖励
     public bool mIsFirstGetRewardRV = true;
 
+    public GameObject adFlag;
 
     void Start() {
         // if (skeletonGraphic != null) {
@@ -40,6 +45,7 @@ public class UIReward : MonoBehaviour {
         // skeletonGraphic.AnimationState.SetAnimation(0, "daiji", true);
         // skeletonGraphicRV.AnimationState.SetAnimation(0, "daiji", true);
         mIsFirstGetRewardRV = PlayerPrefs.GetInt("IsFirstGetRewardRV", 0) == 0;
+        adFlag.SetActive(!mIsFirstGetRewardRV);
     }
 
     private void OnDestroy() {
@@ -88,7 +94,9 @@ public class UIReward : MonoBehaviour {
                 skeletonGraphic.DOFade(0, 0.5f).OnComplete(() => {
                     //skeletonGraphic.gameObject.SetActive(false);
                     coinContainer.transform.DOLocalMove(new Vector3(0, coinContainer.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                    t.DOFade(1, 0.5f);
                     coinContainer.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                        t.DOFade(0, 0.3f);
                         coinContainer.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
                             GlobalManager.Instance.PlayerCoin += Rewards[0].Count;
                             CreateAndAnimateCoins(Rewards[0].Count); // 假设金币数量为50
@@ -101,7 +109,9 @@ public class UIReward : MonoBehaviour {
                     //skeletonGraphicRV.gameObject.SetActive(false);
                     coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
                     m_ItemRoot.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x + 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                    tRv.DOFade(1, 0.5f);
                     coinContainerRV.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                        tRv.DOFade(0, 0.3f);
                         coinContainerRV.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
                             GlobalManager.Instance.PlayerCoin += RewardsRv[0].Count;
                             GlobalManager.Instance.ItemCount += RewardsRv[1].Count;
@@ -215,7 +225,9 @@ public class UIReward : MonoBehaviour {
 
         DOVirtual.DelayedCall(1.34f, () => {
             coinContainer.transform.DOLocalMove(new Vector3(0, coinContainer.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+            t.DOFade(1, 0.5f);
             coinContainer.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                t.DOFade(0, 0.3f);
                 coinContainer.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
                     GlobalManager.Instance.PlayerCoin += Rewards[0].Count;
                     CreateAndAnimateCoins(Rewards[0].Count); // 假设金币数量为50
@@ -235,7 +247,9 @@ public class UIReward : MonoBehaviour {
             DOVirtual.DelayedCall(1.34f, () => {
                 coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
                 m_ItemRoot.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x + 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+                tRv.DOFade(1, 0.5f);
                 coinContainerRV.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                    tRv.DOFade(0, 0.3f);
                     coinContainerRV.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
                         GlobalManager.Instance.PlayerCoin += RewardsRv[0].Count;
                         GlobalManager.Instance.ItemCount += RewardsRv[1].Count;
@@ -250,6 +264,7 @@ public class UIReward : MonoBehaviour {
                 });
             });
             PlayerPrefs.SetInt("IsFirstGetRewardRV", 1);
+            mIsFirstGetRewardRV = false;
         }
         else {
             ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
@@ -257,13 +272,17 @@ public class UIReward : MonoBehaviour {
                 DOVirtual.DelayedCall(1.34f, () => {
                     coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
                     m_ItemRoot.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x + 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);
+
+                    tRv.DOFade(1, 0.5f);
                     coinContainerRV.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
+                        tRv.DOFade(0, 0.3f);
                         coinContainerRV.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => {
                             GlobalManager.Instance.PlayerCoin += RewardsRv[0].Count;
                             GlobalManager.Instance.ItemCount += RewardsRv[1].Count;
                             CreateAndAnimateCoins(RewardsRv[0].Count); // 假设金币数量为50
                         });
                     });
+
                     m_ItemRoot.GetComponent<Image>().DOFade(1, 0.5f).OnComplete(() => {
                         m_ItemRoot.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutQuad).OnComplete(() => {
                             m_ItemRoot.transform.DOScale(0.3f, 0.6f).SetEase(Ease.OutQuad);

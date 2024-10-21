@@ -172,18 +172,34 @@ public class UI : MonoBehaviour {
     //更改道具数量
     public void ChangeItemCount(int count) {
         ItemCountText.text = count.ToString();
-        if (count <= 0 && GlobalManager.Instance.PlayerCoin >= 500) {
-            m_ItemBtn.transform.GetChild(1).gameObject.SetActive(true);
-            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
-        }
-        else if (count <= 0 && GlobalManager.Instance.PlayerCoin < 500) {
+
+        if (count > 0) {
             m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
-            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(true);
+            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
         }
         else {
-            m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
-            m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+            if (GlobalManager.Instance.PlayerCoin >= 500) {
+                m_ItemBtn.transform.GetChild(1).gameObject.SetActive(true);
+                m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            else {
+                m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
+                m_ItemBtn.transform.GetChild(2).gameObject.SetActive(true);
+            }
         }
+
+        // if (count <= 0 && GlobalManager.Instance.PlayerCoin >= 500) {
+        //     m_ItemBtn.transform.GetChild(1).gameObject.SetActive(true);
+        //     m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+        // }
+        // else if (count <= 0 && GlobalManager.Instance.PlayerCoin < 500) {
+        //     m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
+        //     m_ItemBtn.transform.GetChild(2).gameObject.SetActive(true);
+        // }
+        // else {
+        //     m_ItemBtn.transform.GetChild(1).gameObject.SetActive(false);
+        //     m_ItemBtn.transform.GetChild(2).gameObject.SetActive(false);
+        // }
     }
 
     //更新行动次数
