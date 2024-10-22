@@ -26,6 +26,50 @@ public class Global {
             }
         }
     }
+
+    public static void OnLevelComplete(int level) {
+        bool catched = false;
+        string adjustEventName = "";
+        string fireBassertName = "Complete Level_";
+        switch (level) {
+            case 10:
+                catched = true;
+                adjustEventName = "d0kccd";
+                fireBassertName += "10";
+                break;
+            case 20:
+                catched = true;
+                adjustEventName = "pveke1";
+                fireBassertName += "20";
+                break;
+            case 40:
+                catched = true;
+                adjustEventName = "gqqnc9";
+                fireBassertName += "40";
+                break;
+            case 60:
+                catched = true;
+                adjustEventName = "qoilei";
+                fireBassertName += "60";
+                break;
+            case 80:
+                catched = true;
+                adjustEventName = "1bci9g";
+                fireBassertName += "80";
+                break;
+            case 100:
+                catched = true;
+                adjustEventName = "2dl7lk";
+                fireBassertName += "100";
+
+                break;
+        }
+
+        if (catched) {
+            AdjustManager.Instance().SendAdjustEvent(adjustEventName);
+            FireBaseManager.Instance().LogEvent(fireBassertName);
+        }
+    }
 }
 
 [Serializable]
