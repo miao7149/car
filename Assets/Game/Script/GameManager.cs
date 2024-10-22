@@ -1205,13 +1205,16 @@ public class GameManager : MonoBehaviour {
             StartCoroutine(HelicopterFlyAnimation(car, carAction));
         }); //显示气球
         //等待一秒
-        yield return new WaitForSeconds(1f);
+
         if (car.GetComponent<Car>().type == CarType.Bulldozer) {
             var block = GetBulldozerPathBlock(car.GetComponent<Car>());
+            blocksArr.Remove(block);
+            yield return new WaitForSeconds(1f);
+
             block.MoveDroneToCarTop(() => {
                 Action blockAction = () => {
                     //删除路障
-                    blocksArr.Remove(block);
+                    //blocksArr.Remove(block);
                     Destroy(block.transform.parent.parent.gameObject);
                 };
                 if (block != null) {
@@ -1617,20 +1620,50 @@ public class GameManager : MonoBehaviour {
                             car.moveAction = car.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), GetDuring(speed, posArr[PosArrIndex - 1], posArr[PosArrIndex])).SetEase(Ease.Linear).OnComplete(() => {
                                 PosArrIndex++;
                                 if (hitcar) {
+                                    if (car.mTrail != null)
+                                        car.mTrail.SetActive(false);
                                     HitCar(carArr[hitCarIndex], dirction, backCar);
+                                }
+
+                                if (hitBlock) {
+                                    if (car.mTrail != null)
+                                        car.mTrail.SetActive(false);
+                                    DOVirtual.DelayedCall(0.2f, () => {
+                                        backCar();
+                                    }).Play();
                                 }
                             }).Play();
                         }
                         else {
                             if (hitcar) {
+                                if (car.mTrail != null)
+                                    car.mTrail.SetActive(false);
                                 HitCar(carArr[hitCarIndex], dirction, backCar);
+                            }
+
+                            if (hitBlock) {
+                                if (car.mTrail != null)
+                                    car.mTrail.SetActive(false);
+                                DOVirtual.DelayedCall(0.2f, () => {
+                                    backCar();
+                                }).Play();
                             }
                         }
                     }).Play();
                 }
                 else {
                     if (hitcar) {
+                        if (car.mTrail != null)
+                            car.mTrail.SetActive(false);
                         HitCar(carArr[hitCarIndex], dirction, backCar);
+                    }
+
+                    if (hitBlock) {
+                        if (car.mTrail != null)
+                            car.mTrail.SetActive(false);
+                        DOVirtual.DelayedCall(0.2f, () => {
+                            backCar();
+                        }).Play();
                     }
                 }
             }).Play();
@@ -1688,6 +1721,7 @@ public class GameManager : MonoBehaviour {
 
         //IEnumerator backCar()
         void backCar() {
+            float backSpeed = 25;
             CurrentCar.backing = true;
             // for (int i = posArr.Count - 2; i >= 0; i--)
             // {
@@ -1743,10 +1777,10 @@ public class GameManager : MonoBehaviour {
             //     }
             //     yield return car.moveAction.WaitForCompletion();
             // }
-            if (CurrentCar.mTrail != null)
-                CurrentCar.mTrail.SetActive(false);
+            // if (CurrentCar.mTrail != null)
+            //     CurrentCar.mTrail.SetActive(false);
             PosArrIndex -= 2; //回退两步
-            var durning = GetDuring(speed, posArr[PosArrIndex], posArr[PosArrIndex + 1]); //回退时间
+            var durning = GetDuring(backSpeed, posArr[PosArrIndex], posArr[PosArrIndex + 1]); //回退时间
             if (PosArrIndex > 0) {
                 CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).SetDelay(Mathf.Max(0, durning - speedCarRotate)).Play();
             }
@@ -1760,7 +1794,7 @@ public class GameManager : MonoBehaviour {
                     //CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).Play();
                     PosArrIndex--;
 
-                    durning = GetDuring(speed, posArr[PosArrIndex], posArr[PosArrIndex + 1]);
+                    durning = GetDuring(backSpeed, posArr[PosArrIndex], posArr[PosArrIndex + 1]);
                     if (PosArrIndex > 0) {
                         CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).SetDelay(Mathf.Max(0, durning - speedCarRotate)).Play();
                     }
@@ -1777,7 +1811,7 @@ public class GameManager : MonoBehaviour {
                                 CurrentCar.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y) - new Vector3(posArr[PosArrIndex - 1].x, 0, posArr[PosArrIndex - 1].y)), speedCarRotate).SetDelay(Mathf.Max(0, durning - speedCarRotate)).Play();
                             }
 
-                            CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), GetDuring(speed, posArr[PosArrIndex], posArr[PosArrIndex + 1])).SetEase(Ease.Linear).OnComplete(() => {
+                            CurrentCar.transform.DOLocalMove(ConvertPos(new Vector3(posArr[PosArrIndex].x, 0, posArr[PosArrIndex].y)), GetDuring(backSpeed, posArr[PosArrIndex], posArr[PosArrIndex + 1])).SetEase(Ease.Linear).OnComplete(() => {
                                 if (StepCount > 0)
                                     SetGameStatu(GameStatu.playing);
                             }).Play();
@@ -1959,6 +1993,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void CleanGame() {
+        if (hitPeopleCar != null) {
+            Destroy(hitPeopleCar.gameObject);
+            hitPeopleCar = null;
+        }
+
         foreach (var o in roadArr) {
             o.transform.SetParent(null, false);
             o.gameObject.SetActive(false);
@@ -2013,6 +2052,8 @@ public class GameManager : MonoBehaviour {
             Debug.Log("游戏失败");
         }
         else if (statu == GameStatu.finish) {
+            if (GlobalManager.Instance.GameType == GameType.Main)
+                Global.OnLevelComplete(GlobalManager.Instance.CurrentLevel);
             //延迟显示胜利界面
             StartCoroutine(ShowFinishUIWithDelay());
             Debug.Log("游戏胜利");
@@ -2225,4 +2266,6 @@ public class GameManager : MonoBehaviour {
 
         return result;
     }
+
+    // public GameObject tempCar = null;
 }

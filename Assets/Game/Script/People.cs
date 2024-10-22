@@ -135,5 +135,6 @@ public class People : MonoBehaviour {
         //     GameManager.Instance.DeleteCar(car);
         // });
         Hit(car.transform.localRotation * Vector3.forward);
+        //GameManager.Instance.tempCar = car.gameObject;
     }
 }
