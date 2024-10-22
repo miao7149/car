@@ -205,17 +205,18 @@ public class UIGameVictoryPage : MonoBehaviour {
                 if (doubleScore) {
                     m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount / 2;
                     StartCoroutine(PlayDoubleAni(trophyCount, () => {
-                        StartCoroutine(PlayRankAni(oldRank, PlayerListIndex));
+                        StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 0));
                     }));
                 }
                 else {
-                    StartCoroutine(PlayRankAni(oldRank, PlayerListIndex));
+                    StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 2f));
                 }
             }
         }
     }
 
-    IEnumerator PlayRankAni(int old, int current) {
+    IEnumerator PlayRankAni(int old, int current, float delay) {
+        yield return new WaitForSeconds(delay);
         // Debug.Log("old" + old + "current" + current);
 
         itemArr[old].transform.DOScale(Vector3.one * 1.2f, 0.3f).Play();
@@ -265,7 +266,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     public Animation doubleAni;
 
     IEnumerator PlayDoubleAni(int count, Action cb) {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.5f);
         doubleAni.Play();
         yield return new WaitForSeconds(0.3f);
 
