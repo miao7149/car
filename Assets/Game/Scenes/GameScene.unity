@@ -757,6 +757,7 @@ GameObject:
   - component: {fileID: 212477926}
   - component: {fileID: 212477925}
   - component: {fileID: 212477924}
+  - component: {fileID: 212477927}
   m_Layer: 5
   m_Name: CostCoinBtn
   m_TagString: Untagged
@@ -880,6 +881,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212477922}
   m_CullTransparentMesh: 1
+--- !u!225 &212477927
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212477922}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &246442141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,6 +2748,7 @@ GameObject:
   - component: {fileID: 400610643}
   - component: {fileID: 400610642}
   - component: {fileID: 400610641}
+  - component: {fileID: 400610644}
   m_Layer: 5
   m_Name: TryAgain
   m_TagString: Untagged
@@ -2856,6 +2870,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400610639}
   m_CullTransparentMesh: 1
+--- !u!225 &400610644
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400610639}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &411868201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,7 +3909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &555302848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11745,7 +11771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1035940556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18560,6 +18586,7 @@ GameObject:
   - component: {fileID: 2009825523}
   - component: {fileID: 2009825522}
   - component: {fileID: 2009825525}
+  - component: {fileID: 2009825526}
   m_Layer: 5
   m_Name: WatchAdBtn
   m_TagString: Untagged
@@ -18698,6 +18725,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!225 &2009825526
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009825520}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2036654473
 GameObject:
   m_ObjectHideFlags: 0
@@ -20025,7 +20064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 32.960926}
+  m_AnchoredPosition: {x: 0, y: 1405.659}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &5266541200276951055
