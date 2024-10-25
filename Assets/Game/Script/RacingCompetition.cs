@@ -137,6 +137,10 @@ public class RacingCompetition : MonoBehaviour {
             m_CompetitionRoot.SetActive(true);
             Init();
         }
+
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C3" }
+        }));
     }
 
     public void Init() {

@@ -112,6 +112,6 @@ public class FiveStar : MonoBehaviour {
         }
 
         m_Root.SetActive(false);
-        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(null);
+        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", null);
     }
 }

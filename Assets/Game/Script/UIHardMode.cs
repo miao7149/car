@@ -81,5 +81,8 @@ public class UIHardMode : MonoBehaviour {
 
     public void OnHardModeBtn() {
         m_HardModeRoot.SetActive(true);
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C5" }
+        }));
     }
 }

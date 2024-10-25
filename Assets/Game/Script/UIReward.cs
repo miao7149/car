@@ -267,7 +267,7 @@ public class UIReward : MonoBehaviour {
             mIsFirstGetRewardRV = false;
         }
         else {
-            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
+            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("A0", () => {
                 skeletonGraphicRV.AnimationState.SetAnimation(0, "open", false);
                 DOVirtual.DelayedCall(1.34f, () => {
                     coinContainerRV.transform.DOLocalMove(new Vector3(coinContainerRV.transform.localPosition.x - 120, coinContainerRV.transform.localPosition.y + 120, 0), 0.3f).SetEase(Ease.OutQuad);

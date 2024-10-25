@@ -67,6 +67,13 @@ public class MenuManager : MonoBehaviour {
         });
         m_InputField.onEndEdit.AddListener(OnInputFieldEndEdit);
         m_InputField.text = GlobalManager.Instance.PlayerName;
+
+        StartCoroutine(LogHelper.LogToServer("EnterHome", new Dictionary<string, object>() {
+            { "CarType", GlobalManager.Instance.PlayerCarSkinName },
+            { "UserLevel", GlobalManager.Instance.CurrentRank },
+            { "AudioFlag", GlobalManager.Instance.IsSound ? "11" : "00" },
+            { "VibFlag", GlobalManager.Instance.IsVibrate ? "11" : "00" }
+        }));
     }
 
     //设置多语言
@@ -100,6 +107,9 @@ public class MenuManager : MonoBehaviour {
         GlobalManager.Instance.GameType = GameType.Main;
         GlobalManager.Instance.difficuteMode = m_LevelList[0].transform.GetChild(0).gameObject.activeSelf == false;
         MoveCarAppearanceAnima();
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "A0" }
+        }));
     }
 
     public Material[] homeMaterials;
@@ -216,6 +226,9 @@ public class MenuManager : MonoBehaviour {
     public void OnClickSetting() {
         m_SettingPanel.SetActive(true);
         AudioManager.Instance.PlayButtonClick();
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "B0" }
+        }));
     }
 
     //关闭设置

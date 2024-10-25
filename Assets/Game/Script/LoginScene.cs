@@ -10,6 +10,7 @@ public class LoginScene : MonoBehaviour {
 
 
     void Start() {
+        StartCoroutine(LogHelper.LogToServer("LoadGame", new Dictionary<string, object>()));
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

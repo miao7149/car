@@ -171,6 +171,9 @@ public class UISwitchSkin : MonoBehaviour {
 
     public void OnOpenSwitchBtn() {
         m_SwitchSkinRoot.SetActive(true);
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C2" }
+        }));
     }
 
     public void OnCloseBtn() {

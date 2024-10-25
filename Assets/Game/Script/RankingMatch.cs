@@ -433,6 +433,9 @@ public class RankingMatch : MonoBehaviour {
         m_ScrollRect.content.anchoredPosition = new Vector2(0, 0);
         RefreshRankingMatch();
         SmoothScrollToIndex(GlobalManager.Instance.GetRankIndex() - 3, 1.5f);
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C4" }
+        }));
     }
 
     private void SmoothScrollToIndex(int targetIndex, float duration) {
@@ -452,7 +455,7 @@ public class RankingMatch : MonoBehaviour {
             targetY = (targetIndex - 2) * (mItemHeight1 + 15) + mItemHeight2 + mItemHeight3 + 30;
         }
 
-        m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad);
+        m_ScrollRect.content.DOLocalMoveY(targetY, duration).SetEase(Ease.OutQuad).SetDelay(0.5f);
     }
 
     //领取按钮

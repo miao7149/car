@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour {
         InitGame();
     }
 
+    private bool firstClick = false;
+
     public int GetStepCount(GameType type, LevelDataConfig data, int index = 0) {
         if (data == null) {
             throw new Exception("data is null");
@@ -769,6 +771,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void InitGame() {
+        firstClick = false;
         SetGameStatu(GameStatu.preparing);
         CleanGame();
         LoadLevelData();
@@ -861,7 +864,24 @@ public class GameManager : MonoBehaviour {
         //     car.StartCarScaleAnimation();
         // }
 
+        var EnterTimes = PlayerPrefs.GetInt("EnterTimes", 0);
+        EnterTimes++;
+        PlayerPrefs.SetInt("EnterTimes", EnterTimes);
+        PlayerPrefs.Save();
+
         CheckGuide();
+        StartCoroutine(LogHelper.LogToServer("EnterGame", new Dictionary<string, object>() {
+            { "CoinCount", GlobalManager.Instance.PlayerCoin },
+            { "CarCount", carDataArr.Length },
+            { "PersonCount", peopleDataArr.Length },
+            { "PlaneCount", GlobalManager.Instance.ItemCount },
+            { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+            },
+            { "StepCount", StepCount },
+            { "EnterTimes", EnterTimes },
+            { "DoubleReward", GlobalManager.Instance.IsDoubleReward ? "11" : "00" }
+        }));
     }
 
     private void OnDestroy() {
@@ -1259,6 +1279,16 @@ public class GameManager : MonoBehaviour {
 
     public void OnTouchCar(Car car) {
         if (car.dead) return;
+
+        if (!firstClick) {
+            firstClick = true;
+            StartCoroutine(LogHelper.LogToServer("GameFirstClick", new Dictionary<string, object>() {
+                {
+                    "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+                }
+            }));
+        }
+
         car.backing = false;
         List<Vector2Int> posArr = new List<Vector2Int>();
         int PosArrIndex = 0;
@@ -1830,6 +1860,15 @@ public class GameManager : MonoBehaviour {
         if (StepCount <= 0 && carArr.Count >= 1) {
             failReason = FailReason.ActionNotEnough;
             SetGameStatu(GameStatu.faled);
+            StartCoroutine(LogHelper.LogToServer("GameFail", new Dictionary<string, object>() {
+                { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                    "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+                },
+                { "StepCount", StepCount },
+                { "PlaneCount", GlobalManager.Instance.ItemCount },
+                { "CoinCount", GlobalManager.Instance.PlayerCoin },
+                { "FailType", "A0" }
+            }));
         }
         // else if (carArr.Count == 0 && gameStatu == GameStatu.playing) {
         //     SetGameStatu(GameStatu.finish);
@@ -1841,6 +1880,14 @@ public class GameManager : MonoBehaviour {
         if (gameStatu == GameStatu.faled) return;
         if (carArr.Count == 0 && gameStatu == GameStatu.playing) {
             SetGameStatu(GameStatu.finish);
+            StartCoroutine(LogHelper.LogToServer("GameSuccess", new Dictionary<string, object>() {
+                { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                    "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+                },
+
+                { "PlaneCount", GlobalManager.Instance.ItemCount },
+                { "CoinCount", GlobalManager.Instance.PlayerCoin },
+            }));
         }
     }
 
@@ -2077,7 +2124,7 @@ public class GameManager : MonoBehaviour {
     //胜利延时
     private IEnumerator ShowFinishUIWithDelay() {
         yield return new WaitForSeconds(1.5f);
-        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(() => {
+        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
             // // 设置延迟时间
             // float delay = 0.8f;
             // yield return new WaitForSeconds(delay);
@@ -2212,9 +2259,26 @@ public class GameManager : MonoBehaviour {
         if (StepCount <= 0 && carArr.Count >= 1) {
             failReason = FailReason.ActionNotEnough;
             SetGameStatu(GameStatu.faled);
+            StartCoroutine(LogHelper.LogToServer("GameFail", new Dictionary<string, object>() {
+                { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                    "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+                },
+                { "StepCount", StepCount },
+                { "PlaneCount", GlobalManager.Instance.ItemCount },
+                { "CoinCount", GlobalManager.Instance.PlayerCoin },
+                { "FailType", "A0" }
+            }));
         }
         else if (carArr.Count == 0 && gameStatu == GameStatu.playing) {
             SetGameStatu(GameStatu.finish);
+            StartCoroutine(LogHelper.LogToServer("GameSuccess", new Dictionary<string, object>() {
+                { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                    "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+                },
+
+                { "PlaneCount", GlobalManager.Instance.ItemCount },
+                { "CoinCount", GlobalManager.Instance.PlayerCoin },
+            }));
         }
     }
 

@@ -122,6 +122,15 @@ public class People : MonoBehaviour {
         GameManager.Instance.failReason = FailReason.PeopleCrash;
 
         GameManager.Instance.SetGameStatu(GameStatu.faled);
+        StartCoroutine(LogHelper.LogToServer("GameFail", new Dictionary<string, object>() {
+            { "LevelId", GlobalManager.Instance.GameType == GameType.Main ? GlobalManager.Instance.CurrentLevel : GlobalManager.Instance.CurrentHardLevel }, {
+                "ModuleId", GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5"
+            },
+            { "StepCount", GameManager.Instance.StepCount },
+            { "PlaneCount", GlobalManager.Instance.ItemCount },
+            { "CoinCount", GlobalManager.Instance.PlayerCoin },
+            { "FailType", "B0" }
+        }));
         GameManager.Instance.StepCount += 1;
 
 

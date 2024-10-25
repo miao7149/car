@@ -131,7 +131,7 @@ public class UI : MonoBehaviour {
 
     //点击重新开始按钮
     public void OnTouchReplay() {
-        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(() => {
+        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
             GameManager.Instance.InitGame();
             ShowFailedRoot(false);
         });
@@ -155,7 +155,7 @@ public class UI : MonoBehaviour {
             }
             else //看广告
             {
-                ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
+                ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
                         GameManager.Instance.IsUseItem = true;
                         ShowItemIntroduce();
                         HideGuideFinger();
@@ -266,7 +266,7 @@ public class UI : MonoBehaviour {
 
     //观看广告复活
     public void OnWatchAdRevive() {
-        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
+        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
                 GameManager.Instance.ContinueGame();
             },
             () => {

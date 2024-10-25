@@ -90,11 +90,14 @@ public class DoubleReward : MonoBehaviour {
 
     public void OnDoubleRewardBtn() {
         m_DoubleRewardRoot.SetActive(!m_DoubleRewardRoot.activeSelf);
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C6" }
+        }));
     }
 
     //领取双倍奖励按钮
     public void OnGetDoubleRewardBtn() {
-        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
+        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C6", () => {
             mIsGetDoubleReward = true;
             PlayerPrefs.SetInt("IsGetDoubleReward", 1);
             mGetDoubleRewardTime = DateTime.Now;

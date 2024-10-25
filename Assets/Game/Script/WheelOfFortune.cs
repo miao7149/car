@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -232,7 +233,7 @@ public class WheelOfFortune : MonoBehaviour {
         }
         else if (m_TodaySpinCount > 0) //如果还有抽奖次数
         {
-            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd(() => {
+            ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C1", () => {
                 Debug.Log("转盘回调");
                 m_TodaySpinCount--;
                 PlayerPrefs.SetInt("TodaySpinCount", m_TodaySpinCount);
@@ -291,6 +292,9 @@ public class WheelOfFortune : MonoBehaviour {
     public void OnClickWheel() {
         m_WheelPanel.SetActive(true);
         AudioManager.Instance.PlayButtonClick();
+        StartCoroutine(LogHelper.LogToServer("ClickModule", new Dictionary<string, object>() {
+            { "ModuleId", "C1" }
+        }));
     }
 
     public void OnClose() {
