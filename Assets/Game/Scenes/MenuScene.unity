@@ -14612,7 +14612,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1232341448}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: OnClickPrivacy
+        m_MethodName: OnClickYst
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29188,6 +29188,7 @@ MonoBehaviour:
   m_InputField: {fileID: 67340421}
   m_DesText: {fileID: 1244561279}
   m_Evaluate: {fileID: 800418927}
+  m_SubmitBtn: {fileID: 0}
 --- !u!1 &1450610096
 GameObject:
   m_ObjectHideFlags: 0

@@ -913,6 +913,10 @@ public class GameManager : MonoBehaviour {
                         if (IsUseItem) { //使用道具
                             var car = hit.collider.transform.GetComponent<Car>();
                             if (!carArr.Contains(car)) return;
+                            if (GlobalManager.Instance.PlayerCoin >= 500) {
+                                GlobalManager.Instance.PlayerCoin -= 500;
+                            }
+
                             StartCoroutine(UseItem(car.transform));
                             //LiftCarWithBalloon(hit.collider.transform.parent.parent.GetComponent<Car>().transform);
                         }
@@ -2124,10 +2128,63 @@ public class GameManager : MonoBehaviour {
     //胜利延时
     private IEnumerator ShowFinishUIWithDelay() {
         yield return new WaitForSeconds(1.5f);
-        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
-            // // 设置延迟时间
-            // float delay = 0.8f;
-            // yield return new WaitForSeconds(delay);
+        if (GlobalManager.Instance.CurrentLevel >= 9) {
+            ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
+                // // 设置延迟时间
+                // float delay = 0.8f;
+                // yield return new WaitForSeconds(delay);
+                if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
+                    GlobalManager.Instance.CurrentHardLevel++;
+                }
+                else {
+                    GlobalManager.Instance.CurrentLevel++;
+                }
+
+                if (GlobalManager.Instance.CurrentLevel != 0 && GlobalManager.Instance.CurrentLevel != 1 && GlobalManager.Instance.CurrentLevel != 2) {
+                    //金币数量
+                    int coinCount = carDataArr.Length;
+                    //奖杯数量
+                    int trophyCount = 10;
+                    //如果排位赛开启(排位赛开启后困难模式才会开启)
+                    if (GlobalManager.Instance.mIsStartRankingMatch == true && GlobalManager.Instance.CurrentLevel >= 15) {
+                        GlobalManager.Instance.TrophyCompleteLevel++;
+                        //如果是困难关卡
+                        if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
+                            PlayerPrefs.SetInt("HardLevelStatus" + (GlobalManager.Instance.CurrentHardLevel), 0);
+                            trophyCount = 20;
+                            coinCount = 50;
+                        }
+                        else if (GlobalManager.Instance.difficuteMode) {
+                            trophyCount = 20;
+                        }
+
+                        //如果开启双倍奖励
+                        // if (GlobalManager.Instance.IsDoubleReward) {
+                        //     trophyCount *= 2;
+                        // }
+
+                        m_UIGameVictoryPage.ShowAdvanceFinishRoot(coinCount, trophyCount);
+                    }
+                    else //16关之前结算
+                    {
+                        m_UIGameVictoryPage.ShowBeginnerFinishRoot(coinCount);
+                    }
+
+                    //如果竞速赛进行中
+                    if (GlobalManager.Instance.IsCompetition) {
+                        m_UIGameVictoryPage.ShowRacingFinishRoot();
+                    }
+
+                    GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel); //判断是否有奖励
+                    GlobalManager.Instance.SaveGameData();
+                    AudioManager.Instance.PlayVictory();
+                }
+                else {
+                    InitGame();
+                }
+            });
+        }
+        else {
             if (GlobalManager.Instance.GameType == GameType.ChallengeHard) {
                 GlobalManager.Instance.CurrentHardLevel++;
             }
@@ -2177,7 +2234,7 @@ public class GameManager : MonoBehaviour {
             else {
                 InitGame();
             }
-        });
+        }
     }
 
     //左下角坐标 转 中心坐标

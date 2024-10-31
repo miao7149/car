@@ -22,6 +22,7 @@ public class TipsManager : MonoBehaviour {
 
     void Start() {
         instance = this;
+        StartCoroutine(heartBeat());
     }
 
     //显示提示，传入提示内容，显示一秒后自动隐藏
@@ -39,5 +40,11 @@ public class TipsManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+    }
+
+    IEnumerator heartBeat() {
+        yield return new WaitForSeconds(300);
+        StartCoroutine(LogHelper.LogToServer("HeartBeat", new Dictionary<string, object>()));
+        StartCoroutine(heartBeat());
     }
 }

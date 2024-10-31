@@ -131,10 +131,15 @@ public class UI : MonoBehaviour {
 
     //点击重新开始按钮
     public void OnTouchReplay() {
-        ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
+        if (GlobalManager.Instance.CurrentLevel > 9)
+            ApplovinSDKManager.Instance().interstitialAdsManager.ShowInterstitialAd(GlobalManager.Instance.GameType == GameType.Main ? "A0" : "C5", () => {
+                GameManager.Instance.InitGame();
+                ShowFailedRoot(false);
+            });
+        else {
             GameManager.Instance.InitGame();
             ShowFailedRoot(false);
-        });
+        }
     }
 
     //道具使用按钮
@@ -151,7 +156,7 @@ public class UI : MonoBehaviour {
                 GameManager.Instance.IsUseItem = true;
                 ShowItemIntroduce();
                 HideGuideFinger();
-                GlobalManager.Instance.PlayerCoin -= 500;
+                // GlobalManager.Instance.PlayerCoin -= 500;
             }
             else //看广告
             {

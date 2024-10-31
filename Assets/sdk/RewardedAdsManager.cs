@@ -94,7 +94,7 @@ public class RewardedAdsManager : MonoBehaviour {
             Debug.Log("视频广告广告完成回调");
             successCallBack.Invoke();
 
-            StartCoroutine(LogHelper.LogToServer("GameAdRewardEnd", new Dictionary<string, object>() {
+            CommonSdkManager.Instance.StartCoroutine(LogHelper.LogToServer("GameAdRewardEnd", new Dictionary<string, object>() {
                 { "LevelId", GlobalManager.Instance.CurrentLevel },
                 { "ModuleId", module },
                 { "CoinCount", GlobalManager.Instance.PlayerCoin }
@@ -141,7 +141,7 @@ public class RewardedAdsManager : MonoBehaviour {
         successCallBack = success_cb;
         failedCallBack = failed;
         if (MaxSdk.IsRewardedAdReady(ApplovinSDKManager.Instance().rewardadUnitId)) {
-            StartCoroutine(LogHelper.LogToServer("GameAdRewardStart", new Dictionary<string, object>() {
+            CommonSdkManager.Instance.StartCoroutine(LogHelper.LogToServer("GameAdRewardStart", new Dictionary<string, object>() {
                 { "LevelId", GlobalManager.Instance.CurrentLevel },
                 { "ModuleId", module },
                 { "CoinCount", GlobalManager.Instance.PlayerCoin }

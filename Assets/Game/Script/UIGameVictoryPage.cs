@@ -138,7 +138,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     public void ShowAdvanceFinishRoot(int coinCount = 0, int trophyCount = 0) {
         bool doubleScore = GlobalManager.Instance.IsDoubleReward;
         if (doubleScore) {
-            trophyCount *= 2;
+            coinCount *= 2;
         }
 
         GlobalManager.Instance.RefreshTrophyRankingList();
@@ -203,14 +203,21 @@ public class UIGameVictoryPage : MonoBehaviour {
                 m_AdvanceCoin.transform.GetChild(0).GetComponent<Text>().text = "X" + coinCount.ToString();
                 m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount;
                 if (doubleScore) {
-                    m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount / 2;
-                    StartCoroutine(PlayDoubleAni(trophyCount, () => {
-                        StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 0));
-                    }));
+                    doubleAni.SetActive(true);
                 }
                 else {
-                    StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 2f));
+                    doubleAni.SetActive(false);
                 }
+
+                // if (doubleScore) {
+                //     m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + trophyCount / 2;
+                //     StartCoroutine(PlayDoubleAni(trophyCount, () => {
+                //         StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 0));
+                //     }));
+                // }
+                // else {
+                StartCoroutine(PlayRankAni(oldRank, PlayerListIndex, 2f));
+                //}
             }
         }
     }
@@ -263,24 +270,24 @@ public class UIGameVictoryPage : MonoBehaviour {
         // }
     }
 
-    public Animation doubleAni;
+    public GameObject doubleAni;
 
-    IEnumerator PlayDoubleAni(int count, Action cb) {
-        yield return new WaitForSeconds(2.5f);
-        doubleAni.Play();
-        yield return new WaitForSeconds(0.3f);
-
-        // DOTween.To(x => x = count / 2,count/2, count, 1.5f).OnUpdate(() => {
-        //     m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" +x;
-        // }).Play();
-
-        DOTween.To(() => count / 2, x => {
-            //startValue = x; // 更新局部变量
-            m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + x; // 更新文本
-        }, count, 0.5f).OnComplete(() => {
-            cb?.Invoke();
-        }).Play();
-    }
+    // IEnumerator PlayDoubleAni(int count, Action cb) {
+    //     yield return new WaitForSeconds(2.5f);
+    //     doubleAni.Play();
+    //     yield return new WaitForSeconds(0.3f);
+    //
+    //     // DOTween.To(x => x = count / 2,count/2, count, 1.5f).OnUpdate(() => {
+    //     //     m_AdvanceCup.transform.GetChild(0).GetComponent<TMP_Text>().text = "X" +x;
+    //     // }).Play();
+    //
+    //     DOTween.To(() => count / 2, x => {
+    //         //startValue = x; // 更新局部变量
+    //         m_AdvanceCup.transform.GetChild(0).GetComponent<Text>().text = "X" + x; // 更新文本
+    //     }, count, 0.5f).OnComplete(() => {
+    //         cb?.Invoke();
+    //     }).Play();
+    // }
 
     private void SmoothScrollToIndex(int targetIndex, float duration) {
         // if (targetIndex < 0 || targetIndex >= GlobalManager.Instance._trophyRankingList.Count) {
@@ -383,13 +390,15 @@ public class UIGameVictoryPage : MonoBehaviour {
     private List<GameObject> itemArr = new();
 
     void InitItemList() {
-        itemUP = Instantiate(m_Item2, m_ScrollRect.content);
-        itemDown = Instantiate(m_Item3, m_ScrollRect.content);
+        if (GlobalManager.Instance.mIsStartRankingMatch == true && GlobalManager.Instance.CurrentLevel >= 15) {
+            itemUP = Instantiate(m_Item2, m_ScrollRect.content);
+            itemDown = Instantiate(m_Item3, m_ScrollRect.content);
 
-        itemUP.SetActive(false);
-        itemDown.SetActive(false);
-        for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
-            itemArr.Add(Instantiate(m_Item1, m_ScrollRect.content));
+            itemUP.SetActive(false);
+            itemDown.SetActive(false);
+            for (int i = 0; i < GlobalManager.Instance._trophyRankingList.Count; i++) {
+                itemArr.Add(Instantiate(m_Item1, m_ScrollRect.content));
+            }
         }
     }
 

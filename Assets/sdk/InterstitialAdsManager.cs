@@ -74,7 +74,7 @@ public class InterstitialAdsManager : MonoBehaviour {
         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
         LoadInterstitial();
         closeCb?.Invoke();
-        StartCoroutine(LogHelper.LogToServer("GameAdInsertEnd", new Dictionary<string, object>() {
+        CommonSdkManager.Instance.StartCoroutine(LogHelper.LogToServer("GameAdInsertEnd", new Dictionary<string, object>() {
             { "LevelId", GlobalManager.Instance.CurrentLevel },
             { "ModuleId", module },
             { "CoinCount", GlobalManager.Instance.PlayerCoin }
@@ -91,7 +91,7 @@ public class InterstitialAdsManager : MonoBehaviour {
         // Interstitial ad is hidden. Pre-load the next ad.
         LoadInterstitial();
         closeCb?.Invoke();
-        StartCoroutine(LogHelper.LogToServer("GameAdInsertEnd", new Dictionary<string, object>() {
+        CommonSdkManager.Instance.StartCoroutine(LogHelper.LogToServer("GameAdInsertEnd", new Dictionary<string, object>() {
             { "LevelId", GlobalManager.Instance.CurrentLevel },
             { "ModuleId", module },
             { "CoinCount", GlobalManager.Instance.PlayerCoin }
@@ -122,7 +122,7 @@ public class InterstitialAdsManager : MonoBehaviour {
         }
 
         if (MaxSdk.IsInterstitialReady(ApplovinSDKManager.Instance().interstitialAdUnitId)) {
-            StartCoroutine(LogHelper.LogToServer("GameAdInsertStart", new Dictionary<string, object>() {
+           CommonSdkManager.Instance.StartCoroutine(LogHelper.LogToServer("GameAdInsertStart", new Dictionary<string, object>() {
                 { "LevelId", GlobalManager.Instance.CurrentLevel },
                 { "ModuleId", module },
                 { "CoinCount", GlobalManager.Instance.PlayerCoin }

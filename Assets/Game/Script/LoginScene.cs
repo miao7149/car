@@ -11,6 +11,16 @@ public class LoginScene : MonoBehaviour {
 
     void Start() {
         StartCoroutine(LogHelper.LogToServer("LoadGame", new Dictionary<string, object>()));
+        int firstLogin = PlayerPrefs.GetInt("FirstLogin", 1);
+        if (firstLogin == 1) {
+            PlayerPrefs.SetInt("FirstLogin", 0);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
+
+            return;
+        }
+
+
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

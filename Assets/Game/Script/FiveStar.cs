@@ -26,7 +26,10 @@ public class FiveStar : MonoBehaviour {
     //是否弹出过好评界面
     bool m_IsShowFiveStar = false;
 
+    public GameObject m_SubmitBtn; //提交按钮
+
     void Start() {
+        m_SubmitBtn.SetActive(false);
         m_IsShowFiveStar = PlayerPrefs.GetInt("IsShowFiveStar", 0) == 1;
         if (GlobalManager.Instance.CurrentLevel > 8 && m_IsShowFiveStar == false) {
             m_Root.SetActive(true);
@@ -65,6 +68,7 @@ public class FiveStar : MonoBehaviour {
     }
 
     public void OnStarClick(int index) {
+        m_SubmitBtn.SetActive(true);
         StopAllCoroutines(); // 停止跑马灯动画
         halo.gameObject.SetActive(false); // 隐藏光圈
         for (int i = 0; i < stars.Length; i++) {
@@ -109,6 +113,11 @@ public class FiveStar : MonoBehaviour {
         else {
             string s = m_InputField.GetComponent<InputField>().text;
             //StartCoroutine(Global.PostRequest("", s));
+            StartCoroutine(LogHelper.LogToServer("GameEva", new Dictionary<string, object>() {
+                { "EvaScore", mStarIndex + 1 }, {
+                    "EvaContent", s
+                }
+            }));
         }
 
         m_Root.SetActive(false);

@@ -263,6 +263,10 @@ public class MenuManager : MonoBehaviour {
 
     //隐私政策按钮
     public void OnClickPrivacy() {
-        Application.OpenURL("https://www.baidu.com");
+        Application.OpenURL("https://www.dragonstar6688.com/ys.html");
+    }
+
+    public void OnClickYst() {
+        Application.OpenURL("https://www.dragonstar6688.com/termsofuse.html");
     }
 }
