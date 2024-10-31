@@ -126,7 +126,7 @@ public class RankingMatch : MonoBehaviour {
         mItemHeight1 = m_Item1.GetComponent<RectTransform>().sizeDelta.y;
         mItemHeight2 = m_Item2.GetComponent<RectTransform>().sizeDelta.y;
         mItemHeight3 = m_Item3.GetComponent<RectTransform>().sizeDelta.y;
-        if (GlobalManager.Instance.CurrentLevel >= 14 && GlobalManager.Instance.mIsStartRankingMatch == false) {
+        if (GlobalManager.Instance.CurrentLevel >= 15 && GlobalManager.Instance.mIsStartRankingMatch == false) {
             GlobalManager.Instance.mIsStartRankingMatch = true;
             GlobalManager.Instance.StartDate = DateTime.Now;
             //保存开始时间

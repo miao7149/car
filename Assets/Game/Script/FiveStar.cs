@@ -26,9 +26,10 @@ public class FiveStar : MonoBehaviour {
     //是否弹出过好评界面
     bool m_IsShowFiveStar = false;
 
-    public GameObject m_SubmitBtn; //提交按钮
+    public GameObject m_SubmitBtn;
 
-    void Start() {
+
+    public void Show() {
         m_SubmitBtn.SetActive(false);
         m_IsShowFiveStar = PlayerPrefs.GetInt("IsShowFiveStar", 0) == 1;
         if (GlobalManager.Instance.CurrentLevel > 8 && m_IsShowFiveStar == false) {

@@ -214,6 +214,10 @@ public class UI : MonoBehaviour {
             m_StepText.transform.parent.gameObject.SetActive(false);
             return;
         }
+        else {
+            m_StepText.gameObject.SetActive(true);
+            m_StepText.transform.parent.gameObject.SetActive(true);
+        }
 
         m_StepText.text = GlobalManager.Instance.GetLanguageValue("StepNumber") + ":" + count.ToString();
     }
@@ -283,7 +287,64 @@ public class UI : MonoBehaviour {
     public void OnContinue() //胜利界面点击继续按钮
     {
         AudioManager.Instance.PlayButtonClick();
+        m_GuideFinger.gameObject.SetActive(false);
+
+        if (backToMenu()) {
+            SceneManager.LoadScene("MenuScene");
+        }
+        else {
+            GlobalManager.Instance.GameType = GameType.Main;
+            GameManager.Instance.m_UIGameVictoryPage.HideLayer();
+            GameManager.Instance.InitGame();
+        }
+    }
+
+    public void OnTouchQuit() {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    bool backToMenu() {
+        if (GlobalManager.Instance.CurrentLevel == 6) {
+            Debug.Log("比赛回home");
+            return true;
+        }
+
+        if (GlobalManager.Instance.CurrentLevel == 8) {
+            Debug.Log("转盘回home");
+            return true;
+        }
+
+        if (GlobalManager.Instance.CurrentLevel == 17) {
+            Debug.Log("皮肤回home");
+            return true;
+        }
+
+        if (GlobalManager.Instance.IsReward) {
+            Debug.Log("奖励关卡回home");
+            return true;
+        }
+
+        if (isHardLevel()) {
+            Debug.Log("困难关卡回home");
+            return true;
+        }
+
+        if (GlobalManager.Instance.CurrentLevel == 15) {
+            Debug.Log("联赛回home");
+            return true;
+        }
+
+        return false;
+    }
+
+    bool isHardLevel() {
+        int level = GlobalManager.Instance.CurrentLevel;
+        if (level >= 25) {
+            return (level - 5) % 10 == 0;
+        }
+        else {
+            return level == 16 || level == 20;
+        }
     }
 
     //显示车撞行人失败界面
@@ -327,6 +388,7 @@ public class UI : MonoBehaviour {
         SettingRoot.SetActive(SettingRoot.activeSelf ? false : true);
     }
 
+
     //震动开启关闭按钮
     public void OnClickVibrate() {
         GlobalManager.Instance.IsVibrate = !GlobalManager.Instance.IsVibrate;
@@ -367,7 +429,12 @@ public class UI : MonoBehaviour {
     //显示游戏介绍
     public void ShowGameIntroduce(string gameIntroType) {
         GameIntroduceRoot.SetActive(true);
-        if (gameIntroType == "Bulldozer") {
+        if (gameIntroType == "Drone") {
+            var drone = FindChildByName(GameIntroduceRoot.transform, "Drone");
+            drone.gameObject.SetActive(true);
+        }
+
+        else if (gameIntroType == "Bulldozer") {
             //IntroduceTitle.text = LanguageManager.Instance.GetStringByCode("Bulldozer");
 
             var bulldozer = FindChildByName(GameIntroduceRoot.transform, "Bulldozer");

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 using TMPro;
 using DG.Tweening;
 using MM;
@@ -56,8 +57,19 @@ public class DailySignIn : MonoBehaviour {
         }
 
         if (GlobalManager.Instance.CurrentLevel > 7 && (DateTime.Now - lastSignInDate).Days >= 1) {
-            m_DailyRoot.SetActive(true);
+            //m_DailyRoot.SetActive(true);
+            StartCoroutine(ShowLayer());
             cantouch = true;
+        }
+    }
+
+    public GameObject WeelRoot;
+
+    IEnumerator ShowLayer() {
+        yield return new WaitForSeconds(0.2f);
+        while (WeelRoot.activeSelf) {
+            yield return null;
+            m_DailyRoot.SetActive(true);
         }
     }
 

@@ -19,7 +19,7 @@ public class DoubleReward : MonoBehaviour {
     public DateTime mGetDoubleRewardTime;
 
     //双倍奖励持续15分钟
-    public const int DoubleRewardTime = 15 * 60;
+    public const int DoubleRewardTime = 30 * 60;
 
     //双倍奖励背景
     public GameObject m_DoubleRewardBg;
@@ -97,18 +97,18 @@ public class DoubleReward : MonoBehaviour {
 
     //领取双倍奖励按钮
     public void OnGetDoubleRewardBtn() {
-        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C6", () => {
-            mIsGetDoubleReward = true;
-            PlayerPrefs.SetInt("IsGetDoubleReward", 1);
-            mGetDoubleRewardTime = DateTime.Now;
-            PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
-            m_DoubleReward.SetActive(false);
-            m_DoubleRewardRoot.SetActive(false);
-            m_DoubleRewardBg.SetActive(true);
-            m_DoubleRewardCountDownRoot.SetActive(true);
-            GlobalManager.Instance.IsDoubleReward = true;
-        }, () => {
-            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
-        });
+        // ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C6", () => {
+        mIsGetDoubleReward = true;
+        PlayerPrefs.SetInt("IsGetDoubleReward", 1);
+        mGetDoubleRewardTime = DateTime.Now;
+        PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
+        m_DoubleReward.SetActive(false);
+        m_DoubleRewardRoot.SetActive(false);
+        m_DoubleRewardBg.SetActive(true);
+        m_DoubleRewardCountDownRoot.SetActive(true);
+        GlobalManager.Instance.IsDoubleReward = true;
+        // }, () => {
+        //     TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
+        // });
     }
 }

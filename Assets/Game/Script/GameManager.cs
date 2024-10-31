@@ -724,6 +724,7 @@ public class GameManager : MonoBehaviour {
         }
         else if (GlobalManager.Instance.CurrentLevel == 7) {
             m_UI.ShowGuideFinger(m_UI.m_ItemBtn.transform.position);
+            m_UI.ShowGameIntroduce("Drone");
         }
     }
 
@@ -839,6 +840,9 @@ public class GameManager : MonoBehaviour {
 
         if (GlobalManager.Instance.CurrentLevel < 7) {
             m_UI.m_ItemBtn.gameObject.SetActive(false);
+        }
+        else {
+            m_UI.m_ItemBtn.gameObject.SetActive(true);
         }
 
         //地形贴图
@@ -2145,6 +2149,16 @@ public class GameManager : MonoBehaviour {
                     int coinCount = carDataArr.Length;
                     //奖杯数量
                     int trophyCount = 10;
+
+                    // if (GlobalManager.Instance.CurrentLevel >= 15 && GlobalManager.Instance.mIsStartRankingMatch == false) {
+                    //     GlobalManager.Instance.mIsStartRankingMatch = true;
+                    //     GlobalManager.Instance.StartDate = DateTime.Now;
+                    //     //保存开始时间
+                    //     PlayerPrefs.SetString("RankingStartDate", GlobalManager.Instance.StartDate.ToString());
+                    //     PlayerPrefs.SetInt("IsStartRankingMatch", 1);
+                    //     PlayerPrefs.Save();
+                    // }
+
                     //如果排位赛开启(排位赛开启后困难模式才会开启)
                     if (GlobalManager.Instance.mIsStartRankingMatch == true && GlobalManager.Instance.CurrentLevel >= 15) {
                         GlobalManager.Instance.TrophyCompleteLevel++;

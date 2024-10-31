@@ -10,6 +10,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIGameVictoryPage : MonoBehaviour {
+    public void HideLayer() {
+        FinishRoot.SetActive(false);
+        m_Beginner.SetActive(false);
+        m_Advance.SetActive(false);
+        m_Racing.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -210);
+        m_TargetUI.SetActive(false);
+    }
+
     // Start is called before the first frame update
     //完成界面根节点
     public GameObject FinishRoot;
@@ -93,6 +101,7 @@ public class UIGameVictoryPage : MonoBehaviour {
     //其他玩家车辆图片
     public Sprite m_OtherPlayerIcon;
 
+
     void Start() {
         InitItemList();
         //初始化界面
@@ -109,8 +118,11 @@ public class UIGameVictoryPage : MonoBehaviour {
     void Update() {
     }
 
+    public FiveStar fiveStar;
+
     //显示竞速赛完成界面
     public void ShowRacingFinishRoot() {
+        fiveStar.Show();
         FinishRoot.SetActive(true);
         m_Racing.SetActive(true);
         m_TargetUI.SetActive(true);
@@ -136,6 +148,7 @@ public class UIGameVictoryPage : MonoBehaviour {
 
     //显示进阶完成界面
     public void ShowAdvanceFinishRoot(int coinCount = 0, int trophyCount = 0) {
+        fiveStar.Show();
         bool doubleScore = GlobalManager.Instance.IsDoubleReward;
         if (doubleScore) {
             coinCount *= 2;
@@ -444,6 +457,7 @@ public class UIGameVictoryPage : MonoBehaviour {
 
     //显示完成界面
     public void ShowBeginnerFinishRoot(int coinCount = 0) {
+        fiveStar.Show();
         FinishRoot.SetActive(true);
         m_TargetUI.SetActive(true);
         m_Beginner.SetActive(true);

@@ -129,7 +129,7 @@ public class MenuBtnManager : MonoBehaviour {
             m_WheelBtn.GetComponent<Button>().interactable = false;
         }
 
-        if (GlobalManager.Instance.CurrentLevel > 13) {
+        if (GlobalManager.Instance.CurrentLevel > 14) {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("League");
@@ -146,11 +146,11 @@ public class MenuBtnManager : MonoBehaviour {
         else {
             m_QualifyingBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
-            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "14");
+            m_QualifyingBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "15");
             m_QualifyingBtn.GetComponent<Button>().interactable = false;
         }
 
-        if (GlobalManager.Instance.CurrentLevel > 15) {
+        if (GlobalManager.Instance.CurrentLevel > 16) {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
@@ -167,7 +167,7 @@ public class MenuBtnManager : MonoBehaviour {
         else {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
-            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "15");
+            m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "16");
             m_HardBtn.GetComponent<Button>().interactable = false;
         }
 
