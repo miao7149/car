@@ -33,6 +33,18 @@ public class DoubleReward : MonoBehaviour {
     //双倍奖励标题
 
     void Start() {
+        if (GlobalManager.Instance.CurrentLevel < 18) {
+            m_DoubleReward.SetActive(false);
+            return;
+        }
+
+        int show = PlayerPrefs.GetInt("doublereward", 0);
+        if (show == 0) {
+            PlayerPrefs.SetInt("doublereward", 1);
+            PlayerPrefs.Save();
+            m_DoubleRewardRoot.SetActive(true);
+        }
+
         if (PlayerPrefs.HasKey("GetDoubleRewardTime") == false && PlayerPrefs.HasKey("IsGetDoubleReward") == false) {
             mIsGetDoubleReward = false;
             PlayerPrefs.SetInt("IsGetDoubleReward", 0);

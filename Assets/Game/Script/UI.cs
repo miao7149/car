@@ -334,6 +334,11 @@ public class UI : MonoBehaviour {
             return true;
         }
 
+        if (GlobalManager.Instance.CurrentLevel == 19) {
+            Debug.Log("双倍home");
+            return true;
+        }
+
         return false;
     }
 
