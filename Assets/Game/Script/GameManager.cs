@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
     private List<RoadItem> roadPool = new();
 
     // private List<Car> carPool = new();
-    private List<Car> carArr = new();
+    public List<Car> carArr = new();
 
     private List<People> peopleArr = new();
     private List<People> peoplePool = new();
@@ -1875,6 +1875,7 @@ public class GameManager : MonoBehaviour {
                 { "StepCount", StepCount },
                 { "PlaneCount", GlobalManager.Instance.ItemCount },
                 { "CoinCount", GlobalManager.Instance.PlayerCoin },
+                { "CarCount", carArr.Count },
                 { "FailType", "A0" }
             }));
         }
@@ -2189,6 +2190,8 @@ public class GameManager : MonoBehaviour {
                         m_UIGameVictoryPage.ShowRacingFinishRoot();
                     }
 
+                    m_UIGameVictoryPage.fiveStar.Show();
+
                     GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel); //判断是否有奖励
                     GlobalManager.Instance.SaveGameData();
                     AudioManager.Instance.PlayVictory();
@@ -2240,6 +2243,8 @@ public class GameManager : MonoBehaviour {
                 if (GlobalManager.Instance.IsCompetition) {
                     m_UIGameVictoryPage.ShowRacingFinishRoot();
                 }
+
+                m_UIGameVictoryPage.fiveStar.Show();
 
                 GlobalManager.Instance.IsReward = GlobalManager.Instance.IsRewardLevel(GlobalManager.Instance.CurrentLevel); //判断是否有奖励
                 GlobalManager.Instance.SaveGameData();
@@ -2337,6 +2342,7 @@ public class GameManager : MonoBehaviour {
                 { "StepCount", StepCount },
                 { "PlaneCount", GlobalManager.Instance.ItemCount },
                 { "CoinCount", GlobalManager.Instance.PlayerCoin },
+                { "CarCount", carArr.Count },
                 { "FailType", "A0" }
             }));
         }

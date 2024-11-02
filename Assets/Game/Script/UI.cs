@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -286,6 +287,10 @@ public class UI : MonoBehaviour {
 
     public void OnContinue() //胜利界面点击继续按钮
     {
+        if (GameManager.Instance.m_UIGameVictoryPage.CantContinue()) {
+            return;
+        }
+
         AudioManager.Instance.PlayButtonClick();
         m_GuideFinger.gameObject.SetActive(false);
 
@@ -314,7 +319,7 @@ public class UI : MonoBehaviour {
             return true;
         }
 
-        if (GlobalManager.Instance.CurrentLevel == 17) {
+        if (GlobalManager.Instance.CurrentLevel == 18) {
             Debug.Log("皮肤回home");
             return true;
         }
@@ -338,6 +343,49 @@ public class UI : MonoBehaviour {
             Debug.Log("双倍home");
             return true;
         }
+
+        if (RaceFinis()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    bool RaceFinis() {
+        if (PlayerPrefs.HasKey("StartDate") && PlayerPrefs.HasKey("IsCompetition")) {
+            GlobalManager.Instance.RacingStartDate = DateTime.Parse(PlayerPrefs.GetString("StartDate"));
+            // remainingTime = TotalTime - (DateTime.Now - GlobalManager.Instance.RacingStartDate).TotalSeconds;
+            GlobalManager.Instance.RacingStartLevel = PlayerPrefs.GetInt("StartLevel");
+            //获取比赛状态
+            GlobalManager.Instance.IsCompetition = PlayerPrefs.GetInt("IsCompetition") == 1;
+            GlobalManager.Instance.RefreshPlayerInfoList();
+            if (GlobalManager.Instance.IsCompetition) {
+                //获取开始时间
+
+                // RefreshPlayerItem();
+                int CompletionCount = 0;
+                for (int i = 0; i < GlobalManager.Instance._playerInfoList.Count; i++) {
+                    if (GlobalManager.Instance._playerInfoList[i].Id >= 0) {
+                        if (GlobalManager.Instance._playerInfoList[i].CompleteLevel >= 30) {
+                            CompletionCount++;
+                        }
+                    }
+                }
+
+                if (GlobalManager.Instance._RacingSelfPlayerInfo.CompleteLevel >= 30) //玩家完成比赛,比赛结束
+                {
+                    return true;
+                }
+                else if (DateTime.Now - GlobalManager.Instance.RacingStartDate < TimeSpan.FromSeconds(3600f) && CompletionCount < 3) //比赛未结束
+                {
+                }
+                else if (DateTime.Now - GlobalManager.Instance.RacingStartDate > TimeSpan.FromSeconds(3600f) || CompletionCount >= 3) //比赛结束
+                {
+                    return true;
+                }
+            }
+        }
+
 
         return false;
     }

@@ -129,6 +129,7 @@ public class People : MonoBehaviour {
             { "StepCount", GameManager.Instance.StepCount },
             { "PlaneCount", GlobalManager.Instance.ItemCount },
             { "CoinCount", GlobalManager.Instance.PlayerCoin },
+            { "CarCount", GameManager.Instance.carArr.Count },
             { "FailType", "B0" }
         }));
         GameManager.Instance.StepCount += 1;

@@ -155,14 +155,14 @@ public class MenuBtnManager : MonoBehaviour {
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
             m_HardBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("HardMode");
             m_HardBtn.GetComponent<Button>().interactable = true;
-            IsHardFirstEnter = PlayerPrefs.GetInt("IsHardFirstEnter", 1) == 1;
-            if (IsHardFirstEnter) {
-                DOVirtual.DelayedCall(2f, () => {
-                    m_HardMode.OnHardModeBtn();
-                    IsHardFirstEnter = false;
-                    PlayerPrefs.SetInt("IsHardFirstEnter", 0);
-                });
-            }
+            // IsHardFirstEnter = PlayerPrefs.GetInt("IsHardFirstEnter", 1) == 1;
+            // if (IsHardFirstEnter) {
+            //     DOVirtual.DelayedCall(2f, () => {
+            //         m_HardMode.OnHardModeBtn();
+            //         IsHardFirstEnter = false;
+            //         PlayerPrefs.SetInt("IsHardFirstEnter", 0);
+            //     });
+            // }
         }
         else {
             m_HardBtn.transform.GetChild(2).gameObject.SetActive(true);
@@ -171,7 +171,7 @@ public class MenuBtnManager : MonoBehaviour {
             m_HardBtn.GetComponent<Button>().interactable = false;
         }
 
-        if (GlobalManager.Instance.CurrentLevel > 16) {
+        if (GlobalManager.Instance.CurrentLevel > 17) {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(false);
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 48;
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Skin");
@@ -188,7 +188,7 @@ public class MenuBtnManager : MonoBehaviour {
         else {
             m_SkinBtn.transform.GetChild(2).gameObject.SetActive(true);
             m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().fontSize = 36;
-            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "17");
+            m_SkinBtn.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = str.Replace("xx", "18");
             m_SkinBtn.GetComponent<Button>().interactable = false;
         }
     }

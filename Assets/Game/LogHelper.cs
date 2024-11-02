@@ -127,7 +127,7 @@ public class LogHelper {
         GameLog log = new() {
             EnvFlag = 1,
             GameVersion = Application.version,
-            DataVersion = "1.0.6",
+            DataVersion = "1.0.7",
             MyUser = new(),
             MyDevice = new(),
             Remark = remark,

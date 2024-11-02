@@ -122,7 +122,7 @@ public class UIGameVictoryPage : MonoBehaviour {
 
     //显示竞速赛完成界面
     public void ShowRacingFinishRoot() {
-        fiveStar.Show();
+        //fiveStar.Show();
         FinishRoot.SetActive(true);
         m_Racing.SetActive(true);
         m_TargetUI.SetActive(true);
@@ -506,5 +506,13 @@ public class UIGameVictoryPage : MonoBehaviour {
 
             sequence.SetLoops(-1, LoopType.Restart);
         }
+    }
+
+    public bool CantContinue() {
+        if (particleRank.isPlaying) {
+            return true;
+        }
+
+        return false;
     }
 }

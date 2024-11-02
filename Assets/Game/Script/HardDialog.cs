@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +18,20 @@ public class HardDialog : MonoBehaviour {
 
     public GameObject Root;
 
+    public Animation aniShow;
+
     // Start is called before the first frame update
     void Start() {
         if (isHardLevel()) {
-            Root.SetActive(true);
+            DOVirtual.DelayedCall(2f, () => {
+                Root.SetActive(true);
+                aniShow.Play("ani_HardDialog");
+            }).Play();
         }
+    }
+
+    public void AniCallBack() {
+        aniShow.Play("ani_HardDialog_2");
     }
 
     private int hardlevel;

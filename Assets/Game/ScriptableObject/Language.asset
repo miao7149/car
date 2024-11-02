@@ -230,6 +230,10 @@ MonoBehaviour:
         to maintain rank!
     - code: MaintainRank
       value: Keep ranking to maintain your rank!
+    - code: Later
+      value: Later
+    - code: Challenge
+      value: Challenge
   - key: Chinese
     values:
     - code: language_name
@@ -442,6 +446,10 @@ MonoBehaviour:
       value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u4EBA\u4EE5\u7EF4\u6301\u6BB5\u4F4D"
     - code: MaintainRank
       value: "\u4FDD\u6301\u6392\u540D\u4EE5\u7EF4\u6301\u6BB5\u4F4D"
+    - code: Later
+      value: "\u7A0D\u540E"
+    - code: Challenge
+      value: "\u6311\u6218"
   - key: Japanese
     values:
     - code: language_name
@@ -663,6 +671,10 @@ MonoBehaviour:
         <size=80><color=blue><b>XX</b></color></size> \u4EBA\u6B8B\u3063\u3066\u3044\u307E\u3059!"
     - code: MaintainRank
       value: "\u30E9\u30F3\u30AF\u3092\u7DAD\u6301\u3059\u308B\u306B\u306F\u3001\u30E9\u30F3\u30AD\u30F3\u30B0\u3092\u7DAD\u6301\u3057\u3066\u304F\u3060\u3055\u3044!"
+    - code: Later
+      value: "\u5F8C\u3067"
+    - code: Challenge
+      value: "\u30C1\u30E3\u30EC\u30F3\u30B8"
   - key: Portuguese
     values:
     - code: language_name
@@ -882,6 +894,10 @@ MonoBehaviour:
         para manter a classifica\xE7\xE3o!"
     - code: MaintainRank
       value: "Continue classificando para manter sua classifica\xE7\xE3o!"
+    - code: Later
+      value: Mais tarde
+    - code: Challenge
+      value: Desafio
   - key: Spanish
     values:
     - code: language_name
@@ -1101,6 +1117,10 @@ MonoBehaviour:
         para mantener el rango!"
     - code: MaintainRank
       value: "\xA1Sigue en el ranking para mantener tu rango!"
+    - code: Later
+      value: "M\xE1s tarde"
+    - code: Challenge
+      value: "Desaf\xEDo"
   - key: German
     values:
     - code: language_name
@@ -1320,6 +1340,10 @@ MonoBehaviour:
         \xFCbrig, um den Rang zu halten!\""
     - code: MaintainRank
       value: '"Halten Sie Ihren Rang, um Ihren Rang zu halten!"'
+    - code: Later
+      value: "Sp\xE4ter"
+    - code: Challenge
+      value: Herausforderung
   - key: French
     values:
     - code: language_name
@@ -1538,6 +1562,10 @@ MonoBehaviour:
         maintenir son rang\_!"
     - code: MaintainRank
       value: "Restez dans le classement pour conserver votre rang\_!"
+    - code: Later
+      value: Plus tard
+    - code: Challenge
+      value: "D\xE9fi"
   - key: Korean
     values:
     - code: language_name
@@ -1772,6 +1800,10 @@ MonoBehaviour:
     - code: MaintainRank
       value: "\uB7AD\uD06C\uB97C \uC720\uC9C0\uD558\uB824\uBA74 \uB7AD\uD06C\uB97C
         \uC720\uC9C0\uD558\uC138\uC694!"
+    - code: Later
+      value: "\uB098\uC911\uC5D0"
+    - code: Challenge
+      value: "\uB3C4\uC804"
   - key: Arabic
     values:
     - code: language_name
@@ -2031,6 +2063,10 @@ MonoBehaviour:
     - code: MaintainRank
       value: "\u0627\u0633\u062A\u0645\u0631 \u0641\u064A \u0627\u0644\u062A\u0635\u0646\u064A\u0641
         \u0644\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u062A\u0635\u0646\u064A\u0641\u0643!"
+    - code: Later
+      value: "\u0644\u0627\u062D\u0642\u064B\u0627"
+    - code: Challenge
+      value: "\u0627\u0644\u062A\u062D\u062F\u064A"
   - key: Russian
     values:
     - code: language_name
@@ -2306,3 +2342,7 @@ MonoBehaviour:
       value: "\"\u0421\u043E\u0445\u0440\u0430\u043D\u044F\u0439\u0442\u0435 \u0440\u0435\u0439\u0442\u0438\u043D\u0433,
         \u0447\u0442\u043E\u0431\u044B \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
         \u0441\u0432\u043E\u0439 \u0440\u0435\u0439\u0442\u0438\u043D\u0433!\""
+    - code: Later
+      value: "\u041F\u043E\u0437\u0436\u0435"
+    - code: Challenge
+      value: "\u0412\u044B\u0437\u043E\u0432"
