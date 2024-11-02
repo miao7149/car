@@ -150,6 +150,10 @@ public class UI : MonoBehaviour {
             ShowItemIntroduce();
             HideGuideFinger();
             Debug.Log("使用道具");
+            //  if (GlobalManager.Instance.ItemCount > 0)
+            --GlobalManager.Instance.ItemCount; //更新道具数量UI
+            PlayerPrefs.SetInt("ItemCount", GlobalManager.Instance.ItemCount);
+            PlayerPrefs.Save();
         }
         else {
             if (GlobalManager.Instance.PlayerCoin >= 500) //使用金币购买
@@ -545,6 +549,10 @@ public class UI : MonoBehaviour {
         GameManager.Instance.IsUseItem = false;
         ItemIntroduceRoot.SetActive(false);
         m_ItemBtn.gameObject.SetActive(true);
+        // if (GlobalManager.Instance.ItemCount > 0)
+        ++GlobalManager.Instance.ItemCount; //更新道具数量UI
+        PlayerPrefs.SetInt("ItemCount", GlobalManager.Instance.ItemCount);
+        PlayerPrefs.Save();
     }
 
     //显示引导手指

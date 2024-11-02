@@ -1219,10 +1219,15 @@ public class GameManager : MonoBehaviour {
 
     //触发道具动画
     IEnumerator UseItem(Transform car) {
-        if (GlobalManager.Instance.ItemCount > 0)
-            --GlobalManager.Instance.ItemCount; //更新道具数量UI
+        // if (GlobalManager.Instance.ItemCount > 0)
+        //     --GlobalManager.Instance.ItemCount; //更新道具数量UI
         IsUseItem = false;
-        m_UI.OnHideItemIntroduceBtn();
+        // m_UI.OnHideItemIntroduceBtn();
+        IsUseItem = false;
+        m_UI.ItemIntroduceRoot.SetActive(false);
+        m_UI.m_ItemBtn.gameObject.SetActive(true);
+
+
         carArr.Remove(car.GetComponent<Car>());
         car.GetComponent<Car>().MoveDroneToCarTop(() => {
             Action carAction = () => {

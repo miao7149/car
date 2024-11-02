@@ -149,7 +149,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: Double Reward
     - code: DoubleRewardDes
-      value: '"In the next 15 minutes, you will receive double coin rewards"'
+      value: '"In the next 30 minutes, you will receive double coin rewards"'
     - code: ChallengeLevelUnlock
       value: '"New challenge level unlocked, play the challenge level now to get
         double rewards!"'
@@ -369,7 +369,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: "\u53CC\u500D\u5956\u52B1"
     - code: DoubleRewardDes
-      value: "\u5728\u63A5\u4E0B\u6765\u768415\u5206\u949F\u5185\uFF0C\u4F60\u5C06\u83B7\u5F97\u53CC\u500D\u91D1\u5E01\u5956\u52B1"
+      value: "\u5728\u63A5\u4E0B\u6765\u768430\u5206\u949F\u5185\uFF0C\u4F60\u5C06\u83B7\u5F97\u53CC\u500D\u91D1\u5E01\u5956\u52B1"
     - code: ChallengeLevelUnlock
       value: "\u65B0\u6311\u6218\u5173\u5361\u89E3\u9501\uFF0C\u7ACB\u5373\u6E38\u73A9\u6311\u6218\u5173\u5361\u5373\u53EF\u83B7\u5F97\u53CC\u500D\u5956\u52B1\uFF01"
     - code: DroneUnlock
@@ -588,7 +588,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: "\u30C0\u30D6\u30EB\u5831\u916C"
     - code: DoubleRewardDes
-      value: "\u6B21\u306E 15 \u5206\u9593\u306B\u3001\u30B3\u30A4\u30F3\u5831\u916C\u304C
+      value: "\u6B21\u306E 30 \u5206\u9593\u306B\u3001\u30B3\u30A4\u30F3\u5831\u916C\u304C
         2 \u500D\u306B\u306A\u308A\u307E\u3059"
     - code: ChallengeLevelUnlock
       value: "\u65B0\u3057\u3044\u30C1\u30E3\u30EC\u30F3\u30B8 \u30EC\u30D9\u30EB\u304C\u30A2\u30F3\u30ED\u30C3\u30AF\u3055\u308C\u307E\u3057\u305F\u3002\u4ECA\u3059\u3050\u30C1\u30E3\u30EC\u30F3\u30B8
@@ -812,7 +812,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: Recompensa Dupla
     - code: DoubleRewardDes
-      value: "\"Nos pr\xF3ximos 15 minutos, voc\xEA receber\xE1 recompensas em moedas
+      value: "\"Nos pr\xF3ximos 30 minutos, voc\xEA receber\xE1 recompensas em moedas
         em dobro\""
     - code: ChallengeLevelUnlock
       value: "\"Novo n\xEDvel de desafio desbloqueado, jogue o n\xEDvel de desafio
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: Doble recompensa
     - code: DoubleRewardDes
-      value: "\"En los pr\xF3ximos 15 minutos, recibir\xE1s recompensas de monedas
+      value: "\"En los pr\xF3ximos 30 minutos, recibir\xE1s recompensas de monedas
         dobles\""
     - code: ChallengeLevelUnlock
       value: "\"\xA1Nuevo nivel de desaf\xEDo desbloqueado, juega el nivel de desaf\xEDo
@@ -1259,7 +1259,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: Doppelte Belohnung
     - code: DoubleRewardDes
-      value: "In den n\xE4chsten 15 Minuten erhalten Sie doppelte M\xFCnzbelohnungen."
+      value: "In den n\xE4chsten 30 Minuten erhalten Sie doppelte M\xFCnzbelohnungen."
     - code: ChallengeLevelUnlock
       value: '"Neues Herausforderungslevel freigeschaltet. Spielen Sie das Herausforderungslevel
         jetzt, um doppelte Belohnungen zu erhalten!"'
@@ -1480,7 +1480,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: "Double r\xE9compense"
     - code: DoubleRewardDes
-      value: "\"Dans les 15 prochaines minutes, vous recevrez des r\xE9compenses
+      value: "\"Dans les 30 prochaines minutes, vous recevrez des r\xE9compenses
         en pi\xE8ces doubl\xE9es\""
     - code: ChallengeLevelUnlock
       value: "\"Nouveau niveau de d\xE9fi d\xE9bloqu\xE9, jouez au niveau de d\xE9fi
@@ -1707,7 +1707,7 @@ MonoBehaviour:
     - code: DoubleReward
       value: "\uB354\uBE14 \uB9AC\uC6CC\uB4DC"
     - code: DoubleRewardDes
-      value: "\uB2E4\uC74C 15\uBD84 \uB3D9\uC548 \uB450 \uBC30\uC758 \uCF54\uC778
+      value: "\uB2E4\uC74C 30\uBD84 \uB3D9\uC548 \uB450 \uBC30\uC758 \uCF54\uC778
         \uBCF4\uC0C1\uC744 \uBC1B\uAC8C \uB429\uB2C8\uB2E4."
     - code: ChallengeLevelUnlock
       value: "\uC0C8\uB85C\uC6B4 \uCC4C\uB9B0\uC9C0 \uB808\uBCA8\uC774 \uC7A0\uAE08
@@ -1955,7 +1955,7 @@ MonoBehaviour:
       value: "\u0645\u0643\u0627\u0641\u0623\u0629 \u0645\u0636\u0627\u0639\u0641\u0629"
     - code: DoubleRewardDes
       value: "\u0641\u064A \u0627\u0644\u062F\u0642\u0627\u0626\u0642 \u0627\u0644\u0640
-        15 \u0627\u0644\u0642\u0627\u062F\u0645\u0629\u060C \u0633\u062A\u062D\u0635\u0644
+        30 \u0627\u0644\u0642\u0627\u062F\u0645\u0629\u060C \u0633\u062A\u062D\u0635\u0644
         \u0639\u0644\u0649 \u0645\u0643\u0627\u0641\u0622\u062A \u0645\u0636\u0627\u0639\u0641\u0629
         \u0645\u0646 \u0627\u0644\u0639\u0645\u0644\u0627\u062A \u0627\u0644\u0645\u0639\u062F\u0646\u064A\u0629"
     - code: ChallengeLevelUnlock
@@ -2225,7 +2225,7 @@ MonoBehaviour:
       value: "\u0414\u0432\u043E\u0439\u043D\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
     - code: DoubleRewardDes
       value: "\u0412 \u0442\u0435\u0447\u0435\u043D\u0438\u0435 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445
-        15 \u043C\u0438\u043D\u0443\u0442 \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
+        30 \u043C\u0438\u043D\u0443\u0442 \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
         \u0434\u0432\u043E\u0439\u043D\u044B\u0435 \u043D\u0430\u0433\u0440\u0430\u0434\u044B
         \u0432 \u0432\u0438\u0434\u0435 \u043C\u043E\u043D\u0435\u0442"
     - code: ChallengeLevelUnlock

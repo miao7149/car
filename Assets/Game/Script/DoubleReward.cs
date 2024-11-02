@@ -32,7 +32,12 @@ public class DoubleReward : MonoBehaviour {
     /////////////////////////////////////////////多语言设置，文本物体
     //双倍奖励标题
 
+    public Image AD;
+
     void Start() {
+        bool freeDouble = PlayerPrefs.GetInt("freeDouble", 0) == 0;
+        AD.gameObject.SetActive(!freeDouble);
+
         if (GlobalManager.Instance.CurrentLevel < 18) {
             m_DoubleReward.SetActive(false);
             return;
@@ -109,18 +114,34 @@ public class DoubleReward : MonoBehaviour {
 
     //领取双倍奖励按钮
     public void OnGetDoubleRewardBtn() {
-        // ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C6", () => {
-        mIsGetDoubleReward = true;
-        PlayerPrefs.SetInt("IsGetDoubleReward", 1);
-        mGetDoubleRewardTime = DateTime.Now;
-        PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
-        m_DoubleReward.SetActive(false);
-        m_DoubleRewardRoot.SetActive(false);
-        m_DoubleRewardBg.SetActive(true);
-        m_DoubleRewardCountDownRoot.SetActive(true);
-        GlobalManager.Instance.IsDoubleReward = true;
-        // }, () => {
-        //     TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
-        // });
+        bool freeDouble = PlayerPrefs.GetInt("freeDouble", 0) == 0;
+        if (freeDouble) {
+            mIsGetDoubleReward = true;
+            PlayerPrefs.SetInt("IsGetDoubleReward", 1);
+            mGetDoubleRewardTime = DateTime.Now;
+            PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
+            m_DoubleReward.SetActive(false);
+            m_DoubleRewardRoot.SetActive(false);
+            m_DoubleRewardBg.SetActive(true);
+            m_DoubleRewardCountDownRoot.SetActive(true);
+            GlobalManager.Instance.IsDoubleReward = true;
+            PlayerPrefs.SetInt("freeDouble", 1);
+            PlayerPrefs.Save();
+            return;
+        }
+
+        ApplovinSDKManager.Instance().rewardAdsManager.ShowRewardedAd("C6", () => {
+            mIsGetDoubleReward = true;
+            PlayerPrefs.SetInt("IsGetDoubleReward", 1);
+            mGetDoubleRewardTime = DateTime.Now;
+            PlayerPrefs.SetString("GetDoubleRewardTime", mGetDoubleRewardTime.ToString());
+            m_DoubleReward.SetActive(false);
+            m_DoubleRewardRoot.SetActive(false);
+            m_DoubleRewardBg.SetActive(true);
+            m_DoubleRewardCountDownRoot.SetActive(true);
+            GlobalManager.Instance.IsDoubleReward = true;
+        }, () => {
+            TipsManager.Instance.ShowTips(GlobalManager.Instance.GetLanguageValue("AdNotReady"));
+        });
     }
 }
