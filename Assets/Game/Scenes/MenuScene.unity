@@ -10552,8 +10552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -933.7}
-  m_SizeDelta: {x: 848.2, y: 759.9}
+  m_AnchoredPosition: {x: 0, y: -1057.9409}
+  m_SizeDelta: {x: 932, y: 1008.3817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485967327
 MonoBehaviour:
@@ -30113,7 +30113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1520670097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35263,10 +35263,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: dcf365863426045e39735f756810faf8, type: 3}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 64
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -86670,8 +86670,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106.1, y: 34.7}
-  m_SizeDelta: {x: 651.16, y: 168.3}
+  m_AnchoredPosition: {x: -106.1, y: 51.625}
+  m_SizeDelta: {x: 651.16, y: 134.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7068782296281539124
 GameObject:
@@ -96077,6 +96077,7 @@ GameObject:
   - component: {fileID: 8664151424971288954}
   - component: {fileID: 8664151424971288956}
   - component: {fileID: 8664151424971288955}
+  - component: {fileID: 8664151424971288957}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -96148,6 +96149,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &8664151424971288957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664151424971288953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96d2e7a08b084c7ca99e2ad0a99ea0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: YOU
 --- !u!222 &8830077785000070267
 CanvasRenderer:
   m_ObjectHideFlags: 0

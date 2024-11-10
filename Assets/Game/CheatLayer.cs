@@ -38,6 +38,20 @@ public class CheatLayer : MonoBehaviour {
                 PlayerPrefs.SetInt("PlayerCoin", 99999);
                 PlayerPrefs.Save();
                 break;
+            case "reward":
+
+                GlobalManager.Instance._selfPlayerInfo.TrophyProp.Trophy.Count += 1000;
+                GlobalManager.Instance._selfTrophyCount += 1000;
+                PlayerPrefs.SetInt("TrophyCount", GlobalManager.Instance._selfTrophyCount);
+                PlayerPrefs.Save();
+                break;
+
+            case "sign":
+                var signCount = PlayerPrefs.GetInt("SignCount", 0);
+                signCount++;
+                PlayerPrefs.SetInt("SignCount", signCount);
+                PlayerPrefs.Save();
+                break;
         }
     }
 

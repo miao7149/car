@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 8105920774746352492}
   - component: {fileID: 4246027517012011000}
   - component: {fileID: 4821496741173414599}
+  - component: {fileID: 8263413582573737107}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -286,6 +287,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 0, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &8263413582573737107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971127840355665443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96d2e7a08b084c7ca99e2ad0a99ea0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: RankUp
 --- !u!1 &5103032566449069655
 GameObject:
   m_ObjectHideFlags: 0

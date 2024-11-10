@@ -111,7 +111,7 @@ public class DailySignIn : MonoBehaviour {
 
     void UpdateSignInImages() {
         for (int i = 0; i < 7; i++) {
-            dayImages[i].sprite = i > signCount ? signedInSprite : notSignedInSprite;
+            dayImages[i].sprite = i >= signCount ? signedInSprite : notSignedInSprite;
             dayImages[i].transform.GetChild(3).gameObject.SetActive(i < signCount);
             dayImages[i].transform.GetChild(2).GetComponent<Text>().text = "X" + rewardCoins[i].ToString();
             //dayImages[i].transform.GetChild(0).GetComponent<Text>().text = GlobalManager.Instance.GetLanguageValue("Day") + (i + 1).ToString();
@@ -121,12 +121,12 @@ public class DailySignIn : MonoBehaviour {
                 dayImages[i].transform.GetChild(0).GetComponent<Text>().text = LanguageManager.Instance.GetStringByCode("Seventh day");
         }
 
-        int dayIndex = signCount;
-        if (lastSignInDate == DateTime.MinValue) {
-            dayIndex = 0;
-        }
-
-        dayImages[dayIndex].sprite = signedInSprite;
+        // int dayIndex = signCount;
+        // if (lastSignInDate == DateTime.MinValue) {
+        //     dayIndex = 0;
+        // }
+        //
+        // dayImages[dayIndex].sprite = signedInSprite;
     }
 
     public void CloseDailyRoot() {

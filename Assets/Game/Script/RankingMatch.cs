@@ -144,6 +144,8 @@ public class RankingMatch : MonoBehaviour {
     public void SetLanguage() {
     }
 
+    private int levelUp;
+
     public void RefreshRankingMatch() {
         //GlobalManager.Instance.RefreshTrophyRankingList();
         //获取开始时间
@@ -155,11 +157,12 @@ public class RankingMatch : MonoBehaviour {
             if (remainingTime <= 0) {
                 //如果排位赛时间到，主动弹出排位赛界面
                 remainingTime = 0;
+                m_MainRoot.SetActive(true);
                 m_RankingMatchRoot.SetActive(true);
                 m_ContinueBtn.SetActive(false);
                 m_Title.SetActive(false);
                 m_GetBtn.SetActive(true);
-                m_CountDownText.text = "已结束";
+                m_CountDownText.text = LanguageManager.Instance.GetStringByCode("END");
             }
             else {
                 m_ContinueBtn.SetActive(true);
@@ -171,6 +174,8 @@ public class RankingMatch : MonoBehaviour {
                 int hours = (int)((remainingTime % (24 * 60 * 60)) / (60 * 60));
                 m_CountDownText.text = days + GlobalManager.Instance.GetLanguageValue("Day") + hours + GlobalManager.Instance.GetLanguageValue("Hour");
             }
+
+            Debug.Log(GlobalManager.Instance.CurrentRank);
 
             m_RankImage.GetComponent<Image>().sprite = m_RankSprites[GlobalManager.Instance.CurrentRank - 1]; //设置段位图片
             m_RankImage.GetComponent<Image>().SetNativeSize();
@@ -206,15 +211,30 @@ public class RankingMatch : MonoBehaviour {
             CreatItemList();
             var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
             int currentPromotionNum = 0;
+            levelUp = 0;
             if (PlayerListIndex > 29) {
                 currentPromotionNum = PlayerListIndex - 29;
-                if (remainingTime <= 0)
-                    GlobalManager.Instance.CurrentRank--;
+                if (remainingTime <= 0) {
+                    if (GlobalManager.Instance.CurrentRank > 1) {
+                        GlobalManager.Instance.CurrentRank--;
+                        PlayerPrefs.SetInt("CurrentRank", GlobalManager.Instance.CurrentRank);
+
+                        PlayerPrefs.Save();
+                        levelUp = -1;
+                    }
+                }
             }
             else {
                 currentPromotionNum = 0;
                 if (remainingTime <= 0)
-                    GlobalManager.Instance.CurrentRank++;
+                    if (GlobalManager.Instance.CurrentRank < 6) {
+                        GlobalManager.Instance.CurrentRank++;
+
+                        PlayerPrefs.SetInt("CurrentRank", GlobalManager.Instance.CurrentRank);
+
+                        PlayerPrefs.Save();
+                        levelUp = 1;
+                    }
             }
 
             //var str = GlobalManager.Instance.GetLanguageValue("PromotionDes");
@@ -226,6 +246,12 @@ public class RankingMatch : MonoBehaviour {
             //查找字符串xx 替换为当前晋升人数
             //str = str.Replace("                 ", "<size=150%><color=#7F68F0>" + currentPromotionNum.ToString() + "</color></size>");
             m_CurrentPromotionDesc.GetComponent<Text>().text = str;
+
+            if (remainingTime <= 0) {
+                DOVirtual.DelayedCall(1.5f, () => {
+                    SmoothScrollToIndex(GlobalManager.Instance.GetRankIndex() - 3, 1.5f);
+                });
+            }
         }
         else {
             GlobalManager.Instance.mIsStartRankingMatch = false;
@@ -364,6 +390,11 @@ public class RankingMatch : MonoBehaviour {
             GlobalManager.Instance.StartDate = DateTime.Now;
             //保存开始时间
             PlayerPrefs.SetString("RankingStartDate", GlobalManager.Instance.StartDate.ToString());
+            GlobalManager.Instance._selfTrophyCount = 0;
+            GlobalManager.Instance._selfPlayerInfo.TrophyProp.Trophy.Count = 0;
+            PlayerPrefs.SetInt("TrophyCount", GlobalManager.Instance._selfTrophyCount);
+            PlayerPrefs.Save();
+            RefreshRankingMatch();
         }
 
         m_RankingMatchRoot.SetActive(false);
@@ -482,7 +513,7 @@ public class RankingMatch : MonoBehaviour {
         }
         else if (propArray.Length == 2) //金币和道具
         {
-            if (propArray[2].Type == Prop.Ballon) {
+            if (propArray[1].Type == Prop.Ballon) {
                 m_GoldReward.SetActive(true);
                 m_ItemReward.SetActive(true);
                 m_GoldReward.transform.GetChild(0).GetComponent<Text>().text = "X" + propArray[0].Count.ToString();
@@ -497,13 +528,29 @@ public class RankingMatch : MonoBehaviour {
         }
 
         var PlayerListIndex = GlobalManager.Instance.GetRankIndex();
-        var str1 = GlobalManager.Instance.GetLanguageValue("RankingSettlement");
+        ///var str1 = GlobalManager.Instance.GetLanguageValue("RankingSettlement");
         //查找字符串xx 替换为当前排名
-        str1 = str1.Replace("xx", PlayerListIndex.ToString());
+        // str1 = str1.Replace("xx", (PlayerListIndex + 1).ToString());
+        var str1 = LanguageManager.Instance.GetStringByCode("Ranking", (PlayerListIndex + 1) + "");
         m_CurrentRankDesc.GetComponent<Text>().text = str1; //当前排名
-        var str2 = GlobalManager.Instance.GetLanguageValue("RankSettlement");
+
+
+        var str2 = "";
+
+        if (levelUp == 0) {
+            str2 = LanguageManager.Instance.GetStringByCode("Rankinghold", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank));
+        }
+        else if (levelUp == 1) {
+            str2 = LanguageManager.Instance.GetStringByCode("Rankingup", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank));
+        }
+        else { //-1
+            str2 = LanguageManager.Instance.GetStringByCode("Rankingdown", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank));
+        }
+
+
+        // GlobalManager.Instance.GetLanguageValue("RankSettlement");
         //查找字符串xx 替换为当前段位
-        str2 = str2.Replace("xx", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString()));
+        // str2 = str2.Replace("xx", GlobalManager.Instance.GetLanguageValue("Rank" + GlobalManager.Instance.CurrentRank.ToString()));
         m_CurrentRankDesc2.GetComponent<Text>().text = str2;
     }
 

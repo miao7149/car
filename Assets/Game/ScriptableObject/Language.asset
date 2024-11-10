@@ -209,6 +209,16 @@ MonoBehaviour:
       value: Rank Up!
     - code: RankDown
       value: Rank Down
+    - code: END
+      value: End
+    - code: Ranking
+      value: You are <size=80><color=blue><b>XX</b></color></size>
+    - code: Rankingup
+      value: You have reached XX rank
+    - code: Rankingdown
+      value: You drop to XX rank
+    - code: Rankinghold
+      value: You are still in the XX rank
   - key: Chinese
     values:
     - code: language_name
@@ -314,8 +324,7 @@ MonoBehaviour:
     - code: RankSettlement
       value: "\u4F60\u4F9D\u65E7\u662Fxx\u6BB5\u4F4D"
     - code: PromotionDes
-      value: "\u518D\u8D85\u8FC7 <size=80><color=#7b6ce8><b>XX</b></color></size>
-        \u4EBA\u5C31\u53EF\u4EE5\u664B\u7EA7"
+      value: "\u518D\u8D85\u8FC7 <size=80><color=blue><b>XX</b></color></size> \u4EBA\u5C31\u53EF\u4EE5\u664B\u7EA7"
     - code: Rank1
       value: "\u9752\u94DC"
     - code: Rank2
@@ -404,6 +413,16 @@ MonoBehaviour:
       value: "\u6BB5\u4F4D\u63D0\u5347\uFF01"
     - code: RankDown
       value: "\u6BB5\u4F4D\u4E0B\u964D"
+    - code: END
+      value: "\u5DF2\u7ED3\u675F"
+    - code: Ranking
+      value: "\u60A8\u662F\u7B2C <size=80><color=blue><b>XX</b></color></size> \u540D"
+    - code: Rankingup
+      value: "\u60A8\u4E0A\u5347\u5230XX\u6BB5\u4F4D"
+    - code: Rankingdown
+      value: "\u60A8\u4E0B\u964D\u5230XX\u6BB5\u4F4D"
+    - code: Rankinghold
+      value: "\u60A8\u4F9D\u65E7\u662FXX\u6BB5\u4F4D"
   - key: Japanese
     values:
     - code: language_name
@@ -602,6 +621,17 @@ MonoBehaviour:
       value: "\u30E9\u30F3\u30AF\u30A2\u30C3\u30D7\uFF01"
     - code: RankDown
       value: "\u30E9\u30F3\u30AF\u304C\u4E0B\u304C\u308B"
+    - code: END
+      value: "\u7D42\u4E86"
+    - code: Ranking
+      value: "\u3042\u306A\u305F\u306F <size=80><color=blue><b>XX</b></color></size>
+        \u3067\u3059"
+    - code: Rankingup
+      value: "XX \u30E9\u30F3\u30AF\u306B\u5230\u9054\u3057\u307E\u3057\u305F"
+    - code: Rankingdown
+      value: "XX \u30E9\u30F3\u30AF\u306B\u843D\u3061\u307E\u3057\u305F"
+    - code: Rankinghold
+      value: "\u3042\u306A\u305F\u306F\u307E\u3060 XX \u30E9\u30F3\u30AF\u3067\u3059"
   - key: Portuguese
     values:
     - code: language_name
@@ -801,6 +831,16 @@ MonoBehaviour:
       value: "Subiu de classifica\xE7\xE3o!"
     - code: RankDown
       value: "Desceu de classifica\xE7\xE3o"
+    - code: END
+      value: Fim
+    - code: Ranking
+      value: "Voc\xEA \xE9 <size=80><color=blue><b>XX</b></color></size>"
+    - code: Rankingup
+      value: "Voc\xEA atingiu a classifica\xE7\xE3o XX"
+    - code: Rankingdown
+      value: "Voc\xEA cai para a classifica\xE7\xE3o XX"
+    - code: Rankinghold
+      value: "Voc\xEA ainda est\xE1 na classifica\xE7\xE3o XX"
   - key: Spanish
     values:
     - code: language_name
@@ -1000,6 +1040,16 @@ MonoBehaviour:
       value: "\xA1Sube de rango!"
     - code: RankDown
       value: "\xA1Baja de rango!"
+    - code: END
+      value: Fin
+    - code: Ranking
+      value: Eres <size=80><color=blue><b>XX</b></color></size>
+    - code: Rankingup
+      value: Has alcanzado el rango XX
+    - code: Rankingdown
+      value: Bajas al rango XX
+    - code: Rankinghold
+      value: "A\xFAn est\xE1s en el rango XX1"
   - key: German
     values:
     - code: language_name
@@ -1199,6 +1249,16 @@ MonoBehaviour:
       value: steigen im Ranking auf!
     - code: RankDown
       value: Sinken im Ranking
+    - code: END
+      value: Ende
+    - code: Ranking
+      value: Du bist <size=80><color=blue><b>XX</b></color></size>
+    - code: Rankingup
+      value: Du hast Rang XX erreicht
+    - code: Rankingdown
+      value: "Du f\xE4llst auf Rang XX zur\xFCck"
+    - code: Rankinghold
+      value: Du bist immer noch im Rang XX1
   - key: French
     values:
     - code: language_name
@@ -1397,6 +1457,16 @@ MonoBehaviour:
       value: "Montez en grade\_!"
     - code: RankDown
       value: Descendez en grade
+    - code: END
+      value: Fin
+    - code: Ranking
+      value: "Vous \xEAtes <size=80><color=blue><b>XX</b></color></size>"
+    - code: Rankingup
+      value: Vous avez atteint le rang XX
+    - code: Rankingdown
+      value: Vous descendez au rang XX
+    - code: Rankinghold
+      value: "Vous \xEAtes toujours au rang XX1"
   - key: Korean
     values:
     - code: language_name
@@ -1607,6 +1677,17 @@ MonoBehaviour:
       value: "\uB7AD\uD06C \uC5C5!"
     - code: RankDown
       value: "\uB7AD\uD06C \uB2E4\uC6B4"
+    - code: END
+      value: "\uC885\uB8CC"
+    - code: Ranking
+      value: "\uB2F9\uC2E0\uC740 <size=80><color=blue><b>XX</b></color></size>\uC785\uB2C8\uB2E4."
+    - code: Rankingup
+      value: "\uB2F9\uC2E0\uC740 XX \uB7AD\uD06C\uC5D0 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2E4."
+    - code: Rankingdown
+      value: "\uB2F9\uC2E0\uC740 XX \uB7AD\uD06C\uB85C \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4."
+    - code: Rankinghold
+      value: "\uB2F9\uC2E0\uC740 \uC5EC\uC804\uD788 \u200B\u200BXX \uB7AD\uD06C\uC5D0
+        \uC788\uC2B5\uB2C8\uB2E4."
   - key: Arabic
     values:
     - code: language_name
@@ -1837,6 +1918,19 @@ MonoBehaviour:
       value: "\u0627\u0631\u062A\u0642\u064A\u062A \u0641\u064A \u0627\u0644\u062A\u0631\u062A\u064A\u0628!"
     - code: RankDown
       value: "\u062A\u0631\u0627\u062C\u0639\u062A \u0641\u064A \u0627\u0644\u062A\u0631\u062A\u064A\u0628"
+    - code: END
+      value: "\u0627\u0644\u0646\u0647\u0627\u064A\u0629"
+    - code: Ranking
+      value: "\u0623\u0646\u062A <size=80><color=blue><b>XX</b></color></size>"
+    - code: Rankingup
+      value: "\u0644\u0642\u062F \u0648\u0635\u0644\u062A \u0625\u0644\u0649 \u0631\u062A\u0628\u0629
+        XX"
+    - code: Rankingdown
+      value: "\u0644\u0642\u062F \u0627\u0646\u062E\u0641\u0636\u062A \u0625\u0644\u0649
+        \u0631\u062A\u0628\u0629 XX"
+    - code: Rankinghold
+      value: "\u0645\u0627 \u0632\u0644\u062A \u0641\u064A \u0631\u062A\u0628\u0629
+        XX1"
   - key: Russian
     values:
     - code: language_name
@@ -2079,3 +2173,14 @@ MonoBehaviour:
       value: "\u041F\u043E\u0432\u044B\u0441\u0438\u0442\u044C \u0440\u0435\u0439\u0442\u0438\u043D\u0433!"
     - code: RankDown
       value: "\u041F\u043E\u043D\u0438\u0437\u0438\u0442\u044C \u0440\u0435\u0439\u0442\u0438\u043D\u0433"
+    - code: END
+      value: "\u041A\u043E\u043D\u0435\u0446"
+    - code: Ranking
+      value: "\u0412\u044B <size=80><color=blue><b>XX</b></color></size>"
+    - code: Rankingup
+      value: "\u0412\u044B \u0434\u043E\u0441\u0442\u0438\u0433\u043B\u0438 XX \u0440\u0430\u043D\u0433\u0430"
+    - code: Rankingdown
+      value: "\u0412\u044B \u043E\u043F\u0443\u0441\u0442\u0438\u043B\u0438\u0441\u044C
+        \u0434\u043E XX \u0440\u0430\u043D\u0433\u0430"
+    - code: Rankinghold
+      value: "\u0412\u044B \u0432\u0441\u0435 \u0435\u0449\u0435 \u0432 XX \u0440\u0430\u043D\u0433\u04351"

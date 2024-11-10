@@ -183,13 +183,13 @@ public class UIGameVictoryPage : MonoBehaviour {
             //计算剩余时间
             remainingTime = mCountDownTime - (DateTime.Now - GlobalManager.Instance.StartDate).TotalSeconds;
             if (remainingTime <= 0) {
-                m_CountDownText.text = "已结束";
+                m_CountDownText.text = LanguageManager.Instance.GetStringByCode("Complete");
             }
             else {
                 //更新倒计时文本，只显示天数和小时数
                 int days = (int)(remainingTime / (24 * 60 * 60));
                 int hours = (int)((remainingTime % (24 * 60 * 60)) / (60 * 60));
-                m_CountDownText.text = $"{days}天 {hours}小时";
+                m_CountDownText.text = $"{days}{LanguageManager.Instance.GetStringByCode("Day")} {hours}{LanguageManager.Instance.GetStringByCode("Hour")}";
             }
 
             if (coinCount > 0 && trophyCount > 0) {
